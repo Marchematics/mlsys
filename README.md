@@ -1,74 +1,84 @@
-# mlsys — identifiable marginal utility for budgeted context selection
+# mlsys — response-aware context selection and identifiable marginal utility
 
-Code, experimental records and manuscripts for a study of **set-conditioned
-marginal utility**: how much does adding one candidate context reduce a fixed
-predictor's loss, and when can that quantity be estimated at all?
+This repository contains one submitted companion method manuscript and one
+active journal manuscript.
 
-The short answer the evidence supports: context selection pays exactly when the
-predictor leaves a *systematic residual* a selector can observe. Stronger
-predictors leave less; adapting a predictor to its deployment is the operation
-that destroys the value; enlarging the candidate library raises the opportunity
-while lowering the share of it that can be realised.
+The active line is now **TKDE_MUR**. All advantageous material that is not part
+of the submitted IPM companion has been consolidated into the TKDE manuscript:
+general response--utility theory, theory-shaped scoring heads, nonlinear
+backbone regimes, pool-size and adaptation sweeps, observability diagnostics,
+the second task family, mechanism-derived adaptation, deployment pilots, and
+compute evidence. **PAMI_MUR is no longer a submission candidate**; it is kept
+only as the provenance/evidence source from which those additions were
+developed.
 
-## Contents
+## Submission status
 
-| path | what |
-|---|---|
-| `PAMI_MUR/paper/main.pdf` | method, theory, generalisation evidence, validated deployment procedure (20 pp) |
-| `TKDE_MUR/paper/main.pdf` | identifiability: why response decides, when utility is estimable (17 pp) |
-| `KBS_MUR/paper/main.pdf` | companion method paper (46 pp) |
-| `PAMI_MUR/experiments/` | every experiment, analysis and checker |
-| `PAMI_MUR/results/derived/` | the derived artifact behind every headline number |
-| `PAMI_MUR/results/raw/` | immutable raw runs: metrics, per-episode gains, diagnostic traces |
-| `PAMI_MUR/refine-logs/` | one record per experiment, the SOTA survey, the audits |
-| `KBS_MUR/results/raw/` | the six-dataset learned runs and every run the artifacts cite |
-| `DATA.md` | what is included, what is excluded, and how to regenerate it |
+| path | status | role |
+|---|---|---|
+| `KBS_MUR/paper/` | submitted companion (IPM); frozen | basic R-MUR method and the submitted multi-target traffic evidence |
+| `TKDE_MUR/paper/` | **active primary manuscript** | method + general theory + identifiability mechanism + adaptive/deployment evidence |
+| `PAMI_MUR/` | **archived; no PAMI submission** | raw/derived artifacts, experiment logs, proofs and material now consolidated into TKDE |
 
-## Verify the claims rather than trusting them
+The submitted companion is treated as frozen. The TKDE manuscript must not
+depend on copying its main numerical tables. Shared notation and the basic
+routing primitive are disclosed as common background; the TKDE contribution is
+the new theory, new estimator structure, new regimes, new diagnostics, new
+adaptation rule and new deployment evidence.
 
-Two scripts re-parse the manuscripts and compare every headline number against
-the artifact it must have come from — including checks that the stated
-*limitations* are themselves true of the data.
+## Evidence base
+
+The authoritative experimental record for the active TKDE line lives under
+`PAMI_MUR/results/{raw,derived}` and `PAMI_MUR/refine-logs/`. Important
+records include:
+
+- general smooth-loss, Bregman and cross-entropy response--utility theory;
+- strong nonlinear subset-capable backbones and the expert-strength ladder;
+- recent-baseline matrices and theory-shaped response heads;
+- pool-geometry, harmful-pool, budget and library-size sweeps;
+- response/observability probes and the gate-ceiling audit;
+- the CLIP demonstration-selection task family;
+- novelty-based label-free adaptation;
+- measured latency, expert-row and memory costs;
+- pilot-power, time-shift and split-half deployment validation.
+
+The old `PAMI_MUR/paper/` manuscript is provenance only. New prose and new
+claims belong in `TKDE_MUR/paper/`.
+
+## Verify claims rather than trusting them
+
+The project keeps mechanical claim checks for the shared evidence base:
 
 ```bash
 cd PAMI_MUR
-python experiments/check_table_artifacts.py   # 13 suites, ~124 assertions
-python experiments/check_cross_paper.py       # shared numbers must not drift between papers
-python -m pytest tests/ -q                    # 78 tests
-cd ../KBS_MUR && python -m pytest tests/ -q   # 17 tests
+python experiments/check_table_artifacts.py
+python experiments/check_cross_paper.py
+python -m pytest tests/ -q
+cd ../KBS_MUR && python -m pytest tests/ -q
 ```
 
-All of the above pass on this snapshot.
+The TKDE paper should use only numbers that can be traced to the immutable
+artifacts or to the frozen submitted companion where the overlap is explicitly
+disclosed.
 
-## Main findings
+## TKDE scientific story
 
-**Where selection works.** With a linear subset expert on six traffic
-benchmarks, learned marginal-utility routing is significantly ahead of the best
-of fourteen competitors on three benchmarks, unresolved on two, and below simple
-pooling on one. The strongest competitor is always the trivial policy of using
-every candidate, never one of the specialised heuristics.
+The active manuscript is organised around one positive-to-mechanistic chain:
 
-**Where it stops.** With a subset-capable nonlinear predictor nothing separates
-from pooling, and five theory-guided expectations were tested and failed, each
-with a measured reason:
+1. **State-conditioned marginal utility** is the correct decision object.
+2. **Predictor response** is the observable that carries that utility signal.
+3. **General-loss theory** gives the response expansion, an exact Bregman
+   identity, explicit softmax-cross-entropy constants and a response-sufficiency
+   result.
+4. **When the signal is identifiable**, response-aware selection strongly beats
+   a broad selector toolbox.
+5. **When a stronger predictor absorbs the systematic residual**, structural
+   oracle opportunity can remain while observable ranking signal collapses.
+6. **Pool geometry and novelty** explain when retrieval-style relevance helps or
+   hurts and yield a label-free adaptation rule.
+7. **A second task family, scaling sweeps and deployment pilots** test whether
+   the mechanism transfers and how to act on it in practice.
 
-| finding | record |
-|---|---|
-| a predictability probe cannot gate deployment | `R140` |
-| a larger library raises the opportunity 40% and drives the router to chance | `R142` |
-| the cached screen is a symptom, not the cause | `R145` |
-| the theory's own least-perturbation limit case loses to pooling | `R151` |
-| structural headroom does not predict routing benefit in either regime | `R153` |
-| the gate headroom is 3–7× the router's advantage and every decision-time signal is at chance, AUC ∈ [.481,.521] | `R159` |
-
-**What survives is a procedure.** The measurement protocol is validated as a
-deployment decision: a pilot of 24 targets reproduces the full-deployment
-verdict 96% of the time, splitting the pilot in half certifies a verdict at 99%
-agreement, and the direction of the effect survives a time shift (r = +.596)
-while the significance call partly does not.
-
-## Reproducing
-
-Datasets and cached encoder features are not committed — see `DATA.md`. With the
-STAEformer-format data in place, each record in `PAMI_MUR/refine-logs/` names the
-command that produced it and the artifact it wrote.
+The intended TKDE identity is therefore **strong method + strong theory + strong
+mechanism + actionable adaptation**, not a negative-results or boundary-only
+paper.
