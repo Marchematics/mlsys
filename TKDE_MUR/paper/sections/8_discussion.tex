@@ -1,84 +1,98 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Structural opportunity is not realizable opportunity}
+The combined evidence supports a positive but conditional view of adaptive
+context selection. State-conditioned marginal utility is a useful decision
+object, predictor response is the observable that exposes its candidate-specific
+variation, and response-aware selection can substantially outperform content,
+fixed-set and response-free alternatives when that variation is identifiable.
+The same theory also explains why this advantage is not monotone in predictor
+quality or candidate-library size.
 
-The three regimes separate two quantities that are easy to conflate.
-\emph{Structural} headroom is a property of the predictor and the candidate
-pool: it is the gap between the sequential and the standalone oracle, and it is
-positive in every dataset and target we measured, including the strong-backbone
-regime. \emph{Realizable} headroom is a property of what the router can observe.
-Regime A has both: the ridge expert leaves a systematic residual, the learned
-router converts a double-digit share of the structural opportunity into gain,
-and it beats every competitor. Regime B has the first and not the second: the
-stronger expert has already absorbed the systematic part of its own residual,
-so the term that \cref{cor:identifiability} leaves to learn is close to noise.
-Nothing in the matrix recovers the oracle value, and the practical consequence
-is counter-intuitive --- with a strong predictor the best deployable policy is
-to use every context, and the optimal budget shrinks rather than grows. Two
-controlled sweeps sharpen that statement into a mechanism rather than a
-boundary. Adapting the predictor is the operation that destroys realizable
-value: two epochs of fine-tuning remove about five sixths of the share of the
-oracle the router can realise while the structural opportunity is unchanged,
-and twenty-eight further epochs add $1.2\%$ of accuracy and no identifiable
-value. Enlarging the candidate library does the same from the other side: the
-oracle opportunity rises by forty percent from sixteen to one hundred and
-twenty-eight candidates while the router falls to the level of random
-selection. Realizable headroom is therefore not a fixed property of a
-deployment that one can measure once; it is consumed by adaptation and diluted
-by scale, and both are choices.
+\subsection{Structural opportunity and realizable opportunity}
 
-\subsection{What the measurements are for}
+Structural headroom measures what an oracle could gain by revising candidate
+values after each addition. Realizable opportunity measures how much of that
+gain can be predicted from information available before the outcome is known.
+The two quantities need not track one another. In the linear identifiable
+regime, large oracle opportunity coincides with measurable candidate-specific
+signal and response-aware routing converts part of it into gain. With the
+strong nonlinear expert, the oracle opportunity remains large while candidate
+rankability collapses: cached recall approaches its random reference, observable
+probes have near-zero out-of-sample predictive value, and episode-level
+confidence signals have AUCs in $[.481,.521]$. The loss is therefore not
+explained by a missing scoring head alone.
 
-The three diagnostics of \cref{sec:diagnostics} are the paper's most transferable
-artefact, because they answer a question that precedes method choice.
-Measurement 1 is cheap and decisive: if the cached view does not correlate with
-the true marginal, no reranking stage can help. Measurement 2 settles whether
-the ordering is recoverable at all, and it includes its own controls so that a
-negative result is informative rather than a symptom of a weak model.
-Measurement 3 turns the answer into a policy: candidate novelty separates the
-regime in which retrieval helps from the regime in which it hurts, with no
-label cost. In regime B all three fail together, and they fail in the direction
-the theory predicts.
+This distinction also clarifies the expert-strength and library-size sweeps.
+Adapting the predictor removes systematic residual structure and sharply reduces
+the value a router can realise even when the oracle opportunity persists.
+Increasing the library from 16 to 128 candidates raises the oracle opportunity
+by about 40\% while the router approaches random selection. More candidate
+choice can therefore increase the value of perfect information and
+simultaneously reduce the fraction of that value recoverable from observable
+signals.
 
-\subsection{Why the default toolkit is harmful rather than merely weak}
+\subsection{Why response matters}
 
-In regime A every training-free heuristic we tested is worse than using no
-auxiliary context. The mechanism is visible in the pool sweep: when the head of
-the pool is the most correlated with the anchor, a candidate adds little that
-the anchor does not already contain, while the predictor's linear combination
-of redundant inputs amplifies noise. Retrieval and diversity proxies are
-therefore not merely uninformative in this regime; they are systematically
-misleading, and the same proxies become helpful as soon as candidates carry
-independent information. The adaptive rule of \cref{eq:adaptive-rule} is the
-practical response, and it is deliberately conservative: it does not try to beat
-learned routing, only to stop a default from doing harm.
+The theory and the empirical probes point to the same interaction. Under squared
+loss, the state-dependent part of utility is the alignment between the
+candidate-induced response and the residual of the current predictor. A
+content-only score omits that interaction. The exact Bregman identity and the
+cross-entropy bound show that the same geometric structure is not peculiar to
+squared error. The theory-shaped head improves ranking where the signal exists,
+while four alternative parameterisations hit the same ceiling in the
+low-identifiability regimes. This is why we treat response as a principled
+observation rather than as another feature engineering choice.
 
-\subsection{Why four scoring heads hit the same ceiling}
+\subsection{Pool geometry is actionable}
 
-Regime C is the cleanest evidence that the limit is observational rather than
-parametric. The bilinear head, which hard-codes the structure implied by
-\cref{prop:suff}, ranks the marginal substantially better than a generic scalar
-head; the signed variant confirms the diagnosis that the identity's fixed
-curvature sign was binding, with a learned coefficient that is positive on four
-of five benchmarks; and yet neither head changes the verdict. What limits
-performance is the information in the router's observation, not the capacity of
-the function fitted to it. This is the same conclusion the regime-B diagnostics
-reach by a different route, and it is the reason the paper's contribution is a
-diagnosis and a decision rule rather than another ranking heuristic.
+The pool-geometry sweep reveals a complementary mechanism. Relevance is harmful
+when highly correlated candidates contribute little information not already
+present in the anchor, and becomes useful as candidate novelty increases. The
+relationship is strong within the controlled deployment geometries but does not
+support a universal cross-dataset threshold. The resulting adaptive rule is
+therefore deliberately local: estimate novelty on the deployment's training
+split, choose the threshold on held-out targets, and use it to decide whether a
+retrieval-style rule is appropriate or whether pooling is the safer default.
+
+This mechanism is useful even when it does not beat a learned router. It turns a
+selection failure into a deployment choice and provides a label-free fallback
+for settings where learning state-conditioned utility is not justified.
+
+\subsection{Ranking, stopping and task family}
+
+The demonstration-selection family exposes a different limit. There the
+standalone and sequential oracles are nearly identical under the natural
+stopping rule, so dynamic ranking has little structural value to recover.
+Forcing the budget restores a consistent advantage from state-conditioned
+ranking, separating the ranking problem from calibration of the stopping rule.
+This matters because a selector can fail either because candidate ordering is
+unidentifiable or because the deployment rule removes the opportunity before
+ranking matters. These are different regimes and require different remedies.
+
+\subsection{Practical deployment}
+
+The final output of the study is a procedure rather than a single unconditional
+policy. A deployment should first establish that the candidate pool offers
+structural opportunity, then test whether candidate-level utility is
+predictable from the available state and response, and finally choose between
+response-aware routing, a simple geometry-adaptive rule and pooling. The pilot
+experiments show that this decision can be made with far fewer labelled targets
+than a full deployment audit, while the time-shift analysis warns that
+confidence transfers less reliably than direction. Split-half consistency is
+therefore a certification device for strong pilot decisions, not a substitute
+for additional labels on marginal cases.
 
 \subsection{Limitations}
 
-The bounds are conditional on the state and require the loss gradient at the
-current prediction; at decision time the outcome is unobserved, so the router
-estimates the expectation of the first-order term from training episodes. The
-theory therefore explains the feature design and the second-order error of a
-response-based surrogate; it is not a label-free guarantee. Regime B uses two
-datasets and sixteen targets, and the pooled advantage of our method over the
-response-free routers is no longer statistically resolved there --- a negative
-result we report rather than tune away. Regime C's headroom is small
-($+.0126$ pooled), so all heads compete inside a narrow band. Finally, the
-strong-backbone expert is one architecture; whether the identifiability limit
-softens for predictors with different inductive biases is an open question, and
-the diagnostics of \cref{sec:diagnostics} are the tool with which to answer it
-for any particular pair of predictor and pool.
+The general-loss analysis characterises the information carried by predictor
+response, but it does not make utility label-free: the state-dependent
+coefficient still has to be learned from outcomes. The strong-backbone study
+uses a finite set of architectures and the second task family uses frozen CLIP
+representations, so other inductive biases may expose different observable
+signals. The novelty rule is deployment-specific and its threshold should not
+be transferred blindly across datasets. Finally, the one-step regret statement
+does not provide a global guarantee for arbitrary non-monotone set utilities.
+These limitations define what must be re-measured when the predictor, candidate
+pool or task changes; they do not alter the central distinction between
+structural and identifiable opportunity.
