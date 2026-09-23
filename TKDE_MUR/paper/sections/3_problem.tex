@@ -1,66 +1,59 @@
 \section{State-Conditioned Context Selection}
 
-Let $S_0$ be an anchor context, $x$ a query, $y$ its target, and
-$\candidates=\{C_1,\ldots,C_K\}$ a candidate pool. A selected set is
-$A\subseteq\{1,\ldots,K\}$. A predictor produces $f_A(x)$ from $S_0$ and the
-contexts indexed by $A$; the predictor is trained before routing and kept
-fixed during context selection and router training.
+Let $S_0$ denote the information that is always available to the predictor,
+$x$ the current query, and $\candidates=\{C_1,\ldots,C_K\}$ the candidate
+contexts. A selected set $A$ determines the prediction $f_A(x)$. The predictor
+is trained before context selection and remains fixed while the selector makes
+its decisions.
 
-We define the net set utility as
+We measure the value of a selected set by the loss it removes relative to the
+anchor-only prediction,
 \begin{equation}
- F(A)=\E\left[\loss(f_{\emptyset}(x),y)-\loss(f_A(x),y)\right]
-       -\lambda c(A),
+ F(A)=\E\!\left[\loss(f_{\emptyset}(x),y)-\loss(f_A(x),y)\right]
+ -\lambda c(A),
 \end{equation}
-where $c(A)$ is a context cost. The marginal utility of a candidate is
+where $c(A)$ is an optional context cost. The value of adding candidate $j$ to
+the current set is
 \begin{equation}
  \marginal(j\mid A)=F(A\cup\{j\})-F(A).
  \label{eq:marginal}
 \end{equation}
-For one observed episode, the training target is the counterfactual loss
-difference
+This is the quantity the selector ultimately needs. Its value can change after
+each accepted context because the prediction $f_A(x)$ changes.
+
+Training data provide a direct observation of that change. For an episode with
+observed target $y$,
 \begin{equation}
- \widetilde{\marginal}(j\mid A)=\loss(f_A(x),y)-\loss(f_{A\cup\{j\}}(x),y)-\lambda c_j.
+ \widetilde{\marginal}(j\mid A)
+ =
+ \loss(f_A(x),y)-\loss(f_{A\cup\{j\}}(x),y)-\lambda c_j .
  \label{eq:target}
 \end{equation}
-This is a realized observation of the marginal. Its interpretation as an
-expectation requires a fixed predictor and a specified state-sampling rule.
+These observed marginals supervise the learned utility models used later.
 
-For squared loss, let $\mu=\E[y\mid S_0,x,\candidates]$ and let
-$d_{A,j}=f_{A\cup\{j\}}(x)-f_A(x)$. The marginal separates into
-\begin{equation}
- \marginal(j\mid A)=2d_{A,j}(\mu-f_A(x))-d_{A,j}^2-\lambda c_j.
- \label{eq:squared-marginal}
-\end{equation}
-The first term is the interaction between the current residual and the
-direction of the candidate-induced correction, the second term penalizes
-overcorrection, and the third accounts for cost. Relevance and standalone
-candidate scores do not determine these three terms, and the same candidate
-can be useful at one state and harmful at another.
-
-Two oracle policies expose the structural value of this state dependence. The
-standalone oracle ranks candidates by the true standalone marginal
-$m(j\mid\emptyset)$ and keeps that order fixed. The sequential oracle
-recomputes the true marginal after every addition. Let $G_{\mathrm{stand}}$ and
-$G_{\mathrm{seq}}$ denote their prediction gains over the anchor-only
-predictor. We measure structural headroom as
+Two oracle policies reveal how much value is created by updating candidate
+scores. A standalone oracle ranks candidates by their true utility at the empty
+set and keeps that order fixed. A sequential oracle recomputes the true
+marginal after every addition. If their gains over the anchor-only predictor are
+$G_{\mathrm{stand}}$ and $G_{\mathrm{seq}}$, we define
 \begin{equation}
  H_{\mathrm{state}}
  =
  \frac{G_{\mathrm{seq}}-G_{\mathrm{stand}}}{G_{\mathrm{seq}}}.
  \label{eq:headroom}
 \end{equation}
-This quantity is an evaluation diagnostic. It isolates the value created by
-conditioning on the selected set, independently of router estimation error.
+We call this ratio \emph{structural headroom}. It measures the opportunity
+created by state-dependent candidate value. It says nothing yet about how much
+of that opportunity a learned selector can recover from information available
+before the target is observed. That second question is the focus of the theory
+and experiments that follow.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.98\textwidth]{figures/fig1_conceptual.pdf}
-  \caption{State-conditioned context selection. A candidate's standalone value
-  can change after similar information is selected. The gap between a
-  standalone oracle and a sequential oracle measures structural headroom,
-  while the information available at inference time determines how much of
-  that value a router can estimate.}
+  \caption{State-conditioned context selection. Candidate value changes as the
+  selected set changes. Structural headroom measures the value available to a
+  sequential oracle; predictor response and other decision-time observations
+  determine how much of that value can be learned.}
   \label{fig:conceptual}
 \end{figure*}
-
-
