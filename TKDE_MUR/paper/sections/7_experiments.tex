@@ -1,43 +1,32 @@
 \section{Experiments}
 \label{sec:experiments}
 
-\subsection{Protocols and the three regimes}
+\subsection{Experimental setup}
 
-Every experiment below fixes a budget of four contexts from a pool of sixteen
-candidates unless stated otherwise, and holds the predictor frozen while
-contexts are routed into it. We study three regimes chosen to vary the source and identifiability of
-marginal utility. Regimes A and B share the same traffic task and candidate
-construction while changing the predictor; regime C changes the task family and
-loss to test whether the response--utility mechanism transfers beyond
-forecasting.
+We use two task families and several fixed predictors to vary how much
+candidate-specific utility is visible to the selector. Traffic forecasting
+provides the main controlled setting. Each target has a pool of candidate
+sensors, a budget of four contexts, a history of twelve steps and a twelve-step
+forecast horizon. Candidate pools mix highly correlated neighbours,
+intermediate-correlation sensors and random distractors.
 
-\emph{Regime A, utility estimable.} The predictor is a subset-capable ridge
-expert fitted per target, the protocol used by the controlled study and by the
-six-dataset traffic benchmark. Candidate pools are built from training-split
-correlations: half high-correlation neighbours, a third mid-correlation, the
-rest random distractors. History length and horizon are both 12.
+The first traffic predictor is a subset-capable ridge model fitted separately
+for each target. The stronger traffic predictors are subset-capable neural
+models trained with subset dropout so that arbitrary context sets are valid at
+test time. They see the same candidate pools and evaluation episodes as the
+ridge model, allowing predictor strength to change while the selection problem
+stays fixed.
 
-\emph{Regime B, utility not estimable.} The expert is replaced by a
-subset-capable spatio-temporal transformer: per-node history embeddings,
-learned node embeddings, time-of-day and day-of-week embeddings, three
-transformer layers over the anchor token and the selected candidate tokens with
-a key-padding mask, and a linear path from the anchor history
-($499{,}722$ parameters). It is trained with subset dropout so that every
-subset size is in distribution and unselected candidates are provably inert.
-It is pretrained on the training split and then adapted per target on exactly
-the episodes the ridge expert sees.
+The second task family is demonstration selection for a frozen in-context image
+classifier built on CLIP features. Candidate contexts are labelled
+demonstrations, and utility is the reduction in query-batch cross-entropy. We
+evaluate CIFAR-10, CIFAR-100, SVHN, EuroSAT and DTD with matched seeds and
+candidate budgets.
 
-\emph{Regime C, categorical evidence.} Candidate contexts are labelled
-demonstrations for a frozen in-context classifier: embeddings come from a
-frozen CLIP ViT-L/14 encoder, the predictor is a transformer that reads the
-query embedding and the embeddings and labels of the selected demonstrations,
-and utility is the reduction of query-batch cross-entropy. Five public
-benchmarks (CIFAR-10, CIFAR-100, SVHN, EuroSAT, DTD) are used with three seeds
-and 1{,}602 test episodes each.
-
-All comparisons are paired at the target or benchmark level with bootstrap or
-$t$ intervals as noted, and every number is reproduced by the released scripts
-with immutable raw runs.
+Unless a scaling experiment changes them explicitly, all selectors use the same
+candidate pool and budget within a comparison. Statistical tests are paired at
+the target or benchmark level. Architecture details, data splits and the
+complete per-run settings are given in the appendix.
 
 \subsection{Theory validation}
 
@@ -72,32 +61,27 @@ an unconstrained feature heuristic.
  \end{tabular}
 \end{table}
 
-\subsection{Regime A: utility is estimable}
+\subsection{When utility is identifiable, response-aware selection wins}
 
-The submitted companion already establishes the basic multi-target traffic
-protocol, so we do not reproduce its main six-dataset tables here. Instead we
-use the same task as a controlled identifiable regime and add an expanded
-selector audit that was not part of that submission. The comparison fixes the
-candidate pools, predictor, episodes and budget and evaluates content rules,
-fixed-set search, utility models, clustering, information criteria and learned
-response-aware selection on the same target--seed cells.
+We begin with the setting where candidate-level utility can be learned
+reliably. The comparison fixes the candidate pools, predictor, episodes and
+budget and evaluates content rules, fixed-set search, clustering, information
+criteria, learned utility models and response-aware selection on the same
+target--seed cells.
 
-On METR-LA and PEMS-BAY, 32 targets and three seeds give 96 paired cells per
-dataset. Response-aware marginal routing attains gains of $+.0146$ and $+.0557$,
-respectively. The strongest non-oracle alternative is pool-all on METR-LA
-($+.0080$) and the cached-only router on PEMS-BAY ($+.0284$), so the response
-stage remains useful even after adding strong fixed and learned alternatives.
-The main point is not a universal win: it is that when candidate-level utility
-is recoverable, a selector that models the response--state interaction converts
-substantially more of the oracle opportunity than the standard toolkit.
+On METR-LA and PEMS-BAY, response-aware marginal routing achieves the highest
+gain among all deployable methods in the detailed audit. Its gains are
+$+.0146$ and $+.0557$, compared with $+.0080$ for pooling on METR-LA and
+$+.0284$ for the cached-only router on PEMS-BAY. The response stage therefore
+recovers value that remains inaccessible to content scores, fixed subsets and
+response-free learned utilities.
 
 \begin{table}[t]
  \centering
  \tablefont
- \caption{Expanded selector audit in the identifiable regime (32 targets,
+ \caption{Selector audit in the identifiable traffic setting (32 targets,
  three seeds, 96 cells per dataset). Gains are relative to the anchor-only
- predictor with target-level 95\% intervals. This extended matrix is separate
- from the submitted companion's main numerical tables.}
+ predictor with target-level 95\% intervals.}
  \label{tab:ridge-matrix}
  \begin{tabular}{lcccc}
   \toprule
@@ -143,10 +127,10 @@ from $.0736$ to $.0569$. Thus response information helps precisely where a
 content-only ordering becomes fragile.
 
 
-\subsection{Applying the diagnostics}
+\subsection{Why stronger predictors erase the ranking signal}
 \label{sec:diagnostics-applied}
 
-\paragraph{Measurement 1: the cheap view is noise in regime B.} On METR-LA with
+\paragraph{Screening signal.} On METR-LA with
 the nonlinear expert, the cached score's correlation with the true marginal is
 indistinguishable from zero ($+.005$, $-.049$, $-.019$ at the first three
 greedy steps), and the recall of the shortlist it forms equals chance: $.26$
@@ -154,7 +138,7 @@ and $.29$ at $q=4$ against a chance level of $.25$, and $.49$--$.53$ at $q=8$
 against $.50$. Any router whose first stage is this screen cannot recover the
 value it never received.
 
-\paragraph{Measurement 2: the ordering is not recoverable.} We fitted ridge and
+\paragraph{Within-state rankability.} We fitted ridge and
 small multi-layer heads to the true marginals using every observable quantity
 --- anchor history, candidate history, candidate identity, the response vector,
 its magnitude and the base--response interaction --- on six (dataset, target)
@@ -180,7 +164,7 @@ ranking of \emph{geometries} (Measurements 1 and 3), not a per-cell go/no-go
 test, and the executable test of identifiability remains the routing protocol
 itself.
 
-\paragraph{Measurement 3: novelty predicts which policy works.} Building three
+\paragraph{Pool geometry.} Building three
 pool geometries per dataset --- head of the pool drawn from the most
 correlated, the middle, or the least correlated sensors --- the relevance gain
 rises monotonically as candidates become less redundant with the anchor
@@ -219,7 +203,7 @@ demonstration family behaves in the opposite way: a demonstration contributes a
 label the anchor lacks, so its novelty is high by construction even though its
 embedding is close to the query.
 
-\paragraph{The prediction tested directly.} \Cref{cor:identifiability} says
+\paragraph{Predictor strength as a mechanism.} \Cref{cor:identifiability} says
 that the identifiable term is the fixed predictor's own residual, so a stronger
 predictor should leave less realizable value while the structural opportunity
 persists. We built a ladder of experts on identical cells --- eight targets,
@@ -311,7 +295,7 @@ $t=+1.5$ on PEMS03 (69\%) to $t=-3.1$ on PEMS08 (38\%). PEMS03 is a genuinely
 small effect, not an under-powered one: resolving it at its observed size would
 need roughly three times as many targets.
 
-\subsection{Regime B: utility is not estimable}
+\subsection{Stronger predictors preserve opportunity but erase rankability}
 
 \Cref{tab:strong-backbone} reports the strong-backbone protocol on METR-LA and
 PEMS-BAY with 16 fixed targets and three seeds. Structural headroom is
@@ -339,7 +323,7 @@ ranking.
 \begin{table}[t]
  \centering
  \small
- \caption{Regime B. 16 targets, three seeds, $K=16$, budget four. Gains are
+ \caption{Strong-predictor comparison on 16 targets and three seeds. Gains are
  loss reductions relative to the anchor-only predictor.}
  \label{tab:strong-backbone}
  \begin{tabular}{lcc}
@@ -503,7 +487,7 @@ absorbed signal can anticipate. The remaining loss is therefore not a tuning,
 head-design or gating problem: the estimation error is present and
 unobservable.
 
-\subsection{The adaptive rule}
+\subsection{Pool geometry yields an adaptive fallback}
 
 The third measurement converts into the policy of \cref{eq:adaptive-rule}. With
 the threshold chosen on half of the targets and then held fixed, the rule
@@ -522,7 +506,7 @@ to pool geometry rather than apply it unconditionally; a practitioner who can
 learn the decision should use marginal-utility routing, which is roughly twice
 as good on the standard pools.
 
-\subsection{Regime C: categorical evidence}
+\subsection{Demonstration selection separates ranking from stopping}
 
 In demonstration selection the predictor consumes labelled examples, so the
 mechanism of \cref{sec:theory} applies with a different information type. The
@@ -534,9 +518,9 @@ are added, and the farthest demonstrations are worse than random ones.
 \begin{table}[t]
  \centering
  \small
- \caption{Regime C. Mean cross-entropy reduction (nats) at shortlist size
- four; $\Delta$ columns are paired contrasts against the two response-free
- learned routers.}
+ \caption{Demonstration-selection results. Values are mean cross-entropy
+ reductions (nats) at shortlist size four; $\Delta$ columns compare with the
+ response-free learned routers.}
  \label{tab:second-family}
  \begin{tabular}{lccccc}
   \toprule
@@ -593,7 +577,7 @@ curvature-corrected, bilinear and signed bilinear --- therefore bracket the same
 result, which locates the ceiling in what the router can observe rather than in
 how the score is parameterised.
 
-\subsection{Compute}
+\subsection{Efficiency and deployment}
 
 A full $B$-step episode can spend up to $B(1+q)$ predictor evaluations under
 the uncached accounting used by this benchmark: the measured totals are $20$
@@ -606,3 +590,15 @@ oracle and $.03$ milliseconds for cached screening alone
 $173$ megabytes. The shortlist therefore retains its intended efficiency; in
 regime B the trend across shortlist sizes ($q=4$: $.0097$, $q=8$: $.0108$) also
 shows that the screen, not the response stage, is the limiting component.
+
+\paragraph{Deployment pilot.}
+The method can be evaluated before a full rollout with a small labelled pilot.
+Across the six traffic deployments, a pilot of 24 targets reproduces the
+full-sample routing verdict 96\% of the time. Splitting the pilot in half gives
+a high-confidence self-check: when both halves resolve in the same direction,
+agreement with the full deployment reaches 99\% or higher at the evaluated
+pilot sizes. Under a later time split, the target-level effect remains
+directionally stable (within-dataset correlation $+.596$ and 81\% sign
+agreement), while the dataset-level significance call agrees on four of six
+datasets. The pilot is therefore most useful as a decision aid for clear cases;
+marginal cases benefit from more labelled targets.
