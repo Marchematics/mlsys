@@ -14,45 +14,45 @@
 \newcommand{\tablefont}{\fontsize{8}{9.5}\selectfont}
 \setlength{\emergencystretch}{1em}
 \begin{document}
-\title{Identifiable Marginal Utility: Why Predictor Response Decides When Context Selection Works}
+\title{Response-Aware Context Selection: Marginal Utility, Identifiability, and Adaptive Routing}
 \author{Author details to be supplied}
 \maketitle
 \begin{abstract}
-Context selection assumes that a candidate's value can be estimated before the
-outcome is observed. We study the missing premise: identifiability. We ask what
-a router can know about the marginal reduction in loss produced by adding a
-context to the current set, and how that knowledge changes with the fixed
-predictor it routes into. The analysis gives an exact identity for Bregman
-losses and two-sided bounds for general smooth losses, with explicit constants
-for softmax cross-entropy, and shows that conditional on the state the
-Bayes-optimal squared-loss utility is affine in the predictor's response. The
-same identity yields a corollary with practical force: the identifiable part of
-a candidate's value is the residual of the fixed predictor itself, so a better
-predictor leaves less realizable opportunity even when the oracle opportunity
-is unchanged. We turn this into a measurement protocol --- screen--truth
-correlation, within-episode rank predictability, and a single label-free
-redundancy statistic --- and into a mechanism-based selection rule that adapts
-to it. Experiments span three regimes. Where utility is estimable (linear
-subset expert, six traffic benchmarks) learned marginal-utility routing beats
-fourteen competitors --- significantly ahead of the best of them on three
-benchmarks, unresolved on two and below simple pooling on one --- while relevance
-ranking and maximum marginal relevance are significantly worse than using no
-context at all on four of the six, and the strongest competitor on every
-benchmark is the trivial policy of including every candidate. Where it is not
-estimable (a
-subset-capable nonlinear expert) no method separates from simply including every
-candidate, the optimal oracle budget is smaller than the protocol's, and
-enlarging the library from sixteen to one hundred and twenty-eight candidates
-raises the oracle opportunity by forty percent while driving the router to the
-level of random selection. Where
-candidates
-contribute categorical evidence (demonstration selection on five image
-benchmarks) four different scoring heads bracket the same ceiling. The
-contribution is a diagnosis and a decision rule, not another ranking heuristic.
+The value of auxiliary information changes with the information already
+available to a predictor. We study this problem through state-conditioned
+marginal utility, the reduction in task loss produced by adding a candidate to
+the current context set, and develop a response-aware selection framework around
+that quantity. For general smooth losses we derive a response expansion with a
+two-sided remainder bound; for Bregman losses the relation is exact; for
+softmax cross-entropy the constants are explicit; and for squared loss the
+Bayes-optimal utility is affine in the predictor response conditional on the
+state. These results motivate a two-stage selector that screens candidates from
+cached features and reranks a shortlist with predictor responses, together with
+a theory-shaped bilinear head that exposes the response--residual interaction
+directly.
+
+The experiments combine a strong positive regime with mechanism tests. With a
+linear subset expert on traffic data, response-aware marginal routing
+outperforms a broad set of content, fixed-set, utility and learned selectors on
+the two datasets examined in detail. Replacing the expert with a stronger
+subset-capable nonlinear predictor preserves substantial oracle opportunity but
+collapses candidate-level rankability: cached recall falls to chance, observable
+probes have near-zero within-episode rank correlation, and no learned selector
+separates from pooling. Increasing the candidate library from 16 to 128 raises
+the oracle opportunity by about 40\% while driving the router toward random
+selection, confirming that more opportunity need not mean more realizable
+value. A second task family with CLIP demonstrations separates ranking from
+stopping, and a pool-geometry study shows that candidate novelty predicts when
+relevance changes from harmful to useful. This mechanism yields a label-free
+adaptive rule and a pilot procedure whose deployment verdict is stable on
+held-out targets. The resulting picture is constructive: response-aware routing
+is effective when marginal utility is identifiable, and the same theory and
+measurements indicate when to route, when to pool, and how much of the oracle
+opportunity can realistically be recovered.
 \end{abstract}
 \begin{IEEEkeywords}
-marginal utility, identifiability, context selection, negative transfer,
-predictor response.
+context selection, marginal utility, predictor response, identifiability,
+adaptive routing, negative transfer.
 \end{IEEEkeywords}
 \input{sections/1_introduction}
 \input{sections/2_related_work}
