@@ -5,9 +5,11 @@
 
 Every experiment below fixes a budget of four contexts from a pool of sixteen
 candidates unless stated otherwise, and holds the predictor frozen while
-contexts are routed into it. Three regimes differ only in what the predictor
-is, because \cref{cor:identifiability} predicts that this is what determines
-whether selection can work.
+contexts are routed into it. We study three regimes chosen to vary the source and identifiability of
+marginal utility. Regimes A and B share the same traffic task and candidate
+construction while changing the predictor; regime C changes the task family and
+loss to test whether the response--utility mechanism transfers beyond
+forecasting.
 
 \emph{Regime A, utility estimable.} The predictor is a subset-capable ridge
 expert fitted per target, the protocol used by the controlled study and by the
@@ -37,178 +39,65 @@ All comparisons are paired at the target or benchmark level with bootstrap or
 $t$ intervals as noted, and every number is reproduced by the released scripts
 with immutable raw runs.
 
+\subsection{Theory validation}
+
+Before comparing selectors, we test the statements that motivate their
+parameterisation. For squared loss, the exact Bregman identity agrees with the
+directly computed marginal to a maximum numerical discrepancy of
+$3.3\times10^{-7}$. For softmax cross-entropy, the explicit sandwich of
+\cref{prop:ce} has zero violations over $92{,}995$ candidate--state samples; the
+largest observed Hessian eigenvalue reaches the theoretical constant $0.5$.
+The first-order response term is strongly aligned with the true marginal
+(Spearman $=.971$, $R^2=.853$), and adding response information to a held-out
+utility probe raises $R^2$ by $+.67$. These checks matter because the later
+mechanism experiments rely on the response--residual interaction rather than on
+an unconstrained feature heuristic.
+
+\begin{table}[t]
+ \centering
+ \small
+ \caption{Numerical checks of the response--utility theory.}
+ \label{tab:theory-validation}
+ \begin{tabular}{lr}
+  \toprule
+  Check & Result\\
+  \midrule
+  Bregman identity, max. absolute error & $3.3\times10^{-7}$\\
+  CE sandwich violations & $0/92{,}995$\\
+  Max. CE Hessian eigenvalue & $.500$\\
+  First-order term vs. marginal, Spearman & $.971$\\
+  First-order term vs. marginal, $R^2$ & $.853$\\
+  Held-out $R^2$ gain from response features & $+.67$\\
+  \bottomrule
+ \end{tabular}
+\end{table}
+
 \subsection{Regime A: utility is estimable}
 
-\paragraph{State conditioning creates value.} In the controlled redundancy
-study, structural headroom grows monotonically with the duplicate ratio
-(\cref{tab:redundancy}). At zero redundancy the standalone and sequential
-oracles coincide; at duplicate ratio $.75$ the gap reaches $.286$, and the
-learned router exceeds the standalone oracle even though that oracle uses the
-true standalone utilities. The gain therefore comes from re-evaluating
-candidate value after the selected state changes, not from a better standalone
-score.
+The submitted companion already establishes the basic multi-target traffic
+protocol, so we do not reproduce its main six-dataset tables here. Instead we
+use the same task as a controlled identifiable regime and add an expanded
+selector audit that was not part of that submission. The comparison fixes the
+candidate pools, predictor, episodes and budget and evaluates content rules,
+fixed-set search, utility models, clustering, information criteria and learned
+response-aware selection on the same target--seed cells.
 
-% Controlled-study values: KBS_MUR/results/raw/R070_oracle_ladder_k16_b4_rgrid_s5_20260919_1540/aggregate.json
-\begin{table}[t]
-\centering
-\small
-\caption{Controlled redundancy study at $K=16$ and budget four. Gains are loss
-reductions relative to the anchor-only predictor, averaged over five seeds.}
-\label{tab:redundancy}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lrrrr}
-\toprule
-Duplicate ratio & Standalone oracle & Learned router & Sequential oracle & Structural headroom\\
-\midrule
-0    & .6880 $\pm$ .0077 & .6636 $\pm$ .0101 & .6880 $\pm$ .0077 & .0000\\
-.25  & .5161 $\pm$ .0054 & .5027 $\pm$ .0105 & .5813 $\pm$ .0064 & .1121\\
-.50  & .3512 $\pm$ .0028 & .3652 $\pm$ .0030 & .4471 $\pm$ .0041 & .2145\\
-.75  & .1771 $\pm$ .0019 & .2085 $\pm$ .0049 & .2481 $\pm$ .0035 & .2859\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-The same structural effect appears on real benchmarks. Over six datasets, 32
-fixed targets per dataset and three seeds, every one of the 576 target-seed
-evaluations has positive structural headroom
-(\cref{tab:headroom-real}); the mean ranges from $.076$ to $.119$. State
-conditioning therefore creates measurable decision value across targets rather
-than at a single sensor.
-
-% Real-data headroom: results/derived/R134_six_dataset_matrix/headroom.json
-\begin{table}[t]
-\centering
-\small
-\caption{Real-data structural headroom over 32 fixed targets per dataset and
-three seeds (96 cells per dataset, 576 in total). Every cell is positive; the
-minimum across all datasets is $.0101$.}
-\label{tab:headroom-real}
-\begin{tabular}{lrrr}
-\toprule
-Dataset & Mean headroom & Median headroom & Positive fraction\\
-\midrule
-METR-LA & .0959 & .0844 & 1.000\\
-PEMS-BAY & .1156 & .1204 & 1.000\\
-PEMS03 & .1189 & .1077 & 1.000\\
-PEMS04 & .0834 & .0725 & 1.000\\
-PEMS07 & .0892 & .0835 & 1.000\\
-PEMS08 & .0760 & .0729 & 1.000\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\paragraph{Learning the decision beats the standard toolkit.} Under the
-six-dataset protocol the response-aware router has the best average rank and is
-significantly ahead of the best competitor on three of the six datasets, is
-unresolved on two and loses on one (\cref{tab:deployable}); the multi-target
-study shows that the improvement over both response-free baselines
-holds on every dataset with positive-target fractions of $94$--$100\%$ on five
-of them (\cref{tab:consistency}).
-
-% Values in this table are taken from results/derived/R134_six_dataset_matrix/six_dataset_matrix.json
-% (32 targets, three seeds, 96 cells per dataset); average ranks are computed over the six rows below.
-% Paired target-level bootstrap intervals: results/derived/R146_six_dataset_paired/paired.json
-\begin{table}[t]
-\centering
-\small
-\caption{Deployable selection methods, including the trivial pool-everything
-policy that is the strongest competitor everywhere. Values are prediction gains
-averaged over 32 fixed targets per dataset; the final column is the average
-rank across the six datasets.}
-\label{tab:deployable}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lrrrrrrr}
-\toprule
-Method & METR-LA & PEMS-BAY & PEMS03 & PEMS04 & PEMS07 & PEMS08 & Avg. rank\\
-\midrule
-Relevance (kNN) & -.0165 & -.0199 & -.0191 & +.0071 & -.0155 & +.0074 & 5.67\\
-MMR & -.0180 & -.0249 & -.0102 & +.0098 & -.0085 & +.0075 & 5.33\\
-Standalone Utility & +.0024 & +.0272 & +.0149 & +.0248 & +.0152 & +.0246 & 3.67\\
-Cached-only router & +.0042 & +.0284 & +.0154 & +.0250 & +.0150 & +.0246 & 3.00\\
-Pool all 16 & +.0080 & +.0254 & +.0256 & +.0365 & +.0242 & +.0359 & 2.00\\
-R-MUR (ours) & \textbf{+.0146} & \textbf{+.0557} & \textbf{+.0269} & \textbf{+.0357} & \textbf{+.0284} & \textbf{+.0333} & \textbf{1.33}\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-\begin{table}[t]
-\centering
-\small
-\caption{Multi-target consistency of the response-aware router. Differences and
-positive-target fractions are computed over 32 fixed targets per dataset.}
-% Generated values: KBS_MUR/results/derived/R080b_hierarchical_summary/summary.json
-\label{tab:consistency}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lrrrrrr}
-\toprule
-Dataset & $\Delta$ vs Static & $\Delta$ vs Cached & Positive targets & $>$ Static & $>$ Cached & Oracle recovery\\
-\midrule
-METR-LA & .0123 & .0104 & .812 & .969 & .969 & .099\\
-PEMS-BAY & .0285 & .0272 & .938 & 1.000 & .969 & .309\\
-PEMS03 & .0121 & .0115 & 1.000 & 1.000 & 1.000 & .447\\
-PEMS04 & .0109 & .0107 & 1.000 & .969 & .969 & .534\\
-PEMS07 & .0132 & .0134 & 1.000 & 1.000 & 1.000 & .456\\
-PEMS08 & .0088 & .0087 & 1.000 & .969 & .969 & .516\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-Among the fourteen methods compared across the six benchmarks (the detailed
-two-dataset matrix below reports eleven of them) is a DELIFT-style rule (ICLR 2025) that
-combines submodular coverage with k-means representatives, implemented here as
-greedy facility location over an over-segmented pool of cluster medoids. It is
-significantly below pooling on all six datasets ($-.0196$ $[-.0241,-.0155]$ on
-METR-LA, $-.0212$ $[-.0297,-.0128]$ on PEMS-BAY, and between $-.018$ and
-$-.023$ elsewhere), so adding the most recent member of the submodular family
-does not change the verdict: the strongest competitor is still the trivial
-policy of using every candidate, and on every dataset the best non-trivial rule
-is greedy mutual information.
-
-\paragraph{Against eleven competitors, in detail.} We then ran the detailed competitor set on
-the same cells: METR-LA and PEMS-BAY, 32 targets each, three seeds, 96 cells
-per dataset (\cref{tab:ridge-matrix}). Two results stand out. First, \emph{the
-default heuristics are significantly harmful on both datasets}: relevance
-ranking is $.0165$ below the anchor-only predictor on METR-LA and $.0199$ below
-on PEMS-BAY, maximum marginal relevance is $.0180$ and $.0249$ below, and on
-METR-LA determinantal diversity, k-center, facility location, k-means
-representatives, random subsets and even greedy mutual information are harmful
-as well, each with a target-level interval entirely below zero. Selecting
-correlated or diverse candidates by a proxy score injects noise that the
-predictor propagates; the oracles show that a great deal of value exists
-($+.133$ and $+.163$ standalone), so this is a selection failure rather than an
-absence of signal. Second, learning the decision recovers that value and more:
-the response-aware router reaches $+.0146$ and $+.0557$, roughly twice the
-strongest non-selection baseline (pooling all sixteen candidates, $+.0080$ and
-$+.0254$) and clearly above the response-free learned routers. The pattern generalises across the six benchmarks:
-running the same competitors on all six datasets, with the frozen cells for the
-learned policies and 32 targets and three seeds per dataset (96 cells each),
-on five of the six datasets the strongest competitor is the trivial
-pool-everything policy --- on PEMS-BAY the cached-only router ($.0284$) and the
-static-utility model ($.0272$) edge past it ($.0254$) --- and the paired
-comparison against the leader is what decides the outcome. Under
-target-level paired intervals the
-response-aware router is significantly ahead on three datasets --- METR-LA
-$+.0067$ $[+.0041,+.0094]$, PEMS-BAY $+.0303$ $[+.0203,+.0427]$ and PEMS07
-$+.0041$ $[+.0015,+.0070]$ --- is unresolved on two (PEMS03 $+.0013$
-$[-.0004,+.0030]$ and PEMS04 $-.0008$ $[-.0050,+.0025]$, where the router
-reaches $+.0357$ against pool-all $+.0365$) and is \emph{significantly below}
-pooling on PEMS08 ($-.0026$ $[-.0042,-.0010]$, router $+.0333$ against pool-all
-$+.0359$). We report the
-loss rather than average it away: the method's advantage over the trivial
-baseline is real but not universal, and on the two datasets where it fails the
-competitor it fails to is pooling, not any of the specialised heuristics.
-Relevance ranking is harmful
-on four of the six and maximum marginal relevance on four; on the two dense-flow
-datasets the proxies are weakly positive, so the harmful regime is common but
-not universal.
+On METR-LA and PEMS-BAY, 32 targets and three seeds give 96 paired cells per
+dataset. Response-aware marginal routing attains gains of $+.0146$ and $+.0557$,
+respectively. The strongest non-oracle alternative is pool-all on METR-LA
+($+.0080$) and the cached-only router on PEMS-BAY ($+.0284$), so the response
+stage remains useful even after adding strong fixed and learned alternatives.
+The main point is not a universal win: it is that when candidate-level utility
+is recoverable, a selector that models the response--state interaction converts
+substantially more of the oracle opportunity than the standard toolkit.
 
 \begin{table}[t]
  \centering
  \tablefont
- \caption{Eleven-competitor matrix in regime A (32 targets, three seeds, 96
- cells per dataset). Gains are relative to the anchor-only predictor with
- target-level 95\% intervals; a negative entry means the policy is worse than
- using no auxiliary context at all.}
+ \caption{Expanded selector audit in the identifiable regime (32 targets,
+ three seeds, 96 cells per dataset). Gains are relative to the anchor-only
+ predictor with target-level 95\% intervals. This extended matrix is separate
+ from the submitted companion's main numerical tables.}
  \label{tab:ridge-matrix}
  \begin{tabular}{lcccc}
   \toprule
@@ -230,19 +119,29 @@ not universal.
   DPP & $-.0166$ & $[-.022,-.011]$ & $-.0074$ & $[-.023,.008]$\\
   MMR & $-.0180$ & $[-.025,-.011]$ & $-.0249$ & $[-.044,-.006]$\\
   k-center & $-.0187$ & $[-.025,-.013]$ & .0043 & $[-.003,.011]$\\
-  \bottomrule \end{tabular}
+  \bottomrule
+ \end{tabular}
 \end{table}
 
-\paragraph{What limits learned routing here.} Candidate-pool growth compresses
-the decision margin: as $K$ grows from $4$ to $64$, absolute utility error
-improves while the standard deviation of true marginals falls faster, so
-normalised error rises from $.403$ to $.739$ and the positive top-two margin
-falls from $.220$ to $.024$. Response features, by contrast, expand what is
-observable: adding compact response summaries raises the Spearman correlation
-with the true marginal from $.164$ to $.391$ and the positive-utility AUC from
-$.649$ to $.834$, and reduces one-step regret from $.0736$ to $.0569$. Both
-effects are consistent with \cref{sec:theory}: the decision is hard exactly
-when the response is small relative to the utility spread.
+Several conventional selectors are not merely weak in this regime but harmful.
+Relevance and MMR are below the anchor-only predictor on both datasets, while
+DPP, k-center, k-means, facility location, random selection and mutual
+information are also harmful on METR-LA. A DELIFT-style submodular
+representative rule was added as a recent-baseline audit and remains below
+pooling, so the conclusion is not an artefact of comparing only against classic
+heuristics. Conversely, the oracles show large available value
+($+.133$/$+.163$ standalone and $+.147$/$+.181$ sequential), locating the gap
+in selection rather than in the absence of useful contexts.
+
+Candidate-pool growth provides a second positive mechanism check. As $K$ grows
+from $4$ to $64$, absolute utility error improves while the true-marginal spread
+shrinks faster: normalised error rises from $.403$ to $.739$ and the positive
+top-two margin falls from $.220$ to $.024$. Adding compact predictor-response
+features raises Spearman correlation with true utility from $.164$ to $.391$,
+raises positive-utility AUC from $.649$ to $.834$, and reduces one-step regret
+from $.0736$ to $.0569$. Thus response information helps precisely where a
+content-only ordering becomes fragile.
+
 
 \subsection{Applying the diagnostics}
 \label{sec:diagnostics-applied}
@@ -696,9 +595,10 @@ how the score is parameterised.
 
 \subsection{Compute}
 
-Each decision in regime B spends $B(1+q)$ expert evaluations: $20$ per episode
-at $q=4$ and $36$ at $q=8$, against $64$ for reranking the full pool and $17$
-for the standalone oracle. Measured at deployment batch size on the same cell,
+A full $B$-step episode can spend up to $B(1+q)$ predictor evaluations under
+the uncached accounting used by this benchmark: the measured totals are $20$
+rows per episode at $q=4$ and $36$ at $q=8$, against about $64$ for reranking
+the full pool and $17$ for the standalone-oracle reference. Measured at deployment batch size on the same cell,
 the response-aware stage costs $.74$, $1.19$, $1.59$ and $2.65$ milliseconds
 per episode for $q=2,4,8,16$, against $1.70$ milliseconds for the sequential
 oracle and $.03$ milliseconds for cached screening alone
