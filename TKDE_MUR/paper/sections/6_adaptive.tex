@@ -1,134 +1,103 @@
-\section{Response-Aware and Identifiability-Adaptive Selection}
+\section{Response-Aware Selection}
 \label{sec:adaptive}
 
-\subsection{The adaptive rule}
+The theory suggests a practical design: use inexpensive context features to
+narrow the search, then spend predictor evaluations where the response can
+change the decision.
 
-The third measurement of \cref{sec:diagnostics} converts directly into a policy.
-Let $\bar\nu$ be the mean novelty of the candidate pool, computed on the
-training split. The rule is
+\subsection{Cached screening}
+
+Let $h_Q$, $h_A$ and $h_j$ denote representations of the query, the selected
+set and candidate $j$. A cached scorer estimates
 \begin{equation}
- \pi(A)=
+ \widehat m_C(j\mid A)=g_C(h_Q,h_A,h_j)
+\end{equation}
+for every remaining candidate and retains the top-$q$ set
+$\mathcal Q_A$. This stage requires no new predictor evaluation.
+
+\subsection{Response-aware reranking}
+
+For each shortlisted candidate, the fixed predictor is evaluated before and
+after the addition. The response is
+\begin{equation}
+ d_{A,j}=f_{A\cup\{j\}}(x)-f_A(x),
+\end{equation}
+and a compact summary $r_{A,j}=\psi(f_A,f_{A\cup\{j\}})$ records the
+prediction level and simple statistics of the change. A response-aware scorer
+then estimates
+\begin{equation}
+ \widehat m_R(j\mid A)
+ =g_R(h_Q,h_A,h_j,r_{A,j}),
+ \qquad j\in\mathcal Q_A .
+\end{equation}
+The candidate with the largest positive score is added to the selected set and
+the process repeats until the budget is used or no shortlisted candidate is
+predicted to help.
+
+\subsection{Learning utility and candidate order}
+
+Training uses the observed marginal from \cref{eq:target}. States are sampled
+from partially selected context sets so that the same candidate is seen under
+different conditions. The response-aware scorer is trained with regression and
+pairwise ranking,
+\begin{equation}
+ \mathcal L
+ =\mathcal L_{\mathrm{Huber}}
+ +\beta
+ \frac{\sum_{(i,j)\in\mathcal P}
+ |\widetilde m_i-\widetilde m_j|
+ \log\!\left(1+e^{-(\widehat m_i-\widehat m_j)}\right)}
+ {\sum_{(i,j)\in\mathcal P}|\widetilde m_i-\widetilde m_j|},
+ \label{eq:training-loss}
+\end{equation}
+where $\mathcal P$ contains candidate pairs from the same state with
+$\widetilde m_i>\widetilde m_j$. Regression keeps the score on the scale of
+loss reduction. The ranking term places more weight on ordering errors that
+forfeit more utility.
+
+\subsection{A theory-shaped response head}
+
+The generic scorer above can learn any interaction between state and response.
+\Cref{prop:suff} suggests a more structured alternative. We predict the
+state-dependent coefficient and score
+\begin{equation}
+ \widehat m_B(j\mid A)
+ =
+ \left\langle g_\theta(h_Q,h_A,h_j),d_{A,j}\right\rangle
+ -\|d_{A,j}\|^2-\lambda c_j .
+ \label{eq:bilinear-head}
+\end{equation}
+This head builds the response--residual interaction into the model. For
+cross-entropy experiments we also test a learned signed coefficient on the
+quadratic response term, allowing the data to adjust the curvature contribution
+while preserving the bilinear structure.
+
+\subsection{Stopping and a training-free fallback}
+
+Ranking and stopping use different information. The standard router stops when
+the best estimated marginal is non-positive. We also evaluate a forced-budget
+variant to separate ranking quality from score calibration.
+
+Pool geometry provides a second decision rule for settings where learning a
+candidate ordering is unnecessary or unreliable. Let $\bar\nu$ be the mean
+novelty of the candidate pool from \cref{eq:novelty}. With a threshold $\tau$
+chosen on held-out targets, the fallback policy is
+\begin{equation}
+ \pi=
  \begin{cases}
-  \text{retrieve the top-}B\text{ candidates by relevance}, & \bar\nu \ge \tau,\\[2pt]
-  \text{include the whole pool}, & \bar\nu < \tau,
+  \text{select by relevance}, & \bar\nu\ge\tau,\\
+  \text{use the full pool}, & \bar\nu<\tau.
  \end{cases}
  \label{eq:adaptive-rule}
 \end{equation}
-with the threshold $\tau$ chosen on held-out targets and then fixed. The rule
-uses no labels at decision time, requires one covariance estimate, and replaces
-a default that is harmful in the low-novelty regime. It is deliberately not a
-new ranking heuristic: its purpose is to make an existing heuristic safe by
-telling the practitioner when it applies. \Cref{sec:experiments} reports it on
-two datasets with held-out threshold selection.
+The rule uses no target labels at decision time. Its role is to choose between
+two simple deployment behaviours from the information geometry of the pool.
 
-\subsection{When the decision can be learned: response-aware routing}
+\subsection{Deployment check}
 
-When the decision is estimable, the theory prescribes what to learn. The router
-used throughout this paper keeps a cached view for screening and reranks the
-retained candidates with a utility model trained on realised marginals. Two
-details follow from \cref{sec:theory} rather than from tuning.
-
-\paragraph{Features.} The utility model receives state features, candidate
-features and \emph{response} features: the predictor's prediction before and
-after adding the candidate, the mean, standard deviation, mean absolute value,
-root-mean-square and maximum absolute value of the prediction change. By
-\cref{prop:suff}, the full response vector is part of a sufficient
-representation of the squared-loss utility conditional on the state. The
-compact statistics used here are a low-dimensional approximation motivated by
-that structure, not sufficient statistics in the formal sense.
-
-\paragraph{Head.} A generic scalar head over concatenated features has to
-discover the bilinear structure of \eqref{eq:prop-suff} from data. We therefore
-also evaluate a \emph{bilinear response head} that emits a vector in prediction
-space and scores
-\begin{equation}
- \widehat\marginal_B(j\mid A)
- =
- \langle g_\theta(\phi_A(x), c_j),\, \dAj(x)\rangle
- -\|\dAj(x)\|^2-\lambda c_j ,
- \label{eq:bilinear-head}
-\end{equation}
-where $\phi_A(x)$ collects the state and candidate features and $g_\theta$ is a
-small network. This is the minimal-capacity model consistent with the identity:
-it cannot represent a score that ignores the response, it never has to learn
-the curvature, and the only statistical task left is estimating the
-state-dependent coefficient. For cross-entropy the exact coefficient is
-replaced by the bound of \cref{prop:ce}, and we evaluate both the fixed bound
-and a learned, signed coefficient.
-
-\paragraph{Stopping.} Stopping is a separate decision from ranking. A router
-that stops whenever the predicted marginal is non-positive assumes its scores
-are calibrated; when the head is misspecified the rule truncates selection and
-destroys value, which \cref{sec:experiments} observes on a second task family.
-We therefore report both the thresholded rule and a forced-budget variant that
-always spends the budget, and we treat the difference between them as a
-calibration diagnostic rather than a hyperparameter.
-
-\subsection{Operating characteristics of the rule}
-
-A rule that must be run before a deployment is a decision procedure, so we
-measured how much of the deployment has to be labelled before its verdict can be
-trusted. On the six ridge-regime deployments, pilots of $n$ targets were drawn
-without replacement from the 32 available (400 pilots per dataset and size) and
-scored by the same rule applied to the full sample. A pilot of $24$ targets
-reproduces the full-sample verdict $96\%$ of the time, with $98\%$ sensitivity
-and $96\%$ specificity for the operationally critical ``route'' call; sixteen
-targets give $84\%$, $86\%$ and $93\%$, and four targets already get the
-\emph{direction} right almost always while agreeing on significance only
-$.64$ of the time. Half the deployments are genuinely positive, so a
-constant-``route'' rule would score specificity zero: the numbers are not a
-base-rate artefact. In the ridge regime the pilot costs about two minutes; with
-the nonlinear backbone, about half an hour.
-
-\paragraph{Does the pilot survive a time shift?} A pilot is necessarily labelled
-before the period the router will serve, so the procedure was re-run with an
-added evaluation split: the router and the pool-everything baseline are scored
-on the calibration period and on the test period for the same 32 targets of each
-dataset, 192 targets in all. Direction transfers well --- the within-dataset
-correlation between the pilot and deployment differences is $+.596$
-($p<10^{-19}$), every dataset is individually significant ($+.520$ to $+.848$),
-and the per-target signs agree $81\%$ of the time. The significance call
-transfers less well: the dataset-level verdict agrees on four of six, against
-the $96\%$ of the same-period pilot. Both disagreements keep the correct sign,
-and, importantly, none of the four pilots that said ``route'' was contradicted
-by a deployment on which routing hurt. The honest reading is that the procedure
-is directionally robust to the time shift and its confidence is not, so the
-pilot should be enlarged rather than abandoned.
-
-\paragraph{Recognising a pilot that should not be trusted.} The pilot can be
-audited against itself. Splitting it into two halves and computing the paired
-interval on each gives a check whose operating characteristics are measured on
-the same six deployments: at sixteen targets, pilots whose halves both resolve in
-the same direction agree with the full-sample verdict $99.0\%$ of the time
-against $78.1\%$ for the rest, and at twenty-four targets $99.9\%$ against
-$92.3\%$. The check is high-precision and low-coverage --- strict consistency
-holds for only $35\%$ of sixteen-target pilots and $39\%$ of twenty-four-target
-ones --- so it certifies a verdict rather than producing one. Requiring merely
-that the halves share a sign is worth almost nothing ($85.4\%$ to $84.8\%$ at
-sixteen targets). The refined procedure is therefore: split the pilot, act when
-both halves resolve in the same direction, and enlarge the pilot otherwise,
-rather than falling back on a cheaper proxy. One caveat is stated rather than
-hidden: requiring both halves to resolve selects for large effects, which are
-also the ones that resolve on the full sample, so the check is partly a
-signal-strength filter. A genuinely marginal deployment yields an inconclusive
-check, and the correct response there is more labels.
-
-The procedure that follows from this paper is then: label a pilot of roughly two
-dozen targets, run the protocol unchanged on it --- screening, budget, objective,
-and both the router and the pool-everything baseline --- compute the paired
-target-level interval for router minus pooling, and route only if it excludes
-zero above. The cheaper substitutes do not work, and we report each as a
-negative: a fitted predictability probe is indistinguishable from chance
-(\cref{sec:experiments}), structural headroom does not order the benefit in
-either regime, and the cached screen is uncorrelated with the true marginal
-precisely when the decision is close.
-
-\subsection{What the theory does not claim}
-
-The bounds of \cref{sec:theory} are conditional on the state and require the
-loss gradient at the current prediction. At decision time the outcome is
-unobserved, so the router estimates the expectation of the first-order term
-from training episodes. The theory therefore explains why response features are
-the right observation and how large the second-order error of a response-based
-surrogate is; it is not a label-free guarantee, and nothing above asserts that a
-learned router attains the bound.
+Before a new deployment, we evaluate the router and the full-pool baseline on a
+small labelled pilot of targets using the same candidate construction, budget
+and loss as the intended deployment. The paired target-level difference gives
+the deployment decision. A split-half agreement check can certify a strong
+pilot; an unresolved pilot is enlarged. \Cref{sec:experiments} reports the
+sample size, temporal transfer and operating characteristics of this procedure.
