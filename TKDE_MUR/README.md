@@ -83,3 +83,11 @@ The intended headline is not “routing sometimes fails”. It is:
 > the theory predicts what signal makes it identifiable, the experiments show
 > how predictor strength and pool geometry change that signal, and the same
 > mechanism yields an actionable selection rule.**
+
+
+## PDF rebuild note
+
+The LaTeX sources are the authoritative version after consolidation. The tracked
+`paper/main.pdf` may lag the source until the next local/Overleaf compile; do
+not use the binary snapshot for submission before rebuilding it from
+`paper/main.tex`.
