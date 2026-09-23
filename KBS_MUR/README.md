@@ -1,40 +1,36 @@
-# KBS MUR
+# Submitted companion method manuscript — frozen
 
-Project root for the two KBS-targeted manuscripts. They are different papers
-and only one of them is an active submission candidate at a time.
+This directory contains the already submitted **IPM companion method paper**
+(previously developed under the KBS working directory). Treat the submitted
+manuscript and its numerical evidence as frozen.
 
-## `paper/` — the KBS submission (frozen at R080)
+The active new manuscript is `../TKDE_MUR/`.
 
-**Response-Aware Marginal-Utility Routing for Multi-Context Prediction.** The
-manuscript is frozen at the evidence that existed when the R080 runs closed:
-the controlled mechanism studies, the multi-target oracle audit (960
-target-run evaluations), and the multi-target learned results (576 target-run
-evaluations, three runs). No further experiments enter this submission. See
-`refine-logs/KBS_R080_FREEZE_20260921.md`.
+## Separation from TKDE
 
-Because the text follows the same research line as `../TKDE_MUR` and
-`../../PAMI_MUR`, do not submit them concurrently; the KBS version is the
-submission of record for this line unless the user decides otherwise.
+The submitted companion establishes the basic R-MUR method under its
+multi-target traffic protocol. The TKDE paper may share the problem notation and
+the basic routing primitive, with explicit disclosure, but it must not simply
+repeat the submitted paper's main numerical tables or engineering story.
 
-## `paper_risk/` — alternative direction (not submitted)
+TKDE instead owns the material developed after and outside that submitted
+package:
 
-**Risk-Controlled Context Selection.** The question is when a marginal-utility
-estimate is reliable enough to act on: the router calibrates a harm budget on
-deployment states by conformal risk control and abstains or stops when no
-candidate can be certified. The manuscript, the analysis scripts
-(`scripts/analyze_risk_control.py`, `scripts/analyze_risk_end_to_end.py`,
-`scripts/build_risk_tables.py`), and the derived results are complete enough to
-serve as an independent second paper if that direction is resumed. It is not
-part of the current KBS submission.
+- general response--utility theory;
+- theory-shaped heads;
+- identifiability and observability measurements;
+- strong nonlinear backbones and predictor-strength/adaptation sweeps;
+- candidate-library scaling and shortlist-removal tests;
+- pool-geometry/novelty mechanism and label-free adaptation;
+- the second task family;
+- recent-selector extensions and alternative-policy audits;
+- compute and deployment-pilot validation.
 
-## Evidence and scripts
+## Frozen evidence
 
-- `results/raw/` immutable runs; `results/derived/` sourced summaries.
-- `scripts/analyze_risk_control.py` builds the risk-control evidence from the
-  saved deployment traces; `scripts/build_risk_tables.py` renders its tables.
-- `scripts/build_kbs_result_tables.py` renders the MUR result tables.
-- `refine-logs/KBS_VS_PAMI_DIFFERENTIATION.md` records how the two lines differ
-  and what remains open.
+- `paper/`: submitted companion manuscript source.
+- `results/raw/`, `results/derived/`: evidence used by the submitted paper.
+- `scripts/`: table builders and analyses for that frozen submission.
 
-No result table in this directory may contain estimated or placeholder numbers
-presented as observations.
+Do not fold new TKDE-only experiments back into this manuscript. The old
+`paper_risk/` direction remains inactive.
