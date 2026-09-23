@@ -1,92 +1,51 @@
 \section{Related Work}
 
-Auxiliary contexts and demonstrations adapt a frozen predictor to a query
-\citep{brown2020language,min2022rethinking}. Their quality and ordering matter,
-and many methods retrieve or select examples before prediction
-\citep{liu2022what,rubin2022learning,zhang2022active,su2023selective}. Other
-work studies prompt-order sensitivity and calibration
-\citep{lu2022fantastically,zhao2021calibrate}. Retrieval-augmented systems
-condition predictions on external passages and records
-\citep{guu2020realm,lewis2020retrieval,karpukhin2020dense}, and
-retrieval scale and adaptation are studied in
-\citep{borgeaud2022improving,izacard2023atlas,shi2024replug,asai2024selfrag}.
-Recent work combines retrieval with adaptive chains and causal reasoning
-\citep{acra2025retrieval,crgs2026causal}. Diversity-aware selection penalizes
-repeated content or maximizes coverage \citep{carbonell1998use,gupta-etal-2023-coverage,levy2023diverse},
-and listwise rerankers compare candidate sets directly
-\citep{nogueira2019passage,ma2023zero,qin2024large,sun2023chatgpt,sachan2022improving}.
-Long-context studies show that position and context composition change how a
-model uses retrieved information \citep{liu2024lost}. These approaches
-determine which information is relevant or diverse; they do not directly
-estimate the change in end-task loss produced by adding a candidate to the
-context already selected.
+Context selection has been studied most often through the content of the
+candidates. Retrieval and demonstration-selection methods score examples by
+similarity to the query or learn representations that support retrieval
+\citep{brown2020language,min2022rethinking,liu2022what,rubin2022learning,zhang2022active,su2023selective}.
+Diversity and coverage methods reduce redundancy in the selected set
+\citep{carbonell1998use,gupta-etal-2023-coverage,levy2023diverse}, while recent
+retrieval systems adapt the acquisition process to the query or the evolving
+reasoning state \citep{acra2025retrieval,crgs2026causal}. These methods decide
+which information looks relevant or complementary. Our setting asks a more
+specific predictive question: how much will one additional context improve the
+prediction that the selected set already produces?
 
-Outcome-aware selection moves closer to the final prediction objective by
-valuing examples through their effect on model output. Hashimoto et al.\
-estimate the incremental utility of a demonstration relative to an empty
-prompt \citep{hashimoto-etal-2024-take}. Data valuation and influence
-estimation assign credit to training examples through their effect on
-predictions \citep{ghorbani2019data,koh2017understanding,pruthi2020estimating,ilyas2022datamodels}.
-These methods characterize a candidate's standalone contribution. Our object
-conditions on a nonempty, evolving selected set, so the value of the same
-candidate can change after every routing decision.
+Outcome-aware methods move closer to that question by valuing information
+through its effect on model output. Incremental-utility selection estimates the
+benefit of a demonstration relative to an empty context
+\citep{hashimoto-etal-2024-take}. Data valuation and influence methods assign
+credit to examples through their effect on predictions
+\citep{ghorbani2019data,koh2017understanding,pruthi2020estimating,ilyas2022datamodels}.
+These ideas motivate predictive utility as a selection signal. State-conditioned
+marginal utility extends the same principle to a nonempty selected set, where
+the value of a candidate can change after every accepted addition.
 
-Set-selection methods provide the structural counterpart to this decision
-problem. Submodular objectives formalize coverage, diversity, and diminishing
-returns \citep{lin2011class,nemhauser1978analysis,krause2014submodular}, while
-determinantal point processes model diverse subsets probabilistically
-\citep{kulesza2012determinantal}. Adaptive submodularity and influence
-maximization extend these tools to sequential decisions
-\citep{golovin2011adaptive,leskovec2007cost}, and streaming or contextual
-variants address budgeted settings
-\citep{badanidiyuru2014streaming,ross2013contextual}. Classical monotone
-formulations reward additional elements; context utility in our setting can
-also be negative because a candidate can increase prediction loss. Negative
-transfer has been characterized in general transfer learning
-\citep{pan2010survey,torrey2010transfer,wang2019characterizing} and mitigated
-in sequential recommendation through multi-modal re-learning
-\citep{ant2025negative}.
+Set selection provides the structural language for that dependence. Submodular
+objectives model coverage and diminishing returns
+\citep{lin2011class,nemhauser1978analysis,krause2014submodular}, determinantal
+point processes model diverse subsets \citep{kulesza2012determinantal}, and
+adaptive submodularity studies sequential acquisition
+\citep{golovin2011adaptive,leskovec2007cost}. These objectives are useful when
+the set value is known from content or task structure. In predictive context
+selection, the relevant set value is the loss of a fixed predictor, and an
+additional context can either reduce or increase that loss. This connects the
+problem to negative transfer and selective information use
+\citep{pan2010survey,wang2019characterizing}.
 
-Routing and decision-focused learning treat selection as a learned decision
-problem. Mixture-of-experts systems route inputs to expert subsets
-\citep{jacobs1991adaptive,shazeer2017outrageously,zhou2022mixture}, and sparse
-or soft routing architectures reduce computation while increasing capacity
-\citep{fedus2022switch,lewis2021base,roller2021hash,puigcerver2024sparse}.
-Routing networks select computation paths for multi-task learning
-\citep{rosenbaum2018routing,ma2018modeling}, and recent systems apply dynamic
-routing across language, vision-language-action, and collaborative-perception
-tasks \citep{failuremode2026routing,dream2026routing,cogmoe2026sparse}.
-Decision-focused learning connects prediction quality to downstream decision
-quality \citep{bertsimas2020predictive,elmachtoub2022smart,wilder2019melding,mandi2024decision},
-and task-based end-to-end learning follows the same principle
-\citep{donti2017task}. Sequential selection is related to bandit exploration
-and off-policy value estimation \citep{auer2002finite,dudik2011doubly}. R-MUR
-applies this perspective to auxiliary contexts for a fixed predictor, where the
-routing target is the marginal change in end-task loss and the predictor's
-response becomes part of the available decision information.
-
-\subsection{Identifiability and observability of selection decisions}
-
-A separate line of work asks not which candidate to pick but whether the
-decision is determined by the information available at decision time. Sensor
-placement and submodular selection study when a subset is sufficient for a
-target and provide the standard criteria --- submodular coverage, facility
-location and adaptive submodularity \citep{nemhauser1978analysis,krause2014submodular,golovin2011adaptive,leskovec2007cost} --- together with
-diversity criteria such as determinantal point processes and maximum marginal
-relevance \citep{kulesza2012determinantal,carbonell1998use}. \Cref{sec:diagnostics}
-measures directly whether such criteria track realised utility in a given
-problem, and regime A shows that they can be not merely uninformative but
-harmful. In retrieval-augmented generation and dense retrieval the retrieved
-context is usually assumed to help \citep{guu2020realm,lewis2020retrieval,karpukhin2020dense,nogueira2019passage,borgeaud2022improving,izacard2023atlas};
-our pool-geometry experiment identifies the condition under which that
-assumption inverts. For in-context learning, comparative studies find that
-similarity retrieval is hard to beat \citep{liu2022what,rubin2022learning},
-with diversity-oriented variants aimed at coverage \citep{levy2023diverse,sachan2022improving,gupta-etal-2023-coverage};
-regime C reproduces that finding and explains it through the information a
-demonstration contributes. Work on data valuation and subset selection for
-training \citep{koh2017understanding,ghorbani2019data,ilyas2022datamodels}
-shares the goal of estimating a candidate's contribution before committing to
-it. Closest in spirit is the analysis of routing signals in multi-context
-prediction \citep{dream2026routing,cogmoe2026sparse}; we contribute an exact
-response--utility identity, a measurement protocol derived from it, and a
-selection rule that changes with the measured regime.
+Learned routing treats selection as a decision problem. Mixture-of-experts
+models choose computational components
+\citep{jacobs1991adaptive,shazeer2017outrageously,zhou2022mixture,fedus2022switch},
+and routing networks adapt computation across tasks
+\citep{rosenbaum2018routing,ma2018modeling}. Recent systems extend dynamic
+routing to language, multimodal and collaborative settings
+\citep{failuremode2026routing,dream2026routing,cogmoe2026sparse}.
+Decision-focused learning links prediction quality to the downstream decision
+that consumes it
+\citep{bertsimas2020predictive,elmachtoub2022smart,wilder2019melding,mandi2024decision,donti2017task},
+while sequential decision methods study how information gathered now changes
+later choices \citep{auer2002finite,dudik2011doubly}. Our contribution fits
+this line at the level of auxiliary context: the fixed predictor stays unchanged
+during selection, and the selector learns the marginal effect of each candidate
+from the predictor response and the current selected state.
