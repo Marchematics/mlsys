@@ -63,8 +63,8 @@ The second term is a non-positive movement penalty in the Bregman geometry; the
 first is the inner product between the change in the loss gradient and the
 current residual. With $\phi(z)=\|z\|^2$ it becomes
 $\E[2\dAj(y-f_A)-\|\dAj\|^2]-\lambda c_j$, the squared-loss expression used by
-response-aware routers, which is therefore a special case rather than the
-whole story.
+response-aware routers and shows how that familiar expression sits inside a
+broader loss geometry.
 
 \subsection{Explicit constants for cross-entropy}
 
@@ -124,13 +124,12 @@ to $-\|\dAj(x)\|^2-\lambda c_j$, which is non-positive and decreasing in the
 response magnitude.
 \end{corollary}
 
-The corollary is the paper's central practical statement. A better predictor is
-one whose residual is closer to unpredictable, so the term the router must
-estimate shrinks towards zero while the curvature penalty remains. The oracle
-opportunity --- what a router could achieve if it knew the outcomes --- does not
-shrink; what shrinks is the part that is identifiable before the outcome is
-observed. This is why strong predictors are not simply a harder version of the
-same problem.
+The corollary gives the paper's main practical prediction. As model adaptation
+removes systematic residual structure, the coefficient the router must estimate
+shrinks while the curvature term remains. Oracle opportunity can stay large at
+the same time. The selector then faces a qualitatively different problem: more
+value exists in principle than can be recovered from the observations available
+before the outcome is known.
 
 \subsection{From estimation error to routing regret}
 
