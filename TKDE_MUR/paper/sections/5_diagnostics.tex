@@ -1,76 +1,61 @@
-\section{When Is Utility Identifiable?}
+\section{What Can the Selector Observe?}
 \label{sec:diagnostics}
 
-\Cref{cor:identifiability} says that the identifiable part of a candidate's
-value is the predictor's residual. That statement is useful only if it can be
-measured before a selection method is chosen. This section gives three
-measurements, in increasing order of cost, and states what each one rules out.
-They are used throughout \cref{sec:experiments}.
+The theory identifies predictor response as the carrier of candidate-specific
+utility. A selector still needs to know whether that signal is strong enough to
+support a decision. We use three checks that move from the routing model itself
+to the geometry of the candidate pool.
 
-\subsection{Measurement 1: does the cheap view know anything?}
+\subsection{Screening signal}
 
-The first question is whether the representations a router would use to screen
-candidates carry any signal about the true marginal at all. Given a batch of
-episodes, compute the true marginals of the frozen predictor at a fixed state
-and correlate them with the score a cached or response-free model would assign.
-Two numbers matter: the correlation itself, and the recall of the shortlist a
-screening stage would form. If the screen is uninformative, a random ranking provides the natural
-reference: the probability that a top-$q$ shortlist retains the best candidate
-is $q/K$. We therefore compare the observed screening recall with this chance
-reference instead of treating zero correlation as a mathematical implication of
-chance recall. A downstream reranker cannot recover a candidate that the screen
-has excluded.
+The cached stage should preserve candidates that matter. We compare its score
+with the true marginal utility of the frozen predictor and report both rank
+correlation and shortlist recall. A random ranking provides a simple reference:
+a shortlist of size $q$ retains the best of $K$ candidates with probability
+$q/K$. When the observed recall stays near this level, the response-aware stage
+is being asked to rerank a shortlist that already lost much of the available
+value.
 
-\subsection{Measurement 2: is the ordering recoverable within an episode?}
+\subsection{Within-state rankability}
 
-Selection needs an ordering within an episode, not a level across episodes. We
-therefore fit the strongest available model --- gradient boosting or a small
-network --- to the true marginal using every quantity a router can observe:
-anchor features, candidate features, candidate identity, the response vector,
-its magnitude, and the observable base--response interaction. We report the
-out-of-sample $R^2$, the mean within-episode rank correlation between predicted
-and true marginals, an in-sample fit as an alignment control, and a
-label-permutation control. A negative out-of-sample $R^2$ together with a
-within-episode rank correlation near zero is evidence of an identifiability
-limit rather than of a weak model, because the control establishes that the
-pipeline itself is sound.
+Selection depends on the ordering of candidates inside one decision state. We
+therefore fit diagnostic models to the true marginals using the information
+available before the target is known: anchor features, candidate features,
+candidate identity, the predictor response and simple response interactions.
+We evaluate held-out $R^2$ and within-state rank correlation. An in-sample fit
+and a label-permutation control check that the diagnostic pipeline itself can
+learn when a signal is present. This test asks a direct question: can the
+candidate ordering be recovered from the observations available to a router?
 
-\subsection{Measurement 3: one label-free pool statistic}
+\subsection{Candidate novelty}
 
-The third measurement explains when a \emph{simple} policy will work, and it
-costs nothing: candidate novelty, the share of a candidate's variance that the
-anchor does not already explain. Regress each candidate series on the anchor
-series using the training split and keep the residual variance share,
+A cheaper signal comes from the candidate pool itself. For each candidate
+series, we measure the share of its variance that remains after projecting it on
+the anchor,
 \begin{equation}
- \nu_j = \frac{\mathrm{Var}\!\left(c_j - \mathrm{proj}_{\mathrm{anchor}}(c_j)\right)}
+ \nu_j =
+ \frac{\mathrm{Var}\!\left(c_j-
+ \mathrm{proj}_{\mathrm{anchor}}(c_j)\right)}
  {\mathrm{Var}(c_j)} .
  \label{eq:novelty}
 \end{equation}
-A pool whose candidates have low novelty is redundant with the anchor:
-retrieval-style ranking then selects candidates that add nothing and can be
-actively harmful, whereas a pool with high novelty rewards retrieval. The
-statistic is label-free, needs only the training split, and transfers across
-datasets because it is a variance share rather than a correlation level.
+Low novelty means that the candidate mostly repeats information already present
+in the anchor. High novelty means that it contributes a larger independent
+component. The statistic uses the training split and no target labels at
+decision time. We fit any threshold on held-out targets within the deployment;
+we do not assume that one threshold transfers across datasets.
 
-\subsection{How the three measurements fit together}
+\subsection{From observation to action}
 
-The measurements are ordered by cost and by what they can rule out.
-Measurement 1 is a screening sanity check: if it fails, the cached stage is
-noise and any method that depends on it must be redesigned. Measurement 2 is
-the identifiability test proper: if it fails, the ordering is not recoverable
-from observable features and no scoring head will fix it. Measurement 3 is the
-policy selector: it distinguishes the regime in which retrieval is the right
-default from the regime in which including everything is. \Cref{sec:experiments}
-applies all three and \cref{sec:adaptive} turns the third into a deployable
-rule.
+These checks serve different purposes. Screening correlation tells us whether a
+two-stage router can preserve useful candidates. Within-state rankability asks
+whether the available observations contain enough information to order them.
+Novelty describes a simpler deployment choice: whether relevance-based
+selection is likely to add information or mostly repeat the anchor.
 
-Structural headroom, the quantity the protocol measures as the oracle's
-advantage over a fixed set, is a necessary condition and not a usable predictor.
-Within the six-dataset ridge protocol the per-target correlation between
-headroom and the router's advantage over pooling is $+.040$ over $192$ targets
-($p=.58$), and across datasets the ordering is broken by PEMS03, which has the
-highest mean headroom ($.119$) and an advantage of $+.0013$, against PEMS-BAY's
-similar headroom ($.115$) and $+.0303$. The measurement that does discriminate
-is the \emph{realised} share, computed under the deployment's own screening,
-budget and objective: it separates the expert ladder ($.164$ to $.024$), the
-pool geometries and the two regimes, while the opportunity does not.
+Structural headroom remains useful as an opportunity measure, but it does not
+by itself predict how much a learned router will realize. Across the six traffic
+benchmarks, targets with similar oracle headroom can have very different gains
+over pooling. The experiments show that the decisive quantity is the fraction
+of candidate utility that is recoverable under the deployment's own predictor,
+pool and decision rule.
