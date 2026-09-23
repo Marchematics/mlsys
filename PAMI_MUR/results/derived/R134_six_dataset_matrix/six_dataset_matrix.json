@@ -1,0 +1,688 @@
+{
+  "datasets": {
+    "METRLA": {
+      "targets": 32,
+      "cells": 96,
+      "policies": {
+        "ranked_response_q4": {
+          "mean": 0.014631820041358877,
+          "low": 0.009256840522663826,
+          "high": 0.020006799560053926,
+          "targets": 32,
+          "positive_targets": 26,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "pool_all": {
+          "mean": 0.007953289664934951,
+          "low": 0.002965906569718307,
+          "high": 0.012940672760151595,
+          "targets": 32,
+          "positive_targets": 22,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "cached_mur": {
+          "mean": 0.004230202403656827,
+          "low": -0.00021431483988071896,
+          "high": 0.008674719647194374,
+          "targets": 32,
+          "positive_targets": 16,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "static_utility": {
+          "mean": 0.0023843079000774496,
+          "low": -0.0018753559454781927,
+          "high": 0.006643971745633092,
+          "targets": 32,
+          "positive_targets": 17,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "mutual_information": {
+          "mean": -0.0055285831743579665,
+          "low": -0.010333352445079016,
+          "high": -0.0007238139036369164,
+          "targets": 32,
+          "positive_targets": 9,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "random": {
+          "mean": -0.007653656194406722,
+          "low": -0.00971939648805658,
+          "high": -0.005587915900756865,
+          "targets": 32,
+          "positive_targets": 4,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "kmeans_representatives": {
+          "mean": -0.00795944369527509,
+          "low": -0.01232884168559107,
+          "high": -0.0035900457049591076,
+          "targets": 32,
+          "positive_targets": 8,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "kcenter": {
+          "mean": -0.01866693906170743,
+          "low": -0.024809753027795606,
+          "high": -0.012524125095619256,
+          "targets": 32,
+          "positive_targets": 2,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "facility_location": {
+          "mean": -0.016257969430171215,
+          "low": -0.02342370447540578,
+          "high": -0.00909223438493665,
+          "targets": 32,
+          "positive_targets": 4,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "relevance": {
+          "mean": -0.016519535378999233,
+          "low": -0.024209907064099697,
+          "high": -0.00882916369389877,
+          "targets": 32,
+          "positive_targets": 3,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "dpp": {
+          "mean": -0.016589122537955824,
+          "low": -0.02212976253585663,
+          "high": -0.011048482540055016,
+          "targets": 32,
+          "positive_targets": 2,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "mmr": {
+          "mean": -0.017994100004822638,
+          "low": -0.024655335550298092,
+          "high": -0.011332864459347183,
+          "targets": 32,
+          "positive_targets": 2,
+          "scored_harmful": true,
+          "scored_helpful": false
+        }
+      }
+    },
+    "PEMSBAY": {
+      "targets": 32,
+      "cells": 96,
+      "policies": {
+        "ranked_response_q4": {
+          "mean": 0.055704733733667425,
+          "low": 0.044099693028203026,
+          "high": 0.06730977443913182,
+          "targets": 32,
+          "positive_targets": 30,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "pool_all": {
+          "mean": 0.0253984392638813,
+          "low": 0.006986396741225021,
+          "high": 0.04381048178653758,
+          "targets": 32,
+          "positive_targets": 26,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "cached_mur": {
+          "mean": 0.02837626160180662,
+          "low": 0.016033361676648653,
+          "high": 0.04071916152696459,
+          "targets": 32,
+          "positive_targets": 28,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "static_utility": {
+          "mean": 0.027152512079434622,
+          "low": 0.012744856890690338,
+          "high": 0.041560167268178905,
+          "targets": 32,
+          "positive_targets": 27,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mutual_information": {
+          "mean": 0.01728734534905622,
+          "low": 0.005510470818921323,
+          "high": 0.029064219879191118,
+          "targets": 32,
+          "positive_targets": 28,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "random": {
+          "mean": 0.00944737979330057,
+          "low": 0.0026333804237879486,
+          "high": 0.016261379162813193,
+          "targets": 32,
+          "positive_targets": 27,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kmeans_representatives": {
+          "mean": 0.004263856728509078,
+          "low": -0.0029379063636083376,
+          "high": 0.011465619820626494,
+          "targets": 32,
+          "positive_targets": 19,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "kcenter": {
+          "mean": 0.004247711602147319,
+          "low": -0.0029161846699732813,
+          "high": 0.01141160787426792,
+          "targets": 32,
+          "positive_targets": 19,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "facility_location": {
+          "mean": 0.00902517556642124,
+          "low": -0.004846318914791644,
+          "high": 0.022896670047634123,
+          "targets": 32,
+          "positive_targets": 26,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "relevance": {
+          "mean": -0.019864545697146237,
+          "low": -0.03267669395790965,
+          "high": -0.007052397436382824,
+          "targets": 32,
+          "positive_targets": 10,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "dpp": {
+          "mean": -0.007382551870856941,
+          "low": -0.02312720905196052,
+          "high": 0.008362105310246639,
+          "targets": 32,
+          "positive_targets": 17,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "mmr": {
+          "mean": -0.024930073864197762,
+          "low": -0.04430554467755922,
+          "high": -0.005554603050836306,
+          "targets": 32,
+          "positive_targets": 8,
+          "scored_harmful": true,
+          "scored_helpful": false
+        }
+      }
+    },
+    "PEMS03": {
+      "targets": 32,
+      "cells": 96,
+      "policies": {
+        "ranked_response_q4": {
+          "mean": 0.026918372668054264,
+          "low": 0.022820296003906185,
+          "high": 0.031016449332202344,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "pool_all": {
+          "mean": 0.025595644404044528,
+          "low": 0.0216080523079917,
+          "high": 0.029583236500097355,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "cached_mur": {
+          "mean": 0.015412552577193614,
+          "low": 0.01265123602361639,
+          "high": 0.018173869130770837,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "static_utility": {
+          "mean": 0.014858758559133397,
+          "low": 0.012052554213559033,
+          "high": 0.017664962904707763,
+          "targets": 32,
+          "positive_targets": 31,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mutual_information": {
+          "mean": 0.012404974792464904,
+          "low": 0.009459129649612676,
+          "high": 0.015350819935317131,
+          "targets": 32,
+          "positive_targets": 28,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "random": {
+          "mean": 0.006557782009167568,
+          "low": 0.00485615128890271,
+          "high": 0.008259412729432425,
+          "targets": 32,
+          "positive_targets": 31,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kmeans_representatives": {
+          "mean": 0.0038462131553795107,
+          "low": 0.0010310973403467286,
+          "high": 0.006661328970412293,
+          "targets": 32,
+          "positive_targets": 22,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kcenter": {
+          "mean": 0.008156639065039903,
+          "low": 0.005468092910738758,
+          "high": 0.010845185219341047,
+          "targets": 32,
+          "positive_targets": 28,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "facility_location": {
+          "mean": 0.0037061285706082954,
+          "low": 3.157705805286468e-05,
+          "high": 0.0073806800831637265,
+          "targets": 32,
+          "positive_targets": 21,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "relevance": {
+          "mean": -0.019122783372343598,
+          "low": -0.024747091252943068,
+          "high": -0.013498475491744126,
+          "targets": 32,
+          "positive_targets": 3,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "dpp": {
+          "mean": -0.0022860796292813266,
+          "low": -0.00546216228431849,
+          "high": 0.0008900030257558366,
+          "targets": 32,
+          "positive_targets": 15,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "mmr": {
+          "mean": -0.010182401484750395,
+          "low": -0.014181076089720725,
+          "high": -0.006183726879780066,
+          "targets": 32,
+          "positive_targets": 7,
+          "scored_harmful": true,
+          "scored_helpful": false
+        }
+      }
+    },
+    "PEMS04": {
+      "targets": 32,
+      "cells": 96,
+      "policies": {
+        "ranked_response_q4": {
+          "mean": 0.035716106242034584,
+          "low": 0.028263688404341732,
+          "high": 0.04316852407972743,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "pool_all": {
+          "mean": 0.036493693560866326,
+          "low": 0.028234115669045157,
+          "high": 0.044753271452687496,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "cached_mur": {
+          "mean": 0.025018580253648302,
+          "low": 0.018529703022749866,
+          "high": 0.03150745748454674,
+          "targets": 32,
+          "positive_targets": 31,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "static_utility": {
+          "mean": 0.02482650418248037,
+          "low": 0.018201539818249193,
+          "high": 0.03145146854671155,
+          "targets": 32,
+          "positive_targets": 31,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mutual_information": {
+          "mean": 0.022850663964315267,
+          "low": 0.01631349086925806,
+          "high": 0.029387837059372472,
+          "targets": 32,
+          "positive_targets": 30,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "random": {
+          "mean": 0.01297715536444836,
+          "low": 0.00997981204117733,
+          "high": 0.01597449868771939,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kmeans_representatives": {
+          "mean": 0.010973693666253817,
+          "low": 0.007568511393490799,
+          "high": 0.014378875939016836,
+          "targets": 32,
+          "positive_targets": 29,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kcenter": {
+          "mean": 0.014156441733424195,
+          "low": 0.009496879269968918,
+          "high": 0.018816004196879472,
+          "targets": 32,
+          "positive_targets": 30,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "facility_location": {
+          "mean": 0.011809256048460762,
+          "low": 0.008587263106477106,
+          "high": 0.015031248990444418,
+          "targets": 32,
+          "positive_targets": 28,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "relevance": {
+          "mean": 0.0070721058742340874,
+          "low": 0.0017239735014120943,
+          "high": 0.01242023824705608,
+          "targets": 32,
+          "positive_targets": 19,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "dpp": {
+          "mean": 0.011208363472026878,
+          "low": 0.006386843157760256,
+          "high": 0.0160298837862935,
+          "targets": 32,
+          "positive_targets": 27,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mmr": {
+          "mean": 0.009839112999846597,
+          "low": 0.005203004743392477,
+          "high": 0.014475221256300717,
+          "targets": 32,
+          "positive_targets": 26,
+          "scored_harmful": false,
+          "scored_helpful": true
+        }
+      }
+    },
+    "PEMS07": {
+      "targets": 32,
+      "cells": 96,
+      "policies": {
+        "ranked_response_q4": {
+          "mean": 0.02836195897058739,
+          "low": 0.021803136334201906,
+          "high": 0.03492078160697288,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "pool_all": {
+          "mean": 0.024237855435785605,
+          "low": 0.01819300943078722,
+          "high": 0.030282701440783988,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "cached_mur": {
+          "mean": 0.014972395852889047,
+          "low": 0.010659935690414821,
+          "high": 0.019284856015363273,
+          "targets": 32,
+          "positive_targets": 31,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "static_utility": {
+          "mean": 0.015157351873919348,
+          "low": 0.010875357959977378,
+          "high": 0.019439345787861318,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mutual_information": {
+          "mean": 0.011319766335570119,
+          "low": 0.00686913252926982,
+          "high": 0.01577040014187042,
+          "targets": 32,
+          "positive_targets": 26,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "random": {
+          "mean": 0.006345546573053677,
+          "low": 0.004603376917804329,
+          "high": 0.008087716228303026,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kmeans_representatives": {
+          "mean": 0.004279078193349051,
+          "low": 0.002221120742527458,
+          "high": 0.0063370356441706435,
+          "targets": 32,
+          "positive_targets": 25,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kcenter": {
+          "mean": 0.005717756474496127,
+          "low": 0.003031152553854336,
+          "high": 0.008404360395137919,
+          "targets": 32,
+          "positive_targets": 25,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "facility_location": {
+          "mean": 0.0019559197013450103,
+          "low": -0.0009192970323533508,
+          "high": 0.004831136435043371,
+          "targets": 32,
+          "positive_targets": 18,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "relevance": {
+          "mean": -0.01546293352206855,
+          "low": -0.021409985233811386,
+          "high": -0.009515881810325711,
+          "targets": 32,
+          "positive_targets": 2,
+          "scored_harmful": true,
+          "scored_helpful": false
+        },
+        "dpp": {
+          "mean": 0.0019836775484994478,
+          "low": -0.0005510815773948812,
+          "high": 0.004518436674393777,
+          "targets": 32,
+          "positive_targets": 16,
+          "scored_harmful": false,
+          "scored_helpful": false
+        },
+        "mmr": {
+          "mean": -0.008477464557017811,
+          "low": -0.012405508109161925,
+          "high": -0.004549421004873696,
+          "targets": 32,
+          "positive_targets": 5,
+          "scored_harmful": true,
+          "scored_helpful": false
+        }
+      }
+    },
+    "PEMS08": {
+      "targets": 32,
+      "cells": 96,
+      "policies": {
+        "ranked_response_q4": {
+          "mean": 0.03331649731793126,
+          "low": 0.026646627981914865,
+          "high": 0.039986366653947655,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "pool_all": {
+          "mean": 0.03587419437826611,
+          "low": 0.028732357424442273,
+          "high": 0.04301603133208995,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "cached_mur": {
+          "mean": 0.02464681473793462,
+          "low": 0.019750343705393032,
+          "high": 0.029543285770476206,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "static_utility": {
+          "mean": 0.024554882775798127,
+          "low": 0.019690044493586023,
+          "high": 0.02941972105801023,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mutual_information": {
+          "mean": 0.019649418368013965,
+          "low": 0.014721394122077885,
+          "high": 0.024577442613950045,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "random": {
+          "mean": 0.012602057495920842,
+          "low": 0.009933739604840239,
+          "high": 0.015270375387001446,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kmeans_representatives": {
+          "mean": 0.014529340615505742,
+          "low": 0.010459776795852863,
+          "high": 0.01859890443515862,
+          "targets": 32,
+          "positive_targets": 32,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "kcenter": {
+          "mean": 0.013218625812442042,
+          "low": 0.009828020688906485,
+          "high": 0.016609230935977597,
+          "targets": 32,
+          "positive_targets": 31,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "facility_location": {
+          "mean": 0.01594523777202994,
+          "low": 0.011218044359955728,
+          "high": 0.020672431184104154,
+          "targets": 32,
+          "positive_targets": 27,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "relevance": {
+          "mean": 0.007382572170930264,
+          "low": 0.0022164856351030004,
+          "high": 0.012548658706757528,
+          "targets": 32,
+          "positive_targets": 20,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "dpp": {
+          "mean": 0.007829957470221416,
+          "low": 0.005201411390404838,
+          "high": 0.010458503550037994,
+          "targets": 32,
+          "positive_targets": 29,
+          "scored_harmful": false,
+          "scored_helpful": true
+        },
+        "mmr": {
+          "mean": 0.007496151080583028,
+          "low": 0.004637151781066835,
+          "high": 0.01035515038009922,
+          "targets": 32,
+          "positive_targets": 28,
+          "scored_harmful": false,
+          "scored_helpful": true
+        }
+      }
+    }
+  }
+}

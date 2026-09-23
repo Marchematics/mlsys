@@ -1,0 +1,23 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+=== dtd: 47 classes, train episodes 188, test episodes 94 ===
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+    predictor epoch 50/200 train_ce=0.0066
+    predictor epoch 100/200 train_ce=0.0020
+    predictor epoch 150/200 train_ce=0.0010
+    predictor epoch 200/200 train_ce=0.0006
+{"benchmark": "dtd", "seed": 101, "q4_gain": 0.0022838832447895988, "static": 0.0013363574424064557, "cached": 0.0018023275542944882, "oracle_greedy": 0.003015368465523865, "oracle_static": 0.0030144558410687057, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 72.4}
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+    predictor epoch 50/200 train_ce=0.0076
+    predictor epoch 100/200 train_ce=0.0024
+    predictor epoch 150/200 train_ce=0.0012
+    predictor epoch 200/200 train_ce=0.0007
+{"benchmark": "dtd", "seed": 202, "q4_gain": 0.00216381438635982, "static": 0.0010720052170862145, "cached": 0.0022778517522627, "oracle_greedy": 0.0026480697987786893, "oracle_static": 0.00263806098544933, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 53.9}
+    predictor epoch 50/200 train_ce=0.0075
+    predictor epoch 100/200 train_ce=0.0023
+    predictor epoch 150/200 train_ce=0.0012
+    predictor epoch 200/200 train_ce=0.0007
+{"benchmark": "dtd", "seed": 303, "q4_gain": 0.00024033587469751225, "static": 0.0020591354549509837, "cached": 0.0012623458796571945, "oracle_greedy": 0.0026243624161058432, "oracle_static": 0.0026211503622059575, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 74.7}
+{"finished_utc": "2026-09-20T19:56:04Z", "failures": {}}

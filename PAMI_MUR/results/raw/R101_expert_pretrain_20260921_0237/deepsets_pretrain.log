@@ -1,0 +1,250 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Traceback (most recent call last):
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 297, in <module>
+    main()
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 136, in main
+    raise FileExistsError(f"output already exists: {args.out}")
+FileExistsError: output already exists: results/raw/R101_expert_pretrain_20260921_0237/METRLA/deepsets_seed101
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Traceback (most recent call last):
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 297, in <module>
+    main()
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 136, in main
+    raise FileExistsError(f"output already exists: {args.out}")
+FileExistsError: output already exists: results/raw/R101_expert_pretrain_20260921_0237/METRLA/deepsets_seed202
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Traceback (most recent call last):
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 297, in <module>
+    main()
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 136, in main
+    raise FileExistsError(f"output already exists: {args.out}")
+FileExistsError: output already exists: results/raw/R101_expert_pretrain_20260921_0237/METRLA/deepsets_seed303
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Traceback (most recent call last):
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 297, in <module>
+    main()
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/train_neural_expert.py", line 136, in main
+    raise FileExistsError(f"output already exists: {args.out}")
+FileExistsError: output already exists: results/raw/R101_expert_pretrain_20260921_0237/PEMSBAY/deepsets_seed101
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+[METRLA seed=101] epoch 001 train 0.37372 val_avg 0.36967 (empty 0.37120 full 0.36831)
+[METRLA seed=101] epoch 002 train 0.33141 val_avg 0.36609 (empty 0.36448 full 0.36566)
+[METRLA seed=101] epoch 003 train 0.32612 val_avg 0.36595 (empty 0.36301 full 0.36547)
+[METRLA seed=101] epoch 004 train 0.32484 val_avg 0.36411 (empty 0.36435 full 0.36179)
+[METRLA seed=101] epoch 005 train 0.32269 val_avg 0.36777 (empty 0.36896 full 0.36524)
+[METRLA seed=101] epoch 006 train 0.32072 val_avg 0.37090 (empty 0.37029 full 0.36847)
+[METRLA seed=101] epoch 007 train 0.32042 val_avg 0.36763 (empty 0.36844 full 0.36484)
+[METRLA seed=101] epoch 008 train 0.31755 val_avg 0.36490 (empty 0.36392 full 0.36174)
+[METRLA seed=101] epoch 009 train 0.31681 val_avg 0.37077 (empty 0.36995 full 0.36738)
+[METRLA seed=101] epoch 010 train 0.31611 val_avg 0.36676 (empty 0.36636 full 0.36405)
+[METRLA seed=101] epoch 011 train 0.31321 val_avg 0.36277 (empty 0.36247 full 0.35963)
+[METRLA seed=101] epoch 012 train 0.31206 val_avg 0.37034 (empty 0.37001 full 0.36748)
+[METRLA seed=101] epoch 013 train 0.31080 val_avg 0.36798 (empty 0.36954 full 0.36435)
+[METRLA seed=101] epoch 014 train 0.31015 val_avg 0.36846 (empty 0.37231 full 0.36360)
+[METRLA seed=101] epoch 015 train 0.30964 val_avg 0.37348 (empty 0.37312 full 0.37070)
+[METRLA seed=101] epoch 016 train 0.30743 val_avg 0.36707 (empty 0.36716 full 0.36276)
+[METRLA seed=101] epoch 017 train 0.30610 val_avg 0.37597 (empty 0.37507 full 0.37364)
+[METRLA seed=101] epoch 018 train 0.30442 val_avg 0.37624 (empty 0.37307 full 0.37478)
+[METRLA seed=101] epoch 019 train 0.30390 val_avg 0.37084 (empty 0.36913 full 0.36660)
+early stop at epoch 19
+{
+  "best_epoch": 10,
+  "best_validation_average_mse": 0.362770555075258,
+  "wall_seconds": 148.88727736473083
+}
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+[METRLA seed=202] epoch 001 train 0.36658 val_avg 0.37057 (empty 0.37059 full 0.36992)
+[METRLA seed=202] epoch 002 train 0.32941 val_avg 0.36701 (empty 0.36469 full 0.36551)
+[METRLA seed=202] epoch 003 train 0.32579 val_avg 0.36066 (empty 0.36121 full 0.35824)
+[METRLA seed=202] epoch 004 train 0.32241 val_avg 0.37097 (empty 0.37236 full 0.36827)
+[METRLA seed=202] epoch 005 train 0.32422 val_avg 0.36437 (empty 0.36538 full 0.36173)
+[METRLA seed=202] epoch 006 train 0.31971 val_avg 0.36298 (empty 0.36386 full 0.35963)
+[METRLA seed=202] epoch 007 train 0.31919 val_avg 0.36051 (empty 0.36080 full 0.35815)
+[METRLA seed=202] epoch 008 train 0.31815 val_avg 0.36230 (empty 0.36182 full 0.36010)
+[METRLA seed=202] epoch 009 train 0.31618 val_avg 0.36016 (empty 0.36165 full 0.35698)
+[METRLA seed=202] epoch 010 train 0.31475 val_avg 0.36739 (empty 0.36839 full 0.36479)
+[METRLA seed=202] epoch 011 train 0.31378 val_avg 0.36759 (empty 0.36870 full 0.36309)
+[METRLA seed=202] epoch 012 train 0.31229 val_avg 0.36919 (empty 0.36940 full 0.36745)
+[METRLA seed=202] epoch 013 train 0.31153 val_avg 0.36320 (empty 0.36472 full 0.36018)
+[METRLA seed=202] epoch 014 train 0.30942 val_avg 0.35957 (empty 0.36178 full 0.35584)
+[METRLA seed=202] epoch 015 train 0.30811 val_avg 0.35671 (empty 0.35747 full 0.35345)
+[METRLA seed=202] epoch 016 train 0.30705 val_avg 0.35785 (empty 0.36224 full 0.35265)
+[METRLA seed=202] epoch 017 train 0.30615 val_avg 0.36195 (empty 0.36394 full 0.35801)
+[METRLA seed=202] epoch 018 train 0.30606 val_avg 0.35942 (empty 0.36046 full 0.35566)
+[METRLA seed=202] epoch 019 train 0.30417 val_avg 0.36349 (empty 0.36305 full 0.36003)
+[METRLA seed=202] epoch 020 train 0.30196 val_avg 0.35778 (empty 0.36056 full 0.35355)
+[METRLA seed=202] epoch 021 train 0.30196 val_avg 0.35370 (empty 0.35452 full 0.34992)
+[METRLA seed=202] epoch 022 train 0.30037 val_avg 0.35503 (empty 0.35666 full 0.35121)
+[METRLA seed=202] epoch 023 train 0.29980 val_avg 0.35894 (empty 0.36019 full 0.35474)
+[METRLA seed=202] epoch 024 train 0.29732 val_avg 0.36197 (empty 0.36594 full 0.35687)
+[METRLA seed=202] epoch 025 train 0.29691 val_avg 0.35756 (empty 0.35983 full 0.35272)
+[METRLA seed=202] epoch 026 train 0.29580 val_avg 0.36314 (empty 0.36581 full 0.35839)
+[METRLA seed=202] epoch 027 train 0.29528 val_avg 0.35909 (empty 0.36306 full 0.35411)
+[METRLA seed=202] epoch 028 train 0.29450 val_avg 0.35817 (empty 0.36161 full 0.35298)
+[METRLA seed=202] epoch 029 train 0.29246 val_avg 0.35769 (empty 0.36017 full 0.35332)
+early stop at epoch 29
+{
+  "best_epoch": 20,
+  "best_validation_average_mse": 0.35369811732380185,
+  "wall_seconds": 201.11811304092407
+}
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+[METRLA seed=303] epoch 001 train 0.36745 val_avg 0.36524 (empty 0.35957 full 0.36784)
+[METRLA seed=303] epoch 002 train 0.32577 val_avg 0.36032 (empty 0.36049 full 0.35876)
+[METRLA seed=303] epoch 003 train 0.32437 val_avg 0.35821 (empty 0.35935 full 0.35539)
+[METRLA seed=303] epoch 004 train 0.32186 val_avg 0.37025 (empty 0.36930 full 0.36952)
+[METRLA seed=303] epoch 005 train 0.32002 val_avg 0.35859 (empty 0.35806 full 0.35558)
+[METRLA seed=303] epoch 006 train 0.31916 val_avg 0.36359 (empty 0.36127 full 0.36101)
+[METRLA seed=303] epoch 007 train 0.31726 val_avg 0.35694 (empty 0.35764 full 0.35407)
+[METRLA seed=303] epoch 008 train 0.31533 val_avg 0.36273 (empty 0.36113 full 0.36112)
+[METRLA seed=303] epoch 009 train 0.31467 val_avg 0.36865 (empty 0.36629 full 0.36792)
+[METRLA seed=303] epoch 010 train 0.31140 val_avg 0.36563 (empty 0.36684 full 0.36128)
+[METRLA seed=303] epoch 011 train 0.31224 val_avg 0.35729 (empty 0.35776 full 0.35388)
+[METRLA seed=303] epoch 012 train 0.31089 val_avg 0.36855 (empty 0.36763 full 0.36576)
+[METRLA seed=303] epoch 013 train 0.30936 val_avg 0.37339 (empty 0.37205 full 0.37118)
+[METRLA seed=303] epoch 014 train 0.30818 val_avg 0.36441 (empty 0.36240 full 0.36342)
+[METRLA seed=303] epoch 015 train 0.30703 val_avg 0.36359 (empty 0.36356 full 0.36185)
+early stop at epoch 15
+{
+  "best_epoch": 6,
+  "best_validation_average_mse": 0.35693792639358435,
+  "wall_seconds": 124.22154092788696
+}
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+[PEMSBAY seed=101] epoch 001 train 0.32702 val_avg 0.44545 (empty 0.46482 full 0.41369)
+[PEMSBAY seed=101] epoch 002 train 0.28147 val_avg 0.42832 (empty 0.45269 full 0.39578)
+[PEMSBAY seed=101] epoch 003 train 0.27554 val_avg 0.42634 (empty 0.45077 full 0.39549)
+[PEMSBAY seed=101] epoch 004 train 0.26915 val_avg 0.42491 (empty 0.44484 full 0.40693)
+[PEMSBAY seed=101] epoch 005 train 0.27081 val_avg 0.41327 (empty 0.43900 full 0.39198)
+[PEMSBAY seed=101] epoch 006 train 0.26681 val_avg 0.41875 (empty 0.44415 full 0.39509)
+[PEMSBAY seed=101] epoch 007 train 0.26334 val_avg 0.41436 (empty 0.44162 full 0.38280)
+[PEMSBAY seed=101] epoch 008 train 0.26418 val_avg 0.40222 (empty 0.42778 full 0.37278)
+[PEMSBAY seed=101] epoch 009 train 0.26143 val_avg 0.42808 (empty 0.44742 full 0.40115)
+[PEMSBAY seed=101] epoch 010 train 0.25894 val_avg 0.39028 (empty 0.41902 full 0.36279)
+[PEMSBAY seed=101] epoch 011 train 0.25430 val_avg 0.40696 (empty 0.42926 full 0.37153)
+[PEMSBAY seed=101] epoch 012 train 0.25409 val_avg 0.39528 (empty 0.42316 full 0.36747)
+[PEMSBAY seed=101] epoch 013 train 0.25341 val_avg 0.39421 (empty 0.42483 full 0.36438)
+[PEMSBAY seed=101] epoch 014 train 0.25114 val_avg 0.39744 (empty 0.42357 full 0.36755)
+[PEMSBAY seed=101] epoch 015 train 0.24958 val_avg 0.38573 (empty 0.41889 full 0.35492)
+[PEMSBAY seed=101] epoch 016 train 0.24648 val_avg 0.39023 (empty 0.42401 full 0.35640)
+[PEMSBAY seed=101] epoch 017 train 0.24453 val_avg 0.40843 (empty 0.43385 full 0.38249)
+[PEMSBAY seed=101] epoch 018 train 0.24204 val_avg 0.38104 (empty 0.41492 full 0.34624)
+[PEMSBAY seed=101] epoch 019 train 0.24085 val_avg 0.37882 (empty 0.41175 full 0.34362)
+[PEMSBAY seed=101] epoch 020 train 0.23817 val_avg 0.40083 (empty 0.43501 full 0.36457)
+[PEMSBAY seed=101] epoch 021 train 0.23738 val_avg 0.40335 (empty 0.42995 full 0.36924)
+[PEMSBAY seed=101] epoch 022 train 0.23708 val_avg 0.39352 (empty 0.42190 full 0.36180)
+[PEMSBAY seed=101] epoch 023 train 0.23461 val_avg 0.38967 (empty 0.42134 full 0.35546)
+[PEMSBAY seed=101] epoch 024 train 0.23317 val_avg 0.38583 (empty 0.41545 full 0.35208)
+[PEMSBAY seed=101] epoch 025 train 0.23183 val_avg 0.38483 (empty 0.41757 full 0.34924)
+[PEMSBAY seed=101] epoch 026 train 0.22807 val_avg 0.38562 (empty 0.41944 full 0.35275)
+[PEMSBAY seed=101] epoch 027 train 0.22803 val_avg 0.38129 (empty 0.41522 full 0.34559)
+early stop at epoch 27
+{
+  "best_epoch": 18,
+  "best_validation_average_mse": 0.37882392737083137,
+  "wall_seconds": 291.90046286582947
+}
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+[PEMSBAY seed=202] epoch 001 train 0.32313 val_avg 0.48457 (empty 0.49986 full 0.46566)
+[PEMSBAY seed=202] epoch 002 train 0.28488 val_avg 0.46042 (empty 0.48226 full 0.43884)
+[PEMSBAY seed=202] epoch 003 train 0.28009 val_avg 0.45315 (empty 0.47422 full 0.42743)
+[PEMSBAY seed=202] epoch 004 train 0.27589 val_avg 0.44897 (empty 0.47283 full 0.42332)
+[PEMSBAY seed=202] epoch 005 train 0.27159 val_avg 0.44709 (empty 0.46878 full 0.42880)
+[PEMSBAY seed=202] epoch 006 train 0.27195 val_avg 0.44198 (empty 0.46613 full 0.42348)
+[PEMSBAY seed=202] epoch 007 train 0.27198 val_avg 0.43453 (empty 0.45548 full 0.40901)
+[PEMSBAY seed=202] epoch 008 train 0.26879 val_avg 0.43146 (empty 0.45621 full 0.40294)
+[PEMSBAY seed=202] epoch 009 train 0.26314 val_avg 0.44730 (empty 0.46644 full 0.42243)
+[PEMSBAY seed=202] epoch 010 train 0.26269 val_avg 0.43375 (empty 0.45591 full 0.41211)
+[PEMSBAY seed=202] epoch 011 train 0.26117 val_avg 0.44791 (empty 0.47313 full 0.42416)
+[PEMSBAY seed=202] epoch 012 train 0.26026 val_avg 0.44960 (empty 0.47733 full 0.41779)
+[PEMSBAY seed=202] epoch 013 train 0.25691 val_avg 0.43952 (empty 0.46781 full 0.41000)
+[PEMSBAY seed=202] epoch 014 train 0.25446 val_avg 0.43414 (empty 0.46220 full 0.40422)
+[PEMSBAY seed=202] epoch 015 train 0.25431 val_avg 0.43552 (empty 0.46279 full 0.40772)
+[PEMSBAY seed=202] epoch 016 train 0.25181 val_avg 0.43008 (empty 0.46243 full 0.40023)
+[PEMSBAY seed=202] epoch 017 train 0.25134 val_avg 0.45103 (empty 0.47916 full 0.41750)
+[PEMSBAY seed=202] epoch 018 train 0.24812 val_avg 0.44596 (empty 0.47818 full 0.41296)
+[PEMSBAY seed=202] epoch 019 train 0.24858 val_avg 0.43893 (empty 0.47115 full 0.40528)
+[PEMSBAY seed=202] epoch 020 train 0.24440 val_avg 0.43158 (empty 0.46132 full 0.40106)
+[PEMSBAY seed=202] epoch 021 train 0.24405 val_avg 0.43550 (empty 0.46814 full 0.40251)
+[PEMSBAY seed=202] epoch 022 train 0.24140 val_avg 0.42580 (empty 0.46082 full 0.39320)
+[PEMSBAY seed=202] epoch 023 train 0.24082 val_avg 0.42636 (empty 0.46099 full 0.39210)
+[PEMSBAY seed=202] epoch 024 train 0.23815 val_avg 0.42199 (empty 0.45695 full 0.38912)
+[PEMSBAY seed=202] epoch 025 train 0.23835 val_avg 0.42373 (empty 0.45707 full 0.38979)
+[PEMSBAY seed=202] epoch 026 train 0.23522 val_avg 0.42619 (empty 0.46172 full 0.39047)
+[PEMSBAY seed=202] epoch 027 train 0.23384 val_avg 0.44368 (empty 0.48037 full 0.41017)
+[PEMSBAY seed=202] epoch 028 train 0.23504 val_avg 0.43401 (empty 0.47191 full 0.40034)
+[PEMSBAY seed=202] epoch 029 train 0.23238 val_avg 0.42774 (empty 0.46439 full 0.39480)
+[PEMSBAY seed=202] epoch 030 train 0.23125 val_avg 0.42492 (empty 0.46410 full 0.39035)
+[PEMSBAY seed=202] epoch 031 train 0.22973 val_avg 0.43545 (empty 0.47498 full 0.40021)
+[PEMSBAY seed=202] epoch 032 train 0.22855 val_avg 0.42762 (empty 0.46400 full 0.39449)
+early stop at epoch 32
+{
+  "best_epoch": 23,
+  "best_validation_average_mse": 0.4219947407254949,
+  "wall_seconds": 545.4747154712677
+}
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+[PEMSBAY seed=303] epoch 001 train 0.32714 val_avg 0.46359 (empty 0.48183 full 0.44563)
+[PEMSBAY seed=303] epoch 002 train 0.27958 val_avg 0.43614 (empty 0.46111 full 0.41013)
+[PEMSBAY seed=303] epoch 003 train 0.27721 val_avg 0.43125 (empty 0.45772 full 0.40646)
+[PEMSBAY seed=303] epoch 004 train 0.27244 val_avg 0.42842 (empty 0.45716 full 0.40136)
+[PEMSBAY seed=303] epoch 005 train 0.27264 val_avg 0.44134 (empty 0.46353 full 0.42583)
+[PEMSBAY seed=303] epoch 006 train 0.26711 val_avg 0.43331 (empty 0.44974 full 0.40341)
+[PEMSBAY seed=303] epoch 007 train 0.26703 val_avg 0.43586 (empty 0.46100 full 0.41507)
+[PEMSBAY seed=303] epoch 008 train 0.26410 val_avg 0.41751 (empty 0.44571 full 0.39387)
+[PEMSBAY seed=303] epoch 009 train 0.26214 val_avg 0.42595 (empty 0.45240 full 0.39832)
+[PEMSBAY seed=303] epoch 010 train 0.26125 val_avg 0.42542 (empty 0.44886 full 0.40711)
+[PEMSBAY seed=303] epoch 011 train 0.26074 val_avg 0.40549 (empty 0.43679 full 0.37639)
+[PEMSBAY seed=303] epoch 012 train 0.25867 val_avg 0.41284 (empty 0.44021 full 0.38298)
+[PEMSBAY seed=303] epoch 013 train 0.25374 val_avg 0.41868 (empty 0.45048 full 0.38549)
+[PEMSBAY seed=303] epoch 014 train 0.25320 val_avg 0.40188 (empty 0.42830 full 0.37712)
+[PEMSBAY seed=303] epoch 015 train 0.25120 val_avg 0.40645 (empty 0.43618 full 0.37822)
+[PEMSBAY seed=303] epoch 016 train 0.24846 val_avg 0.41920 (empty 0.44488 full 0.38727)
+[PEMSBAY seed=303] epoch 017 train 0.24640 val_avg 0.41321 (empty 0.44030 full 0.38024)
+[PEMSBAY seed=303] epoch 018 train 0.24567 val_avg 0.41072 (empty 0.44200 full 0.37974)
+[PEMSBAY seed=303] epoch 019 train 0.24291 val_avg 0.39793 (empty 0.43132 full 0.36378)
+[PEMSBAY seed=303] epoch 020 train 0.24392 val_avg 0.40412 (empty 0.43677 full 0.37284)
+[PEMSBAY seed=303] epoch 021 train 0.24116 val_avg 0.40035 (empty 0.43275 full 0.36579)
+[PEMSBAY seed=303] epoch 022 train 0.23862 val_avg 0.41737 (empty 0.44711 full 0.38167)
+[PEMSBAY seed=303] epoch 023 train 0.23855 val_avg 0.40237 (empty 0.43216 full 0.36735)
+[PEMSBAY seed=303] epoch 024 train 0.23730 val_avg 0.40805 (empty 0.44281 full 0.37336)
+[PEMSBAY seed=303] epoch 025 train 0.23507 val_avg 0.40648 (empty 0.43862 full 0.37160)
+[PEMSBAY seed=303] epoch 026 train 0.23376 val_avg 0.39555 (empty 0.42797 full 0.36284)
+[PEMSBAY seed=303] epoch 027 train 0.23337 val_avg 0.40191 (empty 0.43398 full 0.36703)
+[PEMSBAY seed=303] epoch 028 train 0.22997 val_avg 0.39288 (empty 0.42746 full 0.35558)
+[PEMSBAY seed=303] epoch 029 train 0.22973 val_avg 0.39500 (empty 0.42775 full 0.35717)
+[PEMSBAY seed=303] epoch 030 train 0.23024 val_avg 0.39559 (empty 0.42765 full 0.35829)
+[PEMSBAY seed=303] epoch 031 train 0.22899 val_avg 0.39882 (empty 0.42995 full 0.36367)
+[PEMSBAY seed=303] epoch 032 train 0.22678 val_avg 0.39451 (empty 0.42768 full 0.35791)
+[PEMSBAY seed=303] epoch 033 train 0.22704 val_avg 0.39601 (empty 0.42899 full 0.35903)
+[PEMSBAY seed=303] epoch 034 train 0.22445 val_avg 0.39812 (empty 0.43208 full 0.36094)
+[PEMSBAY seed=303] epoch 035 train 0.22365 val_avg 0.39661 (empty 0.43044 full 0.35925)
+[PEMSBAY seed=303] epoch 036 train 0.22408 val_avg 0.39726 (empty 0.43062 full 0.35999)
+early stop at epoch 36
+{
+  "best_epoch": 27,
+  "best_validation_average_mse": 0.3928821634472115,
+  "wall_seconds": 431.71862530708313
+}

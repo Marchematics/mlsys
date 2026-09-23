@@ -1,0 +1,51 @@
+{
+  "run_id": "R076_traffic_utility_observability",
+  "status": "diagnostic_probe",
+  "config": {
+    "seed": 404,
+    "states_per_episode": 4,
+    "candidate_count": 16,
+    "budget": 4,
+    "feature_definition": {
+      "x1": "raw query/selected/candidate history interactions",
+      "x2": "x1 plus scalar expert response summaries",
+      "x3": "x2 plus full expert forecast trajectories and delta"
+    }
+  },
+  "results": {
+    "x1": {
+      "feature_dim": 61,
+      "metrics": {
+        "mae": 0.040501105346753566,
+        "spearman": 0.17236513799439124,
+        "positive_auc": 0.6397741674616412,
+        "top1_accuracy": 0.13125,
+        "one_step_regret": 0.08068493645634589,
+        "positive_rate": 0.4957852228794806
+      }
+    },
+    "x2": {
+      "feature_dim": 65,
+      "metrics": {
+        "mae": 0.037087206830231784,
+        "spearman": 0.39020013299929324,
+        "positive_auc": 0.8282978168139945,
+        "top1_accuracy": 0.28475,
+        "one_step_regret": 0.06668903894342657,
+        "positive_rate": 0.4957852228794806
+      }
+    },
+    "x3": {
+      "feature_dim": 101,
+      "metrics": {
+        "mae": 0.037013281578138095,
+        "spearman": 0.3909769206643978,
+        "positive_auc": 0.8349488055915274,
+        "top1_accuracy": 0.262375,
+        "one_step_regret": 0.0654436031879668,
+        "positive_rate": 0.4957852228794806
+      }
+    }
+  },
+  "wall_seconds": 58.481799840927124
+}

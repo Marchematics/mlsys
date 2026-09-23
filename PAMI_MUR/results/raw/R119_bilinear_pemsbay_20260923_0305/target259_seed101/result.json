@@ -1,0 +1,170 @@
+{
+  "run_id": "PAMI_strong_backbone_rmur",
+  "dataset": "PEMSBAY",
+  "target_sensor": 259,
+  "seed": 101,
+  "config": {
+    "seed": 101,
+    "candidate_count": 16,
+    "budget": 4,
+    "response_dim": 19,
+    "response_components": 0,
+    "pool_mode": "correlated",
+    "curvature_corrected": false,
+    "router_kind": "bilinear",
+    "q_values": [
+      4,
+      8
+    ],
+    "router_epochs": 20,
+    "ranking_beta": 1.0,
+    "device": "cuda:0"
+  },
+  "metrics": {
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.0,
+      "mean_selected_contexts": 0.0
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.03767549991607666,
+      "negative_transfer_rate": 0.491,
+      "mean_utility_recovery": -53350.859375,
+      "mean_selected_contexts": 16.0
+    },
+    "random": {
+      "mean_prediction_gain": 0.04376929625868797,
+      "negative_transfer_rate": 0.47,
+      "mean_utility_recovery": -45927.8359375,
+      "mean_selected_contexts": 4.0
+    },
+    "relevance": {
+      "mean_prediction_gain": 0.05190637335181236,
+      "negative_transfer_rate": 0.5025,
+      "mean_utility_recovery": -64411.43359375,
+      "mean_selected_contexts": 4.0
+    },
+    "mmr": {
+      "mean_prediction_gain": 0.06182718276977539,
+      "negative_transfer_rate": 0.516,
+      "mean_utility_recovery": -87134.6953125,
+      "mean_selected_contexts": 4.0
+    },
+    "facility_location": {
+      "mean_prediction_gain": 0.039289455860853195,
+      "negative_transfer_rate": 0.482,
+      "mean_utility_recovery": -44387.8828125,
+      "mean_selected_contexts": 4.0
+    },
+    "dpp": {
+      "mean_prediction_gain": 0.02720830775797367,
+      "negative_transfer_rate": 0.495,
+      "mean_utility_recovery": -49897.40234375,
+      "mean_selected_contexts": 4.0
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.0665273442864418,
+      "negative_transfer_rate": 0.5105,
+      "mean_utility_recovery": -84820.0234375,
+      "mean_selected_contexts": 4.0
+    },
+    "cached_mur": {
+      "mean_prediction_gain": 0.03818611800670624,
+      "negative_transfer_rate": 0.4705,
+      "mean_utility_recovery": -40038.91796875,
+      "mean_selected_contexts": 3.432
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.1497310847043991,
+      "negative_transfer_rate": 0.0355,
+      "mean_utility_recovery": 0.7609814405441284,
+      "mean_selected_contexts": 3.5035
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.20316268503665924,
+      "negative_transfer_rate": 0.0175,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 2.1135
+    },
+    "ranked_response_q4": {
+      "mean_prediction_gain": 0.05823931843042374,
+      "negative_transfer_rate": 0.4675,
+      "mean_utility_recovery": -55560.90234375,
+      "mean_selected_contexts": 1.842
+    },
+    "ranked_response_q8": {
+      "mean_prediction_gain": 0.055429548025131226,
+      "negative_transfer_rate": 0.5005,
+      "mean_utility_recovery": -83675.40625,
+      "mean_selected_contexts": 2.601
+    }
+  },
+  "expert_rows": {
+    "base_only": 0,
+    "pool_all": 0,
+    "random": 0,
+    "relevance": 0,
+    "mmr": 0,
+    "facility_location": 0,
+    "dpp": 0,
+    "static_utility": 0,
+    "cached_mur": 0,
+    "oracle_static": 34000,
+    "oracle_greedy": 127219,
+    "ranked_response_q4": 40000,
+    "ranked_response_q8": 72000
+  },
+  "evaluation_rows": 28000,
+  "gate": {
+    "ranked_response_q4": {
+      "gain_over_zero": {
+        "mean": 0.05823932008398697,
+        "low": 0.013182728731372835,
+        "high": 0.1032959114366011
+      },
+      "gain_over_static": {
+        "mean": -0.008288027472561226,
+        "low": -0.047672609550346745,
+        "high": 0.031096554605224296
+      },
+      "gain_over_cached": {
+        "mean": 0.020053202773910015,
+        "low": -0.03652599620135788,
+        "high": 0.07663240174917792
+      },
+      "headroom_recovery": -1.712315665356103
+    },
+    "ranked_response_q8": {
+      "gain_over_zero": {
+        "mean": 0.05542954332008958,
+        "low": 0.0111761346960641,
+        "high": 0.09968295194411506
+      },
+      "gain_over_static": {
+        "mean": -0.011097804338438436,
+        "low": -0.041250725324601806,
+        "high": 0.019055116647724937
+      },
+      "gain_over_cached": {
+        "mean": 0.017243426179978996,
+        "low": -0.03919580548641591,
+        "high": 0.0736826578463739
+      },
+      "headroom_recovery": -1.7649019698616797
+    }
+  },
+  "finetune": {
+    "epochs": 10,
+    "final_train_mse": 0.24865887212753296,
+    "validation_selected": true,
+    "best_epoch": 8,
+    "best_validation_mse": 0.44627562165260315
+  },
+  "expert_profile": {
+    "expert_calls": 308,
+    "expert_rows": 615254,
+    "expert_seconds": 8.776999555528164
+  },
+  "wall_seconds": 51.66472387313843
+}

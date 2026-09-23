@@ -1,0 +1,143 @@
+{
+ "run_root": "/root/icl_ess_threshold/KBS_MUR/results/raw/R159_gate_20260928_1000",
+ "datasets": {
+  "METRLA": {
+   "episodes": 24000,
+   "router_mean": 0.015815623104572296,
+   "pool_mean": 0.012065032497048378,
+   "router_wins_fraction": 0.5852916666666667,
+   "oracle_gate_mean": 0.05498021841049194,
+   "signals": {
+    "gate_screen_margin": {
+     "auc": 0.49461222998323484,
+     "threshold": 0.0005456977756693959,
+     "held_out_gate_mean": 0.012928587384521961,
+     "held_out_pool_mean": 0.013552692718803883,
+     "held_out_router_mean": 0.013059336692094803,
+     "gate_minus_pool": -0.0006241053342819214,
+     "route_fraction": 0.9090833333333334
+    },
+    "gate_pred_margin": {
+     "auc": 0.4910724600110446,
+     "threshold": 0.0065980674233287575,
+     "held_out_gate_mean": 0.012720981612801552,
+     "held_out_pool_mean": 0.013552692718803883,
+     "held_out_router_mean": 0.013059336692094803,
+     "gate_minus_pool": -0.0008317111060023308,
+     "route_fraction": 0.9336666666666666
+    },
+    "gate_pred_top1": {
+     "auc": 0.5146655322587529,
+     "threshold": -0.04379254337400198,
+     "held_out_gate_mean": 0.012076346203684807,
+     "held_out_pool_mean": 0.013552692718803883,
+     "held_out_router_mean": 0.013059336692094803,
+     "gate_minus_pool": -0.0014763465151190758,
+     "route_fraction": 0.9136666666666666
+    },
+    "gate_response_norm": {
+     "auc": 0.52127844537011,
+     "threshold": 0.2879342318326235,
+     "held_out_gate_mean": 0.012042365968227386,
+     "held_out_pool_mean": 0.013552692718803883,
+     "held_out_router_mean": 0.013059336692094803,
+     "gate_minus_pool": -0.0015103267505764961,
+     "route_fraction": 0.8886666666666667
+    }
+   },
+   "best_signal": "gate_screen_margin"
+  },
+  "PEMS04": {
+   "episodes": 24000,
+   "router_mean": 0.036382436752319336,
+   "pool_mean": 0.03498914837837219,
+   "router_wins_fraction": 0.49366666666666664,
+   "oracle_gate_mean": 0.05349036306142807,
+   "signals": {
+    "gate_screen_margin": {
+     "auc": 0.5023046267089964,
+     "threshold": 0.00021552657242864375,
+     "held_out_gate_mean": 0.03569137677550316,
+     "held_out_pool_mean": 0.03532551974058151,
+     "held_out_router_mean": 0.03568677976727486,
+     "gate_minus_pool": 0.0003658570349216461,
+     "route_fraction": 0.9695
+    },
+    "gate_pred_margin": {
+     "auc": 0.48071464535532143,
+     "threshold": 0.021166710928082467,
+     "held_out_gate_mean": 0.03553973510861397,
+     "held_out_pool_mean": 0.03532551974058151,
+     "held_out_router_mean": 0.03568677976727486,
+     "gate_minus_pool": 0.00021421536803245544,
+     "route_fraction": 0.956
+    },
+    "gate_pred_top1": {
+     "auc": 0.48560525988836434,
+     "threshold": -0.0056706055731046805,
+     "held_out_gate_mean": 0.03578868508338928,
+     "held_out_pool_mean": 0.03532551974058151,
+     "held_out_router_mean": 0.03568677976727486,
+     "gate_minus_pool": 0.0004631653428077698,
+     "route_fraction": 0.88725
+    },
+    "gate_response_norm": {
+     "auc": 0.5061355642783131,
+     "threshold": 1.4067289577424524,
+     "held_out_gate_mean": 0.03829995542764664,
+     "held_out_pool_mean": 0.03532551974058151,
+     "held_out_router_mean": 0.03568677976727486,
+     "gate_minus_pool": 0.0029744356870651245,
+     "route_fraction": 0.3545833333333333
+    }
+   },
+   "best_signal": "gate_response_norm"
+  },
+  "PEMS08": {
+   "episodes": 24000,
+   "router_mean": 0.03009673021733761,
+   "pool_mean": 0.034141410142183304,
+   "router_wins_fraction": 0.468125,
+   "oracle_gate_mean": 0.046977538615465164,
+   "signals": {
+    "gate_screen_margin": {
+     "auc": 0.4955008087555832,
+     "threshold": 0.013640388846397395,
+     "held_out_gate_mean": 0.037226252257823944,
+     "held_out_pool_mean": 0.03780592232942581,
+     "held_out_router_mean": 0.03398295119404793,
+     "gate_minus_pool": -0.0005796700716018677,
+     "route_fraction": 0.0675
+    },
+    "gate_pred_margin": {
+     "auc": 0.48166270525474103,
+     "threshold": 0.5869489824399352,
+     "held_out_gate_mean": 0.0369676910340786,
+     "held_out_pool_mean": 0.03780592232942581,
+     "held_out_router_mean": 0.03398295119404793,
+     "gate_minus_pool": -0.0008382312953472137,
+     "route_fraction": 0.056916666666666664
+    },
+    "gate_pred_top1": {
+     "auc": 0.48822692780433535,
+     "threshold": 0.8690170269459484,
+     "held_out_gate_mean": 0.03590908646583557,
+     "held_out_pool_mean": 0.03780592232942581,
+     "held_out_router_mean": 0.03398295119404793,
+     "gate_minus_pool": -0.0018968358635902405,
+     "route_fraction": 0.05675
+    },
+    "gate_response_norm": {
+     "auc": 0.4941422458041719,
+     "threshold": 1.946785369887948,
+     "held_out_gate_mean": 0.03839769959449768,
+     "held_out_pool_mean": 0.03780592232942581,
+     "held_out_router_mean": 0.03398295119404793,
+     "gate_minus_pool": 0.0005917772650718689,
+     "route_fraction": 0.11458333333333333
+    }
+   },
+   "best_signal": "gate_response_norm"
+  }
+ }
+}

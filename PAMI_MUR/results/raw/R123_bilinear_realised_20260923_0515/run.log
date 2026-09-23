@@ -1,0 +1,35 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+=== cifar10: 10 classes, train episodes 240, test episodes 80, head=bilinear ===
+    prototype epoch 50/200 train_ce=1.0960
+    prototype epoch 100/200 train_ce=1.0854
+    prototype epoch 150/200 train_ce=1.0254
+    prototype epoch 200/200 train_ce=1.0052
+{"benchmark": "cifar10", "seed": 101, "bilinear_q4_forced": 1.6908120580460309, "frozen_q4_forced": 1.7011804198539622, "static": 1.7125085398998585, "cached": 1.4881411813913952, "oracle_greedy": 1.764446736522114, "h_state": 0.027294881770810717, "wall": 71.9}
+    prototype epoch 50/200 train_ce=1.1645
+    prototype epoch 100/200 train_ce=1.0209
+    prototype epoch 150/200 train_ce=1.0460
+    prototype epoch 200/200 train_ce=0.8992
+{"benchmark": "cifar10", "seed": 202, "bilinear_q4_forced": 1.6972425240043336, "frozen_q4_forced": 1.7099199196317585, "static": 1.7084288793227558, "cached": 1.7086703413541264, "oracle_greedy": 1.755748321576005, "h_state": 0.025703324029424098, "wall": 70.1}
+    prototype epoch 50/200 train_ce=1.1024
+    prototype epoch 100/200 train_ce=0.9820
+    prototype epoch 150/200 train_ce=0.9672
+    prototype epoch 200/200 train_ce=1.0001
+{"benchmark": "cifar10", "seed": 303, "bilinear_q4_forced": 1.700661396774946, "frozen_q4_forced": 1.7110976446991075, "static": 1.7130421085040222, "cached": 1.6295892605881868, "oracle_greedy": 1.76648867143765, "h_state": 0.027878059053357374, "wall": 68.5}
+=== dtd: 47 classes, train episodes 188, test episodes 94, head=bilinear ===
+    prototype epoch 50/200 train_ce=2.4613
+    prototype epoch 100/200 train_ce=2.3555
+    prototype epoch 150/200 train_ce=2.2645
+    prototype epoch 200/200 train_ce=2.1989
+{"benchmark": "dtd", "seed": 101, "bilinear_q4_forced": 2.0592933841429617, "frozen_q4_forced": 2.027211732769105, "static": 2.033348738641879, "cached": 1.9597026741078056, "oracle_greedy": 2.1592921988654217, "h_state": 0.0021279916771341522, "wall": 165.5}
+    prototype epoch 50/200 train_ce=2.3665
+    prototype epoch 100/200 train_ce=2.4477
+    prototype epoch 150/200 train_ce=2.3962
+    prototype epoch 200/200 train_ce=2.2086
+{"benchmark": "dtd", "seed": 202, "bilinear_q4_forced": 2.035869583869818, "frozen_q4_forced": 2.0170346585032193, "static": 2.0371803303383684, "cached": 1.8676786118518935, "oracle_greedy": 2.147488636820845, "h_state": 0.006272312196770844, "wall": 174.7}
+    prototype epoch 50/200 train_ce=2.2477
+    prototype epoch 100/200 train_ce=2.4079
+    prototype epoch 150/200 train_ce=2.2415
+    prototype epoch 200/200 train_ce=2.3029
+{"benchmark": "dtd", "seed": 303, "bilinear_q4_forced": 2.0403722761604275, "frozen_q4_forced": 2.0104546451742165, "static": 2.052599333697213, "cached": 1.9291167360100618, "oracle_greedy": 2.154112609963344, "h_state": 0.003525098799693237, "wall": 161.4}
+{"finished_utc": "2026-09-22T21:27:52Z", "failures": {}}

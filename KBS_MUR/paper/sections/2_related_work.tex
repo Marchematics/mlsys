@@ -1,0 +1,85 @@
+\section{Related Work}
+
+Selection of auxiliary contexts has been studied mainly through the content of
+the candidates. Retrieval and demonstration selection choose examples for a
+frozen predictor \citep{brown2020language,min2022rethinking}, and many
+selection rules score candidates by similarity to the query
+\citep{liu2022what,rubin2022learning,zhang2022active,su2023selective}. Other
+work studies prompt-order sensitivity and calibration
+\citep{lu2022fantastically,zhao2021calibrate}, retrieval-augmented prediction
+\citep{guu2020realm,lewis2020retrieval,karpukhin2020dense,borgeaud2022improving,izacard2023atlas,shi2024replug,asai2024selfrag},
+and the effect of context composition on how a model uses retrieved
+information \citep{liu2024lost}. Recent KBS studies likewise make external
+information acquisition adaptive, including structured engineering-knowledge
+retrieval \citep{siddharth2024retrieval}, causal and conflict-aware retrieval
+\citep{crgs2026causal}, adaptive multi-hop evidence retrieval
+\citep{acra2025retrieval}, and pipelines that adapt the granularity of the
+retrieved context \citep{morenocediel2026optimising}. A second family enforces
+diversity or
+coverage, using penalties for repeated content or submodular objectives
+\citep{carbonell1998use,gupta-etal-2023-coverage,levy2023diverse}, and listwise
+rerankers compare candidate sets directly
+\citep{nogueira2019passage,ma2023zero,qin2024large,sachan2022improving}. These
+methods determine which candidates are relevant or complementary in content.
+Relevance is computed from the candidate and the query alone, while diversity
+and coverage objectives are set functions of the selected content; none of them
+is defined through the effect of a candidate on the predictor's loss.
+
+A smaller line of work values candidates through their effect on the
+prediction. Outcome-aware selection estimates the incremental utility of a
+demonstration relative to an empty prompt \citep{hashimoto-etal-2024-take}, and
+data valuation and influence estimation attribute a model's output to training
+examples
+\citep{ghorbani2019data,koh2017understanding,pruthi2020estimating,ilyas2022datamodels}.
+These approaches define value with respect to the empty set or to a fixed
+reference, which is the standalone utility $u(j\mid\emptyset)$ in our
+notation. The difficulty of using auxiliary information well is also visible in
+recent KBS work on negative transfer, where task-specific information is
+relearned to suppress harmful cross-task transfer \citep{ant2025negative} and
+source-domain knowledge is selectively integrated before distillation
+\citep{liang2026parameter}. Such methods decide what should be transferred at the task
+or domain level; our object is the candidate-level marginal $m(j\mid A)$ with
+respect to a nonempty, evolving selected set, and it coincides with the
+standalone utility only at the first selection.
+
+Set-selection methods supply the structural counterpart. Submodular objectives
+formalize coverage, diversity, and diminishing returns
+\citep{lin2011class,nemhauser1978analysis,krause2014submodular}, determinantal
+point processes model diverse subsets probabilistically
+\citep{kulesza2012determinantal}, and adaptive submodularity and influence
+maximization extend the tools to sequential decisions
+\citep{golovin2011adaptive,leskovec2007cost}. KBS has also studied adaptive
+subset construction through feature-selection objectives, including
+model-independent diversity-based importance \citep{mousavi2025vsi} and
+graph-regularized selection under partial supervision \citep{xie2025partial};
+such objectives select informative or nonredundant input dimensions, whereas
+R-MUR evaluates an auxiliary context through its incremental effect on the
+downstream predictor. Classical monotone formulations reward every additional
+element, and a context can instead increase the loss, so the marginal utility
+we estimate may be negative; this is the phenomenon that the transfer
+literature calls negative transfer
+\citep{pan2010survey,torrey2010transfer,wang2019characterizing}.
+
+Learned routing treats selection as a decision problem. Mixture-of-experts
+systems route inputs to expert subsets
+\citep{jacobs1991adaptive,shazeer2017outrageously,zhou2022mixture}, sparse and
+soft routing architectures reduce computation while increasing capacity
+\citep{fedus2022switch,lewis2021base,roller2021hash,puigcerver2024sparse}, and
+routing networks select computation paths across tasks
+\citep{rosenbaum2018routing,ma2018modeling}. Adaptive routing has recently
+appeared in KBS across several settings: expert activation conditioned on
+temporal behaviour patterns \citep{chen2024bpmoe}, expert routing by attention
+over multimodal state \citep{dream2026routing}, sparse expert selection for
+collaborative perception driven by agent-specific information
+\citep{cogmoe2026sparse}, in-context experts for sequential recommendation
+\citep{sun2025adaptive}, and query-specific intervention selection from
+model-behaviour signals \citep{failuremode2026routing}. These studies establish the value
+of adaptive routing, but the routed object is an expert, an intervention, or a
+computational component. Decision-focused learning links
+prediction quality to downstream decision quality
+\citep{bertsimas2020predictive,elmachtoub2022smart,wilder2019melding,mandi2024decision},
+and sequential selection is related to bandit exploration and off-policy value
+estimation \citep{auer2002finite,dudik2011doubly}. R-MUR belongs to this line
+but routes auxiliary contexts rather than computation or model components, and
+it keeps the predictor fixed so that the routing target is their
+state-conditioned marginal effect on end-task loss.

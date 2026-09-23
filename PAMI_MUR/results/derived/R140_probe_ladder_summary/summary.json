@@ -1,0 +1,155 @@
+{
+ "run": "R140",
+ "date": "2026-09-23",
+ "question": "Can the identifiability probe (diagnose_observability.py) serve as a per-cell deployment statistic that orders expert rungs by realized value?",
+ "design": "Two ladder extremes (transformer 1-layer 'small', anchor MSE .3721; transformer 3-layer 'large', anchor MSE .3562), METR-LA, seed 101, three targets (0, 58, 147), 2000 train / 1200 test episodes, ridge-only probes, 5-fold style held-out evaluation as implemented.",
+ "per_cell": {
+  "small": {
+   "t0": {
+    "oracle": 0.21006271251632522,
+    "random": 0.05008436310432444,
+    "random_over_oracle": 0.2384257658313923,
+    "so_r2": 0.01647197054640903,
+    "so_rank": 0.025151960784313723,
+    "so_poo": 0.3266993685098551,
+    "so_excess_over_random": 0.08827360267846279,
+    "r_r2": -0.01842577009219415,
+    "r_rank": -0.1708455882352941,
+    "r_poo": 0.2793730884132341,
+    "r_excess_over_random": 0.040947322581841805
+   },
+   "t58": {
+    "oracle": 0.14669752937547553,
+    "random": 0.03196166628282905,
+    "random_over_oracle": 0.21787460510682813,
+    "so_r2": -0.028909918949115543,
+    "so_rank": 0.01625,
+    "so_poo": 0.2169945428941726,
+    "so_excess_over_random": -0.0008800622126555191,
+    "r_r2": -0.05552113707522022,
+    "r_rank": 0.020990196078431375,
+    "r_poo": 0.20761567280325974,
+    "r_excess_over_random": -0.010258932303568391
+   },
+   "t147": {
+    "oracle": 0.11828012854365322,
+    "random": 0.029207073862489778,
+    "random_over_oracle": 0.24693136727282494,
+    "so_r2": 0.00025344680557470856,
+    "so_rank": -0.06803921568627452,
+    "so_poo": 0.3019874235312366,
+    "so_excess_over_random": 0.055056056258411645,
+    "r_r2": -0.008043600853625543,
+    "r_rank": -0.06577450980392158,
+    "r_poo": 0.27253392657114744,
+    "r_excess_over_random": 0.025602559298322503
+   }
+  },
+  "large": {
+   "t0": {
+    "oracle": 0.22952047531473604,
+    "random": 0.03505003035206755,
+    "random_over_oracle": 0.15270981947908685,
+    "so_r2": -0.05368745252692353,
+    "so_rank": 0.015370098039215687,
+    "so_poo": 0.3159967955851753,
+    "so_excess_over_random": 0.16328697610608844,
+    "r_r2": -0.04456274419823725,
+    "r_rank": -0.029218137254901962,
+    "r_poo": 0.24369490280104916,
+    "r_excess_over_random": 0.09098508332196231
+   },
+   "t58": {
+    "oracle": 0.16844225395044002,
+    "random": 0.01941741538719119,
+    "random_over_oracle": 0.11527639254283717,
+    "so_r2": -0.0030861922568328204,
+    "so_rank": 0.0641470588235294,
+    "so_poo": 0.16244176846491176,
+    "so_excess_over_random": 0.04716537592207459,
+    "r_r2": 0.014598374812025638,
+    "r_rank": 0.15870833333333334,
+    "r_poo": 0.19912923759967602,
+    "r_excess_over_random": 0.08385284505683885
+   },
+   "t147": {
+    "oracle": 0.12494605324114673,
+    "random": 0.03673629887261389,
+    "random_over_oracle": 0.2940172812158587,
+    "so_r2": 0.012503260113597925,
+    "so_rank": -0.07484803921568627,
+    "so_poo": 0.2841993297307228,
+    "so_excess_over_random": -0.009817951485135867,
+    "r_r2": 0.09461631698385742,
+    "r_rank": 0.10829166666666666,
+    "r_poo": 0.2212861868698552,
+    "r_excess_over_random": -0.07273109434600347
+   }
+  }
+ },
+ "aggregate": {
+  "small": {
+   "so_r2": [
+    -0.004061500532377267,
+    0.018776635329454443
+   ],
+   "so_excess": [
+    0.047483198908072975,
+    0.03678863155211484
+   ],
+   "r_r2": [
+    -0.027330169340346638,
+    0.020379652530503434
+   ],
+   "r_excess": [
+    0.018763649858865306,
+    0.02145690481854612
+   ]
+  },
+  "large": {
+   "so_r2": [
+    -0.014756794890052808,
+    0.028254260260851666
+   ],
+   "so_excess": [
+    0.0668781335143424,
+    0.0720313524238318
+   ],
+   "r_r2": [
+    0.02155064919921527,
+    0.0570318820616936
+   ],
+   "r_excess": [
+    0.034035611344265894,
+    0.07555159071183112
+   ]
+  }
+ },
+ "hypothesis_under_test": "Realized share should track the probe's out-of-sample R^2 for the marginal (refinement of Corollary 1: residual predictability governs realizable value).",
+ "outcome": "refuted at attainable sample sizes",
+ "findings": [
+  "Probe R^2 is statistically indistinguishable from zero for BOTH extremes: state-only mean -0.004 (sd 0.019) for the weak rung and -0.015 (sd 0.028) for the strong rung, over three targets with 1200 test episodes each.",
+  "The probe's value statistic must be read against the per-cell random baseline, which varies from 0.115 to 0.294 of the oracle across these six cells. Excess over random is +0.048 (weak rung) and +0.067 (strong rung) in units of oracle, with per-cell spread of 0.09.",
+  "The ladder's own effect on the same two rungs is 0.268 vs 0.063 realized share, a 0.205 gap in the same units. The probe's excess is roughly a quarter of the effect it is supposed to explain and an order of magnitude noisier relative to its size.",
+  "The probe's ordering is therefore not merely noisy but uninformative: it cannot resolve an effect the ladder protocol resolves with paired confidence intervals on eight targets.",
+  "Consequence: the proposed deployment rule 'if probe R^2 < tau then fall back to the whole pool' is UNSUPPORTED and is not shipped. All probe R^2 in this study lie below any usable tau, so the rule would degenerate to always falling back."
+ ],
+ "also_recorded": {
+  "anchor_mse_orders_rungs_within_a_family": "Within the four neural rungs anchor MSE orders realized share perfectly (Spearman +1.0): higher anchor error, more realizable value, as Corollary 1 predicts. The relation breaks when the ridge rung is included (ridge has the worst anchor MSE .3782 but a share of .198, below the weak neural rung's .268).",
+  "slope": "Fitted within the neural family the slope is 10.5 realized-share points per unit anchor MSE, i.e. a 1% anchor-MSE change (0.0036) corresponds to about +0.038 realized share. Over all five rungs the slope halves to 4.9 and monotonicity fails.",
+  "interpretation": "The residual magnitude is a sufficient statistic for realizable value only within a fixed hypothesis class. Across classes the inductive bias changes which candidates are jointly improvable, so anchor error and residual geometry decouple. This is the cross-family exception already noted in the ladder discussion, now quantified."
+ },
+ "provenance": {
+  "raw_probe_files": [
+   "results/derived/R140_probe_small_t0/observability.json",
+   "results/derived/R140_probe_small_t58/observability.json",
+   "results/derived/R140_probe_small_t147/observability.json",
+   "results/derived/R140_probe_large_t0/observability.json",
+   "results/derived/R140_probe_large_t58/observability.json",
+   "results/derived/R140_probe_large_t147/observability.json"
+  ],
+  "ladder": "results/derived/R138_cross_arch_ladder/cross_architecture_ladder.json",
+  "earlier_underpowered_run": "results/derived/R139_probe_{small,medium,large,deepsets}/observability.json (800/800, single target) - also failed to order the rungs",
+  "driver_log": "results/derived/R140_probe_deep.log"
+ }
+}

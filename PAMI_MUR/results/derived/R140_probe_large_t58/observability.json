@@ -1,0 +1,27 @@
+{
+  "dataset": "METRLA",
+  "target": 58,
+  "seed": 101,
+  "test_episodes": 1200,
+  "oracle_static_gain": 0.16844225395044002,
+  "random_gain": 0.01941741538719119,
+  "marginal_std": 0.20333104394775176,
+  "probes": {
+    "state_only_ridge": {
+      "r2": -0.0030861922568328204,
+      "within_episode_spearman": 0.0641470588235294,
+      "policy_gain": 0.027362057615925247,
+      "policy_over_oracle": 0.16244176846491176,
+      "permutation_r2": -0.004395582026526901,
+      "in_sample_r2": 0.022514576542471243
+    },
+    "state_plus_response_ridge": {
+      "r2": 0.014598374812025638,
+      "within_episode_spearman": 0.15870833333333334,
+      "policy_gain": 0.03354177760872214,
+      "policy_over_oracle": 0.19912923759967602,
+      "permutation_r2": -0.0018858454576271555,
+      "in_sample_r2": 0.69484877356114
+    }
+  }
+}

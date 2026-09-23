@@ -1,0 +1,63 @@
+{
+  "run_id": "R202_subset_baselines",
+  "status": "confirmatory",
+  "dataset": "METRLA",
+  "target_sensor": 79,
+  "seed": 101,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "relevance_weight": 0.5,
+    "policies": [
+      "facility_location",
+      "facility_location_relevance",
+      "dpp_greedy",
+      "kcenter"
+    ],
+    "candidate_sensors": [
+      2,
+      28,
+      78,
+      183,
+      132,
+      122,
+      64,
+      40,
+      29,
+      68,
+      103,
+      102,
+      176,
+      205,
+      9,
+      109
+    ]
+  },
+  "metrics": {
+    "facility_location": {
+      "mean_prediction_gain": -0.03283943980932236,
+      "negative_transfer_rate": 0.682,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "facility_location_relevance": {
+      "mean_prediction_gain": -0.015617918223142624,
+      "negative_transfer_rate": 0.716,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "dpp_greedy": {
+      "mean_prediction_gain": -0.015873633325099945,
+      "negative_transfer_rate": 0.7115,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "kcenter": {
+      "mean_prediction_gain": -0.026798006147146225,
+      "negative_transfer_rate": 0.7105,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    }
+  },
+  "wall_seconds": 6.139197587966919
+}

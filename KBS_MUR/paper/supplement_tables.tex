@@ -1,0 +1,175 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Per-seed controlled redundancy ladder at $K=16$ and $B=4$. Gains are loss reductions relative to the anchor-only predictor.}
+\label{tab:supp-redundancy}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+$r_{\mathrm{dup}}$ & Seed & Oracle-Static & R-MUR & Oracle-Greedy & $H_{\mathrm{state}}$\\
+\midrule
+0 & 101 & .691 & .663 & .691 & .000 \\
+0 & 202 & .678 & .655 & .678 & .000 \\
+0 & 303 & .697 & .677 & .697 & .000 \\
+0 & 404 & .692 & .669 & .692 & .000 \\
+0 & 505 & .681 & .653 & .681 & .000 \\
+0.25 & 101 & .517 & .502 & .585 & .115 \\
+0.25 & 202 & .509 & .489 & .574 & .113 \\
+0.25 & 303 & .518 & .510 & .584 & .114 \\
+0.25 & 404 & .523 & .516 & .588 & .111 \\
+0.25 & 505 & .513 & .497 & .575 & .108 \\
+0.5 & 101 & .353 & .369 & .450 & .216 \\
+0.5 & 202 & .347 & .361 & .442 & .215 \\
+0.5 & 303 & .353 & .366 & .449 & .213 \\
+0.5 & 404 & .350 & .366 & .451 & .224 \\
+0.5 & 505 & .353 & .364 & .444 & .204 \\
+0.75 & 101 & .176 & .206 & .247 & .286 \\
+0.75 & 202 & .175 & .205 & .244 & .283 \\
+0.75 & 303 & .179 & .208 & .250 & .282 \\
+0.75 & 404 & .179 & .217 & .253 & .293 \\
+0.75 & 505 & .176 & .207 & .246 & .285 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Per-seed candidate-count scaling under fixed redundancy. Normalized MAE divides pointwise error by the standard deviation of the true marginal targets. Decision accuracy counts a selection as correct when it attains the best true utility, including exact ties.}
+\label{tab:supp-candidate-scaling}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{rcccccccc}
+\toprule
+$K$ & Seed & R-MUR recovery & Normalized MAE & Positive margin & Strict top-1 & Decision accuracy & One-step regret\\
+\midrule
+4 & 101 & .961 & .387 & .205 & .470 & .873 & .0192 \\
+4 & 202 & .960 & .412 & .230 & .493 & .887 & .0164 \\
+4 & 303 & .969 & .426 & .216 & .491 & .890 & .0167 \\
+4 & 404 & .979 & .382 & .230 & .495 & .887 & .0201 \\
+4 & 505 & .969 & .408 & .221 & .492 & .883 & .0186 \\
+8 & 101 & .799 & .612 & .116 & .227 & .383 & .0654 \\
+8 & 202 & .809 & .565 & .111 & .237 & .403 & .0573 \\
+8 & 303 & .800 & .613 & .113 & .228 & .378 & .0666 \\
+8 & 404 & .843 & .556 & .112 & .252 & .416 & .0535 \\
+8 & 505 & .815 & .574 & .116 & .240 & .396 & .0608 \\
+16 & 101 & .687 & .698 & .071 & .174 & .285 & .0693 \\
+16 & 202 & .699 & .681 & .066 & .183 & .298 & .0656 \\
+16 & 303 & .709 & .687 & .071 & .185 & .301 & .0650 \\
+16 & 404 & .708 & .679 & .072 & .182 & .299 & .0667 \\
+16 & 505 & .684 & .684 & .071 & .176 & .289 & .0687 \\
+32 & 101 & .604 & .751 & .042 & .141 & .224 & .0608 \\
+32 & 202 & .600 & .733 & .041 & .141 & .220 & .0588 \\
+32 & 303 & .591 & .718 & .044 & .140 & .222 & .0618 \\
+32 & 404 & .586 & .728 & .044 & .137 & .222 & .0626 \\
+32 & 505 & .598 & .728 & .040 & .140 & .219 & .0586 \\
+64 & 101 & .470 & .718 & .025 & .089 & .136 & .0513 \\
+64 & 202 & .484 & .731 & .025 & .098 & .151 & .0482 \\
+64 & 303 & .479 & .756 & .023 & .096 & .155 & .0479 \\
+64 & 404 & .486 & .739 & .022 & .088 & .149 & .0484 \\
+64 & 505 & .480 & .751 & .023 & .094 & .146 & .0483 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Per-seed METR-LA observability probe. $\mathcal{X}_1$ uses cached context features, $\mathcal{X}_2$ adds scalar response summaries, and $\mathcal{X}_3$ adds full forecast trajectories. MAE is the mean absolute error and AUC is the area under the receiver operating characteristic curve.}
+\label{tab:supp-observability}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+Seed & Input & MAE & Spearman & Positive AUC & Top-1 & Regret\\
+\midrule
+101 & $\mathcal{X}_1$ & .0339 & .169 & .651 & .173 & .0635 \\
+101 & $\mathcal{X}_2$ & .0308 & .377 & .829 & .260 & .0503 \\
+101 & $\mathcal{X}_3$ & .0307 & .333 & .839 & .242 & .0505 \\
+202 & $\mathcal{X}_1$ & .0400 & .162 & .649 & .158 & .0677 \\
+202 & $\mathcal{X}_2$ & .0351 & .383 & .838 & .208 & .0538 \\
+202 & $\mathcal{X}_3$ & .0353 & .383 & .843 & .237 & .0531 \\
+303 & $\mathcal{X}_1$ & .0418 & .144 & .655 & .124 & .0796 \\
+303 & $\mathcal{X}_2$ & .0370 & .391 & .848 & .225 & .0580 \\
+303 & $\mathcal{X}_3$ & .0376 & .363 & .855 & .223 & .0623 \\
+404 & $\mathcal{X}_1$ & .0405 & .172 & .640 & .131 & .0807 \\
+404 & $\mathcal{X}_2$ & .0371 & .390 & .828 & .285 & .0667 \\
+404 & $\mathcal{X}_3$ & .0370 & .391 & .835 & .262 & .0654 \\
+505 & $\mathcal{X}_1$ & .0427 & .171 & .652 & .154 & .0765 \\
+505 & $\mathcal{X}_2$ & .0384 & .411 & .827 & .320 & .0559 \\
+505 & $\mathcal{X}_3$ & .0384 & .393 & .834 & .258 & .0563 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Structural headroom per dataset over 32 fixed targets and five runs (960 target-run evaluations). Every evaluation has positive headroom.}
+\label{tab:supp-headroom}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+Dataset & Mean headroom & Median headroom & Positive fraction\\
+\midrule
+METRLA & .097 & .088 & 1.000 \\
+PEMSBAY & .115 & .116 & 1.000 \\
+PEMS03 & .122 & .111 & 1.000 \\
+PEMS04 & .085 & .076 & 1.000 \\
+PEMS07 & .089 & .087 & 1.000 \\
+PEMS08 & .078 & .077 & 1.000 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Per-seed multi-target prediction gains for the learned policies, averaged over the 32 fixed targets of each dataset.}
+\label{tab:supp-multitarget}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrr}
+\toprule
+Dataset & Run & Standalone & Cached-only & R-MUR\\
+\midrule
+METRLA & 101 & .001 & .002 & .015 \\
+METRLA & 202 & .001 & .006 & .012 \\
+METRLA & 303 & .005 & .005 & .017 \\
+PEMSBAY & 101 & .023 & .027 & .055 \\
+PEMSBAY & 202 & .027 & .028 & .052 \\
+PEMSBAY & 303 & .031 & .030 & .060 \\
+PEMS03 & 101 & .015 & .015 & .027 \\
+PEMS03 & 202 & .016 & .017 & .029 \\
+PEMS03 & 303 & .014 & .014 & .025 \\
+PEMS04 & 101 & .024 & .025 & .035 \\
+PEMS04 & 202 & .025 & .024 & .035 \\
+PEMS04 & 303 & .025 & .025 & .037 \\
+PEMS07 & 101 & .014 & .014 & .028 \\
+PEMS07 & 202 & .017 & .016 & .029 \\
+PEMS07 & 303 & .014 & .015 & .028 \\
+PEMS08 & 101 & .025 & .025 & .034 \\
+PEMS08 & 202 & .024 & .024 & .033 \\
+PEMS08 & 303 & .024 & .025 & .033 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Content-based subset-selection baselines under the multi-target protocol, averaged over 32 fixed targets and three runs. None of these rules trains a model or evaluates the predictor during selection.}
+\label{tab:supp-subset-baselines}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & Facility location & DPP greedy & Facility loc. + rel. & $k$-center\\
+\midrule
+METRLA & -.021 & -.015 & -.017 & -.018 \\
+PEMSBAY & .008 & .005 & -.007 & -.014 \\
+PEMS03 & .009 & .007 & -.002 & .004 \\
+PEMS04 & .014 & .013 & .012 & .012 \\
+PEMS07 & .007 & .006 & -.002 & .003 \\
+PEMS08 & .017 & .012 & .013 & .009 \\
+\midrule
+Mean & .006 & .005 & -.000 & -.000 \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,104 @@
+\appendix
+\section{Proofs and Numerical Validation}
+\label{app:proofs}
+
+\subsection{Proof of \cref{prop:expansion}}
+Apply Taylor's theorem with Lagrange remainder to
+$t\mapsto\loss(f_A(x)+t\,\dAj(x),y)$ on $[0,1]$. There exists
+$\xi=\xi(x,y)$ on the segment with
+\begin{equation}
+ \loss(f_{A\cup\{j\}},y)
+ =
+ \loss(f_A,y)+\grad\loss(f_A,y)^\top \dAj
+ +\tfrac12 \dAj^\top\grad^2\loss(\xi,y)\dAj .
+\end{equation}
+Rearranging, subtracting $\lambda c_j$ and taking expectations gives
+\eqref{eq:prop-expansion}. Under the $L$-smoothness assumption
+$|\dAj^\top\grad^2\loss(\xi,y)\dAj|\leq L\|\dAj\|^2$ for every realisation,
+which yields \eqref{eq:prop-bound}.
+
+\subsection{Proof of \cref{prop:bregman}}
+The Bregman three-point identity states that for any $u,v,w$,
+$D_\phi(u,v)-D_\phi(u,w)=(\grad\phi(w)-\grad\phi(v))^\top(u-v)-D_\phi(v,w)$;
+both sides expand to the difference of
+$\phi(u)-\phi(v)-\langle\grad\phi(v),u-v\rangle$ and
+$\phi(u)-\phi(w)-\langle\grad\phi(w),u-w\rangle$. Set $u=y$, $v=f_A$ and
+$w=f_{A\cup\{j\}}$, take expectations, and subtract $\lambda c_j$.
+
+\subsection{Proof of \cref{prop:ce}}
+For $\loss(f,y)=-f_y+\log\sum_k e^{f_k}$ we have $\grad\loss=p-e_y$ and
+$\grad^2\loss=\diag(p)-pp^\top\succeq0$. Since
+$(\diag(p)-pp^\top)\mathbf 1=0$, the quadratic form is invariant to adding a
+constant to $v$, so $v^\top(\diag(p)-pp^\top)v=\Var_p(v)$ for the random
+variable taking value $v_k$ with probability $p_k$. Let $M=\max_k v_k$,
+$m=\min_k v_k$ and $\mu_p=\sum_k p_k v_k$. Bhatia--Davis gives
+$\Var_p(v)\leq(M-\mu_p)(\mu_p-m)\leq(M-m)^2/4$. Replacing $v$ by
+$v-\bar v\mathbf 1$ leaves the quadratic form and the range bound valid and
+makes the vector zero-sum, so $M\geq0\geq m$, $\|v\|^2\geq M^2+m^2$, and
+$(M-m)^2=(M+|m|)^2\leq2(M^2+m^2)\leq2\|v\|^2$. Hence
+$v^\top(\diag(p)-pp^\top)v\leq\tfrac12\|v\|^2$; the bound is attained at
+$p=(\tfrac12,\tfrac12,0,\dots)$, $v=(1,-1,0,\dots)/\sqrt2$, so the constant is
+tight. Applying \cref{prop:expansion} with $L=\tfrac12$ and
+$-\grad\loss(f_A,y)=e_y-p_A$ gives \eqref{eq:prop-ce}.
+
+\subsection{Proof of \cref{prop:suff} and \cref{cor:identifiability}}
+For squared loss \eqref{eq:prop-bregman} reads
+$\widetilde\marginal=\loss(f_A,y)-\loss(f_{A\cup\{j\}},y)-\lambda c_j
+=2\dAj^\top(y-f_A)-\|\dAj\|^2-\lambda c_j$. The response $\dAj=\dAj(x)$ is
+measurable with respect to $(x,A)$, so it can be taken outside the conditional
+expectation; the tower property gives \eqref{eq:prop-suff} with
+$\mu(x)=\E[y\mid x,A]$. Linearity in $\dAj$ and the response-only quadratic
+penalty follow immediately. If the predictor is conditionally calibrated,
+$\mu(x)=f_A(x)$ for every observable state, so $g_A\equiv0$ and the expected
+utility reduces to $-\|\dAj\|^2-\lambda c_j$.
+
+\subsection{Numerical validation}
+\label{app:validation}
+
+\paragraph{Squared loss (exactness).} Using the subset-capable nonlinear
+forecasting expert of \cref{sec:experiments} on held-out episodes, we compared
+the exact marginal $\loss(f_A,y)-\loss(f_{A\cup\{j\}},y)$ with the right-hand
+side of the squared-loss identity of \cref{prop:bregman}. Over 384 held-out
+(state, candidate) pairs the maximum absolute deviation is $3.3\times10^{-7}$ in
+normalised units. Unit tests enforce the same identity, the agreement between
+batched pair evaluation and explicit augmented-set evaluation, and the
+inertness of unselected candidates.
+
+\paragraph{Cross-entropy (two-sided bound).} For the frozen in-context
+classifier of regime C we collected 92{,}995 (state, candidate) samples together
+with 2{,}975{,}840 per-query rows and evaluated the sandwich of
+\cref{prop:ce}. The bound held in every sample at both aggregation levels
+(smallest upper slack $3.0\times10^{-8}$, smallest lower slack
+$1.0\times10^{-3}$), and the first-order term tracks the true marginal closely:
+Spearman $.971$ and $R^2=.853$ pooled, with per-benchmark Spearman between
+$.970$ and $.993$.
+
+\paragraph{Hessian constant.} The spectral bound of \cref{prop:ce} was checked
+numerically by maximising the Rayleigh quotient over the simplex for
+$C\in\{2,3,5,10,50\}$; the maximum is $0.5$ in every case, confirming that the
+constant is tight.
+
+\paragraph{Response sufficiency.} For the squared-loss expert we fitted the same
+ridge head twice on identical held-out state samples, once with state features
+only and once with state plus response features. The response features raise the
+out-of-sample $R^2$ from $-.89$ to $-.22$ on a held-out episode split, a gain of
+$.67$; the cross-entropy family shows the same direction with a Spearman
+correlation of $.97$ between the first-order term and the realised marginal.
+
+\begin{table}[t]
+ \centering
+ \small
+ \caption{Numerical validation of the response--utility relations.}
+ \label{tab:theory-validation}
+ \begin{tabular}{lll}
+  \toprule
+  Check & Object & Result \\
+  \midrule
+  Squared-loss identity & forecast expert & max.\ deviation $3.3\times10^{-7}$\\
+  Cross-entropy sandwich & in-context classifier & 0 violations / 92{,}995\\
+  First-order vs.\ marginal & in-context classifier & Spearman .971, $R^2$ .853\\
+  Response vs.\ state only & forecast expert & $R^2$ gain $+0.67$\\
+  Hessian spectral bound & softmax, all $C\le 50$ & maximum $=0.5$\\
+  \bottomrule
+ \end{tabular}
+\end{table}

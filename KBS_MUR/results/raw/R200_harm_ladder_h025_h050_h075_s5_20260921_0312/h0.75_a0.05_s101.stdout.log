@@ -1,0 +1,388 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:182: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 304: OS call failed or operation not supported on this OS (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:119.)
+  return torch._C._cuda_getDeviceCount() > 0
+{
+  "run_id": "R072_mur_conservative",
+  "status": "confirmatory",
+  "config": {
+    "candidate_count": 16,
+    "group_count": 16,
+    "budget": 4,
+    "redundancy_ratio": 0.5,
+    "harmful_fraction": 0.75,
+    "anchor_noise": 1.0,
+    "useful_residual_fraction": 0.1,
+    "harmful_residual_fraction": 1.8,
+    "seed": 101,
+    "train_episodes": 3000,
+    "test_episodes": 2500,
+    "epochs": 20,
+    "device": "cpu",
+    "calibration_alpha": 0.05,
+    "mmr_gamma_grid": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "mmr_gamma_selected": 0.0,
+    "mmr_validation": {
+      "0.0": {
+        "mean_prediction_gain": -0.30089778710603715,
+        "negative_transfer_rate": 0.8584,
+        "mean_utility_recovery": -4.001980316185311,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": -0.07522444677650929,
+        "mean_duplicate_selections": 0.5472,
+        "duplicate_selection_rate": 0.1368
+      },
+      "0.25": {
+        "mean_prediction_gain": -0.4224062695324421,
+        "negative_transfer_rate": 0.8992,
+        "mean_utility_recovery": -5.4091055608681895,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": -0.10560156738311052,
+        "mean_duplicate_selections": 0.0256,
+        "duplicate_selection_rate": 0.0064
+      },
+      "0.5": {
+        "mean_prediction_gain": -0.48272175630927083,
+        "negative_transfer_rate": 0.9212,
+        "mean_utility_recovery": -5.903068058693015,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": -0.12068043907731771,
+        "mean_duplicate_selections": 0.0172,
+        "duplicate_selection_rate": 0.0043
+      },
+      "1.0": {
+        "mean_prediction_gain": -0.5649800151348114,
+        "negative_transfer_rate": 0.944,
+        "mean_utility_recovery": -7.1473223890818005,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": -0.14124500378370286,
+        "mean_duplicate_selections": 0.0164,
+        "duplicate_selection_rate": 0.0041
+      }
+    },
+    "calibration_radius": 0.21767926216125488,
+    "free_threshold_grid": [
+      0.0,
+      0.00014841556549072266,
+      0.0012979567050933844,
+      0.0034195542335510257,
+      0.006415247917175293,
+      0.010417342185974121,
+      0.01588115096092224,
+      0.0228068232536316,
+      0.03135535120964052,
+      0.041180938482284546,
+      0.0528717875480652,
+      0.06781563758850098,
+      0.08632078170776372,
+      0.10880672931671144,
+      0.13839922845363617,
+      0.17208309173583994,
+      0.22550293803215046,
+      0.3096412539482117,
+      0.4562320530414584,
+      1.7641527652740479
+    ],
+    "free_threshold_selected": 0.22550293803215046,
+    "free_threshold_target_contexts": 0.1372,
+    "free_threshold_validation": {
+      "0.0": {
+        "mean_prediction_gain": 0.11599092932343483,
+        "negative_transfer_rate": 0.2208,
+        "mean_utility_recovery": 0.23499457497856857,
+        "mean_selected_contexts": 3.4588,
+        "mean_gain_per_selected_context": 0.037242834611359715,
+        "mean_duplicate_selections": 0.8172,
+        "duplicate_selection_rate": 0.21536666666666665
+      },
+      "0.00014841556549072266": {
+        "mean_prediction_gain": 0.11602176318764687,
+        "negative_transfer_rate": 0.2208,
+        "mean_utility_recovery": 0.2350053564578573,
+        "mean_selected_contexts": 3.4572,
+        "mean_gain_per_selected_context": 0.03727352835298309,
+        "mean_duplicate_selections": 0.8172,
+        "duplicate_selection_rate": 0.21546666666666664
+      },
+      "0.0012979567050933844": {
+        "mean_prediction_gain": 0.11617087289988995,
+        "negative_transfer_rate": 0.2196,
+        "mean_utility_recovery": 0.23640235636399357,
+        "mean_selected_contexts": 3.4276,
+        "mean_gain_per_selected_context": 0.037643801518576867,
+        "mean_duplicate_selections": 0.8076,
+        "duplicate_selection_rate": 0.21363333333333331
+      },
+      "0.0034195542335510257": {
+        "mean_prediction_gain": 0.11633323367536068,
+        "negative_transfer_rate": 0.2176,
+        "mean_utility_recovery": 0.23842104888613513,
+        "mean_selected_contexts": 3.3776,
+        "mean_gain_per_selected_context": 0.03834532808503371,
+        "mean_duplicate_selections": 0.7964,
+        "duplicate_selection_rate": 0.21196666666666666
+      },
+      "0.006415247917175293": {
+        "mean_prediction_gain": 0.11659040562808513,
+        "negative_transfer_rate": 0.214,
+        "mean_utility_recovery": 0.24369748072454842,
+        "mean_selected_contexts": 3.296,
+        "mean_gain_per_selected_context": 0.03997068641983164,
+        "mean_duplicate_selections": 0.7752,
+        "duplicate_selection_rate": 0.20806666666666665
+      },
+      "0.010417342185974121": {
+        "mean_prediction_gain": 0.11675447690188885,
+        "negative_transfer_rate": 0.2092,
+        "mean_utility_recovery": 0.24981078232164977,
+        "mean_selected_contexts": 3.1916,
+        "mean_gain_per_selected_context": 0.04153465515171476,
+        "mean_duplicate_selections": 0.7428,
+        "duplicate_selection_rate": 0.202
+      },
+      "0.01588115096092224": {
+        "mean_prediction_gain": 0.11719713346660138,
+        "negative_transfer_rate": 0.2,
+        "mean_utility_recovery": 0.26180180615752463,
+        "mean_selected_contexts": 3.0356,
+        "mean_gain_per_selected_context": 0.04417004523358656,
+        "mean_duplicate_selections": 0.698,
+        "duplicate_selection_rate": 0.19303333333333333
+      },
+      "0.0228068232536316": {
+        "mean_prediction_gain": 0.11743447845280171,
+        "negative_transfer_rate": 0.1876,
+        "mean_utility_recovery": 0.2687605691490575,
+        "mean_selected_contexts": 2.8488,
+        "mean_gain_per_selected_context": 0.04800510796396346,
+        "mean_duplicate_selections": 0.6432,
+        "duplicate_selection_rate": 0.18153333333333335
+      },
+      "0.03135535120964052": {
+        "mean_prediction_gain": 0.11784854758679866,
+        "negative_transfer_rate": 0.1708,
+        "mean_utility_recovery": 0.2796824573866041,
+        "mean_selected_contexts": 2.5812,
+        "mean_gain_per_selected_context": 0.054506419970244274,
+        "mean_duplicate_selections": 0.5692,
+        "duplicate_selection_rate": 0.16699999999999998
+      },
+      "0.041180938482284546": {
+        "mean_prediction_gain": 0.11791706525981427,
+        "negative_transfer_rate": 0.1496,
+        "mean_utility_recovery": 0.30090906643963494,
+        "mean_selected_contexts": 2.2708,
+        "mean_gain_per_selected_context": 0.06178431307018754,
+        "mean_duplicate_selections": 0.49,
+        "duplicate_selection_rate": 0.14996666666666666
+      },
+      "0.0528717875480652": {
+        "mean_prediction_gain": 0.11759773613512516,
+        "negative_transfer_rate": 0.118,
+        "mean_utility_recovery": 0.32248340202903963,
+        "mean_selected_contexts": 1.9488,
+        "mean_gain_per_selected_context": 0.07239040391161623,
+        "mean_duplicate_selections": 0.4096,
+        "duplicate_selection_rate": 0.1311
+      },
+      "0.06781563758850098": {
+        "mean_prediction_gain": 0.11610778883695602,
+        "negative_transfer_rate": 0.0828,
+        "mean_utility_recovery": 0.3482211536350049,
+        "mean_selected_contexts": 1.5904,
+        "mean_gain_per_selected_context": 0.08786357538550581,
+        "mean_duplicate_selections": 0.324,
+        "duplicate_selection_rate": 0.10986666666666665
+      },
+      "0.08632078170776372": {
+        "mean_prediction_gain": 0.11218506588935852,
+        "negative_transfer_rate": 0.0516,
+        "mean_utility_recovery": 0.3460788855504366,
+        "mean_selected_contexts": 1.2132,
+        "mean_gain_per_selected_context": 0.10854767974288691,
+        "mean_duplicate_selections": 0.234,
+        "duplicate_selection_rate": 0.08556666666666667
+      },
+      "0.10880672931671144": {
+        "mean_prediction_gain": 0.10244808784723282,
+        "negative_transfer_rate": 0.0224,
+        "mean_utility_recovery": 0.32986217746242585,
+        "mean_selected_contexts": 0.8704,
+        "mean_gain_per_selected_context": 0.13496455311709418,
+        "mean_duplicate_selections": 0.1564,
+        "duplicate_selection_rate": 0.06096666666666666
+      },
+      "0.13839922845363617": {
+        "mean_prediction_gain": 0.08489730224013328,
+        "negative_transfer_rate": 0.0076,
+        "mean_utility_recovery": 0.25415894060732697,
+        "mean_selected_contexts": 0.5624,
+        "mean_gain_per_selected_context": 0.1711361408693555,
+        "mean_duplicate_selections": 0.1,
+        "duplicate_selection_rate": 0.04143333333333333
+      },
+      "0.17208309173583994": {
+        "mean_prediction_gain": 0.061756848418712616,
+        "negative_transfer_rate": 0.0028,
+        "mean_utility_recovery": 0.16320428828807812,
+        "mean_selected_contexts": 0.322,
+        "mean_gain_per_selected_context": 0.2146429497266276,
+        "mean_duplicate_selections": 0.0544,
+        "duplicate_selection_rate": 0.02323333333333333
+      },
+      "0.22550293803215046": {
+        "mean_prediction_gain": 0.03061381313800812,
+        "negative_transfer_rate": 0.0008,
+        "mean_utility_recovery": 0.06396084886285046,
+        "mean_selected_contexts": 0.1156,
+        "mean_gain_per_selected_context": 0.2975351270892627,
+        "mean_duplicate_selections": 0.0208,
+        "duplicate_selection_rate": 0.0095
+      },
+      "0.3096412539482117": {
+        "mean_prediction_gain": 0.004468496751785279,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.007176635074197111,
+        "mean_selected_contexts": 0.0116,
+        "mean_gain_per_selected_context": 0.43531924615735595,
+        "mean_duplicate_selections": 0.0024,
+        "duplicate_selection_rate": 0.0012
+      },
+      "0.4562320530414584": {
+        "mean_prediction_gain": 0.0,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.0,
+        "mean_selected_contexts": 0.0,
+        "mean_gain_per_selected_context": NaN,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      },
+      "1.7641527652740479": {
+        "mean_prediction_gain": 0.0,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.0,
+        "mean_selected_contexts": 0.0,
+        "mean_gain_per_selected_context": NaN,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      }
+    }
+  },
+  "metrics": {
+    "relevance": {
+      "mean_prediction_gain": -0.29919804542064665,
+      "negative_transfer_rate": 0.8572,
+      "mean_utility_recovery": -3.653565006489167,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": -0.07479951135516166,
+      "mean_duplicate_selections": 0.5544,
+      "duplicate_selection_rate": 0.1386
+    },
+    "mmr": {
+      "mean_prediction_gain": -0.29919804542064665,
+      "negative_transfer_rate": 0.8572,
+      "mean_utility_recovery": -3.653565006489167,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": -0.07479951135516166,
+      "mean_duplicate_selections": 0.5544,
+      "duplicate_selection_rate": 0.1386
+    },
+    "coverage": {
+      "mean_prediction_gain": -0.3543894115924835,
+      "negative_transfer_rate": 0.8724,
+      "mean_utility_recovery": -4.428762728846952,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": -0.08859735289812087,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.2127159906297922,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.9999999997421671,
+      "mean_selected_contexts": 3.9968,
+      "mean_gain_per_selected_context": 0.053226837108284235,
+      "mean_duplicate_selections": 0.5512,
+      "duplicate_selection_rate": 0.1378
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.1245474217414856,
+      "negative_transfer_rate": 0.2216,
+      "mean_utility_recovery": 0.21047776558708273,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.0311368554353714,
+      "mean_duplicate_selections": 0.8472,
+      "duplicate_selection_rate": 0.2118
+    },
+    "mur_light": {
+      "mean_prediction_gain": 0.11900222150683402,
+      "negative_transfer_rate": 0.2192,
+      "mean_utility_recovery": 0.19175371210091047,
+      "mean_selected_contexts": 3.4316,
+      "mean_gain_per_selected_context": 0.03886149659573653,
+      "mean_duplicate_selections": 0.8304,
+      "duplicate_selection_rate": 0.2191,
+      "positive_selection_precision": 0.5363095931926798
+    },
+    "mur_interval": {
+      "mean_prediction_gain": 0.03416359539628029,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.07271059727192476,
+      "mean_selected_contexts": 0.1208,
+      "mean_gain_per_selected_context": 0.30654368259509407,
+      "mean_duplicate_selections": 0.0164,
+      "duplicate_selection_rate": 0.007666666666666665,
+      "positive_selection_precision": 0.8642384105960265
+    },
+    "mur_free_threshold": {
+      "mean_prediction_gain": 0.02969093340039253,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.060640106203719985,
+      "mean_selected_contexts": 0.0968,
+      "mean_gain_per_selected_context": 0.329982096779775,
+      "mean_duplicate_selections": 0.0116,
+      "duplicate_selection_rate": 0.0054666666666666665,
+      "positive_selection_precision": 0.8801652892561983
+    },
+    "oracle": {
+      "mean_prediction_gain": 0.21271599067747593,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 3.446,
+      "mean_gain_per_selected_context": 0.06199105699782571,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "state_conditioning_headroom": 2.2416611902706664e-10,
+    "mur_estimation_gap": 0.44055817746552267,
+    "mur_headroom_recovery": -1965320090.089805
+  },
+  "state_diagnostics": {
+    "random": {
+      "utility_mae": 0.06831367926606349,
+      "top1_accuracy": 0.5224,
+      "one_step_regret": 0.04084356490969658
+    },
+    "oracle_prefix": {
+      "utility_mae": 0.06350633859049341,
+      "top1_accuracy": 0.3891,
+      "one_step_regret": 0.030100445415824652
+    },
+    "mur_rollout": {
+      "utility_mae": 0.06742418712854326,
+      "top1_accuracy": 0.2926,
+      "one_step_regret": 0.05285475692227483
+    }
+  },
+  "wall_seconds": 3967.150498151779,
+  "provenance": {
+    "script_sha256": "628f9002d6ce0713a79d15c8c59c5c789416c254fbf99953fcea3c81c4d70721",
+    "synthetic_sha256": "01266f6e3312b25217202382aa7289a8d60f88662f69718497fd7a89f59641d1",
+    "experiment_sha256": "21b204a32462a4fbda642b53f326c3f92a552e74f760601b59d70f6895b38981"
+  }
+}

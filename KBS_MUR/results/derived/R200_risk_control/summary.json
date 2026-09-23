@@ -1,0 +1,5236 @@
+{
+  "provenance": {
+    "run_dirs": {
+      "101": "/root/icl_ess_threshold/KBS_MUR/results/raw/R080b_multitarget_rmur_s1_20260920_2340",
+      "202": "/root/icl_ess_threshold/KBS_MUR/results/raw/R080b_multitarget_rmur_s202_diag_20260921",
+      "303": "/root/icl_ess_threshold/KBS_MUR/results/raw/R080b_multitarget_rmur_s303_diag_20260921"
+    },
+    "episode_stride": 16,
+    "max_rows_per_dataset": 300000,
+    "feature_names": [
+      "score",
+      "cached_score",
+      "resp_base_mean",
+      "resp_after_mean",
+      "resp_delta_mean",
+      "resp_delta_std",
+      "resp_delta_absmean",
+      "resp_delta_norm",
+      "resp_delta_max",
+      "step",
+      "selected_count"
+    ]
+  },
+  "protocols": {
+    "P1_within_target": {
+      "METRLA": {
+        "alpha_0.05": {
+          "states": 32000,
+          "coverage": 0.9595,
+          "harm_mass": 0.01253125,
+          "selective_risk": 0.33669185558354325,
+          "abstention": 0.96278125,
+          "gain": 0.0007810022216290236,
+          "selected_fraction": 0.03721875,
+          "radius": 0.5056437253952026,
+          "matched_threshold": {
+            "threshold": 0.5031707882881165,
+            "gain": 0.0007810022216290236,
+            "selective_risk": 0.33669185558354325,
+            "harm_mass": 0.01253125,
+            "selected_fraction": 0.03721875
+          }
+        },
+        "alpha_0.10": {
+          "states": 32000,
+          "coverage": 0.92746875,
+          "harm_mass": 0.0265625,
+          "selective_risk": 0.39297272306981046,
+          "abstention": 0.93240625,
+          "gain": -8.574754247092642e-06,
+          "selected_fraction": 0.06759375,
+          "radius": 0.31284216046333313,
+          "matched_threshold": {
+            "threshold": 0.3126184642314911,
+            "gain": -8.574754247092642e-06,
+            "selective_risk": 0.39297272306981046,
+            "harm_mass": 0.0265625,
+            "selected_fraction": 0.06759375
+          }
+        },
+        "alpha_0.20": {
+          "states": 32000,
+          "coverage": 0.87734375,
+          "harm_mass": 0.05003125,
+          "selective_risk": 0.42796043838545844,
+          "abstention": 0.88309375,
+          "gain": -0.0005852032918483019,
+          "selected_fraction": 0.11690625,
+          "radius": 0.1537836343050003,
+          "matched_threshold": {
+            "threshold": 0.15372033417224884,
+            "gain": -0.0005852032918483019,
+            "selective_risk": 0.42796043838545844,
+            "harm_mass": 0.05003125,
+            "selected_fraction": 0.11690625
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.52228125,
+          "harm_mass": 0.22546875,
+          "selective_risk": 0.48383851931330474,
+          "abstention": 0.534,
+          "gain": -0.0010307262418791652,
+          "selected_fraction": 0.466
+        }
+      },
+      "PEMSBAY": {
+        "alpha_0.05": {
+          "states": 32000,
+          "coverage": 0.97471875,
+          "harm_mass": 0.00815625,
+          "selective_risk": 0.29692832764505117,
+          "abstention": 0.97253125,
+          "gain": 0.0057929567992687225,
+          "selected_fraction": 0.02746875,
+          "radius": 0.7832898497581482,
+          "matched_threshold": {
+            "threshold": 0.7832211256027222,
+            "gain": 0.0057929567992687225,
+            "selective_risk": 0.29692832764505117,
+            "harm_mass": 0.00815625,
+            "selected_fraction": 0.02746875
+          }
+        },
+        "alpha_0.10": {
+          "states": 32000,
+          "coverage": 0.9565625,
+          "harm_mass": 0.01571875,
+          "selective_risk": 0.3431105047748977,
+          "abstention": 0.9541875,
+          "gain": 0.006597257684916258,
+          "selected_fraction": 0.0458125,
+          "radius": 0.47789523005485535,
+          "matched_threshold": {
+            "threshold": 0.47761738300323486,
+            "gain": 0.006597257684916258,
+            "selective_risk": 0.3431105047748977,
+            "harm_mass": 0.01571875,
+            "selected_fraction": 0.0458125
+          }
+        },
+        "alpha_0.20": {
+          "states": 32000,
+          "coverage": 0.92496875,
+          "harm_mass": 0.02903125,
+          "selective_risk": 0.38120640131308986,
+          "abstention": 0.92384375,
+          "gain": 0.007032663561403751,
+          "selected_fraction": 0.07615625,
+          "radius": 0.250075101852417,
+          "matched_threshold": {
+            "threshold": 0.24987566471099854,
+            "gain": 0.007032663561403751,
+            "selective_risk": 0.38120640131308986,
+            "harm_mass": 0.02903125,
+            "selected_fraction": 0.07615625
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.52928125,
+          "harm_mass": 0.2140625,
+          "selective_risk": 0.45988586774085266,
+          "abstention": 0.53453125,
+          "gain": 0.0076169478707015514,
+          "selected_fraction": 0.46546875
+        }
+      },
+      "PEMS03": {
+        "alpha_0.05": {
+          "states": 32000,
+          "coverage": 0.9744375,
+          "harm_mass": 0.0060625,
+          "selective_risk": 0.223760092272203,
+          "abstention": 0.97290625,
+          "gain": 0.0011917916126549244,
+          "selected_fraction": 0.02709375,
+          "radius": 0.7953289747238159,
+          "matched_threshold": {
+            "threshold": 0.7940812706947327,
+            "gain": 0.0011917916126549244,
+            "selective_risk": 0.223760092272203,
+            "harm_mass": 0.0060625,
+            "selected_fraction": 0.02709375
+          }
+        },
+        "alpha_0.10": {
+          "states": 32000,
+          "coverage": 0.94865625,
+          "harm_mass": 0.011875,
+          "selective_risk": 0.22157434402332363,
+          "abstention": 0.94640625,
+          "gain": 0.0016521004727110267,
+          "selected_fraction": 0.05359375,
+          "radius": 0.5472067594528198,
+          "matched_threshold": {
+            "threshold": 0.5470597743988037,
+            "gain": 0.0016521004727110267,
+            "selective_risk": 0.22157434402332363,
+            "harm_mass": 0.011875,
+            "selected_fraction": 0.05359375
+          }
+        },
+        "alpha_0.20": {
+          "states": 32000,
+          "coverage": 0.8964375,
+          "harm_mass": 0.025125,
+          "selective_risk": 0.2375886524822695,
+          "abstention": 0.89425,
+          "gain": 0.002157347509637475,
+          "selected_fraction": 0.10575,
+          "radius": 0.3443091809749603,
+          "matched_threshold": {
+            "threshold": 0.3443039357662201,
+            "gain": 0.002157347509637475,
+            "selective_risk": 0.2375886524822695,
+            "harm_mass": 0.025125,
+            "selected_fraction": 0.10575
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.51484375,
+          "harm_mass": 0.18575,
+          "selective_risk": 0.38368190033565713,
+          "abstention": 0.515875,
+          "gain": 0.002816959982737899,
+          "selected_fraction": 0.484125
+        }
+      },
+      "PEMS04": {
+        "alpha_0.05": {
+          "states": 32000,
+          "coverage": 0.964125,
+          "harm_mass": 0.002625,
+          "selective_risk": 0.06851549755301795,
+          "abstention": 0.9616875,
+          "gain": 0.005089978221803904,
+          "selected_fraction": 0.0383125,
+          "radius": 0.7402290105819702,
+          "matched_threshold": {
+            "threshold": 0.7400094866752625,
+            "gain": 0.005089978221803904,
+            "selective_risk": 0.06851549755301795,
+            "harm_mass": 0.002625,
+            "selected_fraction": 0.0383125
+          }
+        },
+        "alpha_0.10": {
+          "states": 32000,
+          "coverage": 0.9410625,
+          "harm_mass": 0.00690625,
+          "selective_risk": 0.11362467866323907,
+          "abstention": 0.93921875,
+          "gain": 0.005550276953727007,
+          "selected_fraction": 0.06078125,
+          "radius": 0.5242844223976135,
+          "matched_threshold": {
+            "threshold": 0.5242462754249573,
+            "gain": 0.005550276953727007,
+            "selective_risk": 0.11362467866323907,
+            "harm_mass": 0.00690625,
+            "selected_fraction": 0.06078125
+          }
+        },
+        "alpha_0.20": {
+          "states": 32000,
+          "coverage": 0.9011875,
+          "harm_mass": 0.01696875,
+          "selective_risk": 0.16615667074663404,
+          "abstention": 0.897875,
+          "gain": 0.006015738006681204,
+          "selected_fraction": 0.102125,
+          "radius": 0.3416186571121216,
+          "matched_threshold": {
+            "threshold": 0.3415951132774353,
+            "gain": 0.006015738006681204,
+            "selective_risk": 0.16615667074663404,
+            "harm_mass": 0.01696875,
+            "selected_fraction": 0.102125
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57009375,
+          "harm_mass": 0.135125,
+          "selective_risk": 0.31461001164144353,
+          "abstention": 0.5705,
+          "gain": 0.006942271254956722,
+          "selected_fraction": 0.4295
+        }
+      },
+      "PEMS07": {
+        "alpha_0.05": {
+          "states": 32000,
+          "coverage": 0.97453125,
+          "harm_mass": 0.00546875,
+          "selective_risk": 0.20420070011668612,
+          "abstention": 0.97321875,
+          "gain": 0.0010615685023367405,
+          "selected_fraction": 0.02678125,
+          "radius": 0.7756038904190063,
+          "matched_threshold": {
+            "threshold": 0.7739886045455933,
+            "gain": 0.0010615685023367405,
+            "selective_risk": 0.20420070011668612,
+            "harm_mass": 0.00546875,
+            "selected_fraction": 0.02678125
+          }
+        },
+        "alpha_0.10": {
+          "states": 32000,
+          "coverage": 0.95009375,
+          "harm_mass": 0.0115625,
+          "selective_risk": 0.22235576923076922,
+          "abstention": 0.948,
+          "gain": 0.0015297309728339314,
+          "selected_fraction": 0.052,
+          "radius": 0.5163133144378662,
+          "matched_threshold": {
+            "threshold": 0.5162607431411743,
+            "gain": 0.0015297309728339314,
+            "selective_risk": 0.22235576923076922,
+            "harm_mass": 0.0115625,
+            "selected_fraction": 0.052
+          }
+        },
+        "alpha_0.20": {
+          "states": 32000,
+          "coverage": 0.90196875,
+          "harm_mass": 0.02625,
+          "selective_risk": 0.26217228464419473,
+          "abstention": 0.899875,
+          "gain": 0.001993403537198901,
+          "selected_fraction": 0.100125,
+          "radius": 0.3117496371269226,
+          "matched_threshold": {
+            "threshold": 0.31173092126846313,
+            "gain": 0.001993403537198901,
+            "selective_risk": 0.26217228464419473,
+            "harm_mass": 0.02625,
+            "selected_fraction": 0.100125
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57125,
+          "harm_mass": 0.16625,
+          "selective_risk": 0.387670334474969,
+          "abstention": 0.57115625,
+          "gain": 0.0026551045011729,
+          "selected_fraction": 0.42884375
+        }
+      },
+      "PEMS08": {
+        "alpha_0.05": {
+          "states": 32000,
+          "coverage": 0.97271875,
+          "harm_mass": 0.003875,
+          "selective_risk": 0.13304721030042918,
+          "abstention": 0.970875,
+          "gain": 0.0017732285195961595,
+          "selected_fraction": 0.029125,
+          "radius": 0.780040442943573,
+          "matched_threshold": {
+            "threshold": 0.7797375917434692,
+            "gain": 0.0017732285195961595,
+            "selective_risk": 0.13304721030042918,
+            "harm_mass": 0.003875,
+            "selected_fraction": 0.029125
+          }
+        },
+        "alpha_0.10": {
+          "states": 32000,
+          "coverage": 0.94740625,
+          "harm_mass": 0.0083125,
+          "selective_risk": 0.1512222853894258,
+          "abstention": 0.94503125,
+          "gain": 0.0022857259027659893,
+          "selected_fraction": 0.05496875,
+          "radius": 0.5475379228591919,
+          "matched_threshold": {
+            "threshold": 0.5474676489830017,
+            "gain": 0.0022857259027659893,
+            "selective_risk": 0.1512222853894258,
+            "harm_mass": 0.0083125,
+            "selected_fraction": 0.05496875
+          }
+        },
+        "alpha_0.20": {
+          "states": 32000,
+          "coverage": 0.901375,
+          "harm_mass": 0.018875,
+          "selective_risk": 0.1857318573185732,
+          "abstention": 0.898375,
+          "gain": 0.002913902746513486,
+          "selected_fraction": 0.101625,
+          "radius": 0.34834495186805725,
+          "matched_threshold": {
+            "threshold": 0.3481443524360657,
+            "gain": 0.002913902746513486,
+            "selective_risk": 0.1857318573185732,
+            "harm_mass": 0.018875,
+            "selected_fraction": 0.101625
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57709375,
+          "harm_mass": 0.14715625,
+          "selective_risk": 0.34663231505336767,
+          "abstention": 0.57546875,
+          "gain": 0.003896401496604085,
+          "selected_fraction": 0.42453125
+        }
+      }
+    },
+    "P2_cross_dataset": {
+      "METRLA": {
+        "alpha_0.05": {
+          "states": 64000,
+          "coverage": 0.9834375,
+          "harm_mass": 0.004828125,
+          "selective_risk": 0.32802547770700635,
+          "abstention": 0.98528125,
+          "gain": 0.0009606282110325992,
+          "selected_fraction": 0.01471875,
+          "radius": 0.7796244025230408
+        },
+        "alpha_0.10": {
+          "states": 64000,
+          "coverage": 0.966921875,
+          "harm_mass": 0.010171875,
+          "selective_risk": 0.34317343173431736,
+          "abstention": 0.970359375,
+          "gain": 0.0007740157307125628,
+          "selected_fraction": 0.029640625,
+          "radius": 0.5248872637748718
+        },
+        "alpha_0.20": {
+          "states": 64000,
+          "coverage": 0.936484375,
+          "harm_mass": 0.02365625,
+          "selective_risk": 0.3902061855670103,
+          "abstention": 0.939375,
+          "gain": 0.00015092203102540225,
+          "selected_fraction": 0.060625,
+          "radius": 0.31956902146339417
+        }
+      },
+      "PEMSBAY": {
+        "alpha_0.05": {
+          "states": 64000,
+          "coverage": 0.972890625,
+          "harm_mass": 0.0089375,
+          "selective_risk": 0.31497797356828194,
+          "abstention": 0.971625,
+          "gain": 0.00538391899317503,
+          "selected_fraction": 0.028375,
+          "radius": 0.7473832368850708
+        },
+        "alpha_0.10": {
+          "states": 64000,
+          "coverage": 0.957328125,
+          "harm_mass": 0.015109375,
+          "selective_risk": 0.3437611091361536,
+          "abstention": 0.956046875,
+          "gain": 0.0061269584111869335,
+          "selected_fraction": 0.043953125,
+          "radius": 0.5078763961791992
+        },
+        "alpha_0.20": {
+          "states": 64000,
+          "coverage": 0.93371875,
+          "harm_mass": 0.024875,
+          "selective_risk": 0.3706635622817229,
+          "abstention": 0.932890625,
+          "gain": 0.00655577564612031,
+          "selected_fraction": 0.067109375,
+          "radius": 0.31154710054397583
+        }
+      },
+      "PEMS03": {
+        "alpha_0.05": {
+          "states": 64000,
+          "coverage": 0.973796875,
+          "harm_mass": 0.006125,
+          "selective_risk": 0.2203485103991006,
+          "abstention": 0.9722031250000001,
+          "gain": 0.0011450831079855561,
+          "selected_fraction": 0.027796875,
+          "radius": 0.7372111082077026
+        },
+        "alpha_0.10": {
+          "states": 64000,
+          "coverage": 0.9441875,
+          "harm_mass": 0.013609375,
+          "selective_risk": 0.23451803984921918,
+          "abstention": 0.94196875,
+          "gain": 0.0015873947413638234,
+          "selected_fraction": 0.05803125,
+          "radius": 0.48858770728111267
+        },
+        "alpha_0.20": {
+          "states": 64000,
+          "coverage": 0.88178125,
+          "harm_mass": 0.03325,
+          "selective_risk": 0.27708333333333335,
+          "abstention": 0.88,
+          "gain": 0.0019975099712610245,
+          "selected_fraction": 0.12,
+          "radius": 0.28908324241638184
+        }
+      },
+      "PEMS04": {
+        "alpha_0.05": {
+          "states": 64000,
+          "coverage": 0.96715625,
+          "harm_mass": 0.003265625,
+          "selective_risk": 0.09363799283154121,
+          "abstention": 0.965125,
+          "gain": 0.0032996325753629208,
+          "selected_fraction": 0.034875,
+          "radius": 0.7318224906921387
+        },
+        "alpha_0.10": {
+          "states": 64000,
+          "coverage": 0.939171875,
+          "harm_mass": 0.009140625,
+          "selective_risk": 0.1441596845736816,
+          "abstention": 0.93659375,
+          "gain": 0.00380322290584445,
+          "selected_fraction": 0.06340625,
+          "radius": 0.4872990548610687
+        },
+        "alpha_0.20": {
+          "states": 64000,
+          "coverage": 0.884,
+          "harm_mass": 0.023125,
+          "selective_risk": 0.19453207150368035,
+          "abstention": 0.881125,
+          "gain": 0.004339905921369791,
+          "selected_fraction": 0.118875,
+          "radius": 0.28900155425071716
+        }
+      },
+      "PEMS07": {
+        "alpha_0.05": {
+          "states": 64000,
+          "coverage": 0.974359375,
+          "harm_mass": 0.005015625,
+          "selective_risk": 0.1837435603892387,
+          "abstention": 0.972703125,
+          "gain": 0.0013575224438682199,
+          "selected_fraction": 0.027296875,
+          "radius": 0.7441965937614441
+        },
+        "alpha_0.10": {
+          "states": 64000,
+          "coverage": 0.94909375,
+          "harm_mass": 0.010828125,
+          "selective_risk": 0.2035840188014101,
+          "abstention": 0.9468125000000001,
+          "gain": 0.0018980730092152953,
+          "selected_fraction": 0.0531875,
+          "radius": 0.4970608055591583
+        },
+        "alpha_0.20": {
+          "states": 64000,
+          "coverage": 0.90021875,
+          "harm_mass": 0.025,
+          "selective_risk": 0.24397682220189082,
+          "abstention": 0.89753125,
+          "gain": 0.002423988189548254,
+          "selected_fraction": 0.10246875,
+          "radius": 0.2973458468914032
+        }
+      },
+      "PEMS08": {
+        "alpha_0.05": {
+          "states": 64000,
+          "coverage": 0.96928125,
+          "harm_mass": 0.004515625,
+          "selective_risk": 0.1382775119617225,
+          "abstention": 0.96734375,
+          "gain": 0.0015892584342509508,
+          "selected_fraction": 0.03265625,
+          "radius": 0.7341194748878479
+        },
+        "alpha_0.10": {
+          "states": 64000,
+          "coverage": 0.93578125,
+          "harm_mass": 0.012390625,
+          "selective_risk": 0.1864127879642689,
+          "abstention": 0.93353125,
+          "gain": 0.0020931274630129337,
+          "selected_fraction": 0.06646875,
+          "radius": 0.48455560207366943
+        },
+        "alpha_0.20": {
+          "states": 64000,
+          "coverage": 0.87778125,
+          "harm_mass": 0.028203125,
+          "selective_risk": 0.22607715430861725,
+          "abstention": 0.87525,
+          "gain": 0.0026337101589888334,
+          "selected_fraction": 0.12475,
+          "radius": 0.28655141592025757
+        }
+      }
+    },
+    "P3_cross_run": {
+      "METRLA": {
+        "calibration_run": 202,
+        "evaluation_run": 303,
+        "levels": {
+          "alpha_0.05": {
+            "states": 64000,
+            "coverage": 0.966234375,
+            "harm_mass": 0.0098125,
+            "selective_risk": 0.2657638595006348,
+            "abstention": 0.963078125,
+            "gain": 0.0009356904774904251,
+            "selected_fraction": 0.036921875,
+            "radius": 0.5499619841575623
+          },
+          "alpha_0.10": {
+            "states": 64000,
+            "coverage": 0.936296875,
+            "harm_mass": 0.01821875,
+            "selective_risk": 0.2713521061205492,
+            "abstention": 0.932859375,
+            "gain": 0.0018011521315202117,
+            "selected_fraction": 0.067140625,
+            "radius": 0.3426187038421631
+          },
+          "alpha_0.20": {
+            "states": 64000,
+            "coverage": 0.88465625,
+            "harm_mass": 0.0403125,
+            "selective_risk": 0.3512115436972502,
+            "abstention": 0.8852187499999999,
+            "gain": 0.002097931457683444,
+            "selected_fraction": 0.11478125,
+            "radius": 0.1678580790758133
+          },
+          "uncalibrated": {
+            "states": 64000,
+            "coverage": 0.51765625,
+            "harm_mass": 0.22265625,
+            "selective_risk": 0.47012635676817,
+            "abstention": 0.526390625,
+            "gain": 0.001952166436240077,
+            "selected_fraction": 0.473609375
+          }
+        }
+      },
+      "PEMSBAY": {
+        "calibration_run": 202,
+        "evaluation_run": 303,
+        "levels": {
+          "alpha_0.05": {
+            "states": 60000,
+            "coverage": 0.9748666666666667,
+            "harm_mass": 0.009116666666666667,
+            "selective_risk": 0.3446754883427851,
+            "abstention": 0.97355,
+            "gain": 0.004056297242641449,
+            "selected_fraction": 0.02645,
+            "radius": 0.7375272512435913
+          },
+          "alpha_0.10": {
+            "states": 60000,
+            "coverage": 0.9576,
+            "harm_mass": 0.0163,
+            "selective_risk": 0.3717217787913341,
+            "abstention": 0.95615,
+            "gain": 0.004777997266501188,
+            "selected_fraction": 0.04385,
+            "radius": 0.435702383518219
+          },
+          "alpha_0.20": {
+            "states": 60000,
+            "coverage": 0.92285,
+            "harm_mass": 0.0317,
+            "selective_risk": 0.41088788075178223,
+            "abstention": 0.92285,
+            "gain": 0.005062466021627188,
+            "selected_fraction": 0.07715,
+            "radius": 0.22077393531799316
+          },
+          "uncalibrated": {
+            "states": 60000,
+            "coverage": 0.5463333333333333,
+            "harm_mass": 0.19928333333333334,
+            "selective_risk": 0.44517666331583455,
+            "abstention": 0.55235,
+            "gain": 0.0054215192794799805,
+            "selected_fraction": 0.44765
+          }
+        }
+      },
+      "PEMS03": {
+        "calibration_run": 202,
+        "evaluation_run": 303,
+        "levels": {
+          "alpha_0.05": {
+            "states": 62000,
+            "coverage": 0.9795967741935484,
+            "harm_mass": 0.0039032258064516127,
+            "selective_risk": 0.17912657290895634,
+            "abstention": 0.9782096774193548,
+            "gain": 0.0011418623616918921,
+            "selected_fraction": 0.02179032258064516,
+            "radius": 0.7864159941673279
+          },
+          "alpha_0.10": {
+            "states": 62000,
+            "coverage": 0.956741935483871,
+            "harm_mass": 0.009,
+            "selective_risk": 0.19935691318327975,
+            "abstention": 0.9548548387096775,
+            "gain": 0.0015325330896303058,
+            "selected_fraction": 0.04514516129032258,
+            "radius": 0.544417679309845
+          },
+          "alpha_0.20": {
+            "states": 62000,
+            "coverage": 0.9108870967741935,
+            "harm_mass": 0.021274193548387096,
+            "selective_risk": 0.2346557552037004,
+            "abstention": 0.9093387096774194,
+            "gain": 0.001956649823114276,
+            "selected_fraction": 0.09066129032258065,
+            "radius": 0.34425532817840576
+          },
+          "uncalibrated": {
+            "states": 62000,
+            "coverage": 0.5278548387096774,
+            "harm_mass": 0.1849032258064516,
+            "selective_risk": 0.39395189003436426,
+            "abstention": 0.5306451612903226,
+            "gain": 0.002556662540882826,
+            "selected_fraction": 0.4693548387096774
+          }
+        }
+      },
+      "PEMS04": {
+        "calibration_run": 202,
+        "evaluation_run": 303,
+        "levels": {
+          "alpha_0.05": {
+            "states": 64000,
+            "coverage": 0.964828125,
+            "harm_mass": 0.00396875,
+            "selective_risk": 0.10561330561330562,
+            "abstention": 0.962421875,
+            "gain": 0.0037293427158147097,
+            "selected_fraction": 0.037578125,
+            "radius": 0.8065536022186279
+          },
+          "alpha_0.10": {
+            "states": 64000,
+            "coverage": 0.93640625,
+            "harm_mass": 0.00996875,
+            "selective_risk": 0.15093446889046605,
+            "abstention": 0.9339531249999999,
+            "gain": 0.004289909731596708,
+            "selected_fraction": 0.066046875,
+            "radius": 0.5516981482505798
+          },
+          "alpha_0.20": {
+            "states": 64000,
+            "coverage": 0.88834375,
+            "harm_mass": 0.02146875,
+            "selective_risk": 0.18635562186355623,
+            "abstention": 0.884796875,
+            "gain": 0.004918011836707592,
+            "selected_fraction": 0.115203125,
+            "radius": 0.34458255767822266
+          },
+          "uncalibrated": {
+            "states": 64000,
+            "coverage": 0.530453125,
+            "harm_mass": 0.16371875,
+            "selective_risk": 0.3483493467203032,
+            "abstention": 0.530015625,
+            "gain": 0.005875306203961372,
+            "selected_fraction": 0.469984375
+          }
+        }
+      },
+      "PEMS07": {
+        "calibration_run": 202,
+        "evaluation_run": 303,
+        "levels": {
+          "alpha_0.05": {
+            "states": 64000,
+            "coverage": 0.98065625,
+            "harm_mass": 0.003078125,
+            "selective_risk": 0.14723467862481315,
+            "abstention": 0.97909375,
+            "gain": 0.0011974357767030597,
+            "selected_fraction": 0.02090625,
+            "radius": 0.7567539811134338
+          },
+          "alpha_0.10": {
+            "states": 64000,
+            "coverage": 0.9551875,
+            "harm_mass": 0.008421875,
+            "selective_risk": 0.17812293456708525,
+            "abstention": 0.9527187500000001,
+            "gain": 0.0016969001153483987,
+            "selected_fraction": 0.04728125,
+            "radius": 0.5057868957519531
+          },
+          "alpha_0.20": {
+            "states": 64000,
+            "coverage": 0.904671875,
+            "harm_mass": 0.021484375,
+            "selective_risk": 0.21901879579483913,
+            "abstention": 0.90190625,
+            "gain": 0.002231660531833768,
+            "selected_fraction": 0.09809375,
+            "radius": 0.30855804681777954
+          },
+          "uncalibrated": {
+            "states": 64000,
+            "coverage": 0.54359375,
+            "harm_mass": 0.176828125,
+            "selective_risk": 0.38808682829806934,
+            "abstention": 0.544359375,
+            "gain": 0.0027967398054897785,
+            "selected_fraction": 0.455640625
+          }
+        }
+      },
+      "PEMS08": {
+        "calibration_run": 202,
+        "evaluation_run": 303,
+        "levels": {
+          "alpha_0.05": {
+            "states": 64000,
+            "coverage": 0.97253125,
+            "harm_mass": 0.004296875,
+            "selective_risk": 0.1455026455026455,
+            "abstention": 0.97046875,
+            "gain": 0.0015496155247092247,
+            "selected_fraction": 0.02953125,
+            "radius": 0.801395058631897
+          },
+          "alpha_0.10": {
+            "states": 64000,
+            "coverage": 0.94609375,
+            "harm_mass": 0.00896875,
+            "selective_risk": 0.15900277008310248,
+            "abstention": 0.94359375,
+            "gain": 0.00215152301825583,
+            "selected_fraction": 0.05640625,
+            "radius": 0.5598949790000916
+          },
+          "alpha_0.20": {
+            "states": 64000,
+            "coverage": 0.895234375,
+            "harm_mass": 0.023265625,
+            "selective_risk": 0.21626724763979666,
+            "abstention": 0.892421875,
+            "gain": 0.002699929056689143,
+            "selected_fraction": 0.107578125,
+            "radius": 0.3577558398246765
+          },
+          "uncalibrated": {
+            "states": 64000,
+            "coverage": 0.539734375,
+            "harm_mass": 0.162015625,
+            "selective_risk": 0.35155111035768777,
+            "abstention": 0.5391406249999999,
+            "gain": 0.0037062405608594418,
+            "selected_fraction": 0.460859375
+          }
+        }
+      }
+    },
+    "P4_radius_families": {
+      "METRLA": {
+        "alpha_0.05": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.9595,
+            "harm_mass": 0.01253125,
+            "selective_risk": 0.33669185558354325,
+            "abstention": 0.96278125,
+            "gain": 0.0007810022216290236,
+            "selected_fraction": 0.03721875
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.97165625,
+            "harm_mass": 0.00128125,
+            "selective_risk": 0.22404371584699453,
+            "abstention": 0.99428125,
+            "gain": 0.0011645425111055374,
+            "selected_fraction": 0.00571875
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.97128125,
+            "harm_mass": 0.00178125,
+            "selective_risk": 0.5816326530612245,
+            "abstention": 0.9969375,
+            "gain": 0.00017400072829332203,
+            "selected_fraction": 0.0030625
+          },
+          "global_radius": 0.5056437253952026,
+          "bin_radii": [
+            1.050187349319458,
+            0.15788722038269043,
+            0.09417487680912018,
+            0.05022934824228287,
+            0.0441722609102726,
+            0.032397739589214325,
+            0.03867131471633911,
+            0.06842275708913803,
+            0.1812659651041031,
+            1.1779308319091797,
+            0.5056437253952026
+          ]
+        },
+        "alpha_0.10": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.92746875,
+            "harm_mass": 0.0265625,
+            "selective_risk": 0.39297272306981046,
+            "abstention": 0.93240625,
+            "gain": -8.574754247092642e-06,
+            "selected_fraction": 0.06759375
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.94228125,
+            "harm_mass": 0.00615625,
+            "selective_risk": 0.33164983164983164,
+            "abstention": 0.9814375,
+            "gain": 0.0011149713536724448,
+            "selected_fraction": 0.0185625
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.94565625,
+            "harm_mass": 0.00303125,
+            "selective_risk": 0.4349775784753363,
+            "abstention": 0.99303125,
+            "gain": 0.0002955900563392788,
+            "selected_fraction": 0.00696875
+          },
+          "global_radius": 0.31284216046333313,
+          "bin_radii": [
+            0.7804266810417175,
+            0.1383667141199112,
+            0.0669730007648468,
+            0.038250379264354706,
+            0.02738262340426445,
+            0.014778900891542435,
+            0.024955086410045624,
+            0.049979258328676224,
+            0.15456120669841766,
+            0.8702572584152222,
+            0.31284216046333313
+          ]
+        },
+        "alpha_0.20": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.87734375,
+            "harm_mass": 0.05003125,
+            "selective_risk": 0.42796043838545844,
+            "abstention": 0.88309375,
+            "gain": -0.0005852032918483019,
+            "selected_fraction": 0.11690625
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.89278125,
+            "harm_mass": 0.0308125,
+            "selective_risk": 0.43628318584070797,
+            "abstention": 0.9293750000000001,
+            "gain": 0.0009674713364802301,
+            "selected_fraction": 0.070625
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.89809375,
+            "harm_mass": 0.0070625,
+            "selective_risk": 0.397887323943662,
+            "abstention": 0.98225,
+            "gain": 0.0005254693678580225,
+            "selected_fraction": 0.01775
+          },
+          "global_radius": 0.1537836343050003,
+          "bin_radii": [
+            0.5167303085327148,
+            0.11984707415103912,
+            0.05845075100660324,
+            0.03390556946396828,
+            0.019467638805508614,
+            0.008471019566059113,
+            0.019967343658208847,
+            0.043485261499881744,
+            0.1272193193435669,
+            0.6274242401123047,
+            0.1537836343050003
+          ]
+        }
+      },
+      "PEMSBAY": {
+        "alpha_0.05": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.97471875,
+            "harm_mass": 0.00815625,
+            "selective_risk": 0.29692832764505117,
+            "abstention": 0.97253125,
+            "gain": 0.0057929567992687225,
+            "selected_fraction": 0.02746875
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9771875,
+            "harm_mass": 0.00109375,
+            "selective_risk": 0.20958083832335328,
+            "abstention": 0.99478125,
+            "gain": 0.0021846024319529533,
+            "selected_fraction": 0.00521875
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.98253125,
+            "harm_mass": 0.000625,
+            "selective_risk": 0.3448275862068966,
+            "abstention": 0.9981875,
+            "gain": 0.0002805691328831017,
+            "selected_fraction": 0.0018125
+          },
+          "global_radius": 0.7832898497581482,
+          "bin_radii": [
+            1.736115574836731,
+            0.3101802468299866,
+            0.14218881726264954,
+            0.07050299644470215,
+            0.0447327122092247,
+            0.035654570907354355,
+            0.05443179979920387,
+            0.08911080658435822,
+            0.19640040397644043,
+            1.9823191165924072,
+            0.7832898497581482
+          ]
+        },
+        "alpha_0.10": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.9565625,
+            "harm_mass": 0.01571875,
+            "selective_risk": 0.3431105047748977,
+            "abstention": 0.9541875,
+            "gain": 0.006597257684916258,
+            "selected_fraction": 0.0458125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9535,
+            "harm_mass": 0.00603125,
+            "selective_risk": 0.3078149920255183,
+            "abstention": 0.98040625,
+            "gain": 0.003929448779672384,
+            "selected_fraction": 0.01959375
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9586875,
+            "harm_mass": 0.0015625,
+            "selective_risk": 0.37593984962406013,
+            "abstention": 0.99584375,
+            "gain": 0.0008353446028195322,
+            "selected_fraction": 0.00415625
+          },
+          "global_radius": 0.47789523005485535,
+          "bin_radii": [
+            1.2556254863739014,
+            0.27473393082618713,
+            0.1242031529545784,
+            0.061584293842315674,
+            0.030255287885665894,
+            0.023520739749073982,
+            0.04598594084382057,
+            0.07898703962564468,
+            0.1759321689605713,
+            1.3707536458969116,
+            0.47789523005485535
+          ]
+        },
+        "alpha_0.20": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.92496875,
+            "harm_mass": 0.02903125,
+            "selective_risk": 0.38120640131308986,
+            "abstention": 0.92384375,
+            "gain": 0.007032663561403751,
+            "selected_fraction": 0.07615625
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.90490625,
+            "harm_mass": 0.03240625,
+            "selective_risk": 0.4124900556881464,
+            "abstention": 0.9214375,
+            "gain": 0.005298537202179432,
+            "selected_fraction": 0.0785625
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.91009375,
+            "harm_mass": 0.0096875,
+            "selective_risk": 0.3600464576074332,
+            "abstention": 0.97309375,
+            "gain": 0.0012223676312714815,
+            "selected_fraction": 0.02690625
+          },
+          "global_radius": 0.250075101852417,
+          "bin_radii": [
+            0.8653799295425415,
+            0.24723757803440094,
+            0.1127137616276741,
+            0.05527959018945694,
+            0.02431355230510235,
+            0.018856476992368698,
+            0.041217170655727386,
+            0.07268767803907394,
+            0.1535082459449768,
+            0.9055812358856201,
+            0.250075101852417
+          ]
+        }
+      },
+      "PEMS03": {
+        "alpha_0.05": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.9744375,
+            "harm_mass": 0.0060625,
+            "selective_risk": 0.223760092272203,
+            "abstention": 0.97290625,
+            "gain": 0.0011917916126549244,
+            "selected_fraction": 0.02709375
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.97696875,
+            "harm_mass": 0.00565625,
+            "selective_risk": 0.3169877408056042,
+            "abstention": 0.98215625,
+            "gain": 0.0006236995686776936,
+            "selected_fraction": 0.01784375
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9835625,
+            "harm_mass": 0.0014375,
+            "selective_risk": 0.23958333333333334,
+            "abstention": 0.994,
+            "gain": 0.000259028107393533,
+            "selected_fraction": 0.006
+          },
+          "global_radius": 0.7953289747238159,
+          "bin_radii": [
+            1.9568777084350586,
+            0.3721167743206024,
+            0.19699759781360626,
+            0.11462431401014328,
+            0.06381528824567795,
+            0.03255419433116913,
+            0.0776527151465416,
+            0.15722286701202393,
+            0.2986259460449219,
+            1.33079195022583,
+            0.7953289747238159
+          ]
+        },
+        "alpha_0.10": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.94865625,
+            "harm_mass": 0.011875,
+            "selective_risk": 0.22157434402332363,
+            "abstention": 0.94640625,
+            "gain": 0.0016521004727110267,
+            "selected_fraction": 0.05359375
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9501875,
+            "harm_mass": 0.016625,
+            "selective_risk": 0.35255135851557323,
+            "abstention": 0.95284375,
+            "gain": 0.0009048249921761453,
+            "selected_fraction": 0.04715625
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9604375,
+            "harm_mass": 0.00471875,
+            "selective_risk": 0.2607944732297064,
+            "abstention": 0.98190625,
+            "gain": 0.00048745490494184196,
+            "selected_fraction": 0.01809375
+          },
+          "global_radius": 0.5472067594528198,
+          "bin_radii": [
+            1.443780541419983,
+            0.35520216822624207,
+            0.18959790468215942,
+            0.10937800258398056,
+            0.05727945268154144,
+            0.024827904999256134,
+            0.07270491868257523,
+            0.15038029849529266,
+            0.2866555154323578,
+            1.0392141342163086,
+            0.5472067594528198
+          ]
+        },
+        "alpha_0.20": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.8964375,
+            "harm_mass": 0.025125,
+            "selective_risk": 0.2375886524822695,
+            "abstention": 0.89425,
+            "gain": 0.002157347509637475,
+            "selected_fraction": 0.10575
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.90028125,
+            "harm_mass": 0.03815625,
+            "selective_risk": 0.3653500897666068,
+            "abstention": 0.8955625,
+            "gain": 0.0013540182262659073,
+            "selected_fraction": 0.1044375
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9085625,
+            "harm_mass": 0.01615625,
+            "selective_risk": 0.2914317925591883,
+            "abstention": 0.9445625,
+            "gain": 0.000824360700789839,
+            "selected_fraction": 0.0554375
+          },
+          "global_radius": 0.3443091809749603,
+          "bin_radii": [
+            1.0313278436660767,
+            0.32879143953323364,
+            0.17964518070220947,
+            0.10210849344730377,
+            0.05195846036076546,
+            0.01987398788332939,
+            0.06633464992046356,
+            0.13967108726501465,
+            0.2659645080566406,
+            0.7785444259643555,
+            0.3443091809749603
+          ]
+        }
+      },
+      "PEMS04": {
+        "alpha_0.05": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.964125,
+            "harm_mass": 0.002625,
+            "selective_risk": 0.06851549755301795,
+            "abstention": 0.9616875,
+            "gain": 0.005089978221803904,
+            "selected_fraction": 0.0383125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.97334375,
+            "harm_mass": 0.00515625,
+            "selective_risk": 0.19230769230769232,
+            "abstention": 0.9731875,
+            "gain": 0.0038006273098289967,
+            "selected_fraction": 0.0268125
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.984125,
+            "harm_mass": 0.00115625,
+            "selective_risk": 0.1072463768115942,
+            "abstention": 0.98921875,
+            "gain": 0.0013660979457199574,
+            "selected_fraction": 0.01078125
+          },
+          "global_radius": 0.7402290105819702,
+          "bin_radii": [
+            1.2995965480804443,
+            0.34417489171028137,
+            0.20348595082759857,
+            0.13274148106575012,
+            0.08136521279811859,
+            0.03739564120769501,
+            0.0728859230875969,
+            0.15457278490066528,
+            0.3156084716320038,
+            1.4150443077087402,
+            0.7402290105819702
+          ]
+        },
+        "alpha_0.10": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.9410625,
+            "harm_mass": 0.00690625,
+            "selective_risk": 0.11362467866323907,
+            "abstention": 0.93921875,
+            "gain": 0.005550276953727007,
+            "selected_fraction": 0.06078125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9520625,
+            "harm_mass": 0.01240625,
+            "selective_risk": 0.2361689470553242,
+            "abstention": 0.94746875,
+            "gain": 0.004391229245811701,
+            "selected_fraction": 0.05253125
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.96290625,
+            "harm_mass": 0.0045,
+            "selective_risk": 0.15319148936170213,
+            "abstention": 0.970625,
+            "gain": 0.001906433841213584,
+            "selected_fraction": 0.029375
+          },
+          "global_radius": 0.5242844223976135,
+          "bin_radii": [
+            1.028860092163086,
+            0.33197614550590515,
+            0.1985880434513092,
+            0.12820005416870117,
+            0.07702058553695679,
+            0.03320528194308281,
+            0.06771167367696762,
+            0.14771077036857605,
+            0.3004329204559326,
+            1.1039409637451172,
+            0.5242844223976135
+          ]
+        },
+        "alpha_0.20": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.9011875,
+            "harm_mass": 0.01696875,
+            "selective_risk": 0.16615667074663404,
+            "abstention": 0.897875,
+            "gain": 0.006015738006681204,
+            "selected_fraction": 0.102125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.91465625,
+            "harm_mass": 0.022375,
+            "selective_risk": 0.2432891607203534,
+            "abstention": 0.90803125,
+            "gain": 0.005060859490185976,
+            "selected_fraction": 0.09196875
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.91559375,
+            "harm_mass": 0.01703125,
+            "selective_risk": 0.20170244263508513,
+            "abstention": 0.9155625000000001,
+            "gain": 0.002933033974841237,
+            "selected_fraction": 0.0844375
+          },
+          "global_radius": 0.3416186571121216,
+          "bin_radii": [
+            0.7592122554779053,
+            0.313677579164505,
+            0.18938912451267242,
+            0.12205179035663605,
+            0.07187005132436752,
+            0.027594510465860367,
+            0.06076902151107788,
+            0.13664717972278595,
+            0.27657485008239746,
+            0.8610376715660095,
+            0.3416186571121216
+          ]
+        }
+      },
+      "PEMS07": {
+        "alpha_0.05": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.97453125,
+            "harm_mass": 0.00546875,
+            "selective_risk": 0.20420070011668612,
+            "abstention": 0.97321875,
+            "gain": 0.0010615685023367405,
+            "selected_fraction": 0.02678125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9780625,
+            "harm_mass": 0.004625,
+            "selective_risk": 0.2846153846153846,
+            "abstention": 0.98375,
+            "gain": 0.00047464072122238576,
+            "selected_fraction": 0.01625
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9836875,
+            "harm_mass": 0.0014375,
+            "selective_risk": 0.1908713692946058,
+            "abstention": 0.99246875,
+            "gain": 0.00018547367653809488,
+            "selected_fraction": 0.00753125
+          },
+          "global_radius": 0.7756038904190063,
+          "bin_radii": [
+            1.6715452671051025,
+            0.32373297214508057,
+            0.17986878752708435,
+            0.10965164750814438,
+            0.06139855086803436,
+            0.028793103992938995,
+            0.05735943466424942,
+            0.13134033977985382,
+            0.2782466411590576,
+            1.5071699619293213,
+            0.7756038904190063
+          ]
+        },
+        "alpha_0.10": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.95009375,
+            "harm_mass": 0.0115625,
+            "selective_risk": 0.22235576923076922,
+            "abstention": 0.948,
+            "gain": 0.0015297309728339314,
+            "selected_fraction": 0.052
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9571875,
+            "harm_mass": 0.01309375,
+            "selective_risk": 0.31935975609756095,
+            "abstention": 0.959,
+            "gain": 0.0007469401462003589,
+            "selected_fraction": 0.041
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9631875,
+            "harm_mass": 0.00421875,
+            "selective_risk": 0.25375939849624063,
+            "abstention": 0.983375,
+            "gain": 0.0003363428986631334,
+            "selected_fraction": 0.016625
+          },
+          "global_radius": 0.5163133144378662,
+          "bin_radii": [
+            1.2885469198226929,
+            0.3128645718097687,
+            0.1720651090145111,
+            0.1027868315577507,
+            0.056963589042425156,
+            0.022631734609603882,
+            0.053636617958545685,
+            0.12510967254638672,
+            0.2639789879322052,
+            1.159489393234253,
+            0.5163133144378662
+          ]
+        },
+        "alpha_0.20": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.90196875,
+            "harm_mass": 0.02625,
+            "selective_risk": 0.26217228464419473,
+            "abstention": 0.899875,
+            "gain": 0.001993403537198901,
+            "selected_fraction": 0.100125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.917625,
+            "harm_mass": 0.0281875,
+            "selective_risk": 0.33357988165680474,
+            "abstention": 0.9155,
+            "gain": 0.0011919812532141805,
+            "selected_fraction": 0.0845
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.91384375,
+            "harm_mass": 0.01496875,
+            "selective_risk": 0.29065533980582525,
+            "abstention": 0.9485,
+            "gain": 0.0007733981474302709,
+            "selected_fraction": 0.0515
+          },
+          "global_radius": 0.3117496371269226,
+          "bin_radii": [
+            0.9163424968719482,
+            0.2912747859954834,
+            0.1624828726053238,
+            0.09594671428203583,
+            0.052516281604766846,
+            0.018730469048023224,
+            0.04777125269174576,
+            0.11474406719207764,
+            0.24288830161094666,
+            0.8305370807647705,
+            0.3117496371269226
+          ]
+        }
+      },
+      "PEMS08": {
+        "alpha_0.05": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.97271875,
+            "harm_mass": 0.003875,
+            "selective_risk": 0.13304721030042918,
+            "abstention": 0.970875,
+            "gain": 0.0017732285195961595,
+            "selected_fraction": 0.029125
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.97709375,
+            "harm_mass": 0.00565625,
+            "selective_risk": 0.2828125,
+            "abstention": 0.98,
+            "gain": 0.000938061042688787,
+            "selected_fraction": 0.02
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.98375,
+            "harm_mass": 0.00140625,
+            "selective_risk": 0.1906779661016949,
+            "abstention": 0.992625,
+            "gain": 0.0003391832869965583,
+            "selected_fraction": 0.007375
+          },
+          "global_radius": 0.780040442943573,
+          "bin_radii": [
+            1.317430853843689,
+            0.3435477018356323,
+            0.19343718886375427,
+            0.11617515981197357,
+            0.06816837191581726,
+            0.032911088317632675,
+            0.058508843183517456,
+            0.14331163465976715,
+            0.32774046063423157,
+            1.568282127380371,
+            0.780040442943573
+          ]
+        },
+        "alpha_0.10": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.94740625,
+            "harm_mass": 0.0083125,
+            "selective_risk": 0.1512222853894258,
+            "abstention": 0.94503125,
+            "gain": 0.0022857259027659893,
+            "selected_fraction": 0.05496875
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.9570625,
+            "harm_mass": 0.013375,
+            "selective_risk": 0.29456297315898144,
+            "abstention": 0.95459375,
+            "gain": 0.0012977186124771833,
+            "selected_fraction": 0.04540625
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.963,
+            "harm_mass": 0.00378125,
+            "selective_risk": 0.20439189189189189,
+            "abstention": 0.9815,
+            "gain": 0.000490327482111752,
+            "selected_fraction": 0.0185
+          },
+          "global_radius": 0.5475379228591919,
+          "bin_radii": [
+            1.0572853088378906,
+            0.3278481960296631,
+            0.1882212609052658,
+            0.112755686044693,
+            0.06497538834810257,
+            0.028256185352802277,
+            0.054275862872600555,
+            0.13662110269069672,
+            0.31100913882255554,
+            1.2156145572662354,
+            0.5475379228591919
+          ]
+        },
+        "alpha_0.20": {
+          "global": {
+            "states": 32000,
+            "coverage": 0.901375,
+            "harm_mass": 0.018875,
+            "selective_risk": 0.1857318573185732,
+            "abstention": 0.898375,
+            "gain": 0.002913902746513486,
+            "selected_fraction": 0.101625
+          },
+          "conditional": {
+            "states": 32000,
+            "coverage": 0.91571875,
+            "harm_mass": 0.02728125,
+            "selective_risk": 0.3030197847969455,
+            "abstention": 0.90996875,
+            "gain": 0.0018755991477519274,
+            "selected_fraction": 0.09003125
+          },
+          "adaptive": {
+            "states": 32000,
+            "coverage": 0.9226875,
+            "harm_mass": 0.01296875,
+            "selective_risk": 0.2292817679558011,
+            "abstention": 0.9434375,
+            "gain": 0.00098781893029809,
+            "selected_fraction": 0.0565625
+          },
+          "global_radius": 0.34834495186805725,
+          "bin_radii": [
+            0.8280377388000488,
+            0.3085400462150574,
+            0.17732074856758118,
+            0.10603463649749756,
+            0.059820786118507385,
+            0.023800618946552277,
+            0.04760517179965973,
+            0.1254960596561432,
+            0.28445059061050415,
+            0.9004268050193787,
+            0.34834495186805725
+          ]
+        }
+      }
+    },
+    "P5_conformal_risk_control": {
+      "METRLA": {
+        "alpha_0.005": {
+          "global": {
+            "threshold": 0.7060155868530273,
+            "states": 32000,
+            "harm_mass": 0.00671875,
+            "selective_risk": 0.30714285714285716,
+            "abstention": 0.978125,
+            "gain": 0.0012697812635451555,
+            "selected_fraction": 0.021875,
+            "ci": {
+              "harm_mass": [
+                0.004593072916666666,
+                0.009001315789473682
+              ],
+              "selected_fraction": [
+                0.01571640625,
+                0.029001666666666665
+              ],
+              "gain": [
+                0.00016159038311757502,
+                0.0025921990041018403
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.06221620738506317,
+              -0.02027018368244171,
+              0.00450235977768898,
+              0.04685759171843529,
+              1.2251293659210205
+            ],
+            "harm_mass": 0.00578125,
+            "selective_risk": 0.42824074074074076,
+            "abstention": 0.9865,
+            "gain": 0.0010742404265329242,
+            "selected_fraction": 0.0135
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99559375,
+            "harm_mass": 0.0008125,
+            "selective_risk": 0.24761904761904763,
+            "abstention": 0.99671875,
+            "gain": 0.0008092399220913649,
+            "selected_fraction": 0.00328125,
+            "radius": 1.438445806503296
+          },
+          "matched_threshold": {
+            "threshold": 0.7054843902587891,
+            "gain": 0.0012697812635451555,
+            "selective_risk": 0.30714285714285716,
+            "harm_mass": 0.00671875,
+            "selected_fraction": 0.021875,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.5138125,
+            "gain": 0.01590273156762123,
+            "selected_fraction": 0.4861875
+          }
+        },
+        "alpha_0.010": {
+          "global": {
+            "threshold": 0.4695199728012085,
+            "states": 32000,
+            "harm_mass": 0.0145,
+            "selective_risk": 0.3473053892215569,
+            "abstention": 0.95825,
+            "gain": 0.0006066591013222933,
+            "selected_fraction": 0.04175,
+            "ci": {
+              "harm_mass": [
+                0.010153659539473685,
+                0.019290131578947368
+              ],
+              "selected_fraction": [
+                0.03035245098039216,
+                0.05505756578947368
+              ],
+              "gain": [
+                -0.0005908873002652509,
+                0.0019099930959348662
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.06272991001605988,
+              -0.020461302250623703,
+              0.0042167603969573975,
+              0.0459476113319397,
+              1.009903073310852
+            ],
+            "harm_mass": 0.0094375,
+            "selective_risk": 0.40700808625336926,
+            "abstention": 0.9768125,
+            "gain": 0.001106481533497572,
+            "selected_fraction": 0.0231875
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99215625,
+            "harm_mass": 0.00146875,
+            "selective_risk": 0.22815533980582525,
+            "abstention": 0.9935625,
+            "gain": 0.0011469043092802167,
+            "selected_fraction": 0.0064375,
+            "radius": 1.1370331048965454
+          },
+          "matched_threshold": {
+            "threshold": 0.4693525731563568,
+            "gain": 0.0006066591013222933,
+            "selective_risk": 0.3473053892215569,
+            "harm_mass": 0.0145,
+            "selected_fraction": 0.04175,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.5138125,
+            "gain": 0.01590273156762123,
+            "selected_fraction": 0.4861875
+          }
+        },
+        "alpha_0.020": {
+          "global": {
+            "threshold": 0.32947835326194763,
+            "states": 32000,
+            "harm_mass": 0.02521875,
+            "selective_risk": 0.38929088277858176,
+            "abstention": 0.93521875,
+            "gain": 5.161128137842752e-05,
+            "selected_fraction": 0.06478125,
+            "ci": {
+              "harm_mass": [
+                0.018777083333333333,
+                0.0321440934065934
+              ],
+              "selected_fraction": [
+                0.048264166666666664,
+                0.08297676282051282
+              ],
+              "gain": [
+                -0.0009945725431359043,
+                0.0012123891939191057
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.06443226337432861,
+              -0.020949795842170715,
+              0.0034805461764335632,
+              0.04409626126289368,
+              0.810799241065979
+            ],
+            "harm_mass": 0.021125,
+            "selective_risk": 0.4438608010505581,
+            "abstention": 0.95240625,
+            "gain": 0.001156821846961975,
+            "selected_fraction": 0.04759375
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.98346875,
+            "harm_mass": 0.0045,
+            "selective_risk": 0.2981366459627329,
+            "abstention": 0.98490625,
+            "gain": 0.0011298380559310317,
+            "selected_fraction": 0.01509375,
+            "radius": 0.8507912158966064
+          },
+          "matched_threshold": {
+            "threshold": 0.3292931616306305,
+            "gain": 5.161128137842752e-05,
+            "selective_risk": 0.38929088277858176,
+            "harm_mass": 0.02521875,
+            "selected_fraction": 0.06478125,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.5138125,
+            "gain": 0.01590273156762123,
+            "selected_fraction": 0.4861875
+          }
+        },
+        "alpha_0.050": {
+          "global": {
+            "threshold": 0.13097503781318665,
+            "states": 32000,
+            "harm_mass": 0.05646875,
+            "selective_risk": 0.4358417752050169,
+            "abstention": 0.8704375,
+            "gain": -0.0006350235780701041,
+            "selected_fraction": 0.1295625,
+            "ci": {
+              "harm_mass": [
+                0.04602579185520362,
+                0.06775078125
+              ],
+              "selected_fraction": [
+                0.10711513157894736,
+                0.15371674107142858
+              ],
+              "gain": [
+                -0.0017473795700772932,
+                0.000569332630872941
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.06944120675325394,
+              -0.02242252230644226,
+              0.0016145557165145874,
+              0.04059135913848877,
+              0.4695199728012085
+            ],
+            "harm_mass": 0.05325,
+            "selective_risk": 0.46304347826086956,
+            "abstention": 0.885,
+            "gain": 0.0005736537859775126,
+            "selected_fraction": 0.115
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.9595,
+            "harm_mass": 0.01253125,
+            "selective_risk": 0.33669185558354325,
+            "abstention": 0.96278125,
+            "gain": 0.0007810022216290236,
+            "selected_fraction": 0.03721875,
+            "radius": 0.5056437253952026
+          },
+          "matched_threshold": {
+            "threshold": 0.13091695308685303,
+            "gain": -0.0006350235780701041,
+            "selective_risk": 0.4358417752050169,
+            "harm_mass": 0.05646875,
+            "selected_fraction": 0.1295625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.5138125,
+            "gain": 0.01590273156762123,
+            "selected_fraction": 0.4861875
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.52228125,
+          "harm_mass": 0.22546875,
+          "selective_risk": 0.48383851931330474,
+          "abstention": 0.534,
+          "gain": -0.0010307262418791652,
+          "selected_fraction": 0.466
+        },
+        "always_select": {
+          "states": 32000,
+          "coverage": 1.0,
+          "selected_fraction": 1.0,
+          "harm_mass": 0.5138125,
+          "selective_risk": 0.5138125,
+          "gain": -0.004706100095063448,
+          "abstention": 0.0
+        }
+      },
+      "PEMSBAY": {
+        "alpha_0.005": {
+          "global": {
+            "threshold": 1.0617270469665527,
+            "states": 32000,
+            "harm_mass": 0.00503125,
+            "selective_risk": 0.27902946273830154,
+            "abstention": 0.9819687500000001,
+            "gain": 0.0048171463422477245,
+            "selected_fraction": 0.01803125,
+            "ci": {
+              "harm_mass": [
+                0.004166666666666667,
+                0.005976785714285714
+              ],
+              "selected_fraction": [
+                0.013977059659090909,
+                0.023079201680672262
+              ],
+              "gain": [
+                0.0019418027669099198,
+                0.008031044989783085
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.13066962361335754,
+              -0.028260063380002975,
+              0.020441006869077682,
+              0.07868009060621262,
+              2.211052417755127
+            ],
+            "harm_mass": 0.0059375,
+            "selective_risk": 0.43478260869565216,
+            "abstention": 0.98634375,
+            "gain": 0.0015592403942719102,
+            "selected_fraction": 0.01365625
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.997625,
+            "harm_mass": 0.00065625,
+            "selective_risk": 0.25301204819277107,
+            "abstention": 0.99740625,
+            "gain": 0.0010127362329512835,
+            "selected_fraction": 0.00259375,
+            "radius": 2.48378324508667
+          },
+          "matched_threshold": {
+            "threshold": 1.0589594841003418,
+            "gain": 0.0048171463422477245,
+            "selective_risk": 0.27902946273830154,
+            "harm_mass": 0.00503125,
+            "selected_fraction": 0.01803125,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.528375,
+            "gain": 0.019449569284915924,
+            "selected_fraction": 0.471625
+          }
+        },
+        "alpha_0.010": {
+          "global": {
+            "threshold": 0.6924546957015991,
+            "states": 32000,
+            "harm_mass": 0.00975,
+            "selective_risk": 0.3098311817279047,
+            "abstention": 0.96853125,
+            "gain": 0.006076801102608442,
+            "selected_fraction": 0.03146875,
+            "ci": {
+              "harm_mass": [
+                0.008249632352941176,
+                0.01138974358974359
+              ],
+              "selected_fraction": [
+                0.025703598484848485,
+                0.03817517045454546
+              ],
+              "gain": [
+                0.002348962687073453,
+                0.010088205604700279
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.13196635246276855,
+              -0.028628170490264893,
+              0.02006407640874386,
+              0.07739709317684174,
+              1.6837522983551025
+            ],
+            "harm_mass": 0.01040625,
+            "selective_risk": 0.4274711168164313,
+            "abstention": 0.97565625,
+            "gain": 0.0030222751665860415,
+            "selected_fraction": 0.02434375
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.9953125,
+            "harm_mass": 0.00115625,
+            "selective_risk": 0.19576719576719576,
+            "abstention": 0.99409375,
+            "gain": 0.0025272842030972242,
+            "selected_fraction": 0.00590625,
+            "radius": 1.894601583480835
+          },
+          "matched_threshold": {
+            "threshold": 0.691437840461731,
+            "gain": 0.006076801102608442,
+            "selective_risk": 0.3098311817279047,
+            "harm_mass": 0.00975,
+            "selected_fraction": 0.03146875,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.528375,
+            "gain": 0.019449569284915924,
+            "selected_fraction": 0.471625
+          }
+        },
+        "alpha_0.020": {
+          "global": {
+            "threshold": 0.4113680422306061,
+            "states": 32000,
+            "harm_mass": 0.01834375,
+            "selective_risk": 0.3485748218527316,
+            "abstention": 0.947375,
+            "gain": 0.0068102264776825905,
+            "selected_fraction": 0.052625,
+            "ci": {
+              "harm_mass": [
+                0.015122916666666666,
+                0.022150416666666665
+              ],
+              "selected_fraction": [
+                0.04383303571428571,
+                0.06147559523809523
+              ],
+              "gain": [
+                0.002890949389241619,
+                0.011055483911584006
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.1351720690727234,
+              -0.029651911929249763,
+              0.019171826541423798,
+              0.0756567046046257,
+              1.191211462020874
+            ],
+            "harm_mass": 0.02134375,
+            "selective_risk": 0.445822454308094,
+            "abstention": 0.952125,
+            "gain": 0.0044400617480278015,
+            "selected_fraction": 0.047875
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.98953125,
+            "harm_mass": 0.00309375,
+            "selective_risk": 0.25,
+            "abstention": 0.987625,
+            "gain": 0.003938974812626839,
+            "selected_fraction": 0.012375,
+            "radius": 1.3461941480636597
+          },
+          "matched_threshold": {
+            "threshold": 0.4112665355205536,
+            "gain": 0.0068102264776825905,
+            "selective_risk": 0.3485748218527316,
+            "harm_mass": 0.01834375,
+            "selected_fraction": 0.052625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.528375,
+            "gain": 0.019449569284915924,
+            "selected_fraction": 0.471625
+          }
+        },
+        "alpha_0.050": {
+          "global": {
+            "threshold": 0.14535200595855713,
+            "states": 32000,
+            "harm_mass": 0.0461875,
+            "selective_risk": 0.4074993107251172,
+            "abstention": 0.88665625,
+            "gain": 0.007170379627496004,
+            "selected_fraction": 0.11334375,
+            "ci": {
+              "harm_mass": [
+                0.03845770833333333,
+                0.05588279411764706
+              ],
+              "selected_fraction": [
+                0.09729718749999999,
+                0.1317090460526316
+              ],
+              "gain": [
+                0.0031279769302379073,
+                0.011614335155720044
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.145923912525177,
+              -0.032461266964673996,
+              0.016532300040125847,
+              0.0705549567937851,
+              0.6924546957015991
+            ],
+            "harm_mass": 0.0514375,
+            "selective_risk": 0.46841206602162777,
+            "abstention": 0.8901875,
+            "gain": 0.0058862329460680485,
+            "selected_fraction": 0.1098125
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.97471875,
+            "harm_mass": 0.00815625,
+            "selective_risk": 0.29692832764505117,
+            "abstention": 0.97253125,
+            "gain": 0.0057929567992687225,
+            "selected_fraction": 0.02746875,
+            "radius": 0.7832898497581482
+          },
+          "matched_threshold": {
+            "threshold": 0.14529526233673096,
+            "gain": 0.007170379627496004,
+            "selective_risk": 0.4074993107251172,
+            "harm_mass": 0.0461875,
+            "selected_fraction": 0.11334375,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.528375,
+            "gain": 0.019449569284915924,
+            "selected_fraction": 0.471625
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.52928125,
+          "harm_mass": 0.2140625,
+          "selective_risk": 0.45988586774085266,
+          "abstention": 0.53453125,
+          "gain": 0.0076169478707015514,
+          "selected_fraction": 0.46546875
+        },
+        "always_select": {
+          "states": 32000,
+          "coverage": 1.0,
+          "selected_fraction": 1.0,
+          "harm_mass": 0.528375,
+          "selective_risk": 0.528375,
+          "gain": 0.0030264921952039003,
+          "abstention": 0.0
+        }
+      },
+      "PEMS03": {
+        "alpha_0.005": {
+          "global": {
+            "threshold": 0.7722610831260681,
+            "states": 32000,
+            "harm_mass": 0.006375,
+            "selective_risk": 0.22054054054054054,
+            "abstention": 0.97109375,
+            "gain": 0.001234232448041439,
+            "selected_fraction": 0.02890625,
+            "ci": {
+              "harm_mass": [
+                0.0036533333333333335,
+                0.009786263736263736
+              ],
+              "selected_fraction": [
+                0.022849583333333333,
+                0.03575036764705882
+              ],
+              "gain": [
+                0.0009136672959862165,
+                0.0015889049488409363
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.20261138677597046,
+              -0.060460276901721954,
+              0.024228975176811218,
+              0.1581016480922699,
+              1.4760394096374512
+            ],
+            "harm_mass": 0.00521875,
+            "selective_risk": 0.3804100227790433,
+            "abstention": 0.98628125,
+            "gain": 0.0005122669972479343,
+            "selected_fraction": 0.01371875
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99728125,
+            "harm_mass": 0.00065625,
+            "selective_risk": 0.23333333333333334,
+            "abstention": 0.9971875,
+            "gain": 0.0003180082712788135,
+            "selected_fraction": 0.0028125,
+            "radius": 2.0901694297790527
+          },
+          "matched_threshold": {
+            "threshold": 0.7713526487350464,
+            "gain": 0.001234232448041439,
+            "selective_risk": 0.22054054054054054,
+            "harm_mass": 0.006375,
+            "selected_fraction": 0.02890625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49728125,
+            "gain": 0.005900551564991474,
+            "selected_fraction": 0.50271875
+          }
+        },
+        "alpha_0.010": {
+          "global": {
+            "threshold": 0.5707488656044006,
+            "states": 32000,
+            "harm_mass": 0.0110625,
+            "selective_risk": 0.22152690863579474,
+            "abstention": 0.9500625,
+            "gain": 0.001608278602361679,
+            "selected_fraction": 0.0499375,
+            "ci": {
+              "harm_mass": [
+                0.00784609375,
+                0.014694940476190476
+              ],
+              "selected_fraction": [
+                0.04181183035714286,
+                0.05907960526315789
+              ],
+              "gain": [
+                0.0011829286890957399,
+                0.0021077510972925023
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.2048322856426239,
+              -0.061131350696086884,
+              0.02333454042673111,
+              0.1555396467447281,
+              1.1562607288360596
+            ],
+            "harm_mass": 0.009875,
+            "selective_risk": 0.37708830548926014,
+            "abstention": 0.9738125,
+            "gain": 0.0007286979234777391,
+            "selected_fraction": 0.0261875
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99509375,
+            "harm_mass": 0.00153125,
+            "selective_risk": 0.28488372093023256,
+            "abstention": 0.994625,
+            "gain": 0.0004227194585837424,
+            "selected_fraction": 0.005375,
+            "radius": 1.6193993091583252
+          },
+          "matched_threshold": {
+            "threshold": 0.5707137584686279,
+            "gain": 0.001608278602361679,
+            "selective_risk": 0.22152690863579474,
+            "harm_mass": 0.0110625,
+            "selected_fraction": 0.0499375,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49728125,
+            "gain": 0.005900551564991474,
+            "selected_fraction": 0.50271875
+          }
+        },
+        "alpha_0.020": {
+          "global": {
+            "threshold": 0.3885944187641144,
+            "states": 32000,
+            "harm_mass": 0.02053125,
+            "selective_risk": 0.22963998601887453,
+            "abstention": 0.91059375,
+            "gain": 0.0020345537923276424,
+            "selected_fraction": 0.08940625,
+            "ci": {
+              "harm_mass": [
+                0.015892410714285713,
+                0.02476892857142857
+              ],
+              "selected_fraction": [
+                0.07642785714285714,
+                0.10140691176470588
+              ],
+              "gain": [
+                0.0015367285130103376,
+                0.002581110919859711
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.20955537259578705,
+              -0.06250887364149094,
+              0.02142249047756195,
+              0.15064257383346558,
+              0.8490546345710754
+            ],
+            "harm_mass": 0.0196875,
+            "selective_risk": 0.37344398340248963,
+            "abstention": 0.94728125,
+            "gain": 0.0010937291663140059,
+            "selected_fraction": 0.05271875
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99096875,
+            "harm_mass": 0.00259375,
+            "selective_risk": 0.25696594427244585,
+            "abstention": 0.98990625,
+            "gain": 0.0006542791379615664,
+            "selected_fraction": 0.01009375,
+            "radius": 1.2572312355041504
+          },
+          "matched_threshold": {
+            "threshold": 0.38849928975105286,
+            "gain": 0.0020345537923276424,
+            "selective_risk": 0.22963998601887453,
+            "harm_mass": 0.02053125,
+            "selected_fraction": 0.08940625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49728125,
+            "gain": 0.005900551564991474,
+            "selected_fraction": 0.50271875
+          }
+        },
+        "alpha_0.050": {
+          "global": {
+            "threshold": 0.20855917036533356,
+            "states": 32000,
+            "harm_mass": 0.05328125,
+            "selective_risk": 0.29180215642649326,
+            "abstention": 0.81740625,
+            "gain": 0.0024235770106315613,
+            "selected_fraction": 0.18259375,
+            "ci": {
+              "harm_mass": [
+                0.043499305555555555,
+                0.06390776041666667
+              ],
+              "selected_fraction": [
+                0.16203839285714286,
+                0.20430573529411766
+              ],
+              "gain": [
+                0.00186026781696165,
+                0.0030739229205328927
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.21968182921409607,
+              -0.06816621869802475,
+              0.01522047072649002,
+              0.137338787317276,
+              0.5707488656044006
+            ],
+            "harm_mass": 0.0496875,
+            "selective_risk": 0.3901840490797546,
+            "abstention": 0.87265625,
+            "gain": 0.0016184597043320537,
+            "selected_fraction": 0.12734375
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.9744375,
+            "harm_mass": 0.0060625,
+            "selective_risk": 0.223760092272203,
+            "abstention": 0.97290625,
+            "gain": 0.0011917916126549244,
+            "selected_fraction": 0.02709375,
+            "radius": 0.7953289747238159
+          },
+          "matched_threshold": {
+            "threshold": 0.2085590660572052,
+            "gain": 0.0024235770106315613,
+            "selective_risk": 0.29180215642649326,
+            "harm_mass": 0.05328125,
+            "selected_fraction": 0.18259375,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49728125,
+            "gain": 0.005900551564991474,
+            "selected_fraction": 0.50271875
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.51484375,
+          "harm_mass": 0.18575,
+          "selective_risk": 0.38368190033565713,
+          "abstention": 0.515875,
+          "gain": 0.002816959982737899,
+          "selected_fraction": 0.484125
+        },
+        "always_select": {
+          "states": 32000,
+          "coverage": 1.0,
+          "selected_fraction": 1.0,
+          "harm_mass": 0.49728125,
+          "selective_risk": 0.49728125,
+          "gain": 0.0007694780942983925,
+          "abstention": 0.0
+        }
+      },
+      "PEMS04": {
+        "alpha_0.005": {
+          "global": {
+            "threshold": 0.6623806357383728,
+            "states": 32000,
+            "harm_mass": 0.00346875,
+            "selective_risk": 0.07767669699090272,
+            "abstention": 0.95534375,
+            "gain": 0.00526759959757328,
+            "selected_fraction": 0.04465625,
+            "ci": {
+              "harm_mass": [
+                0.002333088235294118,
+                0.004700555555555555
+              ],
+              "selected_fraction": [
+                0.0366835115131579,
+                0.053209375
+              ],
+              "gain": [
+                0.002754052553941104,
+                0.008591084026401706
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.2085384726524353,
+              -0.07996072620153427,
+              0.012546755373477936,
+              0.15686315298080444,
+              1.2006850242614746
+            ],
+            "harm_mass": 0.00459375,
+            "selective_risk": 0.1733490566037736,
+            "abstention": 0.9735,
+            "gain": 0.004086787346750498,
+            "selected_fraction": 0.0265
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99053125,
+            "harm_mass": 0.00028125,
+            "selective_risk": 0.02616279069767442,
+            "abstention": 0.98925,
+            "gain": 0.003413400612771511,
+            "selected_fraction": 0.01075,
+            "radius": 1.6988391876220703
+          },
+          "matched_threshold": {
+            "threshold": 0.662194013595581,
+            "gain": 0.00526759959757328,
+            "selective_risk": 0.07767669699090272,
+            "harm_mass": 0.00346875,
+            "selected_fraction": 0.04465625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.47706249999999994,
+            "gain": 0.009835587814450264,
+            "selected_fraction": 0.5229375
+          }
+        },
+        "alpha_0.010": {
+          "global": {
+            "threshold": 0.4858049154281616,
+            "states": 32000,
+            "harm_mass": 0.0085,
+            "selective_risk": 0.12769953051643193,
+            "abstention": 0.9334375,
+            "gain": 0.005623410455882549,
+            "selected_fraction": 0.0665625,
+            "ci": {
+              "harm_mass": [
+                0.00639909090909091,
+                0.011313020833333333
+              ],
+              "selected_fraction": [
+                0.05843307692307692,
+                0.07515859374999999
+              ],
+              "gain": [
+                0.003100879037931332,
+                0.009007231285060553
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.21044105291366577,
+              -0.08120450377464294,
+              0.011549308896064758,
+              0.15333795547485352,
+              0.9327443242073059
+            ],
+            "harm_mass": 0.00971875,
+            "selective_risk": 0.21932299012693934,
+            "abstention": 0.9556875,
+            "gain": 0.0046449089422822,
+            "selected_fraction": 0.0443125
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.98646875,
+            "harm_mass": 0.0005625,
+            "selective_risk": 0.03711340206185567,
+            "abstention": 0.98484375,
+            "gain": 0.0038475950714200735,
+            "selected_fraction": 0.01515625,
+            "radius": 1.361568570137024
+          },
+          "matched_threshold": {
+            "threshold": 0.4857669770717621,
+            "gain": 0.005623410455882549,
+            "selective_risk": 0.12769953051643193,
+            "harm_mass": 0.0085,
+            "selected_fraction": 0.0665625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.47706249999999994,
+            "gain": 0.009835587814450264,
+            "selected_fraction": 0.5229375
+          }
+        },
+        "alpha_0.020": {
+          "global": {
+            "threshold": 0.3261670470237732,
+            "states": 32000,
+            "harm_mass": 0.0183125,
+            "selective_risk": 0.17134502923976608,
+            "abstention": 0.893125,
+            "gain": 0.0060579911805689335,
+            "selected_fraction": 0.106875,
+            "ci": {
+              "harm_mass": [
+                0.014599583333333334,
+                0.022871710526315786
+              ],
+              "selected_fraction": [
+                0.09618094919786097,
+                0.11747187499999999
+              ],
+              "gain": [
+                0.003521815258629986,
+                0.009385568982291873
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.21347683668136597,
+              -0.08285611867904663,
+              0.009611330926418304,
+              0.14685791730880737,
+              0.7174455523490906
+            ],
+            "harm_mass": 0.0179375,
+            "selective_risk": 0.2457191780821918,
+            "abstention": 0.927,
+            "gain": 0.00515811936929822,
+            "selected_fraction": 0.073
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.98003125,
+            "harm_mass": 0.00121875,
+            "selective_risk": 0.05547652916073969,
+            "abstention": 0.97803125,
+            "gain": 0.004337900318205357,
+            "selected_fraction": 0.02196875,
+            "radius": 1.0646721124649048
+          },
+          "matched_threshold": {
+            "threshold": 0.3261203467845917,
+            "gain": 0.0060579911805689335,
+            "selective_risk": 0.17134502923976608,
+            "harm_mass": 0.0183125,
+            "selected_fraction": 0.106875,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.47706249999999994,
+            "gain": 0.009835587814450264,
+            "selected_fraction": 0.5229375
+          }
+        },
+        "alpha_0.050": {
+          "global": {
+            "threshold": 0.15888768434524536,
+            "states": 32000,
+            "harm_mass": 0.04675,
+            "selective_risk": 0.2332761578044597,
+            "abstention": 0.79959375,
+            "gain": 0.006548603996634483,
+            "selected_fraction": 0.20040625,
+            "ci": {
+              "harm_mass": [
+                0.03743991228070176,
+                0.05858828125
+              ],
+              "selected_fraction": [
+                0.17970386029411767,
+                0.22116710526315791
+              ],
+              "gain": [
+                0.003964989451778453,
+                0.009926022545205733
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.22368255257606506,
+              -0.08964882791042328,
+              0.001497112214565277,
+              0.13185369968414307,
+              0.4858049154281616
+            ],
+            "harm_mass": 0.04825,
+            "selective_risk": 0.3120452708164915,
+            "abstention": 0.845375,
+            "gain": 0.005703848786652088,
+            "selected_fraction": 0.154625
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.964125,
+            "harm_mass": 0.002625,
+            "selective_risk": 0.06851549755301795,
+            "abstention": 0.9616875,
+            "gain": 0.005089978221803904,
+            "selected_fraction": 0.0383125,
+            "radius": 0.7402290105819702
+          },
+          "matched_threshold": {
+            "threshold": 0.15885937213897705,
+            "gain": 0.006548603996634483,
+            "selective_risk": 0.2332761578044597,
+            "harm_mass": 0.04675,
+            "selected_fraction": 0.20040625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.47706249999999994,
+            "gain": 0.009835587814450264,
+            "selected_fraction": 0.5229375
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57009375,
+          "harm_mass": 0.135125,
+          "selective_risk": 0.31461001164144353,
+          "abstention": 0.5705,
+          "gain": 0.006942271254956722,
+          "selected_fraction": 0.4295
+        },
+        "always_select": {
+          "states": 32000,
+          "coverage": 1.0,
+          "selected_fraction": 1.0,
+          "harm_mass": 0.4770625,
+          "selective_risk": 0.4770625,
+          "gain": 0.004838515073060989,
+          "abstention": 0.0
+        }
+      },
+      "PEMS07": {
+        "alpha_0.005": {
+          "global": {
+            "threshold": 0.6712512373924255,
+            "states": 32000,
+            "harm_mass": 0.00703125,
+            "selective_risk": 0.20417422867513613,
+            "abstention": 0.9655625,
+            "gain": 0.0012642969377338886,
+            "selected_fraction": 0.0344375,
+            "ci": {
+              "harm_mass": [
+                0.00465609375,
+                0.009618653250773993
+              ],
+              "selected_fraction": [
+                0.028558010835913313,
+                0.03987518382352941
+              ],
+              "gain": [
+                0.0007990244859222973,
+                0.0018143491629708085
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.18270142376422882,
+              -0.05884374678134918,
+              0.01013808324933052,
+              0.13161811232566833,
+              1.3659801483154297
+            ],
+            "harm_mass": 0.00640625,
+            "selective_risk": 0.36607142857142855,
+            "abstention": 0.9825,
+            "gain": 0.0005143649177625775,
+            "selected_fraction": 0.0175
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99715625,
+            "harm_mass": 0.0005625,
+            "selective_risk": 0.17475728155339806,
+            "abstention": 0.99678125,
+            "gain": 0.00027202340424992144,
+            "selected_fraction": 0.00321875,
+            "radius": 2.024172306060791
+          },
+          "matched_threshold": {
+            "threshold": 0.6710793375968933,
+            "gain": 0.0012642969377338886,
+            "selective_risk": 0.20417422867513613,
+            "harm_mass": 0.00703125,
+            "selected_fraction": 0.0344375,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49415624999999996,
+            "gain": 0.005730865523219109,
+            "selected_fraction": 0.50584375
+          }
+        },
+        "alpha_0.010": {
+          "global": {
+            "threshold": 0.4782572388648987,
+            "states": 32000,
+            "harm_mass": 0.01303125,
+            "selective_risk": 0.22601626016260162,
+            "abstention": 0.94234375,
+            "gain": 0.0016249699983745813,
+            "selected_fraction": 0.05765625,
+            "ci": {
+              "harm_mass": [
+                0.00994436274509804,
+                0.01637578125
+              ],
+              "selected_fraction": [
+                0.05005588235294118,
+                0.06512053921568628
+              ],
+              "gain": [
+                0.001039845347739927,
+                0.002368226304428912
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.18441414833068848,
+              -0.059471361339092255,
+              0.009420476853847504,
+              0.12853780388832092,
+              1.0442757606506348
+            ],
+            "harm_mass": 0.01128125,
+            "selective_risk": 0.34413727359389895,
+            "abstention": 0.96721875,
+            "gain": 0.0007635390502400696,
+            "selected_fraction": 0.03278125
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99475,
+            "harm_mass": 0.00109375,
+            "selective_risk": 0.1977401129943503,
+            "abstention": 0.99446875,
+            "gain": 0.0003763693675864488,
+            "selected_fraction": 0.00553125,
+            "radius": 1.6220632791519165
+          },
+          "matched_threshold": {
+            "threshold": 0.47823435068130493,
+            "gain": 0.0016249699983745813,
+            "selective_risk": 0.22601626016260162,
+            "harm_mass": 0.01303125,
+            "selected_fraction": 0.05765625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49415624999999996,
+            "gain": 0.005730865523219109,
+            "selected_fraction": 0.50584375
+          }
+        },
+        "alpha_0.020": {
+          "global": {
+            "threshold": 0.3135943114757538,
+            "states": 32000,
+            "harm_mass": 0.02596875,
+            "selective_risk": 0.26123860421251177,
+            "abstention": 0.90059375,
+            "gain": 0.0019894582219421864,
+            "selected_fraction": 0.09940625,
+            "ci": {
+              "harm_mass": [
+                0.02185654761904762,
+                0.029708593749999998
+              ],
+              "selected_fraction": [
+                0.08855825892857143,
+                0.10988348214285713
+              ],
+              "gain": [
+                0.0013031727580970342,
+                0.0028481102646094637
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.18774199485778809,
+              -0.06122419983148575,
+              0.007943153381347656,
+              0.12389755994081497,
+              0.7659304738044739
+            ],
+            "harm_mass": 0.02271875,
+            "selective_risk": 0.35954500494559843,
+            "abstention": 0.9368125,
+            "gain": 0.0011216492857784033,
+            "selected_fraction": 0.0631875
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.98965625,
+            "harm_mass": 0.00225,
+            "selective_risk": 0.2057142857142857,
+            "abstention": 0.9890625,
+            "gain": 0.0005968257319182158,
+            "selected_fraction": 0.0109375,
+            "radius": 1.220426082611084
+          },
+          "matched_threshold": {
+            "threshold": 0.3135858178138733,
+            "gain": 0.0019894582219421864,
+            "selective_risk": 0.26123860421251177,
+            "harm_mass": 0.02596875,
+            "selected_fraction": 0.09940625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49415624999999996,
+            "gain": 0.005730865523219109,
+            "selected_fraction": 0.50584375
+          }
+        },
+        "alpha_0.050": {
+          "global": {
+            "threshold": 0.15827526152133942,
+            "states": 32000,
+            "harm_mass": 0.057625,
+            "selective_risk": 0.3100723053640491,
+            "abstention": 0.81415625,
+            "gain": 0.002330177230760455,
+            "selected_fraction": 0.18584375,
+            "ci": {
+              "harm_mass": [
+                0.05153966346153846,
+                0.06366953125
+              ],
+              "selected_fraction": [
+                0.16862379807692307,
+                0.2038375
+              ],
+              "gain": [
+                0.0015657736733108935,
+                0.00325663049569026
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.19778582453727722,
+              -0.06604044139385223,
+              0.0036124661564826965,
+              0.11189400404691696,
+              0.4782572388648987
+            ],
+            "harm_mass": 0.05565625,
+            "selective_risk": 0.38844056706652125,
+            "abstention": 0.85671875,
+            "gain": 0.0016796374693512917,
+            "selected_fraction": 0.14328125
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.97453125,
+            "harm_mass": 0.00546875,
+            "selective_risk": 0.20420070011668612,
+            "abstention": 0.97321875,
+            "gain": 0.0010615685023367405,
+            "selected_fraction": 0.02678125,
+            "radius": 0.7756038904190063
+          },
+          "matched_threshold": {
+            "threshold": 0.15827228128910065,
+            "gain": 0.002330177230760455,
+            "selective_risk": 0.3100723053640491,
+            "harm_mass": 0.057625,
+            "selected_fraction": 0.18584375,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.49415624999999996,
+            "gain": 0.005730865523219109,
+            "selected_fraction": 0.50584375
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57125,
+          "harm_mass": 0.16625,
+          "selective_risk": 0.387670334474969,
+          "abstention": 0.57115625,
+          "gain": 0.0026551045011729,
+          "selected_fraction": 0.42884375
+        },
+        "always_select": {
+          "states": 32000,
+          "coverage": 1.0,
+          "selected_fraction": 1.0,
+          "harm_mass": 0.49415625,
+          "selective_risk": 0.49415625,
+          "gain": 0.0007588716689497232,
+          "abstention": 0.0
+        }
+      },
+      "PEMS08": {
+        "alpha_0.005": {
+          "global": {
+            "threshold": 0.7202385663986206,
+            "states": 32000,
+            "harm_mass": 0.0045625,
+            "selective_risk": 0.13394495412844037,
+            "abstention": 0.9659375,
+            "gain": 0.001879638060927391,
+            "selected_fraction": 0.0340625,
+            "ci": {
+              "harm_mass": [
+                0.0032305555555555555,
+                0.005824264705882352
+              ],
+              "selected_fraction": [
+                0.0295,
+                0.03886666666666667
+              ],
+              "gain": [
+                0.001148213145636449,
+                0.0027902045871647714
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.19774308800697327,
+              -0.06869195401668549,
+              0.005532994866371155,
+              0.1457655131816864,
+              1.198438048362732
+            ],
+            "harm_mass": 0.0064375,
+            "selective_risk": 0.3056379821958457,
+            "abstention": 0.9789375,
+            "gain": 0.0011680417228490114,
+            "selected_fraction": 0.0210625
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.9969375,
+            "harm_mass": 0.000125,
+            "selective_risk": 0.035398230088495575,
+            "abstention": 0.99646875,
+            "gain": 0.0006922426400706172,
+            "selected_fraction": 0.00353125,
+            "radius": 1.9673089981079102
+          },
+          "matched_threshold": {
+            "threshold": 0.720008909702301,
+            "gain": 0.001879638060927391,
+            "selective_risk": 0.13394495412844037,
+            "harm_mass": 0.0045625,
+            "selected_fraction": 0.0340625,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.45928125,
+            "gain": 0.00741217378526926,
+            "selected_fraction": 0.54071875
+          }
+        },
+        "alpha_0.010": {
+          "global": {
+            "threshold": 0.5688786506652832,
+            "states": 32000,
+            "harm_mass": 0.0075625,
+            "selective_risk": 0.1465778316172017,
+            "abstention": 0.94840625,
+            "gain": 0.0022441165056079626,
+            "selected_fraction": 0.05159375,
+            "ci": {
+              "harm_mass": [
+                0.00578109375,
+                0.009266944444444444
+              ],
+              "selected_fraction": [
+                0.04521828125,
+                0.058
+              ],
+              "gain": [
+                0.0014435602138919742,
+                0.0032164484689987147
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.19955462217330933,
+              -0.06946020573377609,
+              0.004673436284065247,
+              0.14249488711357117,
+              0.9673466682434082
+            ],
+            "harm_mass": 0.0105625,
+            "selective_risk": 0.29858657243816256,
+            "abstention": 0.964625,
+            "gain": 0.0014613713137805462,
+            "selected_fraction": 0.035375
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.99346875,
+            "harm_mass": 0.0006875,
+            "selective_risk": 0.09523809523809523,
+            "abstention": 0.99278125,
+            "gain": 0.0009570554248057306,
+            "selected_fraction": 0.00721875,
+            "radius": 1.4319977760314941
+          },
+          "matched_threshold": {
+            "threshold": 0.5688690543174744,
+            "gain": 0.0022441165056079626,
+            "selective_risk": 0.1465778316172017,
+            "harm_mass": 0.0075625,
+            "selected_fraction": 0.05159375,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.45928125,
+            "gain": 0.00741217378526926,
+            "selected_fraction": 0.54071875
+          }
+        },
+        "alpha_0.020": {
+          "global": {
+            "threshold": 0.3897271752357483,
+            "states": 32000,
+            "harm_mass": 0.01553125,
+            "selective_risk": 0.17611622962437987,
+            "abstention": 0.9118125,
+            "gain": 0.0027564307674765587,
+            "selected_fraction": 0.0881875,
+            "ci": {
+              "harm_mass": [
+                0.01234984375,
+                0.01858458333333333
+              ],
+              "selected_fraction": [
+                0.0769546875,
+                0.09978690476190476
+              ],
+              "gain": [
+                0.0018112454847217438,
+                0.0038672426409250573
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.20458927750587463,
+              -0.07118557393550873,
+              0.003236211836338043,
+              0.13562490046024323,
+              0.7828119993209839
+            ],
+            "harm_mass": 0.0198125,
+            "selective_risk": 0.3137060860959921,
+            "abstention": 0.93684375,
+            "gain": 0.0017865286208689213,
+            "selected_fraction": 0.06315625
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.98759375,
+            "harm_mass": 0.00146875,
+            "selective_risk": 0.10829493087557604,
+            "abstention": 0.9864375,
+            "gain": 0.0012609112309291959,
+            "selected_fraction": 0.0135625,
+            "radius": 1.1183243989944458
+          },
+          "matched_threshold": {
+            "threshold": 0.38966265320777893,
+            "gain": 0.0027564307674765587,
+            "selective_risk": 0.17611622962437987,
+            "harm_mass": 0.01553125,
+            "selected_fraction": 0.0881875,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.45928125,
+            "gain": 0.00741217378526926,
+            "selected_fraction": 0.54071875
+          }
+        },
+        "alpha_0.050": {
+          "global": {
+            "threshold": 0.17477945983409882,
+            "states": 32000,
+            "harm_mass": 0.050625,
+            "selective_risk": 0.2598652550529355,
+            "abstention": 0.8051875,
+            "gain": 0.0034418462309986353,
+            "selected_fraction": 0.1948125,
+            "ci": {
+              "harm_mass": [
+                0.04333303571428571,
+                0.0571125
+              ],
+              "selected_fraction": [
+                0.1710955357142857,
+                0.21962115384615385
+              ],
+              "gain": [
+                0.002311869309266411,
+                0.004747804038211716
+              ]
+            }
+          },
+          "conditional": {
+            "thresholds": [
+              -0.21525005996227264,
+              -0.07714595645666122,
+              -0.0013321936130523682,
+              0.119237020611763,
+              0.5688786506652832
+            ],
+            "harm_mass": 0.04640625,
+            "selective_risk": 0.34295612009237875,
+            "abstention": 0.8646875,
+            "gain": 0.0023153836373239756,
+            "selected_fraction": 0.1353125
+          },
+          "interval_lcb": {
+            "states": 32000,
+            "coverage": 0.97271875,
+            "harm_mass": 0.003875,
+            "selective_risk": 0.13304721030042918,
+            "abstention": 0.970875,
+            "gain": 0.0017732285195961595,
+            "selected_fraction": 0.029125,
+            "radius": 0.780040442943573
+          },
+          "matched_threshold": {
+            "threshold": 0.17478829622268677,
+            "gain": 0.0034418462309986353,
+            "selective_risk": 0.2598652550529355,
+            "harm_mass": 0.050625,
+            "selected_fraction": 0.1948125,
+            "basis": "free-threshold control at the same selected fraction"
+          },
+          "oracle_positive": {
+            "harm_mass": 0.0,
+            "abstention": 0.45928125,
+            "gain": 0.00741217378526926,
+            "selected_fraction": 0.54071875
+          }
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57709375,
+          "harm_mass": 0.14715625,
+          "selective_risk": 0.34663231505336767,
+          "abstention": 0.57546875,
+          "gain": 0.003896401496604085,
+          "selected_fraction": 0.42453125
+        },
+        "always_select": {
+          "states": 32000,
+          "coverage": 1.0,
+          "selected_fraction": 1.0,
+          "harm_mass": 0.45928125,
+          "selective_risk": 0.45928125,
+          "gain": 0.0026945231948047876,
+          "abstention": 0.0
+        }
+      }
+    },
+    "P6_cross_dataset_threshold": {
+      "METRLA": {
+        "alpha_0.005": {
+          "threshold": 0.7857425212860107,
+          "states": 64000,
+          "harm_mass": 0.00478125,
+          "selective_risk": 0.32867883995703545,
+          "abstention": 0.985453125,
+          "gain": 0.0009371103951707482,
+          "selected_fraction": 0.014546875
+        },
+        "alpha_0.010": {
+          "threshold": 0.5497201085090637,
+          "states": 64000,
+          "harm_mass": 0.00946875,
+          "selective_risk": 0.3391158365976497,
+          "abstention": 0.972078125,
+          "gain": 0.00077828235225752,
+          "selected_fraction": 0.027921875
+        },
+        "alpha_0.020": {
+          "threshold": 0.3602840006351471,
+          "states": 64000,
+          "harm_mass": 0.020125,
+          "selective_risk": 0.3770491803278688,
+          "abstention": 0.946625,
+          "gain": 0.0001989310549106449,
+          "selected_fraction": 0.053375
+        },
+        "alpha_0.050": {
+          "threshold": 0.17308788001537323,
+          "states": 64000,
+          "harm_mass": 0.04278125,
+          "selective_risk": 0.4224004936747917,
+          "abstention": 0.89871875,
+          "gain": -0.00013560040679294616,
+          "selected_fraction": 0.10128125
+        }
+      },
+      "PEMSBAY": {
+        "alpha_0.005": {
+          "threshold": 0.7280179858207703,
+          "states": 64000,
+          "harm_mass": 0.009234375,
+          "selective_risk": 0.3157051282051282,
+          "abstention": 0.97075,
+          "gain": 0.00546208955347538,
+          "selected_fraction": 0.02925
+        },
+        "alpha_0.010": {
+          "threshold": 0.5254892706871033,
+          "states": 64000,
+          "harm_mass": 0.01440625,
+          "selective_risk": 0.34047267355982275,
+          "abstention": 0.9576875,
+          "gain": 0.006046693306416273,
+          "selected_fraction": 0.0423125
+        },
+        "alpha_0.020": {
+          "threshold": 0.35534998774528503,
+          "states": 64000,
+          "harm_mass": 0.022234375,
+          "selective_risk": 0.36637487126673535,
+          "abstention": 0.9393125,
+          "gain": 0.006424974650144577,
+          "selected_fraction": 0.0606875
+        },
+        "alpha_0.050": {
+          "threshold": 0.1738978624343872,
+          "states": 64000,
+          "harm_mass": 0.0413125,
+          "selective_risk": 0.4001816255486605,
+          "abstention": 0.896765625,
+          "gain": 0.00669740978628397,
+          "selected_fraction": 0.103234375
+        }
+      },
+      "PEMS03": {
+        "alpha_0.005": {
+          "threshold": 0.7731051445007324,
+          "states": 64000,
+          "harm_mass": 0.0056875,
+          "selective_risk": 0.22524752475247525,
+          "abstention": 0.97475,
+          "gain": 0.0010605964343994856,
+          "selected_fraction": 0.02525
+        },
+        "alpha_0.010": {
+          "threshold": 0.5391243696212769,
+          "states": 64000,
+          "harm_mass": 0.011625,
+          "selective_risk": 0.2341095028319698,
+          "abstention": 0.95034375,
+          "gain": 0.0014823528472334146,
+          "selected_fraction": 0.04965625
+        },
+        "alpha_0.020": {
+          "threshold": 0.3529258072376251,
+          "states": 64000,
+          "harm_mass": 0.02371875,
+          "selective_risk": 0.25461254612546125,
+          "abstention": 0.90684375,
+          "gain": 0.001884498167783022,
+          "selected_fraction": 0.09315625
+        },
+        "alpha_0.050": {
+          "threshold": 0.15730610489845276,
+          "states": 64000,
+          "harm_mass": 0.070234375,
+          "selective_risk": 0.32445503103796736,
+          "abstention": 0.78353125,
+          "gain": 0.0022835340350866318,
+          "selected_fraction": 0.21646875
+        }
+      },
+      "PEMS04": {
+        "alpha_0.005": {
+          "threshold": 0.8132144212722778,
+          "states": 64000,
+          "harm_mass": 0.002546875,
+          "selective_risk": 0.08796546141392336,
+          "abstention": 0.971046875,
+          "gain": 0.0031326082535088062,
+          "selected_fraction": 0.028953125
+        },
+        "alpha_0.010": {
+          "threshold": 0.5680426359176636,
+          "states": 64000,
+          "harm_mass": 0.006234375,
+          "selective_risk": 0.12172056131787676,
+          "abstention": 0.94878125,
+          "gain": 0.003629817860201001,
+          "selected_fraction": 0.05121875
+        },
+        "alpha_0.020": {
+          "threshold": 0.3699858784675598,
+          "states": 64000,
+          "harm_mass": 0.0155,
+          "selective_risk": 0.17115251897860592,
+          "abstention": 0.9094375,
+          "gain": 0.0041021546348929405,
+          "selected_fraction": 0.0905625
+        },
+        "alpha_0.050": {
+          "threshold": 0.1715949922800064,
+          "states": 64000,
+          "harm_mass": 0.045,
+          "selective_risk": 0.23664749383730485,
+          "abstention": 0.80984375,
+          "gain": 0.004715682007372379,
+          "selected_fraction": 0.19015625
+        }
+      },
+      "PEMS07": {
+        "alpha_0.005": {
+          "threshold": 0.789736807346344,
+          "states": 64000,
+          "harm_mass": 0.0045,
+          "selective_risk": 0.18101822752985544,
+          "abstention": 0.975140625,
+          "gain": 0.0012780883116647601,
+          "selected_fraction": 0.024859375
+        },
+        "alpha_0.010": {
+          "threshold": 0.5512709021568298,
+          "states": 64000,
+          "harm_mass": 0.00909375,
+          "selective_risk": 0.2005513439007581,
+          "abstention": 0.95465625,
+          "gain": 0.0017726013902574778,
+          "selected_fraction": 0.04534375
+        },
+        "alpha_0.020": {
+          "threshold": 0.3632051646709442,
+          "states": 64000,
+          "harm_mass": 0.01834375,
+          "selective_risk": 0.22568242983467898,
+          "abstention": 0.91871875,
+          "gain": 0.0022415665443986654,
+          "selected_fraction": 0.08128125
+        },
+        "alpha_0.050": {
+          "threshold": 0.168025940656662,
+          "states": 64000,
+          "harm_mass": 0.050953125,
+          "selective_risk": 0.292440139897767,
+          "abstention": 0.8257656250000001,
+          "gain": 0.002745045581832528,
+          "selected_fraction": 0.174234375
+        }
+      },
+      "PEMS08": {
+        "alpha_0.005": {
+          "threshold": 0.7996530532836914,
+          "states": 64000,
+          "harm_mass": 0.00365625,
+          "selective_risk": 0.13138686131386862,
+          "abstention": 0.972171875,
+          "gain": 0.0014864159747958183,
+          "selected_fraction": 0.027828125
+        },
+        "alpha_0.010": {
+          "threshold": 0.5493378043174744,
+          "states": 64000,
+          "harm_mass": 0.00953125,
+          "selective_risk": 0.17236507487990957,
+          "abstention": 0.944703125,
+          "gain": 0.001950054313056171,
+          "selected_fraction": 0.055296875
+        },
+        "alpha_0.020": {
+          "threshold": 0.3593176305294037,
+          "states": 64000,
+          "harm_mass": 0.020484375,
+          "selective_risk": 0.20905756657630362,
+          "abstention": 0.902015625,
+          "gain": 0.0024390278849750757,
+          "selected_fraction": 0.097984375
+        },
+        "alpha_0.050": {
+          "threshold": 0.16740897297859192,
+          "states": 64000,
+          "harm_mass": 0.052125,
+          "selective_risk": 0.2698374181024023,
+          "abstention": 0.806828125,
+          "gain": 0.002929932903498411,
+          "selected_fraction": 0.193171875
+        }
+      }
+    },
+    "P7_share_vs_mass": {
+      "METRLA": {
+        "alpha_0.02": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.32947835326194763,
+            "states": 32000,
+            "harm_mass": 0.02521875,
+            "selective_risk": 0.38929088277858176,
+            "abstention": 0.93521875,
+            "gain": 5.161128137842752e-05,
+            "selected_fraction": 0.06478125
+          }
+        },
+        "alpha_0.05": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.13097503781318665,
+            "states": 32000,
+            "harm_mass": 0.05646875,
+            "selective_risk": 0.4358417752050169,
+            "abstention": 0.8704375,
+            "gain": -0.0006350235780701041,
+            "selected_fraction": 0.1295625
+          }
+        },
+        "alpha_0.10": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.04058031737804413,
+            "states": 32000,
+            "harm_mass": 0.11471875,
+            "selective_risk": 0.4639787664307381,
+            "abstention": 0.75275,
+            "gain": -0.0009085156489163637,
+            "selected_fraction": 0.24725
+          }
+        },
+        "risk_coverage": {
+          "0.02": 0.3078125,
+          "0.05": 0.363125,
+          "0.10": 0.4184375,
+          "0.20": 0.45578125,
+          "0.30": 0.46947916666666667,
+          "0.50": 0.48525,
+          "1.00": 0.5138125
+        },
+        "risk_coverage_dense": {
+          "coverage": [
+            0.01,
+            0.02,
+            0.03,
+            0.04,
+            0.05,
+            0.060000000000000005,
+            0.06999999999999999,
+            0.08,
+            0.09,
+            0.09999999999999999,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15000000000000002,
+            0.16,
+            0.17,
+            0.18000000000000002,
+            0.19,
+            0.2,
+            0.21000000000000002,
+            0.22,
+            0.23,
+            0.24000000000000002,
+            0.25,
+            0.26,
+            0.27,
+            0.28,
+            0.29000000000000004,
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35000000000000003,
+            0.36000000000000004,
+            0.37,
+            0.38,
+            0.39,
+            0.4,
+            0.41000000000000003,
+            0.42000000000000004,
+            0.43,
+            0.44,
+            0.45,
+            0.46,
+            0.47000000000000003,
+            0.48000000000000004,
+            0.49,
+            0.5,
+            0.51,
+            0.52,
+            0.53,
+            0.54,
+            0.55,
+            0.56,
+            0.5700000000000001,
+            0.5800000000000001,
+            0.59,
+            0.6,
+            0.61,
+            0.62,
+            0.63,
+            0.64,
+            0.65,
+            0.66,
+            0.67,
+            0.68,
+            0.6900000000000001,
+            0.7000000000000001,
+            0.7100000000000001,
+            0.72,
+            0.73,
+            0.74,
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.8200000000000001,
+            0.8300000000000001,
+            0.8400000000000001,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9,
+            0.91,
+            0.92,
+            0.93,
+            0.9400000000000001,
+            0.9500000000000001,
+            0.9600000000000001,
+            0.97,
+            0.98,
+            0.99,
+            1.0
+          ],
+          "harmful_share": [
+            0.2375,
+            0.3078125,
+            0.32395833333333335,
+            0.3390625,
+            0.363125,
+            0.37604166666666666,
+            0.39839213934792317,
+            0.408203125,
+            0.4114583333333333,
+            0.4185683025945608,
+            0.4258522727272727,
+            0.4328125,
+            0.4362980769230769,
+            0.44129464285714287,
+            0.4452083333333333,
+            0.4470703125,
+            0.4490808823529412,
+            0.45208333333333334,
+            0.4549342105263158,
+            0.45578125,
+            0.45654761904761904,
+            0.4575284090909091,
+            0.459375,
+            0.4627604166666667,
+            0.462875,
+            0.4634615384615385,
+            0.46458333333333335,
+            0.46517857142857144,
+            0.4654094827586207,
+            0.46947916666666667,
+            0.4723790322580645,
+            0.4720703125,
+            0.4739583333333333,
+            0.47555147058823527,
+            0.4764285714285714,
+            0.47769097222222223,
+            0.4782094594594595,
+            0.4786184210526316,
+            0.47836538461538464,
+            0.4790625,
+            0.4795731707317073,
+            0.48072916666666665,
+            0.48030523255813956,
+            0.4815340909090909,
+            0.481875,
+            0.48349184782608695,
+            0.48384308510638296,
+            0.4847005208333333,
+            0.4857142857142857,
+            0.48525,
+            0.48541666666666666,
+            0.48479567307692306,
+            0.4840212264150943,
+            0.4841435185185185,
+            0.4852840909090909,
+            0.48599330357142856,
+            0.4853618421052632,
+            0.4850215517241379,
+            0.4849046610169492,
+            0.4856770833333333,
+            0.4864754098360656,
+            0.4872983870967742,
+            0.4871031746031746,
+            0.488330078125,
+            0.48822115384615383,
+            0.4889204545454545,
+            0.48847947761194027,
+            0.4892463235294118,
+            0.4897192028985507,
+            0.4898214285714286,
+            0.4903169014084507,
+            0.4907986111111111,
+            0.49225171232876713,
+            0.49336993243243243,
+            0.4932916666666667,
+            0.49375,
+            0.49366883116883115,
+            0.4946314102564103,
+            0.4950158227848101,
+            0.49671875,
+            0.49787808641975306,
+            0.49885670731707316,
+            0.4990963855421687,
+            0.5002232142857143,
+            0.5003676470588235,
+            0.5009447674418605,
+            0.5008620689655172,
+            0.5012428977272727,
+            0.5023525280898876,
+            0.5036805555555556,
+            0.5040178571428572,
+            0.5045855978260869,
+            0.5059811827956989,
+            0.50625,
+            0.5082894736842105,
+            0.5089518229166666,
+            0.5105025773195876,
+            0.5115433673469387,
+            0.5125,
+            0.5138125
+          ]
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.52228125,
+          "harm_mass": 0.22546875,
+          "selective_risk": 0.48383851931330474,
+          "abstention": 0.534,
+          "gain": -0.0010307262418791652,
+          "selected_fraction": 0.466
+        }
+      },
+      "PEMSBAY": {
+        "alpha_0.02": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.4113680422306061,
+            "states": 32000,
+            "harm_mass": 0.01834375,
+            "selective_risk": 0.3485748218527316,
+            "abstention": 0.947375,
+            "gain": 0.0068102264776825905,
+            "selected_fraction": 0.052625
+          }
+        },
+        "alpha_0.05": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.14535200595855713,
+            "states": 32000,
+            "harm_mass": 0.0461875,
+            "selective_risk": 0.4074993107251172,
+            "abstention": 0.88665625,
+            "gain": 0.007170379627496004,
+            "selected_fraction": 0.11334375
+          }
+        },
+        "alpha_0.10": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.06444726139307022,
+            "states": 32000,
+            "harm_mass": 0.0928125,
+            "selective_risk": 0.41872268433667,
+            "abstention": 0.77834375,
+            "gain": 0.007591597270220518,
+            "selected_fraction": 0.22165625
+          }
+        },
+        "risk_coverage": {
+          "0.02": 0.2875,
+          "0.05": 0.350625,
+          "0.10": 0.4025,
+          "0.20": 0.41671875,
+          "0.30": 0.42791666666666667,
+          "0.50": 0.4655,
+          "1.00": 0.528375
+        },
+        "risk_coverage_dense": {
+          "coverage": [
+            0.01,
+            0.02,
+            0.03,
+            0.04,
+            0.05,
+            0.060000000000000005,
+            0.06999999999999999,
+            0.08,
+            0.09,
+            0.09999999999999999,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15000000000000002,
+            0.16,
+            0.17,
+            0.18000000000000002,
+            0.19,
+            0.2,
+            0.21000000000000002,
+            0.22,
+            0.23,
+            0.24000000000000002,
+            0.25,
+            0.26,
+            0.27,
+            0.28,
+            0.29000000000000004,
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35000000000000003,
+            0.36000000000000004,
+            0.37,
+            0.38,
+            0.39,
+            0.4,
+            0.41000000000000003,
+            0.42000000000000004,
+            0.43,
+            0.44,
+            0.45,
+            0.46,
+            0.47000000000000003,
+            0.48000000000000004,
+            0.49,
+            0.5,
+            0.51,
+            0.52,
+            0.53,
+            0.54,
+            0.55,
+            0.56,
+            0.5700000000000001,
+            0.5800000000000001,
+            0.59,
+            0.6,
+            0.61,
+            0.62,
+            0.63,
+            0.64,
+            0.65,
+            0.66,
+            0.67,
+            0.68,
+            0.6900000000000001,
+            0.7000000000000001,
+            0.7100000000000001,
+            0.72,
+            0.73,
+            0.74,
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.8200000000000001,
+            0.8300000000000001,
+            0.8400000000000001,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9,
+            0.91,
+            0.92,
+            0.93,
+            0.9400000000000001,
+            0.9500000000000001,
+            0.9600000000000001,
+            0.97,
+            0.98,
+            0.99,
+            1.0
+          ],
+          "harmful_share": [
+            0.24375,
+            0.2875,
+            0.30625,
+            0.325,
+            0.350625,
+            0.3614583333333333,
+            0.37561411344350154,
+            0.38671875,
+            0.39652777777777776,
+            0.40231322288215066,
+            0.40625,
+            0.41119791666666666,
+            0.4129807692307692,
+            0.41294642857142855,
+            0.41583333333333333,
+            0.414453125,
+            0.41213235294117645,
+            0.4137152777777778,
+            0.4143092105263158,
+            0.41671875,
+            0.4168154761904762,
+            0.41832386363636365,
+            0.42038043478260867,
+            0.421484375,
+            0.42225,
+            0.42283653846153846,
+            0.4238425925925926,
+            0.4252232142857143,
+            0.42607758620689656,
+            0.42791666666666667,
+            0.42923387096774196,
+            0.4326171875,
+            0.43390151515151515,
+            0.43511029411764707,
+            0.43705357142857143,
+            0.4381076388888889,
+            0.4401182432432432,
+            0.4430921052631579,
+            0.44511217948717946,
+            0.445859375,
+            0.4480182926829268,
+            0.45029761904761906,
+            0.45181686046511627,
+            0.4541903409090909,
+            0.45652777777777775,
+            0.45876358695652175,
+            0.46123670212765955,
+            0.46334635416666664,
+            0.46530612244897956,
+            0.4655,
+            0.4667892156862745,
+            0.46862980769230766,
+            0.4702830188679245,
+            0.47193287037037035,
+            0.47261363636363635,
+            0.47550223214285714,
+            0.47735745614035086,
+            0.4795258620689655,
+            0.4811440677966102,
+            0.4825520833333333,
+            0.48381147540983604,
+            0.4845766129032258,
+            0.4861111111111111,
+            0.487548828125,
+            0.4876923076923077,
+            0.48915719696969695,
+            0.4898787313432836,
+            0.49214154411764705,
+            0.4935688405797101,
+            0.49513392857142857,
+            0.4963908450704225,
+            0.49908854166666666,
+            0.5003424657534247,
+            0.5008445945945946,
+            0.502125,
+            0.5035361842105263,
+            0.5051542207792208,
+            0.507051282051282,
+            0.5088212025316455,
+            0.5098828125,
+            0.5097608024691358,
+            0.511204268292683,
+            0.5124246987951807,
+            0.5137276785714285,
+            0.5151470588235294,
+            0.5160973837209303,
+            0.516558908045977,
+            0.5176846590909091,
+            0.5187851123595506,
+            0.5200694444444445,
+            0.5219093406593407,
+            0.5227581521739131,
+            0.5233198924731183,
+            0.523969414893617,
+            0.5246381578947369,
+            0.5254231770833333,
+            0.5259664948453608,
+            0.5268176020408163,
+            0.5273042929292929,
+            0.528375
+          ]
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.52928125,
+          "harm_mass": 0.2140625,
+          "selective_risk": 0.45988586774085266,
+          "abstention": 0.53453125,
+          "gain": 0.0076169478707015514,
+          "selected_fraction": 0.46546875
+        }
+      },
+      "PEMS03": {
+        "alpha_0.02": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.3885944187641144,
+            "states": 32000,
+            "harm_mass": 0.02053125,
+            "selective_risk": 0.22963998601887453,
+            "abstention": 0.91059375,
+            "gain": 0.0020345537923276424,
+            "selected_fraction": 0.08940625
+          }
+        },
+        "alpha_0.05": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.20855917036533356,
+            "states": 32000,
+            "harm_mass": 0.05328125,
+            "selective_risk": 0.29180215642649326,
+            "abstention": 0.81740625,
+            "gain": 0.0024235770106315613,
+            "selected_fraction": 0.18259375
+          }
+        },
+        "alpha_0.10": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.09323576837778091,
+            "states": 32000,
+            "harm_mass": 0.1074375,
+            "selective_risk": 0.3436968909327202,
+            "abstention": 0.68740625,
+            "gain": 0.0026550039183348417,
+            "selected_fraction": 0.31259375
+          }
+        },
+        "risk_coverage": {
+          "0.02": 0.240625,
+          "0.05": 0.22125,
+          "0.10": 0.2353125,
+          "0.20": 0.301875,
+          "0.30": 0.3410416666666667,
+          "0.50": 0.3880625,
+          "1.00": 0.49728125
+        },
+        "risk_coverage_dense": {
+          "coverage": [
+            0.01,
+            0.02,
+            0.03,
+            0.04,
+            0.05,
+            0.060000000000000005,
+            0.06999999999999999,
+            0.08,
+            0.09,
+            0.09999999999999999,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15000000000000002,
+            0.16,
+            0.17,
+            0.18000000000000002,
+            0.19,
+            0.2,
+            0.21000000000000002,
+            0.22,
+            0.23,
+            0.24000000000000002,
+            0.25,
+            0.26,
+            0.27,
+            0.28,
+            0.29000000000000004,
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35000000000000003,
+            0.36000000000000004,
+            0.37,
+            0.38,
+            0.39,
+            0.4,
+            0.41000000000000003,
+            0.42000000000000004,
+            0.43,
+            0.44,
+            0.45,
+            0.46,
+            0.47000000000000003,
+            0.48000000000000004,
+            0.49,
+            0.5,
+            0.51,
+            0.52,
+            0.53,
+            0.54,
+            0.55,
+            0.56,
+            0.5700000000000001,
+            0.5800000000000001,
+            0.59,
+            0.6,
+            0.61,
+            0.62,
+            0.63,
+            0.64,
+            0.65,
+            0.66,
+            0.67,
+            0.68,
+            0.6900000000000001,
+            0.7000000000000001,
+            0.7100000000000001,
+            0.72,
+            0.73,
+            0.74,
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.8200000000000001,
+            0.8300000000000001,
+            0.8400000000000001,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9,
+            0.91,
+            0.92,
+            0.93,
+            0.9400000000000001,
+            0.9500000000000001,
+            0.9600000000000001,
+            0.97,
+            0.98,
+            0.99,
+            1.0
+          ],
+          "harmful_share": [
+            0.259375,
+            0.240625,
+            0.21875,
+            0.21875,
+            0.22125,
+            0.22083333333333333,
+            0.22108083966056274,
+            0.22265625,
+            0.22951388888888888,
+            0.23507346045639263,
+            0.2431818181818182,
+            0.2513020833333333,
+            0.2586538461538462,
+            0.26651785714285714,
+            0.27166666666666667,
+            0.2765625,
+            0.2829044117647059,
+            0.2904513888888889,
+            0.29720394736842104,
+            0.301875,
+            0.309375,
+            0.31349431818181817,
+            0.31766304347826085,
+            0.3223958333333333,
+            0.32675,
+            0.33040865384615387,
+            0.33449074074074076,
+            0.3371651785714286,
+            0.3382543103448276,
+            0.3410416666666667,
+            0.34375,
+            0.3451171875,
+            0.34744318181818185,
+            0.34880514705882354,
+            0.3522321428571429,
+            0.3559027777777778,
+            0.35819256756756757,
+            0.3613486842105263,
+            0.36498397435897434,
+            0.366875,
+            0.3692073170731707,
+            0.3703869047619048,
+            0.3730377906976744,
+            0.3749289772727273,
+            0.37631944444444443,
+            0.3782608695652174,
+            0.3806515957446808,
+            0.3829427083333333,
+            0.38526785714285716,
+            0.3880625,
+            0.39080882352941176,
+            0.3921875,
+            0.3930424528301887,
+            0.39525462962962965,
+            0.39636363636363636,
+            0.39754464285714286,
+            0.39846491228070174,
+            0.39956896551724136,
+            0.4021186440677966,
+            0.403125,
+            0.40461065573770494,
+            0.40700604838709675,
+            0.4095238095238095,
+            0.4111328125,
+            0.41254807692307693,
+            0.4141098484848485,
+            0.4159981343283582,
+            0.41792279411764705,
+            0.42092391304347826,
+            0.4229017857142857,
+            0.42579225352112676,
+            0.42799479166666665,
+            0.4300941780821918,
+            0.4321368243243243,
+            0.43325,
+            0.434375,
+            0.43575487012987013,
+            0.437099358974359,
+            0.43959651898734176,
+            0.441875,
+            0.44483024691358025,
+            0.44691310975609755,
+            0.44917168674698793,
+            0.4519345238095238,
+            0.4545220588235294,
+            0.45730377906976744,
+            0.46023706896551725,
+            0.4625,
+            0.4651685393258427,
+            0.46743055555555557,
+            0.46971153846153846,
+            0.47238451086956523,
+            0.47563844086021506,
+            0.478656914893617,
+            0.48177631578947366,
+            0.48486328125,
+            0.48785438144329896,
+            0.49059311224489793,
+            0.49425505050505053,
+            0.49728125
+          ]
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.51484375,
+          "harm_mass": 0.18575,
+          "selective_risk": 0.38368190033565713,
+          "abstention": 0.515875,
+          "gain": 0.002816959982737899,
+          "selected_fraction": 0.484125
+        }
+      },
+      "PEMS04": {
+        "alpha_0.02": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.3261670470237732,
+            "states": 32000,
+            "harm_mass": 0.0183125,
+            "selective_risk": 0.17134502923976608,
+            "abstention": 0.893125,
+            "gain": 0.0060579911805689335,
+            "selected_fraction": 0.106875
+          }
+        },
+        "alpha_0.05": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.15888768434524536,
+            "states": 32000,
+            "harm_mass": 0.04675,
+            "selective_risk": 0.2332761578044597,
+            "abstention": 0.79959375,
+            "gain": 0.006548603996634483,
+            "selected_fraction": 0.20040625
+          }
+        },
+        "alpha_0.10": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.05181337147951126,
+            "states": 32000,
+            "harm_mass": 0.09453125,
+            "selective_risk": 0.28599792001512714,
+            "abstention": 0.6694687500000001,
+            "gain": 0.006849511992186308,
+            "selected_fraction": 0.33053125
+          }
+        },
+        "risk_coverage": {
+          "0.02": 0.0484375,
+          "0.05": 0.088125,
+          "0.10": 0.16375,
+          "0.20": 0.23328125,
+          "0.30": 0.27395833333333336,
+          "0.50": 0.3346875,
+          "1.00": 0.4770625
+        },
+        "risk_coverage_dense": {
+          "coverage": [
+            0.01,
+            0.02,
+            0.03,
+            0.04,
+            0.05,
+            0.060000000000000005,
+            0.06999999999999999,
+            0.08,
+            0.09,
+            0.09999999999999999,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15000000000000002,
+            0.16,
+            0.17,
+            0.18000000000000002,
+            0.19,
+            0.2,
+            0.21000000000000002,
+            0.22,
+            0.23,
+            0.24000000000000002,
+            0.25,
+            0.26,
+            0.27,
+            0.28,
+            0.29000000000000004,
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35000000000000003,
+            0.36000000000000004,
+            0.37,
+            0.38,
+            0.39,
+            0.4,
+            0.41000000000000003,
+            0.42000000000000004,
+            0.43,
+            0.44,
+            0.45,
+            0.46,
+            0.47000000000000003,
+            0.48000000000000004,
+            0.49,
+            0.5,
+            0.51,
+            0.52,
+            0.53,
+            0.54,
+            0.55,
+            0.56,
+            0.5700000000000001,
+            0.5800000000000001,
+            0.59,
+            0.6,
+            0.61,
+            0.62,
+            0.63,
+            0.64,
+            0.65,
+            0.66,
+            0.67,
+            0.68,
+            0.6900000000000001,
+            0.7000000000000001,
+            0.7100000000000001,
+            0.72,
+            0.73,
+            0.74,
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.8200000000000001,
+            0.8300000000000001,
+            0.8400000000000001,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9,
+            0.91,
+            0.92,
+            0.93,
+            0.9400000000000001,
+            0.9500000000000001,
+            0.9600000000000001,
+            0.97,
+            0.98,
+            0.99,
+            1.0
+          ],
+          "harmful_share": [
+            0.01875,
+            0.0484375,
+            0.059375,
+            0.07109375,
+            0.088125,
+            0.11145833333333334,
+            0.13130861991960696,
+            0.145703125,
+            0.15729166666666666,
+            0.16380118787120976,
+            0.175,
+            0.18463541666666666,
+            0.1908653846153846,
+            0.19977678571428573,
+            0.21,
+            0.2166015625,
+            0.22003676470588235,
+            0.22569444444444445,
+            0.22960526315789473,
+            0.23328125,
+            0.23809523809523808,
+            0.24204545454545454,
+            0.2485054347826087,
+            0.25390625,
+            0.258,
+            0.2609375,
+            0.2641203703703704,
+            0.26707589285714284,
+            0.2697198275862069,
+            0.27395833333333336,
+            0.2777217741935484,
+            0.28076171875,
+            0.2858901515151515,
+            0.2896139705882353,
+            0.2936607142857143,
+            0.29713541666666665,
+            0.30008445945945944,
+            0.30189144736842105,
+            0.30464743589743587,
+            0.308828125,
+            0.3103658536585366,
+            0.31220238095238095,
+            0.3147529069767442,
+            0.31860795454545454,
+            0.3217361111111111,
+            0.32533967391304347,
+            0.3283909574468085,
+            0.3317057291666667,
+            0.3333545918367347,
+            0.3346875,
+            0.3362745098039216,
+            0.3396033653846154,
+            0.3412146226415094,
+            0.3446180555555556,
+            0.34795454545454546,
+            0.35078125,
+            0.35290570175438596,
+            0.35474137931034483,
+            0.3565148305084746,
+            0.35833333333333334,
+            0.36152663934426227,
+            0.36401209677419355,
+            0.3663690476190476,
+            0.369677734375,
+            0.371875,
+            0.3744318181818182,
+            0.3769589552238806,
+            0.37964154411764706,
+            0.38183876811594203,
+            0.38526785714285716,
+            0.3869718309859155,
+            0.390625,
+            0.3940496575342466,
+            0.39759290540540543,
+            0.40079166666666666,
+            0.4030016447368421,
+            0.40653409090909093,
+            0.4095352564102564,
+            0.41313291139240504,
+            0.4168359375,
+            0.4197916666666667,
+            0.42221798780487807,
+            0.42454819277108435,
+            0.4282738095238095,
+            0.4314705882352941,
+            0.4350290697674419,
+            0.4385057471264368,
+            0.44161931818181815,
+            0.4441362359550562,
+            0.4467013888888889,
+            0.4494162087912088,
+            0.45285326086956523,
+            0.4559139784946237,
+            0.45917553191489363,
+            0.46174342105263155,
+            0.4646809895833333,
+            0.46771907216494846,
+            0.4705676020408163,
+            0.4740530303030303,
+            0.4770625
+          ]
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57009375,
+          "harm_mass": 0.135125,
+          "selective_risk": 0.31461001164144353,
+          "abstention": 0.5705,
+          "gain": 0.006942271254956722,
+          "selected_fraction": 0.4295
+        }
+      },
+      "PEMS07": {
+        "alpha_0.02": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.3135943114757538,
+            "states": 32000,
+            "harm_mass": 0.02596875,
+            "selective_risk": 0.26123860421251177,
+            "abstention": 0.90059375,
+            "gain": 0.0019894582219421864,
+            "selected_fraction": 0.09940625
+          }
+        },
+        "alpha_0.05": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.15827526152133942,
+            "states": 32000,
+            "harm_mass": 0.057625,
+            "selective_risk": 0.3100723053640491,
+            "abstention": 0.81415625,
+            "gain": 0.002330177230760455,
+            "selected_fraction": 0.18584375
+          }
+        },
+        "alpha_0.10": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.05810810625553131,
+            "states": 32000,
+            "harm_mass": 0.108125,
+            "selective_risk": 0.3548717948717949,
+            "abstention": 0.6953125,
+            "gain": 0.0025490194093436003,
+            "selected_fraction": 0.3046875
+          }
+        },
+        "risk_coverage": {
+          "0.02": 0.2046875,
+          "0.05": 0.22125,
+          "0.10": 0.261875,
+          "0.20": 0.31859375,
+          "0.30": 0.35322916666666665,
+          "0.50": 0.400125,
+          "1.00": 0.49415625
+        },
+        "risk_coverage_dense": {
+          "coverage": [
+            0.01,
+            0.02,
+            0.03,
+            0.04,
+            0.05,
+            0.060000000000000005,
+            0.06999999999999999,
+            0.08,
+            0.09,
+            0.09999999999999999,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15000000000000002,
+            0.16,
+            0.17,
+            0.18000000000000002,
+            0.19,
+            0.2,
+            0.21000000000000002,
+            0.22,
+            0.23,
+            0.24000000000000002,
+            0.25,
+            0.26,
+            0.27,
+            0.28,
+            0.29000000000000004,
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35000000000000003,
+            0.36000000000000004,
+            0.37,
+            0.38,
+            0.39,
+            0.4,
+            0.41000000000000003,
+            0.42000000000000004,
+            0.43,
+            0.44,
+            0.45,
+            0.46,
+            0.47000000000000003,
+            0.48000000000000004,
+            0.49,
+            0.5,
+            0.51,
+            0.52,
+            0.53,
+            0.54,
+            0.55,
+            0.56,
+            0.5700000000000001,
+            0.5800000000000001,
+            0.59,
+            0.6,
+            0.61,
+            0.62,
+            0.63,
+            0.64,
+            0.65,
+            0.66,
+            0.67,
+            0.68,
+            0.6900000000000001,
+            0.7000000000000001,
+            0.7100000000000001,
+            0.72,
+            0.73,
+            0.74,
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.8200000000000001,
+            0.8300000000000001,
+            0.8400000000000001,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9,
+            0.91,
+            0.92,
+            0.93,
+            0.9400000000000001,
+            0.9500000000000001,
+            0.9600000000000001,
+            0.97,
+            0.98,
+            0.99,
+            1.0
+          ],
+          "harmful_share": [
+            0.196875,
+            0.2046875,
+            0.19895833333333332,
+            0.21796875,
+            0.22125,
+            0.22760416666666666,
+            0.2367128182224207,
+            0.244921875,
+            0.25381944444444443,
+            0.26164426383244765,
+            0.26420454545454547,
+            0.27369791666666665,
+            0.2826923076923077,
+            0.2859375,
+            0.28958333333333336,
+            0.295703125,
+            0.30165441176470587,
+            0.3081597222222222,
+            0.3123355263157895,
+            0.31859375,
+            0.32142857142857145,
+            0.3248579545454545,
+            0.3294836956521739,
+            0.334375,
+            0.339,
+            0.3420673076923077,
+            0.34293981481481484,
+            0.34598214285714285,
+            0.35053879310344827,
+            0.35322916666666665,
+            0.3561491935483871,
+            0.3587890625,
+            0.35965909090909093,
+            0.3630514705882353,
+            0.365,
+            0.36770833333333336,
+            0.37119932432432434,
+            0.37417763157894735,
+            0.37580128205128205,
+            0.379140625,
+            0.3822408536585366,
+            0.38504464285714285,
+            0.3875,
+            0.3899147727272727,
+            0.39013888888888887,
+            0.3923913043478261,
+            0.3949468085106383,
+            0.39694010416666664,
+            0.3982780612244898,
+            0.400125,
+            0.4019607843137255,
+            0.4045673076923077,
+            0.4053066037735849,
+            0.4072337962962963,
+            0.4088636363636364,
+            0.41199776785714287,
+            0.41332236842105263,
+            0.4133081896551724,
+            0.41514830508474576,
+            0.41619791666666667,
+            0.4177766393442623,
+            0.41920362903225805,
+            0.4204861111111111,
+            0.421484375,
+            0.42375,
+            0.4256155303030303,
+            0.42887126865671643,
+            0.43120404411764707,
+            0.43192934782608694,
+            0.4320535714285714,
+            0.43336267605633805,
+            0.43550347222222224,
+            0.4372003424657534,
+            0.4380912162162162,
+            0.43933333333333335,
+            0.4413240131578947,
+            0.44241071428571427,
+            0.4432291666666667,
+            0.44386867088607596,
+            0.4463671875,
+            0.4478780864197531,
+            0.4493140243902439,
+            0.45207078313253013,
+            0.4535342261904762,
+            0.45573529411764707,
+            0.4582485465116279,
+            0.46048850574712646,
+            0.4625,
+            0.4652387640449438,
+            0.46784722222222225,
+            0.4707760989010989,
+            0.4732676630434783,
+            0.4758736559139785,
+            0.4787234042553192,
+            0.481875,
+            0.4840494791666667,
+            0.4864046391752577,
+            0.48867984693877553,
+            0.49109848484848484,
+            0.49415625
+          ]
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57125,
+          "harm_mass": 0.16625,
+          "selective_risk": 0.387670334474969,
+          "abstention": 0.57115625,
+          "gain": 0.0026551045011729,
+          "selected_fraction": 0.42884375
+        }
+      },
+      "PEMS08": {
+        "alpha_0.02": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.3897271752357483,
+            "states": 32000,
+            "harm_mass": 0.01553125,
+            "selective_risk": 0.17611622962437987,
+            "abstention": 0.9118125,
+            "gain": 0.0027564307674765587,
+            "selected_fraction": 0.0881875
+          }
+        },
+        "alpha_0.05": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.17477945983409882,
+            "states": 32000,
+            "harm_mass": 0.050625,
+            "selective_risk": 0.2598652550529355,
+            "abstention": 0.8051875,
+            "gain": 0.0034418462309986353,
+            "selected_fraction": 0.1948125
+          }
+        },
+        "alpha_0.10": {
+          "share_control": {
+            "threshold": Infinity,
+            "states": 32000,
+            "harm_mass": 0.0,
+            "selective_risk": 0.0,
+            "abstention": 1.0,
+            "gain": 0.0,
+            "selected_fraction": 0.0
+          },
+          "mass_control": {
+            "threshold": 0.052652791142463684,
+            "states": 32000,
+            "harm_mass": 0.10446875,
+            "selective_risk": 0.3155559750802341,
+            "abstention": 0.6689375,
+            "gain": 0.003770980052649975,
+            "selected_fraction": 0.3310625
+          }
+        },
+        "risk_coverage": {
+          "0.02": 0.121875,
+          "0.05": 0.145625,
+          "0.10": 0.18375,
+          "0.20": 0.263125,
+          "0.30": 0.30625,
+          "0.50": 0.364875,
+          "1.00": 0.45928125
+        },
+        "risk_coverage_dense": {
+          "coverage": [
+            0.01,
+            0.02,
+            0.03,
+            0.04,
+            0.05,
+            0.060000000000000005,
+            0.06999999999999999,
+            0.08,
+            0.09,
+            0.09999999999999999,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15000000000000002,
+            0.16,
+            0.17,
+            0.18000000000000002,
+            0.19,
+            0.2,
+            0.21000000000000002,
+            0.22,
+            0.23,
+            0.24000000000000002,
+            0.25,
+            0.26,
+            0.27,
+            0.28,
+            0.29000000000000004,
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35000000000000003,
+            0.36000000000000004,
+            0.37,
+            0.38,
+            0.39,
+            0.4,
+            0.41000000000000003,
+            0.42000000000000004,
+            0.43,
+            0.44,
+            0.45,
+            0.46,
+            0.47000000000000003,
+            0.48000000000000004,
+            0.49,
+            0.5,
+            0.51,
+            0.52,
+            0.53,
+            0.54,
+            0.55,
+            0.56,
+            0.5700000000000001,
+            0.5800000000000001,
+            0.59,
+            0.6,
+            0.61,
+            0.62,
+            0.63,
+            0.64,
+            0.65,
+            0.66,
+            0.67,
+            0.68,
+            0.6900000000000001,
+            0.7000000000000001,
+            0.7100000000000001,
+            0.72,
+            0.73,
+            0.74,
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.8200000000000001,
+            0.8300000000000001,
+            0.8400000000000001,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9,
+            0.91,
+            0.92,
+            0.93,
+            0.9400000000000001,
+            0.9500000000000001,
+            0.9600000000000001,
+            0.97,
+            0.98,
+            0.99,
+            1.0
+          ],
+          "harmful_share": [
+            0.1125,
+            0.121875,
+            0.13229166666666667,
+            0.1390625,
+            0.145625,
+            0.15260416666666668,
+            0.15944618133095131,
+            0.169921875,
+            0.17708333333333334,
+            0.1838074398249453,
+            0.1943181818181818,
+            0.203125,
+            0.20961538461538462,
+            0.21540178571428573,
+            0.22375,
+            0.231640625,
+            0.23897058823529413,
+            0.24791666666666667,
+            0.2574013157894737,
+            0.263125,
+            0.2699404761904762,
+            0.2767045454545455,
+            0.2800271739130435,
+            0.28606770833333334,
+            0.291125,
+            0.2935096153846154,
+            0.296875,
+            0.3002232142857143,
+            0.30334051724137934,
+            0.30625,
+            0.3092741935483871,
+            0.3115234375,
+            0.3146780303030303,
+            0.3176470588235294,
+            0.3205357142857143,
+            0.32421875,
+            0.3285472972972973,
+            0.3326480263157895,
+            0.335176282051282,
+            0.339921875,
+            0.34222560975609756,
+            0.3450892857142857,
+            0.34752906976744186,
+            0.35056818181818183,
+            0.35375,
+            0.3557065217391304,
+            0.3569813829787234,
+            0.35989583333333336,
+            0.3620535714285714,
+            0.364875,
+            0.36795343137254904,
+            0.37061298076923077,
+            0.37275943396226413,
+            0.37517361111111114,
+            0.3765340909090909,
+            0.37924107142857144,
+            0.38037280701754383,
+            0.3823814655172414,
+            0.3840042372881356,
+            0.3859375,
+            0.38709016393442625,
+            0.3888104838709677,
+            0.39131944444444444,
+            0.3919921875,
+            0.394375,
+            0.3957859848484849,
+            0.397294776119403,
+            0.3995404411764706,
+            0.4009963768115942,
+            0.4020982142857143,
+            0.4040492957746479,
+            0.40598958333333335,
+            0.4076626712328767,
+            0.4100929054054054,
+            0.4114583333333333,
+            0.41356907894736844,
+            0.41493506493506493,
+            0.41642628205128207,
+            0.41764240506329114,
+            0.4183984375,
+            0.41844135802469135,
+            0.4195121951219512,
+            0.4205948795180723,
+            0.42220982142857144,
+            0.42415441176470586,
+            0.4264171511627907,
+            0.4279454022988506,
+            0.4302911931818182,
+            0.43240870786516855,
+            0.43409722222222225,
+            0.4357486263736264,
+            0.4384171195652174,
+            0.4405577956989247,
+            0.4431183510638298,
+            0.44569078947368423,
+            0.44778645833333336,
+            0.45054768041237114,
+            0.45331632653061227,
+            0.456344696969697,
+            0.45928125
+          ]
+        },
+        "uncalibrated": {
+          "states": 32000,
+          "coverage": 0.57709375,
+          "harm_mass": 0.14715625,
+          "selective_risk": 0.34663231505336767,
+          "abstention": 0.57546875,
+          "gain": 0.003896401496604085,
+          "selected_fraction": 0.42453125
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{
+  "run_id": "R070_oracle_ladder",
+  "status": "pilot_not_confirmatory",
+  "config": {
+    "candidate_count": 16,
+    "group_count": 16,
+    "budget": 4,
+    "redundancy_ratio": 0.5,
+    "harmful_fraction": 0.0,
+    "anchor_noise": 1.0,
+    "useful_residual_fraction": 0.1,
+    "harmful_residual_fraction": 1.8,
+    "seed": 505,
+    "train_episodes": 3000,
+    "test_episodes": 2500,
+    "epochs": 20,
+    "device": "cuda:0",
+    "calibration_alpha": 0.1,
+    "mmr_gamma_grid": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "mmr_gamma_selected": 1.0,
+    "mmr_validation": {
+      "0.0": {
+        "mean_prediction_gain": 0.2158117020368576,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.48362843142976053,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.0539529255092144,
+        "mean_duplicate_selections": 0.5692,
+        "duplicate_selection_rate": 0.1423
+      },
+      "0.25": {
+        "mean_prediction_gain": 0.2746144212216139,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.6078662553171202,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.06865360530540347,
+        "mean_duplicate_selections": 0.0004,
+        "duplicate_selection_rate": 0.0001
+      },
+      "0.5": {
+        "mean_prediction_gain": 0.29328525936901567,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.6441836152898747,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.07332131484225392,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      },
+      "1.0": {
+        "mean_prediction_gain": 0.31555702380239964,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.6865450798456498,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.07888925595059991,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      }
+    },
+    "calibration_radius": 0.07527416199445724
+  },
+  "metrics": {
+    "relevance": {
+      "mean_prediction_gain": 0.21432190036177634,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.4875115969765513,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.053580475090444085,
+      "mean_duplicate_selections": 0.5332,
+      "duplicate_selection_rate": 0.1333
+    },
+    "mmr": {
+      "mean_prediction_gain": 0.31051288816332817,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.6830678485993309,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.07762822204083204,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "coverage": {
+      "mean_prediction_gain": 0.24664708563387394,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.5604557706513786,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.061661771408468485,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.3532883377045393,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.791844175673383,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.08832208442613483,
+      "mean_duplicate_selections": 1.6548,
+      "duplicate_selection_rate": 0.4137
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.34526582791507243,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.7646669236077185,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.08631645697876811,
+      "mean_duplicate_selections": 1.6508,
+      "duplicate_selection_rate": 0.4127
+    },
+    "mur_light": {
+      "mean_prediction_gain": 0.3637107434928417,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.8009293456685198,
+      "mean_selected_contexts": 3.9936,
+      "mean_gain_per_selected_context": 0.09099198393672704,
+      "mean_duplicate_selections": 0.9176,
+      "duplicate_selection_rate": 0.2294333333333333
+    },
+    "mur_interval": {
+      "mean_prediction_gain": 0.29765117127299306,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.5901553136946667,
+      "mean_selected_contexts": 2.1924,
+      "mean_gain_per_selected_context": 0.14212559424492915,
+      "mean_duplicate_selections": 0.3924,
+      "duplicate_selection_rate": 0.1087
+    },
+    "oracle": {
+      "mean_prediction_gain": 0.4438409205257893,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.11096023013144732,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "state_conditioning_headroom": 0.20402035646911112,
+    "mur_estimation_gap": 0.18053805615314286,
+    "mur_headroom_recovery": 0.11509783005169642
+  },
+  "state_diagnostics": {
+    "random": {
+      "utility_mae": 0.033637500984768726,
+      "top1_accuracy": 0.4332,
+      "one_step_regret": 0.02470067749321461
+    },
+    "oracle_prefix": {
+      "utility_mae": 0.031201414783970163,
+      "top1_accuracy": 0.2482,
+      "one_step_regret": 0.02861134962141514
+    },
+    "mur_rollout": {
+      "utility_mae": 0.03267584403478141,
+      "top1_accuracy": 0.2524,
+      "one_step_regret": 0.041091205514222386
+    }
+  },
+  "wall_seconds": 69.79724192619324,
+  "provenance": {
+    "script_sha256": "ccb4555be03004bc44857d8d59e0a9a2be7df9d2d36fd9907b9f5cda96b1261b",
+    "synthetic_sha256": "01266f6e3312b25217202382aa7289a8d60f88662f69718497fd7a89f59641d1",
+    "experiment_sha256": "a56a3b5ae07ae4199af058798eb06a5e6930bfdea2622e0a7989050e44f6f67a"
+  }
+}

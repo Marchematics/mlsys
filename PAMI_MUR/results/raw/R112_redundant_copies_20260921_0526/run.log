@@ -1,0 +1,81 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+=== cifar10: 10 classes, train episodes 240, test episodes 80, pool=redundant ===
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+    predictor epoch 50/200 train_ce=0.0098
+    predictor epoch 100/200 train_ce=0.0040
+    predictor epoch 150/200 train_ce=0.0033
+    predictor epoch 200/200 train_ce=0.0018
+{"benchmark": "cifar10", "seed": 101, "q4": 0.09578919873432586, "q4_forced": 0.10304359636750253, "static": 0.0816633367870422, "cached": 0.07292920760710862, "oracle_greedy": 0.1150708507226978, "oracle_static": 0.115052724870315, "h_state": 0.00015751906124767713, "sel_q4": 3.15, "sel_q4_forced": 4.0, "wall": 215.7}
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+    predictor epoch 50/200 train_ce=0.0113
+    predictor epoch 100/200 train_ce=0.0054
+    predictor epoch 150/200 train_ce=0.0027
+    predictor epoch 200/200 train_ce=0.0007
+{"benchmark": "cifar10", "seed": 202, "q4": 0.07453332986981054, "q4_forced": 0.0852124404404492, "static": 0.0744357759527874, "cached": 0.06267463664073507, "oracle_greedy": 0.09774444887695069, "oracle_static": 0.09773668935056294, "h_state": 7.938585236198201e-05, "sel_q4": 3.275, "sel_q4_forced": 4.0, "wall": 133.7}
+    predictor epoch 50/200 train_ce=0.0083
+    predictor epoch 100/200 train_ce=0.0029
+    predictor epoch 150/200 train_ce=0.0007
+    predictor epoch 200/200 train_ce=0.0008
+{"benchmark": "cifar10", "seed": 303, "q4": 0.09370179276768567, "q4_forced": 0.0947365609596577, "static": 0.08212279671494901, "cached": 0.06450940211239256, "oracle_greedy": 0.1122863807201473, "oracle_static": 0.11220876189600174, "h_state": 0.0006912576899152998, "sel_q4": 3.6, "sel_q4_forced": 4.0, "wall": 116.4}
+=== cifar100: 100 classes, train episodes 600, test episodes 200, pool=redundant ===
+    predictor epoch 50/120 train_ce=0.2545
+    predictor epoch 100/120 train_ce=0.1426
+{"benchmark": "cifar100", "seed": 101, "q4": 0.6389357596062952, "q4_forced": 0.7290948396051304, "static": 0.6971994690114219, "cached": 0.6120719785516566, "oracle_greedy": 0.7355621571699532, "oracle_static": 0.7355458005150501, "h_state": 2.2236944551365937e-05, "sel_q4": 2.345, "sel_q4_forced": 4.0, "wall": 558.6}
+    predictor epoch 50/120 train_ce=0.2493
+    predictor epoch 100/120 train_ce=0.1536
+{"benchmark": "cifar100", "seed": 202, "q4": 0.603840127727908, "q4_forced": 0.6831229916469952, "static": 0.6718998916046972, "cached": 0.4155982288817971, "oracle_greedy": 0.6875556198579355, "oracle_static": 0.6873126718249596, "h_state": 0.0003533503704413956, "sel_q4": 1.69, "sel_q4_forced": 4.0, "wall": 383.9}
+    predictor epoch 50/120 train_ce=0.2542
+    predictor epoch 100/120 train_ce=0.1537
+{"benchmark": "cifar100", "seed": 303, "q4": 0.6495055351285519, "q4_forced": 0.6737402986584923, "static": 0.6502145374586397, "cached": 0.506651689494351, "oracle_greedy": 0.6889191710069755, "oracle_static": 0.6888997972292776, "h_state": 2.8121989506515144e-05, "sel_q4": 2.81, "sel_q4_forced": 4.0, "wall": 379.0}
+=== svhn: 10 classes, train episodes 240, test episodes 80, pool=redundant ===
+    predictor epoch 50/200 train_ce=0.3918
+    predictor epoch 100/200 train_ce=0.3584
+    predictor epoch 150/200 train_ce=0.3441
+    predictor epoch 200/200 train_ce=0.3052
+{"benchmark": "svhn", "seed": 101, "q4": 0.8630803074466169, "q4_forced": 0.9125234976499392, "static": 0.8174618913688377, "cached": 0.6409719255271434, "oracle_greedy": 0.9248357268928087, "oracle_static": 0.9248020234909724, "h_state": 3.644258202428726e-05, "sel_q4": 3.025, "sel_q4_forced": 4.0, "wall": 102.2}
+    predictor epoch 50/200 train_ce=0.4869
+    predictor epoch 100/200 train_ce=0.3486
+    predictor epoch 150/200 train_ce=0.3330
+    predictor epoch 200/200 train_ce=0.2417
+{"benchmark": "svhn", "seed": 202, "q4": 0.8683193304318382, "q4_forced": 0.8860832153072767, "static": 0.7454501822384905, "cached": 0.8560660812838256, "oracle_greedy": 0.8952148086844108, "oracle_static": 0.895172928072838, "h_state": 4.6782751096788654e-05, "sel_q4": 3.6375, "sel_q4_forced": 4.0, "wall": 116.4}
+    predictor epoch 50/200 train_ce=0.3822
+    predictor epoch 100/200 train_ce=0.2877
+    predictor epoch 150/200 train_ce=0.3153
+    predictor epoch 200/200 train_ce=0.3292
+{"benchmark": "svhn", "seed": 303, "q4": 0.7517722018595256, "q4_forced": 0.852067701119885, "static": 0.6660800783891674, "cached": 0.6591337971283912, "oracle_greedy": 0.8842290049852128, "oracle_static": 0.884198317477915, "h_state": 3.4705384153686835e-05, "sel_q4": 3.1625, "sel_q4_forced": 4.0, "wall": 116.4}
+=== eurosat: 10 classes, train episodes 240, test episodes 80, pool=redundant ===
+    predictor epoch 50/200 train_ce=0.0367
+    predictor epoch 100/200 train_ce=0.0165
+    predictor epoch 150/200 train_ce=0.0122
+    predictor epoch 200/200 train_ce=0.0122
+{"benchmark": "eurosat", "seed": 101, "q4": 0.14901134995110182, "q4_forced": 0.15591434753941713, "static": 0.1290099513523383, "cached": 0.13114981268749556, "oracle_greedy": 0.1710087365918468, "oracle_static": 0.17100351723907686, "h_state": 3.052097146581678e-05, "sel_q4": 3.35, "sel_q4_forced": 4.0, "wall": 205.8}
+    predictor epoch 50/200 train_ce=0.0369
+    predictor epoch 100/200 train_ce=0.0344
+    predictor epoch 150/200 train_ce=0.0179
+    predictor epoch 200/200 train_ce=0.0046
+{"benchmark": "eurosat", "seed": 202, "q4": 0.11597530450727633, "q4_forced": 0.14761445304682838, "static": 0.11275726074770173, "cached": 0.11157712355460894, "oracle_greedy": 0.15770575448812355, "oracle_static": 0.15766666804101365, "h_state": 0.00024784414009979515, "sel_q4": 2.65, "sel_q4_forced": 4.0, "wall": 116.3}
+    predictor epoch 50/200 train_ce=0.0478
+    predictor epoch 100/200 train_ce=0.0183
+    predictor epoch 150/200 train_ce=0.0158
+    predictor epoch 200/200 train_ce=0.0071
+{"benchmark": "eurosat", "seed": 303, "q4": 0.14463047773620935, "q4_forced": 0.1608219543637311, "static": 0.14288685955774091, "cached": 0.10835239123319595, "oracle_greedy": 0.16731250409231324, "oracle_static": 0.16729948823831095, "h_state": 7.779367162605656e-05, "sel_q4": 2.95, "sel_q4_forced": 4.0, "wall": 119.1}
+=== dtd: 47 classes, train episodes 188, test episodes 94, pool=redundant ===
+    predictor epoch 50/200 train_ce=0.1646
+    predictor epoch 100/200 train_ce=0.0207
+    predictor epoch 150/200 train_ce=0.0051
+    predictor epoch 200/200 train_ce=0.0031
+{"benchmark": "dtd", "seed": 101, "q4": 0.16396173480566384, "q4_forced": 1.0844272479500947, "static": 1.0654154768889854, "cached": 1.059319794753367, "oracle_greedy": 1.2299695319461645, "oracle_static": 1.2298229031851442, "h_state": 0.00011921332781986159, "sel_q4": 0.5212765957446809, "sel_q4_forced": 4.0, "wall": 129.5}
+    predictor epoch 50/200 train_ce=0.1584
+    predictor epoch 100/200 train_ce=0.0257
+    predictor epoch 150/200 train_ce=0.0059
+    predictor epoch 200/200 train_ce=0.0067
+{"benchmark": "dtd", "seed": 202, "q4": 0.0008808562954307302, "q4_forced": 1.037069174842642, "static": 0.9422809493305576, "cached": 0.9707944443201543, "oracle_greedy": 1.1694769187648861, "oracle_static": 1.169409560276179, "h_state": 5.759710826814963e-05, "sel_q4": 0.05319148936170213, "sel_q4_forced": 4.0, "wall": 122.2}
+    predictor epoch 50/200 train_ce=0.1260
+    predictor epoch 100/200 train_ce=0.0210
+    predictor epoch 150/200 train_ce=0.0050
+    predictor epoch 200/200 train_ce=0.0050
+{"benchmark": "dtd", "seed": 303, "q4": 0.39035718342278325, "q4_forced": 1.1427710177220274, "static": 1.0466701623545882, "cached": 0.8623831138526833, "oracle_greedy": 1.2396118335857125, "oracle_static": 1.239535001646984, "h_state": 6.19806431714144e-05, "sel_q4": 1.0212765957446808, "sel_q4_forced": 4.0, "wall": 137.4}
+{"finished_utc": "2026-09-20T22:15:42Z", "failures": {}}

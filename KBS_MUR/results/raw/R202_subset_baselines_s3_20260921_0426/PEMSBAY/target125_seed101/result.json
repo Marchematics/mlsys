@@ -1,0 +1,63 @@
+{
+  "run_id": "R202_subset_baselines",
+  "status": "confirmatory",
+  "dataset": "PEMSBAY",
+  "target_sensor": 125,
+  "seed": 101,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "relevance_weight": 0.5,
+    "policies": [
+      "facility_location",
+      "facility_location_relevance",
+      "dpp_greedy",
+      "kcenter"
+    ],
+    "candidate_sensors": [
+      78,
+      190,
+      193,
+      174,
+      198,
+      57,
+      137,
+      162,
+      98,
+      90,
+      28,
+      172,
+      271,
+      322,
+      13,
+      168
+    ]
+  },
+  "metrics": {
+    "facility_location": {
+      "mean_prediction_gain": -0.01887054741382599,
+      "negative_transfer_rate": 0.5955,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "facility_location_relevance": {
+      "mean_prediction_gain": -0.016351180151104927,
+      "negative_transfer_rate": 0.5975,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "dpp_greedy": {
+      "mean_prediction_gain": -0.008376399986445904,
+      "negative_transfer_rate": 0.5815,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "kcenter": {
+      "mean_prediction_gain": -0.01856137439608574,
+      "negative_transfer_rate": 0.601,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    }
+  },
+  "wall_seconds": 5.975929498672485
+}

@@ -1,0 +1,82 @@
+\section{Decision Analysis}
+\label{sec:analysis}
+
+R-MUR makes two decisions in sequence: which candidates enter the shortlist,
+and which shortlisted candidate is selected. The analysis separates the
+estimation error of the two stages, because the algorithm never evaluates the
+response model outside the shortlist.
+
+\subsection{Shortlist-aware regret}
+
+Let $A$ be a fixed state, let
+$j^\star=\argmax_{j\notin A}\marginal(j\mid A)$ be the best remaining
+candidate, let
+$j^\star_Q=\argmax_{j\in\mathcal Q_A}\marginal(j\mid A)$ be the best candidate
+inside the shortlist, and let $\widehat{j}$ be the candidate the router selects
+from the shortlist. The routing regret decomposes exactly into a screening term
+and a reranking term,
+\begin{equation}
+ \underbrace{\marginal(j^\star\mid A)-\marginal(\widehat{j}\mid A)}_{\text{routing regret}}
+ =
+ \underbrace{\marginal(j^\star\mid A)-\marginal(j^\star_Q\mid A)}_{\text{screening regret}}
+ +
+ \underbrace{\marginal(j^\star_Q\mid A)-\marginal(\widehat{j}\mid A)}_{\text{reranking regret}} .
+ \label{eq:decomposition}
+\end{equation}
+Each term is controlled by the error of the corresponding stage.
+
+\begin{proposition}[Shortlist-aware one-step regret]
+\label{prop:shortlist}
+Suppose the cached score satisfies
+$|\widehat m_C(j\mid A)-\marginal(j\mid A)|\le\epsilon_C$ for every remaining
+candidate, and the response-aware score satisfies
+$|\widehat m_R(j\mid A)-\marginal(j\mid A)|\le\epsilon_R$ for every
+shortlisted candidate $j\in\mathcal Q_A$. Then the routing regret of
+Eq.~\eqref{eq:decomposition} is at most
+\begin{equation}
+ \marginal(j^\star\mid A)-\marginal(\widehat{j}\mid A)\;\le\;2\epsilon_C+2\epsilon_R .
+ \label{eq:shortlistbound}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For the screening term, if $j^\star\in\mathcal Q_A$ the term is zero. Otherwise
+every shortlisted candidate has a cached score at least that of $j^\star$,
+because the shortlist consists of the $q$ largest cached scores. Hence
+$\widehat m_C(j^\star_Q\mid A)\ge\widehat m_C(j^\star\mid A)$ and therefore
+$\marginal(j^\star_Q\mid A)\ge\marginal(j^\star\mid A)-2\epsilon_C$. For the
+reranking term, $j^\star_Q$ is feasible for the estimated argmax, so
+$\widehat m_R(j^\star_Q\mid A)\le\widehat m_R(\widehat{j}\mid A)$, and two
+applications of the response bound give
+$\marginal(j^\star_Q\mid A)-\marginal(\widehat{j}\mid A)\le 2\epsilon_R$.
+\end{proof}
+
+The bound in Eq.~\eqref{eq:shortlistbound} is the statement that matches
+Algorithm~\ref{alg:rmur}: the first term is the price of screening with cached
+representations, the second is the price of estimating the response-aware score
+on the retained set. The decomposition also exposes the cost--accuracy
+trade-off of the shortlist: increasing $q$ reduces the empirical screening
+regret and makes the best candidate more likely to reach the response-aware
+stage, while requiring more predictor evaluations. Section~\ref{sec:experiments}
+measures both sides of that trade-off.
+
+\subsection{Stopping}
+
+At deployment, R-MUR stops when no shortlisted candidate has a positive
+estimated marginal utility. This stopping decision concerns the retained set:
+candidates excluded by the cached screen are not evaluated by the response-aware
+model. The shortlist-aware regret in Proposition~\ref{prop:shortlist}
+quantifies the corresponding screening error, and the recall measurement in
+Section~\ref{sec:experiments} reports how often the screen removes the best
+candidate.
+
+\subsection{Scope of the set-level statement}
+
+The one-step results above require no assumption on the set function. A
+guarantee for a sequence of $B$ selections would additionally require the
+induced set utility to be monotone and submodular, so that approximate greedy
+selection inherits the standard $(1-1/e)$ factor up to the accumulated
+estimation error. Context utility is not monotone in general, because a context
+can increase the loss, and we do not assume submodularity in the experiments.
+We therefore state the sequential guarantee as an open condition rather than
+claiming it for R-MUR.

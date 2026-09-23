@@ -1,0 +1,521 @@
+{
+  "provenance": {
+    "run_dirs": {
+      "101": "/root/icl_ess_threshold/KBS_MUR/results/raw/R080b_multitarget_rmur_s1_20260920_2340",
+      "202": "/root/icl_ess_threshold/KBS_MUR/results/raw/R080b_multitarget_rmur_s202_diag_20260921",
+      "303": "/root/icl_ess_threshold/KBS_MUR/results/raw/R080b_multitarget_rmur_s303_diag_20260921"
+    },
+    "threshold_grid": [
+      -0.5,
+      1.0,
+      400
+    ],
+    "identity": "loss_lambda = base_loss - sum of true marginals of certified selections"
+  },
+  "datasets": {
+    "METRLA": {
+      "targets": 32,
+      "episodes_eval": 64000,
+      "alpha_0.01": {
+        "threshold": 0.5300751879699248,
+        "gain": 0.015677399423482712,
+        "negative_transfer_rate": 0.06221875,
+        "contexts": 0.3965625,
+        "coverage": 0.181828125,
+        "state_mass_threshold": 0.5242935419082642,
+        "state_mass_gain": 0.015656492523645284,
+        "state_mass_ntr": 0.06315625,
+        "state_mass_contexts": 0.40290625
+      },
+      "alpha_0.02": {
+        "threshold": 0.3045112781954886,
+        "gain": 0.015997112616651064,
+        "negative_transfer_rate": 0.10965625,
+        "contexts": 0.648484375,
+        "coverage": 0.274875,
+        "state_mass_threshold": 0.32818135619163513,
+        "state_mass_gain": 0.01581555196318186,
+        "state_mass_ntr": 0.10334375,
+        "state_mass_contexts": 0.617875
+      },
+      "alpha_0.05": {
+        "threshold": 0.03383458646616533,
+        "gain": 0.017350347383220197,
+        "negative_transfer_rate": 0.353421875,
+        "contexts": 2.11184375,
+        "coverage": 0.77765625,
+        "state_mass_threshold": 0.1150694191455841,
+        "state_mass_gain": 0.01762780325685162,
+        "state_mass_ntr": 0.205546875,
+        "state_mass_contexts": 1.144671875
+      },
+      "alpha_0.10": {
+        "threshold": -0.12406015037593987,
+        "gain": 0.016748278014388232,
+        "negative_transfer_rate": 0.462046875,
+        "contexts": 3.322546875,
+        "coverage": 0.99178125,
+        "state_mass_threshold": 0.04224593937397003,
+        "state_mass_gain": 0.017496727848978936,
+        "state_mass_ntr": 0.33346875,
+        "state_mass_contexts": 1.9438125
+      },
+      "sign_gate": {
+        "threshold": 0.0,
+        "gain": 0.01701755056617003,
+        "negative_transfer_rate": 0.412015625,
+        "contexts": 2.95684375
+      },
+      "baselines": {
+        "Pool-all": {
+          "gain": 0.01068733216925466,
+          "negative_transfer_rate": 0.543734375
+        },
+        "Relevance": {
+          "gain": -0.017191499762702733,
+          "negative_transfer_rate": 0.609015625
+        },
+        "MMR": {
+          "gain": -0.018621615494339494,
+          "negative_transfer_rate": 0.625953125
+        },
+        "Standalone Utility": {
+          "gain": 0.0059997060961904936,
+          "negative_transfer_rate": 0.5091875
+        },
+        "Cached-only router": {
+          "gain": 0.0068876457517035306,
+          "negative_transfer_rate": 0.470640625
+        },
+        "Uncalibrated router": {
+          "gain": 0.017017550868331455,
+          "negative_transfer_rate": 0.412015625
+        },
+        "Sequential oracle": {
+          "gain": 0.15563313965685666,
+          "negative_transfer_rate": 0.0
+        }
+      }
+    },
+    "PEMSBAY": {
+      "targets": 32,
+      "episodes_eval": 62000,
+      "alpha_0.01": {
+        "threshold": 0.6766917293233081,
+        "gain": 0.046329451724006265,
+        "negative_transfer_rate": 0.05043548387096774,
+        "contexts": 0.2817903225806452,
+        "coverage": 0.13880645161290323,
+        "state_mass_threshold": 0.6848565340042114,
+        "state_mass_gain": 0.04631805795114187,
+        "state_mass_ntr": 0.049741935483870965,
+        "state_mass_contexts": 0.2789354838709677
+      },
+      "alpha_0.02": {
+        "threshold": 0.46240601503759393,
+        "gain": 0.04802888873520855,
+        "negative_transfer_rate": 0.07237096774193548,
+        "contexts": 0.3865806451612903,
+        "coverage": 0.18248387096774193,
+        "state_mass_threshold": 0.3835654854774475,
+        "state_mass_gain": 0.048919704907406644,
+        "state_mass_ntr": 0.08456451612903226,
+        "state_mass_contexts": 0.4435
+      },
+      "alpha_0.05": {
+        "threshold": 0.12030075187969924,
+        "gain": 0.05269650133443182,
+        "negative_transfer_rate": 0.22025806451612903,
+        "contexts": 1.1480806451612904,
+        "coverage": 0.5361290322580645,
+        "state_mass_threshold": 0.13334375619888306,
+        "state_mass_gain": 0.05234168663673993,
+        "state_mass_ntr": 0.2051290322580645,
+        "state_mass_contexts": 1.0514677419354839
+      },
+      "alpha_0.10": {
+        "threshold": -0.09398496240601506,
+        "gain": 0.054597428821327294,
+        "negative_transfer_rate": 0.4270967741935484,
+        "contexts": 3.4175806451612902,
+        "coverage": 0.9899193548387096,
+        "state_mass_threshold": 0.054940126836299896,
+        "state_mass_gain": 0.05396962837027123,
+        "state_mass_ntr": 0.34311290322580645,
+        "state_mass_contexts": 2.131774193548387
+      },
+      "sign_gate": {
+        "threshold": 0.0,
+        "gain": 0.05435050269532598,
+        "negative_transfer_rate": 0.3908548387096774,
+        "contexts": 3.1236129032258066
+      },
+      "baselines": {
+        "Pool-all": {
+          "gain": 0.036655687304559134,
+          "negative_transfer_rate": 0.5342096774193548
+        },
+        "Relevance": {
+          "gain": -0.022256869468800424,
+          "negative_transfer_rate": 0.6575645161290323
+        },
+        "MMR": {
+          "gain": -0.022113156067432777,
+          "negative_transfer_rate": 0.6363548387096775
+        },
+        "Standalone Utility": {
+          "gain": 0.03227590894206397,
+          "negative_transfer_rate": 0.508241935483871
+        },
+        "Cached-only router": {
+          "gain": 0.03306035549500056,
+          "negative_transfer_rate": 0.47280645161290324
+        },
+        "Uncalibrated router": {
+          "gain": 0.05435050237123975,
+          "negative_transfer_rate": 0.3908548387096773
+        },
+        "Sequential oracle": {
+          "gain": 0.16221462766970357,
+          "negative_transfer_rate": 0.0
+        }
+      }
+    },
+    "PEMS03": {
+      "targets": 32,
+      "episodes_eval": 64000,
+      "alpha_0.01": {
+        "threshold": 0.5902255639097744,
+        "gain": 0.02089451760985321,
+        "negative_transfer_rate": 0.06059375,
+        "contexts": 0.501375,
+        "coverage": 0.31440625,
+        "state_mass_threshold": 0.556219220161438,
+        "state_mass_gain": 0.021522063875403546,
+        "state_mass_ntr": 0.067359375,
+        "state_mass_contexts": 0.55109375
+      },
+      "alpha_0.02": {
+        "threshold": 0.4022556390977443,
+        "gain": 0.024630611251097435,
+        "negative_transfer_rate": 0.108625,
+        "contexts": 0.87959375,
+        "coverage": 0.4785,
+        "state_mass_threshold": 0.3804900646209717,
+        "state_mass_gain": 0.025047037123738847,
+        "state_mass_ntr": 0.11703125,
+        "state_mass_contexts": 0.945625
+      },
+      "alpha_0.05": {
+        "threshold": 0.13533834586466165,
+        "gain": 0.028394046958774653,
+        "negative_transfer_rate": 0.25309375,
+        "contexts": 2.151625,
+        "coverage": 0.810875,
+        "state_mass_threshold": 0.20655646920204163,
+        "state_mass_gain": 0.027594629894102128,
+        "state_mass_ntr": 0.20690625,
+        "state_mass_contexts": 1.677640625
+      },
+      "alpha_0.10": {
+        "threshold": -0.10902255639097747,
+        "gain": 0.029430395270042483,
+        "negative_transfer_rate": 0.33334375,
+        "contexts": 3.4378125,
+        "coverage": 0.984390625,
+        "state_mass_threshold": 0.09444986283779144,
+        "state_mass_gain": 0.028794096048453413,
+        "state_mass_ntr": 0.275203125,
+        "state_mass_contexts": 2.477875
+      },
+      "sign_gate": {
+        "threshold": 0.0,
+        "gain": 0.029344375310706255,
+        "negative_transfer_rate": 0.303953125,
+        "contexts": 3.1760625
+      },
+      "baselines": {
+        "Pool-all": {
+          "gain": 0.027479489479446784,
+          "negative_transfer_rate": 0.359125
+        },
+        "Relevance": {
+          "gain": -0.023636572324903682,
+          "negative_transfer_rate": 0.6956875
+        },
+        "MMR": {
+          "gain": -0.011905108114660834,
+          "negative_transfer_rate": 0.6253124999999999
+        },
+        "Standalone Utility": {
+          "gain": 0.01574191481631715,
+          "negative_transfer_rate": 0.40465625
+        },
+        "Cached-only router": {
+          "gain": 0.016336294036591426,
+          "negative_transfer_rate": 0.35859375000000004
+        },
+        "Uncalibrated router": {
+          "gain": 0.029344376031076536,
+          "negative_transfer_rate": 0.30395312499999994
+        },
+        "Sequential oracle": {
+          "gain": 0.06051408464554697,
+          "negative_transfer_rate": 0.0
+        }
+      }
+    },
+    "PEMS04": {
+      "targets": 32,
+      "episodes_eval": 64000,
+      "alpha_0.01": {
+        "threshold": 0.6165413533834585,
+        "gain": 0.032696352617889717,
+        "negative_transfer_rate": 0.05659375,
+        "contexts": 0.490015625,
+        "coverage": 0.303796875,
+        "state_mass_threshold": 0.5152409672737122,
+        "state_mass_gain": 0.034372561701565246,
+        "state_mass_ntr": 0.077390625,
+        "state_mass_contexts": 0.63175
+      },
+      "alpha_0.02": {
+        "threshold": 0.43609022556390975,
+        "gain": 0.03572701390142777,
+        "negative_transfer_rate": 0.09671875,
+        "contexts": 0.78215625,
+        "coverage": 0.445515625,
+        "state_mass_threshold": 0.3439885079860687,
+        "state_mass_gain": 0.03732080453922697,
+        "state_mass_ntr": 0.124734375,
+        "state_mass_contexts": 1.02234375
+      },
+      "alpha_0.05": {
+        "threshold": 0.14661654135338342,
+        "gain": 0.040563821382388766,
+        "negative_transfer_rate": 0.22240625,
+        "contexts": 1.983203125,
+        "coverage": 0.783734375,
+        "state_mass_threshold": 0.16995969414710999,
+        "state_mass_gain": 0.04026852356759667,
+        "state_mass_ntr": 0.208171875,
+        "state_mass_contexts": 1.834984375
+      },
+      "alpha_0.10": {
+        "threshold": -0.13157894736842107,
+        "gain": 0.04190307059010982,
+        "negative_transfer_rate": 0.3226875,
+        "contexts": 3.454984375,
+        "coverage": 0.99321875,
+        "state_mass_threshold": 0.058171339333057404,
+        "state_mass_gain": 0.041520920781094615,
+        "state_mass_ntr": 0.274328125,
+        "state_mass_contexts": 2.707890625
+      },
+      "sign_gate": {
+        "threshold": 0.0,
+        "gain": 0.041772853344022254,
+        "negative_transfer_rate": 0.289859375,
+        "contexts": 3.153953125
+      },
+      "baselines": {
+        "Pool-all": {
+          "gain": 0.03850907497690059,
+          "negative_transfer_rate": 0.360109375
+        },
+        "Relevance": {
+          "gain": 0.0035936470740125515,
+          "negative_transfer_rate": 0.54409375
+        },
+        "MMR": {
+          "gain": 0.008966287228759029,
+          "negative_transfer_rate": 0.520078125
+        },
+        "Standalone Utility": {
+          "gain": 0.029060429774290242,
+          "negative_transfer_rate": 0.398046875
+        },
+        "Cached-only router": {
+          "gain": 0.02886862212108099,
+          "negative_transfer_rate": 0.353578125
+        },
+        "Uncalibrated router": {
+          "gain": 0.04177285390323959,
+          "negative_transfer_rate": 0.289859375
+        },
+        "Sequential oracle": {
+          "gain": 0.07300024753203616,
+          "negative_transfer_rate": 0.0
+        }
+      }
+    },
+    "PEMS07": {
+      "targets": 32,
+      "episodes_eval": 64000,
+      "alpha_0.01": {
+        "threshold": 0.5977443609022557,
+        "gain": 0.01642860465181502,
+        "negative_transfer_rate": 0.06884375,
+        "contexts": 0.489015625,
+        "coverage": 0.281171875,
+        "state_mass_threshold": 0.5102545022964478,
+        "state_mass_gain": 0.01781617966333033,
+        "state_mass_ntr": 0.085109375,
+        "state_mass_contexts": 0.60525
+      },
+      "alpha_0.02": {
+        "threshold": 0.40601503759398494,
+        "gain": 0.019613399963384837,
+        "negative_transfer_rate": 0.111375,
+        "contexts": 0.796328125,
+        "coverage": 0.410390625,
+        "state_mass_threshold": 0.33736512064933777,
+        "state_mass_gain": 0.02066538366962209,
+        "state_mass_ntr": 0.133984375,
+        "state_mass_contexts": 0.959078125
+      },
+      "alpha_0.05": {
+        "threshold": 0.12030075187969924,
+        "gain": 0.023516714589823948,
+        "negative_transfer_rate": 0.249984375,
+        "contexts": 1.947609375,
+        "coverage": 0.76175,
+        "state_mass_threshold": 0.16166797280311584,
+        "state_mass_gain": 0.0230824376200336,
+        "state_mass_ntr": 0.222703125,
+        "state_mass_contexts": 1.674765625
+      },
+      "alpha_0.10": {
+        "threshold": -0.12030075187969924,
+        "gain": 0.0242365545207532,
+        "negative_transfer_rate": 0.356109375,
+        "contexts": 3.313515625,
+        "coverage": 0.98775,
+        "state_mass_threshold": 0.06241714209318161,
+        "state_mass_gain": 0.023968644678018507,
+        "state_mass_ntr": 0.287828125,
+        "state_mass_contexts": 2.427015625
+      },
+      "sign_gate": {
+        "threshold": 0.0,
+        "gain": 0.024197259469758023,
+        "negative_transfer_rate": 0.312921875,
+        "contexts": 2.983015625
+      },
+      "baselines": {
+        "Pool-all": {
+          "gain": 0.02041066879974096,
+          "negative_transfer_rate": 0.403046875
+        },
+        "Relevance": {
+          "gain": -0.01721493874015323,
+          "negative_transfer_rate": 0.61071875
+        },
+        "MMR": {
+          "gain": -0.010010767294261314,
+          "negative_transfer_rate": 0.5676875
+        },
+        "Standalone Utility": {
+          "gain": 0.012131150009736302,
+          "negative_transfer_rate": 0.44153125
+        },
+        "Cached-only router": {
+          "gain": 0.012215275179642049,
+          "negative_transfer_rate": 0.398046875
+        },
+        "Uncalibrated router": {
+          "gain": 0.02419725949584972,
+          "negative_transfer_rate": 0.312921875
+        },
+        "Sequential oracle": {
+          "gain": 0.05469293589703739,
+          "negative_transfer_rate": 0.0
+        }
+      }
+    },
+    "PEMS08": {
+      "targets": 32,
+      "episodes_eval": 64000,
+      "alpha_0.01": {
+        "threshold": 0.6390977443609023,
+        "gain": 0.025422185350285873,
+        "negative_transfer_rate": 0.061875,
+        "contexts": 0.54965625,
+        "coverage": 0.35515625,
+        "state_mass_threshold": 0.5638789534568787,
+        "state_mass_gain": 0.02703523483790468,
+        "state_mass_ntr": 0.076328125,
+        "state_mass_contexts": 0.6628125
+      },
+      "alpha_0.02": {
+        "threshold": 0.4586466165413533,
+        "gain": 0.029498266469689498,
+        "negative_transfer_rate": 0.102546875,
+        "contexts": 0.871859375,
+        "coverage": 0.500109375,
+        "state_mass_threshold": 0.39347198605537415,
+        "state_mass_gain": 0.030972892652516293,
+        "state_mass_ntr": 0.12278125,
+        "state_mass_contexts": 1.03621875
+      },
+      "alpha_0.05": {
+        "threshold": 0.17669172932330823,
+        "gain": 0.035159784275200084,
+        "negative_transfer_rate": 0.223609375,
+        "contexts": 1.935671875,
+        "coverage": 0.796203125,
+        "state_mass_threshold": 0.18600955605506897,
+        "state_mass_gain": 0.0350313317118148,
+        "state_mass_ntr": 0.220015625,
+        "state_mass_contexts": 1.894046875
+      },
+      "alpha_0.10": {
+        "threshold": -0.09022556390977443,
+        "gain": 0.036967853108349574,
+        "negative_transfer_rate": 0.3149375,
+        "contexts": 3.37421875,
+        "coverage": 0.9821875,
+        "state_mass_threshold": 0.06524654477834702,
+        "state_mass_gain": 0.03648836879091914,
+        "state_mass_ntr": 0.274421875,
+        "state_mass_contexts": 2.685921875
+      },
+      "sign_gate": {
+        "threshold": 0.0,
+        "gain": 0.03678652308117853,
+        "negative_transfer_rate": 0.289515625,
+        "contexts": 3.107296875
+      },
+      "baselines": {
+        "Pool-all": {
+          "gain": 0.040072433184832335,
+          "negative_transfer_rate": 0.352140625
+        },
+        "Relevance": {
+          "gain": 0.010686628912026208,
+          "negative_transfer_rate": 0.4669375
+        },
+        "MMR": {
+          "gain": 0.007795965397235705,
+          "negative_transfer_rate": 0.4866875
+        },
+        "Standalone Utility": {
+          "gain": 0.026912266621366143,
+          "negative_transfer_rate": 0.36078125
+        },
+        "Cached-only router": {
+          "gain": 0.027027878430089913,
+          "negative_transfer_rate": 0.32818749999999997
+        },
+        "Uncalibrated router": {
+          "gain": 0.03678652303642593,
+          "negative_transfer_rate": 0.289515625
+        },
+        "Sequential oracle": {
+          "gain": 0.0695216502645053,
+          "negative_transfer_rate": 0.0
+        }
+      }
+    }
+  }
+}

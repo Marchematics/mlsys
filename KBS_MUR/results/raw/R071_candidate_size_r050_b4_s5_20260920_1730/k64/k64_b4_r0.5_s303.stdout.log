@@ -1,0 +1,396 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{
+  "run_id": "R071_candidate_size",
+  "status": "pilot_not_confirmatory",
+  "config": {
+    "candidate_count": 64,
+    "group_count": 64,
+    "budget": 4,
+    "redundancy_ratio": 0.5,
+    "harmful_fraction": 0.0,
+    "anchor_noise": 1.0,
+    "useful_residual_fraction": 0.1,
+    "harmful_residual_fraction": 1.8,
+    "seed": 303,
+    "train_episodes": 2000,
+    "test_episodes": 1500,
+    "epochs": 15,
+    "device": "cuda:0",
+    "calibration_alpha": 0.1,
+    "mmr_gamma_grid": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "mmr_gamma_selected": 1.0,
+    "mmr_validation": {
+      "0.0": {
+        "mean_prediction_gain": 0.059047551174958544,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.2517303007808467,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.014761887793739636,
+        "mean_duplicate_selections": 0.14266666666666666,
+        "duplicate_selection_rate": 0.035666666666666666
+      },
+      "0.25": {
+        "mean_prediction_gain": 0.0838255852262179,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.35034074535367926,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.020956396306554475,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      },
+      "0.5": {
+        "mean_prediction_gain": 0.09156468149026235,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.38120320160787113,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.02289117037256559,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      },
+      "1.0": {
+        "mean_prediction_gain": 0.09816579480965933,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4054163067898673,
+        "mean_selected_contexts": 4.0,
+        "mean_gain_per_selected_context": 0.02454144870241483,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      }
+    },
+    "calibration_radius": 0.03097410500049591,
+    "free_threshold_grid": [
+      0.0,
+      5.656480789184569e-06,
+      0.00011675357818603514,
+      0.00034232735633850115,
+      0.0007087230682373046,
+      0.0012465119361877441,
+      0.0018987059593200686,
+      0.002746731042861939,
+      0.0038168668746948234,
+      0.00506054162979126,
+      0.006551682949066162,
+      0.008307594060897828,
+      0.010369944572448732,
+      0.013102462887763977,
+      0.016429609060287485,
+      0.020182281732559204,
+      0.02516369819641113,
+      0.031392136216163644,
+      0.039902114868164085,
+      0.057693159580230725,
+      0.24412870407104492
+    ],
+    "free_threshold_selected": 0.031392136216163644,
+    "free_threshold_target_contexts": 2.738,
+    "free_threshold_validation": {
+      "0.0": {
+        "mean_prediction_gain": 0.11659767544269561,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4781447690484131,
+        "mean_selected_contexts": 3.9993333333333334,
+        "mean_gain_per_selected_context": 0.029154810465044444,
+        "mean_duplicate_selections": 1.566,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "5.656480789184569e-06": {
+        "mean_prediction_gain": 0.11659767544269561,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4781447690484131,
+        "mean_selected_contexts": 3.9993333333333334,
+        "mean_gain_per_selected_context": 0.029154810465044444,
+        "mean_duplicate_selections": 1.566,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "0.00011675357818603514": {
+        "mean_prediction_gain": 0.11659767544269561,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4781447690484131,
+        "mean_selected_contexts": 3.9993333333333334,
+        "mean_gain_per_selected_context": 0.029154810465044444,
+        "mean_duplicate_selections": 1.566,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "0.00034232735633850115": {
+        "mean_prediction_gain": 0.11659767544269561,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4781447690484131,
+        "mean_selected_contexts": 3.9993333333333334,
+        "mean_gain_per_selected_context": 0.029154810465044444,
+        "mean_duplicate_selections": 1.566,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "0.0007087230682373046": {
+        "mean_prediction_gain": 0.11659767544269561,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4781447690484131,
+        "mean_selected_contexts": 3.9993333333333334,
+        "mean_gain_per_selected_context": 0.029154810465044444,
+        "mean_duplicate_selections": 1.566,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "0.0012465119361877441": {
+        "mean_prediction_gain": 0.11658858795960744,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.47809573778431985,
+        "mean_selected_contexts": 3.998666666666667,
+        "mean_gain_per_selected_context": 0.02915930621491538,
+        "mean_duplicate_selections": 1.566,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "0.0018987059593200686": {
+        "mean_prediction_gain": 0.11658858795960744,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.47809573778431985,
+        "mean_selected_contexts": 3.998,
+        "mean_gain_per_selected_context": 0.02916458476252026,
+        "mean_duplicate_selections": 1.5653333333333332,
+        "duplicate_selection_rate": 0.39138888888888884
+      },
+      "0.002746731042861939": {
+        "mean_prediction_gain": 0.11656734883785248,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.47796801292255003,
+        "mean_selected_contexts": 3.997333333333333,
+        "mean_gain_per_selected_context": 0.029164522296852534,
+        "mean_duplicate_selections": 1.5653333333333332,
+        "duplicate_selection_rate": 0.39138888888888884
+      },
+      "0.0038168668746948234": {
+        "mean_prediction_gain": 0.11655826425552368,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4779392737168815,
+        "mean_selected_contexts": 3.9953333333333334,
+        "mean_gain_per_selected_context": 0.029175534076160855,
+        "mean_duplicate_selections": 1.5646666666666667,
+        "duplicate_selection_rate": 0.39138888888888884
+      },
+      "0.00506054162979126": {
+        "mean_prediction_gain": 0.11650261990229288,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4776275432749859,
+        "mean_selected_contexts": 3.9926666666666666,
+        "mean_gain_per_selected_context": 0.02918490206864145,
+        "mean_duplicate_selections": 1.5646666666666667,
+        "duplicate_selection_rate": 0.3915555555555555
+      },
+      "0.006551682949066162": {
+        "mean_prediction_gain": 0.11637483863035838,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.47700701791546973,
+        "mean_selected_contexts": 3.989333333333333,
+        "mean_gain_per_selected_context": 0.02917372016443146,
+        "mean_duplicate_selections": 1.5646666666666667,
+        "duplicate_selection_rate": 0.39188888888888884
+      },
+      "0.008307594060897828": {
+        "mean_prediction_gain": 0.11623426338036855,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4765339730984203,
+        "mean_selected_contexts": 3.982,
+        "mean_gain_per_selected_context": 0.029222367217143375,
+        "mean_duplicate_selections": 1.5613333333333332,
+        "duplicate_selection_rate": 0.3910555555555556
+      },
+      "0.010369944572448732": {
+        "mean_prediction_gain": 0.1158570396900177,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.47473204293361543,
+        "mean_selected_contexts": 3.9633333333333334,
+        "mean_gain_per_selected_context": 0.029352902909119925,
+        "mean_duplicate_selections": 1.5553333333333332,
+        "duplicate_selection_rate": 0.39
+      },
+      "0.013102462887763977": {
+        "mean_prediction_gain": 0.11511454633871714,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.47090264035747736,
+        "mean_selected_contexts": 3.9206666666666665,
+        "mean_gain_per_selected_context": 0.029605577210585276,
+        "mean_duplicate_selections": 1.54,
+        "duplicate_selection_rate": 0.3879444444444445
+      },
+      "0.016429609060287485": {
+        "mean_prediction_gain": 0.11351791852712631,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4635837960827857,
+        "mean_selected_contexts": 3.842,
+        "mean_gain_per_selected_context": 0.029932053614116622,
+        "mean_duplicate_selections": 1.5133333333333334,
+        "duplicate_selection_rate": 0.38361111111111107
+      },
+      "0.020182281732559204": {
+        "mean_prediction_gain": 0.10950697845220565,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4455550137740887,
+        "mean_selected_contexts": 3.656,
+        "mean_gain_per_selected_context": 0.030815653964525923,
+        "mean_duplicate_selections": 1.4466666666666668,
+        "duplicate_selection_rate": 0.37283333333333335
+      },
+      "0.02516369819641113": {
+        "mean_prediction_gain": 0.10263247273365657,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.4148232939656003,
+        "mean_selected_contexts": 3.3193333333333332,
+        "mean_gain_per_selected_context": 0.03299235193950644,
+        "mean_duplicate_selections": 1.312,
+        "duplicate_selection_rate": 0.34561111111111115
+      },
+      "0.031392136216163644": {
+        "mean_prediction_gain": 0.0889480514327685,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.35439905018769663,
+        "mean_selected_contexts": 2.6866666666666665,
+        "mean_gain_per_selected_context": 0.03693238822654865,
+        "mean_duplicate_selections": 1.042,
+        "duplicate_selection_rate": 0.28627777777777774
+      },
+      "0.039902114868164085": {
+        "mean_prediction_gain": 0.06457612083355586,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.2503721611296013,
+        "mean_selected_contexts": 1.764,
+        "mean_gain_per_selected_context": 0.041740870447907426,
+        "mean_duplicate_selections": 0.6806666666666666,
+        "duplicate_selection_rate": 0.20172222222222222
+      },
+      "0.057693159580230725": {
+        "mean_prediction_gain": 0.024166099905967714,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.08696008518373946,
+        "mean_selected_contexts": 0.5306666666666666,
+        "mean_gain_per_selected_context": 0.054587313895289966,
+        "mean_duplicate_selections": 0.20733333333333334,
+        "duplicate_selection_rate": 0.06688888888888889
+      },
+      "0.24412870407104492": {
+        "mean_prediction_gain": 0.0,
+        "negative_transfer_rate": 0.0,
+        "mean_utility_recovery": 0.0,
+        "mean_selected_contexts": 0.0,
+        "mean_gain_per_selected_context": NaN,
+        "mean_duplicate_selections": 0.0,
+        "duplicate_selection_rate": 0.0
+      }
+    }
+  },
+  "metrics": {
+    "relevance": {
+      "mean_prediction_gain": 0.057046758433183034,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.2469723683329091,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.014261689608295759,
+      "mean_duplicate_selections": 0.13266666666666665,
+      "duplicate_selection_rate": 0.033166666666666664
+    },
+    "mmr": {
+      "mean_prediction_gain": 0.09649547400077184,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.4051130080903176,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.02412386850019296,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "coverage": {
+      "mean_prediction_gain": 0.05926147609949112,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.2567874850298009,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.01481536902487278,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.165505084335804,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.699982482710789,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.041376271083951,
+      "mean_duplicate_selections": 1.6033333333333333,
+      "duplicate_selection_rate": 0.4008333333333333
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.11531302616993586,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.4815014070574565,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.028828256542483964,
+      "mean_duplicate_selections": 1.586,
+      "duplicate_selection_rate": 0.3965
+    },
+    "mur_light": {
+      "mean_prediction_gain": 0.11519891446828842,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.47925859951319794,
+      "mean_selected_contexts": 3.992,
+      "mean_gain_per_selected_context": 0.02889355354894127,
+      "mean_duplicate_selections": 1.538,
+      "duplicate_selection_rate": 0.38461111111111107,
+      "positive_selection_precision": 0.6148964595858384
+    },
+    "mur_interval": {
+      "mean_prediction_gain": 0.08806528655687967,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.355582862292062,
+      "mean_selected_contexts": 2.6853333333333333,
+      "mean_gain_per_selected_context": 0.03547043817638899,
+      "mean_duplicate_selections": 1.032,
+      "duplicate_selection_rate": 0.2836111111111111,
+      "positive_selection_precision": 0.6159384309831182
+    },
+    "mur_free_threshold": {
+      "mean_prediction_gain": 0.08708427957693736,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.35168643500595426,
+      "mean_selected_contexts": 2.6473333333333335,
+      "mean_gain_per_selected_context": 0.03564857318143611,
+      "mean_duplicate_selections": 1.0193333333333334,
+      "duplicate_selection_rate": 0.28122222222222226,
+      "positive_selection_precision": 0.6152102744900528
+    },
+    "oracle": {
+      "mean_prediction_gain": 0.23543292174736657,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 4.0,
+      "mean_gain_per_selected_context": 0.058858230436841644,
+      "mean_duplicate_selections": 0.0,
+      "duplicate_selection_rate": 0.0
+    },
+    "state_conditioning_headroom": 0.2970180928502399,
+    "mur_estimation_gap": 0.5106932640801032,
+    "mur_headroom_recovery": -0.7194011959991978
+  },
+  "state_diagnostics": {
+    "random": {
+      "utility_mae": 0.014520603370703329,
+      "top1_accuracy": 0.19066666666666668,
+      "one_step_regret": 0.03178411553303401
+    },
+    "oracle_prefix": {
+      "utility_mae": 0.013441040659966569,
+      "top1_accuracy": 0.118,
+      "one_step_regret": 0.02809070519109567
+    },
+    "mur_rollout": {
+      "utility_mae": 0.014574329750962742,
+      "top1_accuracy": 0.09583333333333334,
+      "one_step_regret": 0.04787390814224879
+    }
+  },
+  "wall_seconds": 209.915509223938,
+  "provenance": {
+    "script_sha256": "628f9002d6ce0713a79d15c8c59c5c789416c254fbf99953fcea3c81c4d70721",
+    "synthetic_sha256": "01266f6e3312b25217202382aa7289a8d60f88662f69718497fd7a89f59641d1",
+    "experiment_sha256": "7848c12daf71a95ca7b312ec0d37e1e97bc462688eaa67b316879bc328f00b4b"
+  }
+}

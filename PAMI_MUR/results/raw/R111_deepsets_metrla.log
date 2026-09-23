@@ -1,0 +1,37 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+{"dataset": "METRLA", "target": 0, "seed": 101, "rmur_q4": 0.03160059452056885, "static": 0.03539453074336052, "cached": 0.03637712821364403, "oracle_greedy": 0.13646328449249268, "wall": 58.1}
+{"dataset": "METRLA", "target": 0, "seed": 202, "rmur_q4": 0.038947366178035736, "static": 0.04279439523816109, "cached": 0.04498087242245674, "oracle_greedy": 0.12709501385688782, "wall": 52.4}
+{"dataset": "METRLA", "target": 29, "seed": 101, "rmur_q4": 0.058492545038461685, "static": 0.04974907636642456, "cached": 0.05533188581466675, "oracle_greedy": 0.17521098256111145, "wall": 59.8}
+{"dataset": "METRLA", "target": 29, "seed": 202, "rmur_q4": 0.0500398725271225, "static": 0.051705252379179, "cached": 0.05559555068612099, "oracle_greedy": 0.15347418189048767, "wall": 46.4}
+{"dataset": "METRLA", "target": 58, "seed": 101, "rmur_q4": 0.010555786080658436, "static": 0.010099934414029121, "cached": 0.008641058579087257, "oracle_greedy": 0.07269786298274994, "wall": 41.4}
+{"dataset": "METRLA", "target": 58, "seed": 202, "rmur_q4": 0.008607663214206696, "static": 0.008524772711098194, "cached": 0.013013701885938644, "oracle_greedy": 0.07537724077701569, "wall": 43.6}
+{"dataset": "METRLA", "target": 88, "seed": 101, "rmur_q4": 0.019058793783187866, "static": 0.018581343814730644, "cached": 0.01914885826408863, "oracle_greedy": 0.0924205482006073, "wall": 41.5}
+{"dataset": "METRLA", "target": 88, "seed": 202, "rmur_q4": 0.016596874222159386, "static": 0.01607937179505825, "cached": 0.018022000789642334, "oracle_greedy": 0.08339527994394302, "wall": 43.9}
+{"dataset": "METRLA", "target": 117, "seed": 101, "rmur_q4": 0.03081228956580162, "static": 0.024908943101763725, "cached": 0.02234683930873871, "oracle_greedy": 0.12028522044420242, "wall": 43.6}
+{"dataset": "METRLA", "target": 117, "seed": 202, "rmur_q4": 0.016292711719870567, "static": 0.018372943624854088, "cached": 0.027183085680007935, "oracle_greedy": 0.11770018190145493, "wall": 43.2}
+{"dataset": "METRLA", "target": 147, "seed": 101, "rmur_q4": 0.0008528096368536353, "static": 0.0006741115939803421, "cached": 0.0008425266132690012, "oracle_greedy": 0.039201151579618454, "wall": 44.2}
+{"dataset": "METRLA", "target": 147, "seed": 202, "rmur_q4": 0.0029975229408591986, "static": 0.0031544638331979513, "cached": 0.0015896266559138894, "oracle_greedy": 0.04695267975330353, "wall": 45.0}
+{"dataset": "METRLA", "target": 176, "seed": 101, "rmur_q4": 0.03654811158776283, "static": 0.01732787862420082, "cached": 0.031066829338669777, "oracle_greedy": 0.1421978771686554, "wall": 48.3}
+{"dataset": "METRLA", "target": 176, "seed": 202, "rmur_q4": 0.02792360447347164, "static": 0.02517332136631012, "cached": 0.012728648260235786, "oracle_greedy": 0.1057625412940979, "wall": 51.7}
+{"dataset": "METRLA", "target": 206, "seed": 101, "rmur_q4": 0.030737269669771194, "static": 0.0310747642070055, "cached": 0.031852737069129944, "oracle_greedy": 0.1803005337715149, "wall": 51.8}
+{"dataset": "METRLA", "target": 206, "seed": 202, "rmur_q4": 0.0444369837641716, "static": 0.04636107385158539, "cached": 0.03468616306781769, "oracle_greedy": 0.2031506597995758, "wall": 50.9}
+{
+  "G_RMUR_q4_mean": 0.026531299932685215,
+  "delta_static": {
+    "mean": 0.001532788828626508,
+    "low": -0.0009966305270609154,
+    "high": 0.00463195096799609
+  },
+  "delta_cached": {
+    "mean": 0.0006933303920959588,
+    "low": -0.0020313380672632776,
+    "high": 0.004034329205751419
+  },
+  "targets_positive_gain": 8,
+  "targets_above_static": 6,
+  "targets_above_cached": 3,
+  "pass_g1": false
+}

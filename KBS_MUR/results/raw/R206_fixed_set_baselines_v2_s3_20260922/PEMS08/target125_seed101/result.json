@@ -1,0 +1,104 @@
+{
+  "run_id": "R206_fixed_set_baselines_v2",
+  "status": "confirmatory",
+  "dataset": "PEMS08",
+  "target_sensor": 125,
+  "seed": 101,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "candidate_sensors": [
+      48,
+      61,
+      80,
+      121,
+      122,
+      123,
+      141,
+      142,
+      124,
+      62,
+      109,
+      149,
+      55,
+      168,
+      6,
+      85
+    ],
+    "selected_indices": {
+      "forward_val": [
+        13,
+        14,
+        2,
+        3
+      ],
+      "forward_backward_val": [
+        13,
+        14,
+        2,
+        3
+      ],
+      "adaptive_k": [
+        0,
+        1
+      ],
+      "ids_cluster": [
+        0,
+        15,
+        13,
+        14
+      ],
+      "lookahead_val": [
+        13,
+        14,
+        2,
+        3
+      ],
+      "grad_influence": [
+        13,
+        14,
+        11,
+        0
+      ]
+    }
+  },
+  "metrics": {
+    "forward_val": {
+      "mean_prediction_gain": 0.015685826539993286,
+      "negative_transfer_rate": 0.3295,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "adaptive_k": {
+      "mean_prediction_gain": 0.0009976130677387118,
+      "negative_transfer_rate": 0.4275,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 2.0
+    },
+    "ids_cluster": {
+      "mean_prediction_gain": 0.01472500804811716,
+      "negative_transfer_rate": 0.338,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "lookahead_val": {
+      "mean_prediction_gain": 0.015685826539993286,
+      "negative_transfer_rate": 0.3295,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "grad_influence": {
+      "mean_prediction_gain": 0.014361010864377022,
+      "negative_transfer_rate": 0.3365,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "forward_backward_val": {
+      "mean_prediction_gain": 0.015685826539993286,
+      "negative_transfer_rate": 0.3295,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    }
+  },
+  "wall_seconds": 0.5274364948272705
+}

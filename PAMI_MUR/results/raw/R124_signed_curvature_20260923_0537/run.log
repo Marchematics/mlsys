@@ -1,0 +1,77 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+=== cifar10: 10 classes, train episodes 240, test episodes 80, head=bilinear ===
+    prototype epoch 50/200 train_ce=1.0960
+    prototype epoch 100/200 train_ce=1.0854
+    prototype epoch 150/200 train_ce=1.0254
+    prototype epoch 200/200 train_ce=1.0052
+{"benchmark": "cifar10", "seed": 101, "signed_q4_forced": 1.6907452805874137, "bilinear_q4_forced": 1.6907902470512604, "c_mean": 0.13344736149301753, "c_std": 0.01677545154984189, "frozen_q4_forced": 1.7011804198539622, "static": 1.7125085398998585, "cached": 1.4881411813913952, "oracle_greedy": 1.764446736522114, "h_state": 0.027294881770810717, "wall": 101.9}
+    prototype epoch 50/200 train_ce=1.1645
+    prototype epoch 100/200 train_ce=1.0209
+    prototype epoch 150/200 train_ce=1.0460
+    prototype epoch 200/200 train_ce=0.8992
+{"benchmark": "cifar10", "seed": 202, "signed_q4_forced": 1.6970556090479996, "bilinear_q4_forced": 1.697263660613028, "c_mean": 0.14509009642642923, "c_std": 0.01830119441642532, "frozen_q4_forced": 1.7099199196317585, "static": 1.7084288793227558, "cached": 1.7086703413541264, "oracle_greedy": 1.755748321576005, "h_state": 0.025703324029424098, "wall": 84.4}
+    prototype epoch 50/200 train_ce=1.1024
+    prototype epoch 100/200 train_ce=0.9820
+    prototype epoch 150/200 train_ce=0.9672
+    prototype epoch 200/200 train_ce=1.0001
+{"benchmark": "cifar10", "seed": 303, "signed_q4_forced": 1.7005616102073695, "bilinear_q4_forced": 1.7006517474598841, "c_mean": 0.14275277046253904, "c_std": 0.01823631950179678, "frozen_q4_forced": 1.7110976446991075, "static": 1.7130421085040222, "cached": 1.6295892605881868, "oracle_greedy": 1.76648867143765, "h_state": 0.027878059053357374, "wall": 79.2}
+=== cifar100: 100 classes, train episodes 600, test episodes 200, head=bilinear ===
+    prototype epoch 50/120 train_ce=2.9603
+    prototype epoch 100/120 train_ce=2.7468
+{"benchmark": "cifar100", "seed": 101, "signed_q4_forced": 2.5324888393196883, "bilinear_q4_forced": 2.5420826547205273, "c_mean": 0.09422834777389653, "c_std": 0.1299888099248741, "frozen_q4_forced": 2.5370210018385673, "static": 2.519188862938546, "cached": 2.304734020104395, "oracle_greedy": 2.5797273680263153, "h_state": 0.0007095540669919983, "wall": 491.8}
+    prototype epoch 50/120 train_ce=2.9464
+    prototype epoch 100/120 train_ce=2.7796
+{"benchmark": "cifar100", "seed": 202, "signed_q4_forced": 2.5286976410389483, "bilinear_q4_forced": 2.541332308126682, "c_mean": 0.07118922390101944, "c_std": 0.14766048035724688, "frozen_q4_forced": 2.5426890362327965, "static": 2.52815895222741, "cached": 2.489935674498374, "oracle_greedy": 2.5788862557265135, "h_state": 0.0006068600756695356, "wall": 363.0}
+    prototype epoch 50/120 train_ce=2.9823
+    prototype epoch 100/120 train_ce=2.7509
+{"benchmark": "cifar100", "seed": 303, "signed_q4_forced": 2.5376342047487523, "bilinear_q4_forced": 2.5520756795854083, "c_mean": 0.08569053323706612, "c_std": 0.12805270803713528, "frozen_q4_forced": 2.5366066988155462, "static": 2.5251363375846094, "cached": 2.312551402096032, "oracle_greedy": 2.5817337828793336, "h_state": 0.0005840865958492135, "wall": 409.3}
+=== svhn: 10 classes, train episodes 240, test episodes 80, head=bilinear ===
+    prototype epoch 50/200 train_ce=1.3353
+    prototype epoch 100/200 train_ce=1.3269
+    prototype epoch 150/200 train_ce=1.2621
+    prototype epoch 200/200 train_ce=1.2101
+{"benchmark": "svhn", "seed": 101, "signed_q4_forced": 1.6111228918283822, "bilinear_q4_forced": 1.6137508017085729, "c_mean": -0.014953026142029558, "c_std": 0.08217305949243359, "frozen_q4_forced": 1.6237585839842328, "static": 1.537977003014112, "cached": 1.3114663193092928, "oracle_greedy": 1.6661127984160415, "h_state": 0.001633918457027052, "wall": 61.1}
+    prototype epoch 50/200 train_ce=1.4174
+    prototype epoch 100/200 train_ce=1.2748
+    prototype epoch 150/200 train_ce=1.2864
+    prototype epoch 200/200 train_ce=1.1583
+{"benchmark": "svhn", "seed": 202, "signed_q4_forced": 1.6149675636208038, "bilinear_q4_forced": 1.6261398324626615, "c_mean": -0.054161788440251254, "c_std": 0.09854736486382659, "frozen_q4_forced": 1.6016176704131766, "static": 1.5467539887949244, "cached": 1.478908427132995, "oracle_greedy": 1.6843841543073494, "h_state": 0.0014205187694939362, "wall": 61.8}
+    prototype epoch 50/200 train_ce=1.3369
+    prototype epoch 100/200 train_ce=1.2218
+    prototype epoch 150/200 train_ce=1.1913
+    prototype epoch 200/200 train_ce=1.2433
+{"benchmark": "svhn", "seed": 303, "signed_q4_forced": 1.6279464236249837, "bilinear_q4_forced": 1.6373821269608548, "c_mean": -0.05462473910592962, "c_std": 0.09723632291114073, "frozen_q4_forced": 1.5760356619048703, "static": 1.4517765456645595, "cached": 1.4299460947314815, "oracle_greedy": 1.6773109216533246, "h_state": 0.0019201516253211583, "wall": 59.0}
+=== eurosat: 10 classes, train episodes 240, test episodes 80, head=bilinear ===
+    prototype epoch 50/200 train_ce=1.1444
+    prototype epoch 100/200 train_ce=1.1228
+    prototype epoch 150/200 train_ce=1.0711
+    prototype epoch 200/200 train_ce=1.0376
+{"benchmark": "eurosat", "seed": 101, "signed_q4_forced": 1.6310339558444653, "bilinear_q4_forced": 1.6295295141085737, "c_mean": 0.14348424732452258, "c_std": 0.02863911964548168, "frozen_q4_forced": 1.6462874103850964, "static": 1.4383881213660934, "cached": 1.283879910714325, "oracle_greedy": 1.733059970382044, "h_state": 0.02945579338729671, "wall": 59.0}
+    prototype epoch 50/200 train_ce=1.2151
+    prototype epoch 100/200 train_ce=1.0705
+    prototype epoch 150/200 train_ce=1.0802
+    prototype epoch 200/200 train_ce=0.9401
+{"benchmark": "eurosat", "seed": 202, "signed_q4_forced": 1.6127847376255033, "bilinear_q4_forced": 1.6442223239881724, "c_mean": 0.12436326709866989, "c_std": 0.044669311688002825, "frozen_q4_forced": 1.6268305021356437, "static": 1.412937624867234, "cached": 1.6027927635000079, "oracle_greedy": 1.728717497086239, "h_state": 0.030703250039955318, "wall": 62.1}
+    prototype epoch 50/200 train_ce=1.1501
+    prototype epoch 100/200 train_ce=1.0225
+    prototype epoch 150/200 train_ce=1.0065
+    prototype epoch 200/200 train_ce=1.0515
+{"benchmark": "eurosat", "seed": 303, "signed_q4_forced": 1.645723622977042, "bilinear_q4_forced": 1.6565922193859404, "c_mean": 0.11760567505261861, "c_std": 0.041280980184895164, "frozen_q4_forced": 1.6588828998045002, "static": 1.516452071204536, "cached": 1.3995851944342745, "oracle_greedy": 1.7369093009096273, "h_state": 0.028517713292396465, "wall": 58.3}
+=== dtd: 47 classes, train episodes 188, test episodes 94, head=bilinear ===
+    prototype epoch 50/200 train_ce=2.4613
+    prototype epoch 100/200 train_ce=2.3555
+    prototype epoch 150/200 train_ce=2.2645
+    prototype epoch 200/200 train_ce=2.1989
+{"benchmark": "dtd", "seed": 101, "signed_q4_forced": 2.0405206101216278, "bilinear_q4_forced": 2.058802080028483, "c_mean": 0.10432210594212557, "c_std": 0.12188750371279336, "frozen_q4_forced": 2.027211732769105, "static": 2.033348738641879, "cached": 1.9597026741078056, "oracle_greedy": 2.1592921988654217, "h_state": 0.0021279916771341522, "wall": 106.4}
+    prototype epoch 50/200 train_ce=2.3665
+    prototype epoch 100/200 train_ce=2.4477
+    prototype epoch 150/200 train_ce=2.3962
+    prototype epoch 200/200 train_ce=2.2086
+{"benchmark": "dtd", "seed": 202, "signed_q4_forced": 2.0271551450046386, "bilinear_q4_forced": 2.0251593801981156, "c_mean": 0.10673274824821806, "c_std": 0.11557154064692543, "frozen_q4_forced": 2.0170346585032193, "static": 2.0371803303383684, "cached": 1.8676786118518935, "oracle_greedy": 2.147488636820845, "h_state": 0.006272312196770844, "wall": 105.2}
+    prototype epoch 50/200 train_ce=2.2477
+    prototype epoch 100/200 train_ce=2.4079
+    prototype epoch 150/200 train_ce=2.2415
+    prototype epoch 200/200 train_ce=2.3029
+{"benchmark": "dtd", "seed": 303, "signed_q4_forced": 2.0271537899120653, "bilinear_q4_forced": 2.0258588712310224, "c_mean": 0.1269653960319355, "c_std": 0.11218556536464547, "frozen_q4_forced": 2.0104546451742165, "static": 2.052599333697213, "cached": 1.9291167360100618, "oracle_greedy": 2.154112609963344, "h_state": 0.003525098799693237, "wall": 116.5}
+{"finished_utc": "2026-09-22T22:15:05Z", "failures": {}}

@@ -1,0 +1,36 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Traceback (most recent call last):
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/demo_selection/run_r110_demo_selection.py", line 513, in <module>
+    main()
+  File "/root/icl_ess_threshold/PAMI_MUR/experiments/demo_selection/run_r110_demo_selection.py", line 328, in main
+    raise FileExistsError(f"output root already holds results: {args.out_root}")
+FileExistsError: output root already holds results: /root/icl_ess_threshold/PAMI_MUR/results/raw/R110_demo_selection_20260921_0342
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+=== cifar10: 10 classes, train episodes 240, test episodes 80 ===
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+    predictor epoch 50/200 train_ce=0.0010
+    predictor epoch 100/200 train_ce=0.0004
+    predictor epoch 150/200 train_ce=0.0002
+    predictor epoch 200/200 train_ce=0.0001
+{"benchmark": "cifar10", "seed": 101, "q4_gain": 2.4745562415574165e-07, "static": 1.7829219134425626e-07, "cached": 2.855291315830026e-07, "oracle_greedy": 7.709580968935761e-07, "oracle_static": 6.717342395893501e-07, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 98.7}
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+    predictor epoch 50/200 train_ce=0.0010
+    predictor epoch 100/200 train_ce=0.0003
+    predictor epoch 150/200 train_ce=0.0002
+    predictor epoch 200/200 train_ce=0.0001
+{"benchmark": "cifar10", "seed": 202, "q4_gain": 1.7822123707666302e-07, "static": -3.1566497711093896e-08, "cached": 1.2961716899998798e-07, "oracle_greedy": 8.182755774427911e-07, "oracle_static": 6.961446990862121e-07, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 65.9}
+    predictor epoch 50/200 train_ce=0.0010
+    predictor epoch 100/200 train_ce=0.0004
+    predictor epoch 150/200 train_ce=0.0002
+    predictor epoch 200/200 train_ce=0.0001
+{"benchmark": "cifar10", "seed": 303, "q4_gain": 1.4521518459630476e-07, "static": 1.3520239497355088e-10, "cached": 3.2463163200032336e-09, "oracle_greedy": 9.059896656778662e-07, "oracle_static": 7.903566695840521e-07, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 104.4}
+=== cifar100: 100 classes, train episodes 600, test episodes 200 ===
+    predictor epoch 50/120 train_ce=0.0025
+    predictor epoch 100/120 train_ce=0.0006
+{"benchmark": "cifar100", "seed": 101, "q4_gain": 7.39555434372794e-06, "static": 6.696221742938064e-06, "cached": 8.24361589401679e-06, "oracle_greedy": 1.7393988753395617e-05, "oracle_static": 1.6654855981413216e-05, "acc_0": 1.0, "acc_4": 1.0, "acc_16": 1.0, "wall": 149.5}
+    predictor epoch 50/120 train_ce=0.0020
+    predictor epoch 100/120 train_ce=0.0005

@@ -1,0 +1,54 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+{"target": 0, "seed": 101, "min_disturbance_static": 0.00371, "max_disturbance_static": 0.01312, "last_k": 0.00865, "min_disturbance_greedy": 0.00185}
+{"target": 0, "seed": 202, "min_disturbance_static": 0.00163, "max_disturbance_static": 0.018, "last_k": 0.00764, "min_disturbance_greedy": 0.00238}
+{"target": 0, "seed": 303, "min_disturbance_static": 0.00484, "max_disturbance_static": 0.01894, "last_k": 0.01272, "min_disturbance_greedy": 0.00352}
+{"target": 13, "seed": 101, "min_disturbance_static": -0.00245, "max_disturbance_static": -0.00343, "last_k": 0.00038, "min_disturbance_greedy": -0.00224}
+{"target": 13, "seed": 202, "min_disturbance_static": 0.00959, "max_disturbance_static": 0.00307, "last_k": 0.01576, "min_disturbance_greedy": 0.01171}
+{"target": 13, "seed": 303, "min_disturbance_static": 0.0087, "max_disturbance_static": 0.0099, "last_k": 0.0124, "min_disturbance_greedy": 0.00789}
+{"target": 27, "seed": 101, "min_disturbance_static": -0.00624, "max_disturbance_static": -0.009, "last_k": -0.00547, "min_disturbance_greedy": -0.00346}
+{"target": 27, "seed": 202, "min_disturbance_static": 0.0128, "max_disturbance_static": 0.00865, "last_k": 0.01003, "min_disturbance_greedy": 0.01229}
+{"target": 27, "seed": 303, "min_disturbance_static": 0.00452, "max_disturbance_static": -0.00297, "last_k": 0.00301, "min_disturbance_greedy": 0.00171}
+{"target": 41, "seed": 101, "min_disturbance_static": -0.00122, "max_disturbance_static": -0.00823, "last_k": 0.00498, "min_disturbance_greedy": 0.00058}
+{"target": 41, "seed": 202, "min_disturbance_static": 0.00197, "max_disturbance_static": -0.00318, "last_k": 0.00372, "min_disturbance_greedy": 0.00123}
+{"target": 41, "seed": 303, "min_disturbance_static": -0.00436, "max_disturbance_static": -0.01133, "last_k": -0.00525, "min_disturbance_greedy": -0.00488}
+{"target": 54, "seed": 101, "min_disturbance_static": 0.00052, "max_disturbance_static": -0.0052, "last_k": -0.00258, "min_disturbance_greedy": -0.0009}
+{"target": 54, "seed": 202, "min_disturbance_static": 0.0013, "max_disturbance_static": -0.02515, "last_k": -0.0013, "min_disturbance_greedy": 0.00288}
+{"target": 54, "seed": 303, "min_disturbance_static": -0.00329, "max_disturbance_static": -0.01285, "last_k": -0.00502, "min_disturbance_greedy": -0.00376}
+{"target": 68, "seed": 101, "min_disturbance_static": -0.00245, "max_disturbance_static": -0.00534, "last_k": -0.00148, "min_disturbance_greedy": -0.00058}
+{"target": 68, "seed": 202, "min_disturbance_static": 0.00073, "max_disturbance_static": 0.00534, "last_k": 0.00126, "min_disturbance_greedy": -0.00028}
+{"target": 68, "seed": 303, "min_disturbance_static": 0.00379, "max_disturbance_static": 0.01229, "last_k": 0.00317, "min_disturbance_greedy": 0.0041}
+{"target": 82, "seed": 101, "min_disturbance_static": -0.00824, "max_disturbance_static": -0.10966, "last_k": -0.05592, "min_disturbance_greedy": -0.01034}
+{"target": 82, "seed": 202, "min_disturbance_static": 0.00932, "max_disturbance_static": -0.09297, "last_k": -0.04665, "min_disturbance_greedy": 0.00143}
+{"target": 82, "seed": 303, "min_disturbance_static": -0.01948, "max_disturbance_static": -0.10028, "last_k": -0.04336, "min_disturbance_greedy": -0.01785}
+{"target": 96, "seed": 101, "min_disturbance_static": 0.01978, "max_disturbance_static": 0.02186, "last_k": 0.01439, "min_disturbance_greedy": 0.00985}
+{"target": 96, "seed": 202, "min_disturbance_static": 0.00757, "max_disturbance_static": 0.02622, "last_k": 0.01469, "min_disturbance_greedy": 0.00768}
+{"target": 96, "seed": 303, "min_disturbance_static": 0.0135, "max_disturbance_static": 0.0413, "last_k": 0.0065, "min_disturbance_greedy": 0.01646}
+{"target": 109, "seed": 101, "min_disturbance_static": 0.00033, "max_disturbance_static": -0.0129, "last_k": -0.00388, "min_disturbance_greedy": -0.001}
+{"target": 109, "seed": 202, "min_disturbance_static": 0.00402, "max_disturbance_static": -0.01089, "last_k": -0.00511, "min_disturbance_greedy": 0.00287}
+{"target": 109, "seed": 303, "min_disturbance_static": -0.00545, "max_disturbance_static": -0.04136, "last_k": -0.01289, "min_disturbance_greedy": -0.00658}
+{"target": 123, "seed": 101, "min_disturbance_static": -0.00387, "max_disturbance_static": -0.01509, "last_k": -0.0047, "min_disturbance_greedy": -0.00063}
+{"target": 123, "seed": 202, "min_disturbance_static": -0.00051, "max_disturbance_static": -0.00052, "last_k": 0.00132, "min_disturbance_greedy": 0.00349}
+{"target": 123, "seed": 303, "min_disturbance_static": 0.00512, "max_disturbance_static": 0.00428, "last_k": 0.00656, "min_disturbance_greedy": 0.00357}
+{"target": 137, "seed": 101, "min_disturbance_static": -0.00189, "max_disturbance_static": -0.01085, "last_k": -0.00726, "min_disturbance_greedy": -0.00207}
+{"target": 137, "seed": 202, "min_disturbance_static": 0.00716, "max_disturbance_static": 0.01268, "last_k": 0.01344, "min_disturbance_greedy": 0.00975}
+{"target": 137, "seed": 303, "min_disturbance_static": 0.00406, "max_disturbance_static": -0.001, "last_k": 0.00422, "min_disturbance_greedy": 0.00274}
+{"target": 151, "seed": 101, "min_disturbance_static": 0.00386, "max_disturbance_static": 0.00393, "last_k": 0.00378, "min_disturbance_greedy": 0.00412}
+{"target": 151, "seed": 202, "min_disturbance_static": 0.00378, "max_disturbance_static": -0.00311, "last_k": 0.00439, "min_disturbance_greedy": 0.00394}
+{"target": 151, "seed": 303, "min_disturbance_static": -0.0024, "max_disturbance_static": -0.01468, "last_k": -0.00855, "min_disturbance_greedy": -0.0028}
+{"target": 164, "seed": 101, "min_disturbance_static": -0.00277, "max_disturbance_static": 0.00289, "last_k": -0.00608, "min_disturbance_greedy": -0.00418}
+{"target": 164, "seed": 202, "min_disturbance_static": 0.00218, "max_disturbance_static": -0.02189, "last_k": -0.00618, "min_disturbance_greedy": 0.00262}
+{"target": 164, "seed": 303, "min_disturbance_static": 0.00756, "max_disturbance_static": 0.00278, "last_k": 8e-05, "min_disturbance_greedy": 0.00542}
+{"target": 178, "seed": 101, "min_disturbance_static": 0.00387, "max_disturbance_static": 0.01616, "last_k": 0.01162, "min_disturbance_greedy": 0.00346}
+{"target": 178, "seed": 202, "min_disturbance_static": 0.00892, "max_disturbance_static": 0.01588, "last_k": 0.00971, "min_disturbance_greedy": 0.01076}
+{"target": 178, "seed": 303, "min_disturbance_static": 0.00099, "max_disturbance_static": -0.00439, "last_k": 0.00811, "min_disturbance_greedy": 0.00367}
+{"target": 192, "seed": 101, "min_disturbance_static": -0.00163, "max_disturbance_static": -0.00485, "last_k": -0.00347, "min_disturbance_greedy": -0.0019}
+{"target": 192, "seed": 202, "min_disturbance_static": 0.00197, "max_disturbance_static": -0.00076, "last_k": 0.00106, "min_disturbance_greedy": 0.00244}
+{"target": 192, "seed": 303, "min_disturbance_static": 0.00247, "max_disturbance_static": 0.00729, "last_k": 0.01577, "min_disturbance_greedy": 0.00401}
+{"target": 206, "seed": 101, "min_disturbance_static": 0.00293, "max_disturbance_static": 0.01288, "last_k": 0.01874, "min_disturbance_greedy": -0.00338}
+{"target": 206, "seed": 202, "min_disturbance_static": 0.00599, "max_disturbance_static": -0.01069, "last_k": -0.00247, "min_disturbance_greedy": 0.00497}
+{"target": 206, "seed": 303, "min_disturbance_static": 0.00025, "max_disturbance_static": 0.00354, "last_k": 0.00458, "min_disturbance_greedy": 0.00453}

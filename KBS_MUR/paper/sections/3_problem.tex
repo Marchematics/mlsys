@@ -1,0 +1,72 @@
+\section{State-Conditioned Context Selection}
+
+Let $S_0$ be an anchor context, $x$ a query, $y$ its target, and
+$\candidates=\{C_1,\ldots,C_K\}$ a candidate pool. A selected set is
+$A\subseteq\{1,\ldots,K\}$. A predictor produces $f_A(x)$ from $S_0$ and the
+contexts indexed by $A$; the predictor is trained before routing and kept
+fixed during context selection and router training.
+
+We define the net set utility as
+\begin{equation}
+ F(A)=\E\left[\loss(f_{\emptyset}(x),y)-\loss(f_A(x),y)\right]
+       -\lambda c(A),
+\end{equation}
+where $c(A)$ is a context cost. The marginal utility of a candidate is
+\begin{equation}
+ \marginal(j\mid A)=F(A\cup\{j\})-F(A).
+ \label{eq:marginal}
+\end{equation}
+For one observed episode, the training target is the counterfactual loss
+difference
+\begin{equation}
+ \widetilde{\marginal}(j\mid A)=\loss(f_A(x),y)-\loss(f_{A\cup\{j\}}(x),y)-\lambda c_j.
+ \label{eq:target}
+\end{equation}
+This is a realized observation of the marginal. Its interpretation as an
+expectation requires a fixed predictor and a specified state-sampling rule.
+
+For squared loss, let $\mu=\E[y\mid S_0,x,\candidates]$ and let
+$d_{A,j}=f_{A\cup\{j\}}(x)-f_A(x)$. The marginal separates into
+\begin{equation}
+ \marginal(j\mid A)=2d_{A,j}(\mu-f_A(x))-d_{A,j}^2-\lambda c_j.
+ \label{eq:squared-marginal}
+\end{equation}
+The first term is the interaction between the current residual and the
+direction of the candidate-induced correction, the second term penalizes
+overcorrection, and the third accounts for cost. Relevance and standalone
+candidate scores do not determine these three terms, and the same candidate
+can be useful at one state and harmful at another.
+
+Two oracle policies expose the structural value of this state dependence. The
+standalone oracle ranks candidates by the true standalone marginal
+$m(j\mid\emptyset)$ and keeps that order fixed. The sequential oracle
+recomputes the true marginal after every addition. Let $G_{\mathrm{stand}}$ and
+$G_{\mathrm{seq}}$ denote their prediction gains over the anchor-only
+predictor. We measure structural headroom as
+\begin{equation}
+ H_{\mathrm{state}}
+ =
+ \frac{G_{\mathrm{seq}}-G_{\mathrm{stand}}}{G_{\mathrm{seq}}}.
+ \label{eq:headroom}
+\end{equation}
+This quantity is an evaluation diagnostic. It isolates the value created by
+conditioning on the selected set, independently of router estimation error. It
+is defined when the sequential oracle improves on the anchor, which holds in
+every evaluation we report; the unnormalised difference
+$G_{\mathrm{seq}}-G_{\mathrm{stand}}$ is reported alongside the ratio so that
+the normalised value can be read together with the scale of the opportunity it
+normalises.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.98\linewidth]{figures/fig1_overview.pdf}
+  \caption{Response-aware marginal-utility routing. The router screens the
+  candidate pool with cached representations, evaluates the frozen predictor
+  on a shortlist, and estimates marginal utility from the predictor response.
+  Training uses the observed marginal utility of each candidate as supervision,
+  and deployment selects sequentially, stopping when no candidate is estimated
+  to be useful.}
+  \label{fig:overview}
+\end{figure}
+
+

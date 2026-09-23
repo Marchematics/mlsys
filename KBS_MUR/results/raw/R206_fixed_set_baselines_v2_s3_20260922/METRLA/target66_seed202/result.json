@@ -1,0 +1,95 @@
+{
+  "run_id": "R206_fixed_set_baselines_v2",
+  "status": "confirmatory",
+  "dataset": "METRLA",
+  "target_sensor": 66,
+  "seed": 202,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "candidate_sensors": [
+      46,
+      55,
+      92,
+      7,
+      11,
+      85,
+      107,
+      108,
+      177,
+      27,
+      184,
+      123,
+      1,
+      205,
+      10,
+      110
+    ],
+    "selected_indices": {
+      "forward_val": [
+        0
+      ],
+      "forward_backward_val": [
+        0
+      ],
+      "adaptive_k": [
+        0
+      ],
+      "ids_cluster": [
+        0,
+        14,
+        8,
+        10
+      ],
+      "lookahead_val": [
+        0,
+        4
+      ],
+      "grad_influence": [
+        0,
+        6,
+        2,
+        4
+      ]
+    }
+  },
+  "metrics": {
+    "forward_val": {
+      "mean_prediction_gain": -0.0011303809005767107,
+      "negative_transfer_rate": 0.452,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 1.0
+    },
+    "adaptive_k": {
+      "mean_prediction_gain": -0.0011303809005767107,
+      "negative_transfer_rate": 0.452,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 1.0
+    },
+    "ids_cluster": {
+      "mean_prediction_gain": -0.015543800778687,
+      "negative_transfer_rate": 0.464,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "lookahead_val": {
+      "mean_prediction_gain": -0.003939302638173103,
+      "negative_transfer_rate": 0.634,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 2.0
+    },
+    "grad_influence": {
+      "mean_prediction_gain": -0.003996876534074545,
+      "negative_transfer_rate": 0.6375,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "forward_backward_val": {
+      "mean_prediction_gain": -0.0011303809005767107,
+      "negative_transfer_rate": 0.452,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 1.0
+    }
+  },
+  "wall_seconds": 0.4257826805114746
+}

@@ -1,0 +1,433 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+completed target 0 for METRLA
+completed target 6 for METRLA
+completed target 13 for METRLA
+completed target 19 for METRLA
+completed target 26 for METRLA
+completed target 33 for METRLA
+completed target 39 for METRLA
+completed target 46 for METRLA
+completed target 53 for METRLA
+completed target 59 for METRLA
+completed target 66 for METRLA
+completed target 73 for METRLA
+completed target 79 for METRLA
+completed target 86 for METRLA
+completed target 93 for METRLA
+completed target 99 for METRLA
+completed target 106 for METRLA
+completed target 112 for METRLA
+completed target 119 for METRLA
+completed target 126 for METRLA
+completed target 132 for METRLA
+completed target 139 for METRLA
+completed target 146 for METRLA
+completed target 152 for METRLA
+completed target 159 for METRLA
+completed target 166 for METRLA
+completed target 172 for METRLA
+completed target 179 for METRLA
+completed target 186 for METRLA
+completed target 192 for METRLA
+completed target 199 for METRLA
+completed target 206 for METRLA
+{
+  "dataset": "METRLA",
+  "targets": 32,
+  "seeds_per_target": 1,
+  "targets_positive_gain": 24,
+  "targets_gain_over_static": 26,
+  "target_fraction_positive_gain": 0.75,
+  "target_fraction_gain_over_static": 0.8125,
+  "H_state_mean": 0.09192607669384582,
+  "H_state_median": 0.07877779644499258,
+  "R_oracle_mean": 0.0827840476114627,
+  "R_deploy_mean": 0.08697978677007151,
+  "target_records": [
+    {
+      "target_sensor": 0,
+      "runs": 1,
+      "oracle_static_gain": 0.166277214884758,
+      "oracle_greedy_gain": 0.18609146773815155,
+      "H_state": 0.10647588035188212,
+      "static_utility_gain": 0.018565548583865166,
+      "cached_mur_gain": 0.027533264830708504,
+      "ranked_rmur_q4_gain": 0.03601829707622528,
+      "R_oracle_q4": 0.19355157715724217,
+      "R_deploy_q4": 0.10417939254096349
+    },
+    {
+      "target_sensor": 6,
+      "runs": 1,
+      "oracle_static_gain": 0.10758322477340698,
+      "oracle_greedy_gain": 0.1133950799703598,
+      "H_state": 0.05125315135781882,
+      "static_utility_gain": -0.01378834992647171,
+      "cached_mur_gain": -0.011753660626709461,
+      "ranked_rmur_q4_gain": -0.003886282676830888,
+      "R_oracle_q4": -0.034272057287200806,
+      "R_deploy_q4": 0.07785658287147286
+    },
+    {
+      "target_sensor": 13,
+      "runs": 1,
+      "oracle_static_gain": 0.1623772829771042,
+      "oracle_greedy_gain": 0.17332234978675842,
+      "H_state": 0.0631486177236816,
+      "static_utility_gain": 0.013471982441842556,
+      "cached_mur_gain": 0.019112689420580864,
+      "ranked_rmur_q4_gain": 0.025414440780878067,
+      "R_oracle_q4": 0.14663106525007252,
+      "R_deploy_q4": 0.07471023393563285
+    },
+    {
+      "target_sensor": 19,
+      "runs": 1,
+      "oracle_static_gain": 0.12485646456480026,
+      "oracle_greedy_gain": 0.1392093002796173,
+      "H_state": 0.10310256344933698,
+      "static_utility_gain": -0.012926308438181877,
+      "cached_mur_gain": 0.00579135213047266,
+      "ranked_rmur_q4_gain": 0.026303449645638466,
+      "R_oracle_q4": 0.18894893942290544,
+      "R_deploy_q4": 0.25786046024628445
+    },
+    {
+      "target_sensor": 26,
+      "runs": 1,
+      "oracle_static_gain": 0.08105526864528656,
+      "oracle_greedy_gain": 0.08923095464706421,
+      "H_state": 0.09162387687226921,
+      "static_utility_gain": -0.0050025139935314655,
+      "cached_mur_gain": 0.0004775864945258945,
+      "ranked_rmur_q4_gain": -0.007122923620045185,
+      "R_oracle_q4": -0.07982570228256027,
+      "R_deploy_q4": -0.022501661639994536
+    },
+    {
+      "target_sensor": 33,
+      "runs": 1,
+      "oracle_static_gain": 0.1593436896800995,
+      "oracle_greedy_gain": 0.17186197638511658,
+      "H_state": 0.07283918740097292,
+      "static_utility_gain": 0.008054151199758053,
+      "cached_mur_gain": -0.010677768848836422,
+      "ranked_rmur_q4_gain": 0.016183707863092422,
+      "R_oracle_q4": 0.09416689021908599,
+      "R_deploy_q4": 0.049628622162190855
+    },
+    {
+      "target_sensor": 39,
+      "runs": 1,
+      "oracle_static_gain": 0.060199469327926636,
+      "oracle_greedy_gain": 0.06968074291944504,
+      "H_state": 0.13606734363437115,
+      "static_utility_gain": -0.007749025244265795,
+      "cached_mur_gain": -0.0010148185538128018,
+      "ranked_rmur_q4_gain": -0.0010447048116475344,
+      "R_oracle_q4": -0.014992733542684432,
+      "R_deploy_q4": 0.0865858259893433
+    },
+    {
+      "target_sensor": 46,
+      "runs": 1,
+      "oracle_static_gain": 0.0906837210059166,
+      "oracle_greedy_gain": 0.10077345371246338,
+      "H_state": 0.10012292260356373,
+      "static_utility_gain": -0.000252442347118631,
+      "cached_mur_gain": -0.006048815790563822,
+      "ranked_rmur_q4_gain": -0.008440284989774227,
+      "R_oracle_q4": -0.08375504340514983,
+      "R_deploy_q4": -0.08104696876755892
+    },
+    {
+      "target_sensor": 53,
+      "runs": 1,
+      "oracle_static_gain": 0.09771176427602768,
+      "oracle_greedy_gain": 0.10608468949794769,
+      "H_state": 0.07892680142200911,
+      "static_utility_gain": -0.014559583738446236,
+      "cached_mur_gain": -0.017743321135640144,
+      "ranked_rmur_q4_gain": -0.002456488087773323,
+      "R_oracle_q4": -0.023155915329524022,
+      "R_deploy_q4": 0.10032051523040594
+    },
+    {
+      "target_sensor": 59,
+      "runs": 1,
+      "oracle_static_gain": 0.15384121239185333,
+      "oracle_greedy_gain": 0.16645579040050507,
+      "H_state": 0.07578335351566994,
+      "static_utility_gain": -0.003277848707512021,
+      "cached_mur_gain": -0.004799656104296446,
+      "ranked_rmur_q4_gain": 0.019492248073220253,
+      "R_oracle_q4": 0.11710165219437815,
+      "R_deploy_q4": 0.13415193888726779
+    },
+    {
+      "target_sensor": 66,
+      "runs": 1,
+      "oracle_static_gain": 0.11414198577404022,
+      "oracle_greedy_gain": 0.12715038657188416,
+      "H_state": 0.10230720604604428,
+      "static_utility_gain": 0.001058115973137319,
+      "cached_mur_gain": -0.016892043873667717,
+      "ranked_rmur_q4_gain": -0.003305588150396943,
+      "R_oracle_q4": -0.02599746834845946,
+      "R_deploy_q4": -0.03460722931559003
+    },
+    {
+      "target_sensor": 73,
+      "runs": 1,
+      "oracle_static_gain": 0.15148428082466125,
+      "oracle_greedy_gain": 0.16594217717647552,
+      "H_state": 0.087126109816184,
+      "static_utility_gain": 0.019159717485308647,
+      "cached_mur_gain": 0.020331285893917084,
+      "ranked_rmur_q4_gain": 0.0408901572227478,
+      "R_oracle_q4": 0.24641208111462887,
+      "R_deploy_q4": 0.1480452077391292
+    },
+    {
+      "target_sensor": 79,
+      "runs": 1,
+      "oracle_static_gain": 0.19213254749774933,
+      "oracle_greedy_gain": 0.21390478312969208,
+      "H_state": 0.10178470679050725,
+      "static_utility_gain": 0.005752213299274445,
+      "cached_mur_gain": 0.05050480365753174,
+      "ranked_rmur_q4_gain": 0.04697095975279808,
+      "R_oracle_q4": 0.21958816939740536,
+      "R_deploy_q4": 0.19802179952476515
+    },
+    {
+      "target_sensor": 86,
+      "runs": 1,
+      "oracle_static_gain": 0.17466993629932404,
+      "oracle_greedy_gain": 0.18795014917850494,
+      "H_state": 0.07065816620644486,
+      "static_utility_gain": 0.01760750822722912,
+      "cached_mur_gain": 0.002201824216172099,
+      "ranked_rmur_q4_gain": 0.01645500212907791,
+      "R_oracle_q4": 0.08754982212570545,
+      "R_deploy_q4": -0.006765810907445456
+    },
+    {
+      "target_sensor": 93,
+      "runs": 1,
+      "oracle_static_gain": 0.13172119855880737,
+      "oracle_greedy_gain": 0.14706319570541382,
+      "H_state": 0.10432247900649735,
+      "static_utility_gain": 0.006139697972685099,
+      "cached_mur_gain": 0.010549075901508331,
+      "ranked_rmur_q4_gain": 0.006509813014417887,
+      "R_oracle_q4": 0.04426541245205813,
+      "R_deploy_q4": 0.002626354353159309
+    },
+    {
+      "target_sensor": 99,
+      "runs": 1,
+      "oracle_static_gain": 0.12307023257017136,
+      "oracle_greedy_gain": 0.13085009157657623,
+      "H_state": 0.05945627483074354,
+      "static_utility_gain": -0.007467347197234631,
+      "cached_mur_gain": -0.017975155264139175,
+      "ranked_rmur_q4_gain": -0.0020350355189293623,
+      "R_oracle_q4": -0.015552419523821399,
+      "R_deploy_q4": 0.03927423560227047
+    },
+    {
+      "target_sensor": 106,
+      "runs": 1,
+      "oracle_static_gain": 0.13291290402412415,
+      "oracle_greedy_gain": 0.14967554807662964,
+      "H_state": 0.11199320308433743,
+      "static_utility_gain": -0.02477033995091915,
+      "cached_mur_gain": -0.006938689388334751,
+      "ranked_rmur_q4_gain": 0.004352722316980362,
+      "R_oracle_q4": 0.029081051467083265,
+      "R_deploy_q4": 0.16694610917570238
+    },
+    {
+      "target_sensor": 112,
+      "runs": 1,
+      "oracle_static_gain": 0.06943387538194656,
+      "oracle_greedy_gain": 0.0753592848777771,
+      "H_state": 0.07862879146797604,
+      "static_utility_gain": -0.007018436677753925,
+      "cached_mur_gain": -0.006853161379694939,
+      "ranked_rmur_q4_gain": 0.0002856345090549439,
+      "R_oracle_q4": 0.003790302807652776,
+      "R_deploy_q4": 0.08866561309158298
+    },
+    {
+      "target_sensor": 119,
+      "runs": 1,
+      "oracle_static_gain": 0.12766167521476746,
+      "oracle_greedy_gain": 0.16295596957206726,
+      "H_state": 0.21658791911695452,
+      "static_utility_gain": -0.0031399745494127274,
+      "cached_mur_gain": 0.01695781573653221,
+      "ranked_rmur_q4_gain": 0.029364846646785736,
+      "R_oracle_q4": 0.18020111029930166,
+      "R_deploy_q4": 0.1956990663927648
+    },
+    {
+      "target_sensor": 126,
+      "runs": 1,
+      "oracle_static_gain": 0.15008871257305145,
+      "oracle_greedy_gain": 0.16392910480499268,
+      "H_state": 0.08442913324272418,
+      "static_utility_gain": -0.019711406901478767,
+      "cached_mur_gain": -0.01734371855854988,
+      "ranked_rmur_q4_gain": 0.0089959055185318,
+      "R_oracle_q4": 0.05487680500197435,
+      "R_deploy_q4": 0.156323417710227
+    },
+    {
+      "target_sensor": 132,
+      "runs": 1,
+      "oracle_static_gain": 0.18759846687316895,
+      "oracle_greedy_gain": 0.22335894405841827,
+      "H_state": 0.16010317982115987,
+      "static_utility_gain": 0.031882915645837784,
+      "cached_mur_gain": 0.006383068859577179,
+      "ranked_rmur_q4_gain": 0.03272012993693352,
+      "R_oracle_q4": 0.1464912456264825,
+      "R_deploy_q4": 0.004372423524952988
+    },
+    {
+      "target_sensor": 139,
+      "runs": 1,
+      "oracle_static_gain": 0.12726062536239624,
+      "oracle_greedy_gain": 0.1366204023361206,
+      "H_state": 0.06850936473380423,
+      "static_utility_gain": 0.00043724558781832457,
+      "cached_mur_gain": 0.002132849534973502,
+      "ranked_rmur_q4_gain": 0.010188024491071701,
+      "R_oracle_q4": 0.07457176466225443,
+      "R_deploy_q4": 0.07160047641776326
+    },
+    {
+      "target_sensor": 146,
+      "runs": 1,
+      "oracle_static_gain": 0.10508206486701965,
+      "oracle_greedy_gain": 0.1136985495686531,
+      "H_state": 0.07578359384814029,
+      "static_utility_gain": -0.0061640492640435696,
+      "cached_mur_gain": -0.007454617880284786,
+      "ranked_rmur_q4_gain": 0.0019331376533955336,
+      "R_oracle_q4": 0.017002307071896924,
+      "R_deploy_q4": 0.06755390752657629
+    },
+    {
+      "target_sensor": 152,
+      "runs": 1,
+      "oracle_static_gain": 0.09715136885643005,
+      "oracle_greedy_gain": 0.10414829850196838,
+      "H_state": 0.06718237115900735,
+      "static_utility_gain": -0.01904861442744732,
+      "cached_mur_gain": -0.010271255858242512,
+      "ranked_rmur_q4_gain": -0.004120928701013327,
+      "R_oracle_q4": -0.039567892709600455,
+      "R_deploy_q4": 0.12116931643398113
+    },
+    {
+      "target_sensor": 159,
+      "runs": 1,
+      "oracle_static_gain": 0.1635141670703888,
+      "oracle_greedy_gain": 0.17602649331092834,
+      "H_state": 0.07108206273494366,
+      "static_utility_gain": 0.019970476627349854,
+      "cached_mur_gain": 0.01187008898705244,
+      "ranked_rmur_q4_gain": 0.03143393620848656,
+      "R_oracle_q4": 0.17857502934494365,
+      "R_deploy_q4": 0.07345733810686829
+    },
+    {
+      "target_sensor": 166,
+      "runs": 1,
+      "oracle_static_gain": 0.1870502084493637,
+      "oracle_greedy_gain": 0.19819211959838867,
+      "H_state": 0.056217730410283925,
+      "static_utility_gain": -0.009244893677532673,
+      "cached_mur_gain": -0.011996712535619736,
+      "ranked_rmur_q4_gain": 0.034682225435972214,
+      "R_oracle_q4": 0.174992958883791,
+      "R_deploy_q4": 0.21176123980861333
+    },
+    {
+      "target_sensor": 172,
+      "runs": 1,
+      "oracle_static_gain": 0.20271359384059906,
+      "oracle_greedy_gain": 0.2136344015598297,
+      "H_state": 0.05111914391827108,
+      "static_utility_gain": 0.029340261593461037,
+      "cached_mur_gain": 0.011386041529476643,
+      "ranked_rmur_q4_gain": 0.028667151927947998,
+      "R_oracle_q4": 0.13418790100581987,
+      "R_deploy_q4": -0.0036523660797672273
+    },
+    {
+      "target_sensor": 179,
+      "runs": 1,
+      "oracle_static_gain": 0.1373308002948761,
+      "oracle_greedy_gain": 0.14837081730365753,
+      "H_state": 0.07440827791752874,
+      "static_utility_gain": -0.028613269329071045,
+      "cached_mur_gain": -0.00739882281050086,
+      "ranked_rmur_q4_gain": 0.012947222217917442,
+      "R_oracle_q4": 0.08726259282793798,
+      "R_deploy_q4": 0.23482614927540588
+    },
+    {
+      "target_sensor": 186,
+      "runs": 1,
+      "oracle_static_gain": 0.12646785378456116,
+      "oracle_greedy_gain": 0.14531369507312775,
+      "H_state": 0.12969074442076914,
+      "static_utility_gain": -0.0025843025650829077,
+      "cached_mur_gain": -0.007492408622056246,
+      "ranked_rmur_q4_gain": 0.014757227152585983,
+      "R_oracle_q4": 0.10155427638915622,
+      "R_deploy_q4": 0.1172533096769159
+    },
+    {
+      "target_sensor": 192,
+      "runs": 1,
+      "oracle_static_gain": 0.1682833582162857,
+      "oracle_greedy_gain": 0.18112002313137054,
+      "H_state": 0.07087380342135949,
+      "static_utility_gain": 0.012394199147820473,
+      "cached_mur_gain": 0.00888589583337307,
+      "ranked_rmur_q4_gain": 0.017559003084897995,
+      "R_oracle_q4": 0.09694678026935787,
+      "R_deploy_q4": 0.030610630993753895
+    },
+    {
+      "target_sensor": 199,
+      "runs": 1,
+      "oracle_static_gain": 0.1148260310292244,
+      "oracle_greedy_gain": 0.13834966719150543,
+      "H_state": 0.1700303053835273,
+      "static_utility_gain": 0.015920953825116158,
+      "cached_mur_gain": 0.009327190928161144,
+      "ranked_rmur_q4_gain": 0.014795120805501938,
+      "R_oracle_q4": 0.10694005345905412,
+      "R_deploy_q4": -0.009195824971589533
+    },
+    {
+      "target_sensor": 206,
+      "runs": 1,
+      "oracle_static_gain": 0.18013189733028412,
+      "oracle_greedy_gain": 0.1896117627620697,
+      "H_state": 0.04999618849428235,
+      "static_utility_gain": 0.024755394086241722,
+      "cached_mur_gain": 0.022556550800800323,
+      "ranked_rmur_q4_gain": 0.045794837176799774,
+      "R_oracle_q4": 0.24151896754561822,
+      "R_deploy_q4": 0.12762287110624046
+    }
+  ]
+}

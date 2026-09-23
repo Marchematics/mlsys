@@ -1,0 +1,68 @@
+{
+ "provenance": {
+  "raw": "/root/icl_ess_threshold/KBS_MUR/results/raw",
+  "runs": [
+   "R080b_multitarget_rmur_s1_20260920_2340",
+   "R080b_multitarget_rmur_s202_diag_20260921",
+   "R080b_multitarget_rmur_s303_diag_20260921"
+  ],
+  "note": "per-episode oracle gate = mean over episodes of max(router_gain, pool_gain); an upper bound on any episode-level switching rule",
+  "generated_utc": "2026-09-23T16:15:17.010579+00:00"
+ },
+ "datasets": {
+  "METRLA": {
+   "episodes": 192000,
+   "pool": 0.007953289896249771,
+   "router": 0.014631818048655987,
+   "oracle_gate": 0.05668093264102936,
+   "gate_minus_pool": 0.04872764274477959,
+   "gate_minus_router": 0.042049113661050797,
+   "router_loses_fraction": 0.403125
+  },
+  "PEMSBAY": {
+   "episodes": 192000,
+   "pool": 0.025398442521691322,
+   "router": 0.055704738944768906,
+   "oracle_gate": 0.10316707193851471,
+   "gate_minus_pool": 0.07776863127946854,
+   "gate_minus_router": 0.047462332993745804,
+   "router_loses_fraction": 0.39483854166666665
+  },
+  "PEMS03": {
+   "episodes": 192000,
+   "pool": 0.025595642626285553,
+   "router": 0.026918374001979828,
+   "oracle_gate": 0.04358465597033501,
+   "gate_minus_pool": 0.017989013344049454,
+   "gate_minus_router": 0.01666628196835518,
+   "router_loses_fraction": 0.5008125
+  },
+  "PEMS04": {
+   "episodes": 192000,
+   "pool": 0.0364936925470829,
+   "router": 0.03571610897779465,
+   "oracle_gate": 0.053938593715429306,
+   "gate_minus_pool": 0.017444901168346405,
+   "gate_minus_router": 0.01822248473763466,
+   "router_loses_fraction": 0.523921875
+  },
+  "PEMS07": {
+   "episodes": 192000,
+   "pool": 0.024237850680947304,
+   "router": 0.028361959382891655,
+   "oracle_gate": 0.0442827083170414,
+   "gate_minus_pool": 0.020044857636094093,
+   "gate_minus_router": 0.015920748934149742,
+   "router_loses_fraction": 0.48790104166666665
+  },
+  "PEMS08": {
+   "episodes": 192000,
+   "pool": 0.03587418794631958,
+   "router": 0.03331649675965309,
+   "oracle_gate": 0.050711292773485184,
+   "gate_minus_pool": 0.014837104827165604,
+   "gate_minus_router": 0.017394796013832092,
+   "router_loses_fraction": 0.522453125
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+  "dataset": "METRLA",
+  "target_sensor": 123,
+  "seed": 101,
+  "policies": {
+    "min_disturbance_static": {
+      "mean_prediction_gain": -0.0005933105712756515,
+      "negative_transfer_rate": 0.4175,
+      "mean_selected_contexts": 4.0
+    },
+    "max_disturbance_static": {
+      "mean_prediction_gain": -0.0070787412114441395,
+      "negative_transfer_rate": 0.5025,
+      "mean_selected_contexts": 4.0
+    },
+    "last_k": {
+      "mean_prediction_gain": 0.00031550097628496587,
+      "negative_transfer_rate": 0.4315,
+      "mean_selected_contexts": 4.0
+    },
+    "min_disturbance_greedy": {
+      "mean_prediction_gain": 0.0016863392665982246,
+      "negative_transfer_rate": 0.444,
+      "mean_selected_contexts": 4.0
+    },
+    "consensus_alignment": {
+      "mean_prediction_gain": -0.009630436077713966,
+      "negative_transfer_rate": 0.4985,
+      "mean_selected_contexts": 4.0
+    },
+    "anti_consensus_alignment": {
+      "mean_prediction_gain": 0.0012937102001160383,
+      "negative_transfer_rate": 0.463,
+      "mean_selected_contexts": 4.0
+    },
+    "mutual_information": {
+      "mean_prediction_gain": -0.0028849472291767597,
+      "negative_transfer_rate": 0.4515,
+      "mean_selected_contexts": 4.0
+    },
+    "kcenter": {
+      "mean_prediction_gain": -0.003737551625818014,
+      "negative_transfer_rate": 0.4715,
+      "mean_selected_contexts": 4.0
+    },
+    "kmeans_representatives": {
+      "mean_prediction_gain": -0.0015936164418235421,
+      "negative_transfer_rate": 0.434,
+      "mean_selected_contexts": 4.0
+    }
+  },
+  "wall_seconds": 11.073986768722534
+}

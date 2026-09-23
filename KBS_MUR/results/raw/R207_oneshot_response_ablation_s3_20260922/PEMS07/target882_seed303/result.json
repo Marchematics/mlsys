@@ -1,0 +1,46 @@
+{
+  "run_id": "R207_oneshot_response_ablation",
+  "status": "confirmatory",
+  "dataset": "PEMS07",
+  "target_sensor": 882,
+  "seed": 303,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "q": 4,
+    "states_per_episode": 4,
+    "epochs": 20,
+    "candidate_sensors": [
+      380,
+      856,
+      276,
+      788,
+      520,
+      152,
+      470,
+      528,
+      720,
+      620,
+      505,
+      501,
+      573,
+      874,
+      38,
+      455
+    ],
+    "note": "one-shot policy scored with the response-aware model trained here"
+  },
+  "metrics": {
+    "oneshot_response": {
+      "mean_prediction_gain": 0.025252481922507286,
+      "negative_transfer_rate": 0.422,
+      "mean_selected_contexts": 3.902
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.06540951877832413,
+      "negative_transfer_rate": NaN,
+      "mean_selected_contexts": 3.8405
+    }
+  },
+  "wall_seconds": 42.238468170166016
+}

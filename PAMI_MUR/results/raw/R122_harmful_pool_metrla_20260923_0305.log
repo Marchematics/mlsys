@@ -1,0 +1,39 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+{"dataset": "METRLA", "target": 0, "seed": 101, "rmur_q4": -0.004022497683763504, "static": -0.0019118672935292125, "cached": -0.0005608320352621377, "oracle_greedy": 0.08365599066019058, "wall": 39.9}
+{"dataset": "METRLA", "target": 0, "seed": 202, "rmur_q4": 0.014055939391255379, "static": 0.010302532464265823, "cached": 0.012036514468491077, "oracle_greedy": 0.0810169205069542, "wall": 32.4}
+{"dataset": "METRLA", "target": 29, "seed": 101, "rmur_q4": -0.013300810009241104, "static": -0.0017292876727879047, "cached": 0.0009104268392547965, "oracle_greedy": 0.08569397032260895, "wall": 37.8}
+{"dataset": "METRLA", "target": 29, "seed": 202, "rmur_q4": 0.00579855777323246, "static": 0.009532615542411804, "cached": 0.004516820888966322, "oracle_greedy": 0.07933799177408218, "wall": 46.1}
+{"dataset": "METRLA", "target": 58, "seed": 101, "rmur_q4": 0.0007001933990977705, "static": 0.0053230104967951775, "cached": 0.002507828874513507, "oracle_greedy": 0.09647667407989502, "wall": 47.9}
+{"dataset": "METRLA", "target": 58, "seed": 202, "rmur_q4": 0.00160008214879781, "static": 0.0040153618901968, "cached": 0.0029306879732757807, "oracle_greedy": 0.08335980027914047, "wall": 55.4}
+{"dataset": "METRLA", "target": 88, "seed": 101, "rmur_q4": -0.0021894655656069517, "static": -0.0006312794866971672, "cached": -0.0029086358845233917, "oracle_greedy": 0.06786537170410156, "wall": 57.7}
+{"dataset": "METRLA", "target": 88, "seed": 202, "rmur_q4": 0.0075158532708883286, "static": 0.011834058910608292, "cached": 0.010591989383101463, "oracle_greedy": 0.06943635642528534, "wall": 58.4}
+{"dataset": "METRLA", "target": 117, "seed": 101, "rmur_q4": -0.009305319748818874, "static": -0.015180584043264389, "cached": -0.015409703366458416, "oracle_greedy": 0.08597303926944733, "wall": 52.2}
+{"dataset": "METRLA", "target": 117, "seed": 202, "rmur_q4": 0.0015547354705631733, "static": -0.004113083239644766, "cached": 0.0024785532150417566, "oracle_greedy": 0.08941955119371414, "wall": 59.8}
+{"dataset": "METRLA", "target": 147, "seed": 101, "rmur_q4": -0.0019346496555954218, "static": 0.006309089250862598, "cached": 0.008487610146403313, "oracle_greedy": 0.07602151483297348, "wall": 62.2}
+{"dataset": "METRLA", "target": 147, "seed": 202, "rmur_q4": 0.005099236965179443, "static": -0.0005932941567152739, "cached": 0.0023578284308314323, "oracle_greedy": 0.05081005021929741, "wall": 54.1}
+{"dataset": "METRLA", "target": 176, "seed": 101, "rmur_q4": 0.006709414999932051, "static": 0.0018566480139270425, "cached": 0.0029559568502008915, "oracle_greedy": 0.07746297866106033, "wall": 50.9}
+{"dataset": "METRLA", "target": 176, "seed": 202, "rmur_q4": 0.007563840132206678, "static": 0.0175113957375288, "cached": 0.008219935931265354, "oracle_greedy": 0.0784013643860817, "wall": 50.2}
+{"dataset": "METRLA", "target": 206, "seed": 101, "rmur_q4": 0.0033479088451713324, "static": 5.955886808806099e-05, "cached": -0.0035577688831835985, "oracle_greedy": 0.1089974194765091, "wall": 41.0}
+{"dataset": "METRLA", "target": 206, "seed": 202, "rmur_q4": -0.0017580671701580286, "static": -0.004355091601610184, "cached": 0.0008103640284389257, "oracle_greedy": 0.09108099341392517, "wall": 45.0}
+{
+  "G_RMUR_q4_mean": 0.0013396845351962838,
+  "delta_static": {
+    "mean": -0.001049676944830935,
+    "low": -0.0036280168772009347,
+    "high": 0.0016682314760601002
+  },
+  "delta_cached": {
+    "mean": -0.0009332890185760334,
+    "low": -0.0030274613975052487,
+    "high": 0.0009782284832908772
+  },
+  "targets_positive_gain": 6,
+  "targets_above_static": 3,
+  "targets_above_cached": 3,
+  "pass_g1": false
+}

@@ -1,0 +1,48 @@
+=== METRLA seed101 subset_transformer ===
+  "best_validation_average_mse": 0.3604643287981162,
+  "wall_seconds": 59.5165650844574
+}
+=== METRLA seed202 subset_transformer ===
+  "best_validation_average_mse": 0.3599599744484294,
+  "wall_seconds": 43.760066509246826
+}
+=== METRLA seed303 subset_transformer ===
+  "best_validation_average_mse": 0.3759549467358738,
+  "wall_seconds": 38.901175022125244
+}
+=== PEMSBAY seed101 subset_transformer ===
+  "best_validation_average_mse": 0.35331933421548456,
+  "wall_seconds": 146.72457933425903
+}
+=== PEMSBAY seed202 subset_transformer ===
+  "best_validation_average_mse": 0.3994599426223431,
+  "wall_seconds": 255.26352429389954
+}
+=== PEMSBAY seed303 subset_transformer ===
+  "best_validation_average_mse": 0.37306784476095345,
+  "wall_seconds": 491.41473841667175
+}
+=== METRLA seed101 subset_deepsets ===
+    return BACKBONES[name](num_nodes, history_length, horizon, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubsetDeepSets.__init__() got an unexpected keyword argument 'num_layers'
+=== METRLA seed202 subset_deepsets ===
+    return BACKBONES[name](num_nodes, history_length, horizon, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubsetDeepSets.__init__() got an unexpected keyword argument 'num_layers'
+=== METRLA seed303 subset_deepsets ===
+    return BACKBONES[name](num_nodes, history_length, horizon, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubsetDeepSets.__init__() got an unexpected keyword argument 'num_layers'
+=== PEMSBAY seed101 subset_deepsets ===
+    return BACKBONES[name](num_nodes, history_length, horizon, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubsetDeepSets.__init__() got an unexpected keyword argument 'num_layers'
+=== PEMSBAY seed202 subset_deepsets ===
+    return BACKBONES[name](num_nodes, history_length, horizon, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubsetDeepSets.__init__() got an unexpected keyword argument 'num_layers'
+=== PEMSBAY seed303 subset_deepsets ===
+    return BACKBONES[name](num_nodes, history_length, horizon, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubsetDeepSets.__init__() got an unexpected keyword argument 'num_layers'

@@ -1,0 +1,144 @@
+{
+  "run_id": "PAMI_strong_backbone_rmur",
+  "dataset": "METRLA",
+  "target_sensor": 27,
+  "seed": 101,
+  "config": {
+    "seed": 101,
+    "candidate_count": 16,
+    "budget": 4,
+    "response_dim": 7,
+    "response_components": 0,
+    "pool_mode": "correlated",
+    "curvature_corrected": false,
+    "router_kind": "mlp",
+    "q_values": [
+      16
+    ],
+    "router_epochs": 20,
+    "ranking_beta": 1.0,
+    "device": "cuda:0"
+  },
+  "metrics": {
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.0,
+      "mean_selected_contexts": 0.0
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.002910566283389926,
+      "negative_transfer_rate": 0.4225,
+      "mean_utility_recovery": -82225.609375,
+      "mean_selected_contexts": 16.0
+    },
+    "random": {
+      "mean_prediction_gain": 0.0008312702411785722,
+      "negative_transfer_rate": 0.4295,
+      "mean_utility_recovery": -112967.390625,
+      "mean_selected_contexts": 4.0
+    },
+    "relevance": {
+      "mean_prediction_gain": -0.001400784938596189,
+      "negative_transfer_rate": 0.4465,
+      "mean_utility_recovery": -110203.453125,
+      "mean_selected_contexts": 4.0
+    },
+    "mmr": {
+      "mean_prediction_gain": -0.0008214216213673353,
+      "negative_transfer_rate": 0.4985,
+      "mean_utility_recovery": -133639.984375,
+      "mean_selected_contexts": 4.0
+    },
+    "facility_location": {
+      "mean_prediction_gain": -0.00189111044164747,
+      "negative_transfer_rate": 0.3895,
+      "mean_utility_recovery": -93375.09375,
+      "mean_selected_contexts": 4.0
+    },
+    "dpp": {
+      "mean_prediction_gain": -0.0009965448407456279,
+      "negative_transfer_rate": 0.4795,
+      "mean_utility_recovery": -124804.0859375,
+      "mean_selected_contexts": 4.0
+    },
+    "static_utility": {
+      "mean_prediction_gain": -0.0017220407025888562,
+      "negative_transfer_rate": 0.434,
+      "mean_utility_recovery": -104048.8359375,
+      "mean_selected_contexts": 4.0
+    },
+    "cached_mur": {
+      "mean_prediction_gain": -0.0028472943231463432,
+      "negative_transfer_rate": 0.444,
+      "mean_utility_recovery": -139349.09375,
+      "mean_selected_contexts": 3.241
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.03773851320147514,
+      "negative_transfer_rate": 0.072,
+      "mean_utility_recovery": 0.7907872200012207,
+      "mean_selected_contexts": 3.005
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.04996246099472046,
+      "negative_transfer_rate": 0.0585,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 2.0005
+    },
+    "ranked_response_full": {
+      "mean_prediction_gain": -0.003207556437700987,
+      "negative_transfer_rate": 0.436,
+      "mean_utility_recovery": -99627.703125,
+      "mean_selected_contexts": 3.3585
+    }
+  },
+  "expert_rows": {
+    "base_only": 0,
+    "pool_all": 0,
+    "random": 0,
+    "relevance": 0,
+    "mmr": 0,
+    "facility_location": 0,
+    "dpp": 0,
+    "static_utility": 0,
+    "cached_mur": 0,
+    "oracle_static": 34000,
+    "oracle_greedy": 128020,
+    "ranked_response_full": 125178
+  },
+  "evaluation_rows": 26000,
+  "gate": {
+    "ranked_response_full": {
+      "gain_over_zero": {
+        "mean": -0.0032075558879878373,
+        "low": -0.014091792734280614,
+        "high": 0.007676680958304941
+      },
+      "gain_over_static": {
+        "mean": -0.0014855138581478969,
+        "low": -0.008447471242606069,
+        "high": 0.005476443526310276
+      },
+      "gain_over_cached": {
+        "mean": -0.00036026143562048674,
+        "low": -0.007501783060064546,
+        "high": 0.006781260188823573
+      },
+      "headroom_recovery": -3.3496600551420896
+    }
+  },
+  "finetune": {
+    "epochs": 10,
+    "final_train_mse": 0.17859292340278626,
+    "validation_selected": true,
+    "best_epoch": 0,
+    "best_validation_mse": 0.32972240447998047
+  },
+  "expert_profile": {
+    "expert_calls": 314,
+    "expert_rows": 627233,
+    "expert_seconds": 3.577489998191595
+  },
+  "wall_seconds": 21.774845600128174
+}

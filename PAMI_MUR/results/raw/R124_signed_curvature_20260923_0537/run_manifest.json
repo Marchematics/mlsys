@@ -1,0 +1,72 @@
+{
+  "run_id": "R124_signed_curvature_20260923_0537",
+  "argv": [
+    "experiments/demo_selection/run_r124_signed.py",
+    "--benchmarks",
+    "cifar10,cifar100,svhn,eurosat,dtd",
+    "--seeds",
+    "101,202,303",
+    "--out-root",
+    "results/raw/R124_signed_curvature_20260923_0537"
+  ],
+  "started_utc": "2026-09-22T21:38:05Z",
+  "benchmarks": [
+    "cifar10",
+    "cifar100",
+    "svhn",
+    "eurosat",
+    "dtd"
+  ],
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "q_values": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "router_epochs": 20,
+  "beta": 1.0,
+  "states_per_episode": 4,
+  "feature_root": "/root/icl_ess_threshold/PAMI_MUR/data/vision_features",
+  "predictor": "R115 learned-metric attention prototype",
+  "response_head": "signed curvature <g, d_bar> + c_theta * kappa",
+  "curvature_mode": "bound",
+  "curvature_multiplier": 0.25,
+  "learned_curvature": false,
+  "git_head": "6386b44ea57e27a4b6d8c57bffe67c3b3b2de237",
+  "imported_source_hashes": {
+    "PAMI_MUR/experiments/demo_selection/frozen_helpers.py": "3817f9628a84021c8c763507c086f651",
+    "PAMI_MUR/experiments/run_strong_backbone.py": "9171888918dcb3ce42dbac0004ea3262",
+    "PAMI_MUR/experiments/neural_expert.py": "e3082113d49fe1259eb45c1cef927324",
+    "KBS_MUR/src/mur/synthetic_experiment.py": "15df991203d1116e81c19d651201af7e",
+    "KBS_MUR/src/mur/model.py": "755c10c2201be893c9fb612de62a601c",
+    "KBS_MUR/src/mur/traffic.py": "9f83fc53899313f3a1b6961dadbb71c5",
+    "KBS_MUR/scripts/run_traffic_ranked_response_router_sweep.py": "04c70fe2e36379518d55d442e8aa049b",
+    "KBS_MUR/scripts/run_traffic_response_router_sweep.py": "72d2033bade0aa93d7cc98dc1e8e873f",
+    "KBS_MUR/scripts/run_traffic_full_router.py": "eec6657f3af230f431d3916545f14667",
+    "PAMI_MUR/experiments/demo_selection/bilinear_response.py": "abcc55c233275bb736d0bb17aedc5256",
+    "PAMI_MUR/experiments/demo_selection/signed_curvature.py": "e22e46dae16ef79a20cc3b1c263d973e",
+    "PAMI_MUR/experiments/demo_selection/run_r124_signed.py": "d3d6c7b4a38123cfa2d1eef7ff6f10b6",
+    "PAMI_MUR/experiments/demo_selection/prototype_predictor.py": "80cdae9f11334e39b1f67b8721497778",
+    "PAMI_MUR/experiments/bilinear_router.py": "f39a24d1d5c9c5454af8d44e72ed7c74",
+    "PAMI_MUR/experiments/demo_selection/redundant_pool.py": "1a08cce76c6dd404600529f28fb27f0e",
+    "PAMI_MUR/experiments/demo_selection/forced_budget.py": "180320ac90e0b3f8db817e0e68f5d257"
+  },
+  "invocations": [
+    [
+      "experiments/demo_selection/run_r124_signed.py",
+      "--benchmarks",
+      "cifar10,cifar100,svhn,eurosat,dtd",
+      "--seeds",
+      "101,202,303",
+      "--out-root",
+      "results/raw/R124_signed_curvature_20260923_0537"
+    ]
+  ],
+  "failures": {},
+  "finished_utc": "2026-09-22T22:15:05Z"
+}

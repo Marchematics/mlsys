@@ -1,0 +1,65 @@
+\section{Discussion}
+
+Two quantities organise the results. Structural headroom measures the
+opportunity that state conditioning creates: it is the loss reduction available
+to a sequential rule over a perfect standalone ranking, and it is a property of
+the prediction task rather than of a particular router. The controlled study
+shows that redundancy creates this opportunity, and the multi-target study
+shows that it is positive on every dataset and every target we evaluated.
+Predictor response and ranking quality then determine how much of that
+opportunity a learned router can realise. Cached representations of context
+content do not carry the information that the marginal utility depends on,
+while a compact summary of the predictor's response does; and as candidate
+pools grow, the utility gap between the best alternatives shrinks, so a model
+with stable average error becomes less able to identify the best candidate.
+Both effects are visible in the results and both are addressed by the design of
+R-MUR.
+
+The multi-target results also show that realisation is uneven. METR-LA converts
+the least headroom into realised gain, with the lowest oracle recovery and the
+fewest targets whose gain is positive, while PEMS-BAY shows the widest spread
+across targets. Structural opportunity alone therefore does not determine how
+much value a router obtains, which is why the two quantities are reported
+separately.
+
+R-MUR uses greedy one-step selection, so it does not capture complementarity
+that emerges only from selecting a group of individually unhelpful contexts.
+\subsection{Deciding whether to route at all}
+
+Because the improvement is not uniform across benchmarks, a practitioner needs a
+way to decide before committing. The measurement protocol of the companion
+studies supplies one, and its operating characteristics are measured rather than
+asserted: on pilots of $n$ targets drawn from six deployments, a pilot of $24$
+targets reproduces the full-deployment verdict $96\%$ of the time, with $98\%$
+sensitivity and $96\%$ specificity for the decision to route at all, while
+sixteen targets give $84\%$ and $86\%$. The direction of the effect is much
+easier to recover than its significance. The procedure is to label a pilot of
+roughly two dozen targets, run the protocol unchanged on it --- screening,
+budget, ranking objective, and both the router and the pool-everything baseline
+--- and route only if the paired target-level interval excludes zero above.
+Cheaper substitutes do not work, and each is reported as a negative in the
+companion work: a fitted predictability probe is indistinguishable from chance,
+structural headroom does not order the benefit, and the cached screen is
+uncorrelated with the true marginal exactly when the decision is close.
+
+A pilot is also labelled earlier than the period it is used for, and that
+shift is measured rather than assumed: scoring the same 32 targets on the
+calibration and test periods of six deployments gives a within-dataset
+correlation of $+.596$ between the two, per-target sign agreement of $81\%$, and
+dataset-level verdict agreement of four of six --- direction transfers, the
+significance call less well, and no pilot recommended routing where routing
+turned out to hurt.
+
+The pilot can also be audited against itself, and the audit is worth more than
+the raw verdict: splitting it in half, pilots whose halves both resolve in the
+same direction agree with the full-sample verdict $99.0\%$ of the time at
+sixteen targets against $78.1\%$ for the rest. The check certifies rather than
+produces a verdict --- it holds for only about a third of pilots --- so the rule
+is to act when it passes and to enlarge the pilot when it does not.
+
+Training also requires counterfactual predictor evaluations to construct the
+marginal-utility targets. These costs arise offline, while deployment limits
+predictor evaluations through cached screening. The current experiments study
+subset-capable predictors on traffic forecasting; extending the same decision
+formulation to other predictor families and context-selection domains is a
+natural direction for further study.

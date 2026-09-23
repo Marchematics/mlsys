@@ -1,0 +1,92 @@
+{
+  "run_id": "R077b_traffic_ranked_response_router",
+  "status": "gate",
+  "config": {
+    "seed": 202,
+    "candidate_count": 16,
+    "budget": 4,
+    "response_dim": 7,
+    "q_values": [
+      4
+    ],
+    "router_epochs": 20,
+    "ranking_beta": 1.0,
+    "hard_negative_q": 0,
+    "device": "cuda:0"
+  },
+  "metrics": {
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.0,
+      "mean_selected_contexts": 0.0
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.001256621559150517,
+      "negative_transfer_rate": 0.536,
+      "mean_utility_recovery": -24.826955795288086,
+      "mean_selected_contexts": 16.0
+    },
+    "relevance": {
+      "mean_prediction_gain": -0.02131342701613903,
+      "negative_transfer_rate": 0.5885,
+      "mean_utility_recovery": -21.30297088623047,
+      "mean_selected_contexts": 4.0
+    },
+    "mmr": {
+      "mean_prediction_gain": -0.015026507899165154,
+      "negative_transfer_rate": 0.5705,
+      "mean_utility_recovery": -20.674270629882812,
+      "mean_selected_contexts": 4.0
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.01020760927349329,
+      "negative_transfer_rate": 0.4985,
+      "mean_utility_recovery": -20.256328582763672,
+      "mean_selected_contexts": 4.0
+    },
+    "cached_mur": {
+      "mean_prediction_gain": -0.007558621000498533,
+      "negative_transfer_rate": 0.5365,
+      "mean_utility_recovery": -25.120853424072266,
+      "mean_selected_contexts": 3.743
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.05402427911758423,
+      "negative_transfer_rate": 0.2205,
+      "mean_utility_recovery": 0.2565755844116211,
+      "mean_selected_contexts": 3.9355
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.061887554824352264,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 3.804
+    },
+    "ranked_response_q4": {
+      "mean_prediction_gain": 0.01845494471490383,
+      "negative_transfer_rate": 0.3475,
+      "mean_utility_recovery": -3.807695150375366,
+      "mean_selected_contexts": 2.482
+    }
+  },
+  "gate": {
+    "ranked_response_q4": {
+      "gain_over_zero": {
+        "mean": 0.018454944835481,
+        "low": 0.012089662201290909,
+        "high": 0.024820227469671094
+      },
+      "gain_over_static": {
+        "mean": 0.008247335278778337,
+        "low": 0.0020129067296884625,
+        "high": 0.014481763827868211
+      },
+      "headroom_recovery": -4.523475422852763
+    }
+  },
+  "dataset": "PEMSBAY",
+  "target_sensor": 177,
+  "seed": 202,
+  "wall_seconds": 82.04578995704651
+}

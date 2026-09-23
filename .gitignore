@@ -1,0 +1,27 @@
+# --- caches and build by-products -------------------------------------------
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+*.aux
+*.fls
+*.fdb_latexmk
+*.blg
+*.out
+*.synctex.gz
+
+# --- third-party data --------------------------------------------------------
+# Datasets and cached encoder features are not committed: they are large,
+# third-party, and regenerable. See DATA.md for the regeneration path.
+data/
+*.npy
+
+# --- run by-products excluded from the published snapshot --------------------
+# Model checkpoints are training by-products, not evidence: every claim is
+# backed by the run's recorded metrics and per-episode gains.
+*.pt
+# Per-step diagnostic traces are multi-megabyte; they are kept only for the run
+# whose analysis reads them (the gate study), which the snapshot includes.
+KBS_MUR/results/raw/*/diagnostics.npz

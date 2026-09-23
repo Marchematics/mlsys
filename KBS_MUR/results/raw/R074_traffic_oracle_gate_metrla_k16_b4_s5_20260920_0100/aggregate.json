@@ -1,0 +1,468 @@
+{
+  "protocol": {
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "candidate_count": 16,
+    "budget": 4,
+    "history_length": 12,
+    "horizon": 12,
+    "train_episodes": 4000,
+    "validation_episodes": 1000,
+    "test_episodes": 2000,
+    "expert_repeats": 3,
+    "ridge_penalty": 10.0,
+    "data_path": "../data/traffic_metrla/METR-LA.csv"
+  },
+  "records": [
+    {
+      "run_id": "R074_traffic_oracle_gate",
+      "status": "oracle_gate",
+      "config": {
+        "seed": 101,
+        "target_sensor_index": 0,
+        "candidate_sensors": [
+          145,
+          142,
+          54,
+          111,
+          37,
+          19,
+          186,
+          24,
+          89,
+          57,
+          182,
+          161,
+          169,
+          204,
+          8,
+          105
+        ],
+        "candidate_construction_seed": 20260920,
+        "candidate_sensor_correlations": [
+          0.8253288475977513,
+          0.8064218436974481,
+          0.801715560169334,
+          0.7898626330717134,
+          0.7540783441596745,
+          0.7513468159103422,
+          0.7489218417297628,
+          0.7483331065442443,
+          0.746103984588368,
+          0.7440382988039851,
+          0.7427812104801033,
+          0.7423862251353416,
+          0.7397030998605243,
+          0.6459161640704663,
+          0.5337782059972652,
+          0.3156759538297062
+        ],
+        "candidate_count": 16,
+        "budget": 4,
+        "history_length": 12,
+        "horizon": 12,
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2,
+        "train_episodes": 4000,
+        "validation_episodes": 1000,
+        "test_episodes": 2000,
+        "expert_repeats": 3,
+        "ridge_penalty": 10.0,
+        "sensor_count": 206,
+        "observation_count": 34272
+      },
+      "metrics": {
+        "base_only": {
+          "mean_prediction_gain": 0.0,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 0.0,
+          "mean_selected_contexts": 0.0
+        },
+        "oracle_static": {
+          "mean_prediction_gain": 0.1437787413597107,
+          "negative_transfer_rate": 0.1305,
+          "mean_utility_recovery": 0.5417498350143433,
+          "mean_selected_contexts": 3.961
+        },
+        "oracle_greedy": {
+          "mean_prediction_gain": 0.15524056553840637,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 1.0,
+          "mean_selected_contexts": 3.851
+        }
+      },
+      "oracle_quantities": {
+        "gain_base_to_oracle_static": 0.1437787413597107,
+        "gain_base_to_oracle_greedy": 0.15524056553840637,
+        "state_conditioning_headroom": 0.07383266183644528
+      },
+      "wall_seconds": 1.5259618759155273,
+      "provenance": {
+        "data_path": "../data/traffic_metrla/METR-LA.csv",
+        "data_sha256": "27aafa513afdc54091613f4c9f7f0c53299ee33248aa0d9684df85f009dbae1a",
+        "traffic_module_sha256": "569773f0a30d0dbbdf2a87e164bb9f37972110e3a850ac98cd4c617ece72c29d"
+      }
+    },
+    {
+      "run_id": "R074_traffic_oracle_gate",
+      "status": "oracle_gate",
+      "config": {
+        "seed": 202,
+        "target_sensor_index": 0,
+        "candidate_sensors": [
+          145,
+          142,
+          54,
+          111,
+          37,
+          19,
+          186,
+          24,
+          89,
+          57,
+          182,
+          161,
+          169,
+          204,
+          8,
+          105
+        ],
+        "candidate_construction_seed": 20260920,
+        "candidate_sensor_correlations": [
+          0.8253288475977513,
+          0.8064218436974481,
+          0.801715560169334,
+          0.7898626330717134,
+          0.7540783441596745,
+          0.7513468159103422,
+          0.7489218417297628,
+          0.7483331065442443,
+          0.746103984588368,
+          0.7440382988039851,
+          0.7427812104801033,
+          0.7423862251353416,
+          0.7397030998605243,
+          0.6459161640704663,
+          0.5337782059972652,
+          0.3156759538297062
+        ],
+        "candidate_count": 16,
+        "budget": 4,
+        "history_length": 12,
+        "horizon": 12,
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2,
+        "train_episodes": 4000,
+        "validation_episodes": 1000,
+        "test_episodes": 2000,
+        "expert_repeats": 3,
+        "ridge_penalty": 10.0,
+        "sensor_count": 206,
+        "observation_count": 34272
+      },
+      "metrics": {
+        "base_only": {
+          "mean_prediction_gain": 0.0,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 0.0,
+          "mean_selected_contexts": 0.0
+        },
+        "oracle_static": {
+          "mean_prediction_gain": 0.15278410911560059,
+          "negative_transfer_rate": 0.1295,
+          "mean_utility_recovery": 0.5414556860923767,
+          "mean_selected_contexts": 3.949
+        },
+        "oracle_greedy": {
+          "mean_prediction_gain": 0.17056208848953247,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 1.0,
+          "mean_selected_contexts": 3.814
+        }
+      },
+      "oracle_quantities": {
+        "gain_base_to_oracle_static": 0.15278410911560059,
+        "gain_base_to_oracle_greedy": 0.17056208848953247,
+        "state_conditioning_headroom": 0.10423171720849873
+      },
+      "wall_seconds": 1.0685486793518066,
+      "provenance": {
+        "data_path": "../data/traffic_metrla/METR-LA.csv",
+        "data_sha256": "27aafa513afdc54091613f4c9f7f0c53299ee33248aa0d9684df85f009dbae1a",
+        "traffic_module_sha256": "569773f0a30d0dbbdf2a87e164bb9f37972110e3a850ac98cd4c617ece72c29d"
+      }
+    },
+    {
+      "run_id": "R074_traffic_oracle_gate",
+      "status": "oracle_gate",
+      "config": {
+        "seed": 303,
+        "target_sensor_index": 0,
+        "candidate_sensors": [
+          145,
+          142,
+          54,
+          111,
+          37,
+          19,
+          186,
+          24,
+          89,
+          57,
+          182,
+          161,
+          169,
+          204,
+          8,
+          105
+        ],
+        "candidate_construction_seed": 20260920,
+        "candidate_sensor_correlations": [
+          0.8253288475977513,
+          0.8064218436974481,
+          0.801715560169334,
+          0.7898626330717134,
+          0.7540783441596745,
+          0.7513468159103422,
+          0.7489218417297628,
+          0.7483331065442443,
+          0.746103984588368,
+          0.7440382988039851,
+          0.7427812104801033,
+          0.7423862251353416,
+          0.7397030998605243,
+          0.6459161640704663,
+          0.5337782059972652,
+          0.3156759538297062
+        ],
+        "candidate_count": 16,
+        "budget": 4,
+        "history_length": 12,
+        "horizon": 12,
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2,
+        "train_episodes": 4000,
+        "validation_episodes": 1000,
+        "test_episodes": 2000,
+        "expert_repeats": 3,
+        "ridge_penalty": 10.0,
+        "sensor_count": 206,
+        "observation_count": 34272
+      },
+      "metrics": {
+        "base_only": {
+          "mean_prediction_gain": 0.0,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 0.0,
+          "mean_selected_contexts": 0.0
+        },
+        "oracle_static": {
+          "mean_prediction_gain": 0.15729843080043793,
+          "negative_transfer_rate": 0.1305,
+          "mean_utility_recovery": 0.5484831929206848,
+          "mean_selected_contexts": 3.9645
+        },
+        "oracle_greedy": {
+          "mean_prediction_gain": 0.1770678162574768,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 1.0,
+          "mean_selected_contexts": 3.8405
+        }
+      },
+      "oracle_quantities": {
+        "gain_base_to_oracle_static": 0.15729843080043793,
+        "gain_base_to_oracle_greedy": 0.1770678162574768,
+        "state_conditioning_headroom": 0.11164866588907348
+      },
+      "wall_seconds": 0.9707040786743164,
+      "provenance": {
+        "data_path": "../data/traffic_metrla/METR-LA.csv",
+        "data_sha256": "27aafa513afdc54091613f4c9f7f0c53299ee33248aa0d9684df85f009dbae1a",
+        "traffic_module_sha256": "569773f0a30d0dbbdf2a87e164bb9f37972110e3a850ac98cd4c617ece72c29d"
+      }
+    },
+    {
+      "run_id": "R074_traffic_oracle_gate",
+      "status": "oracle_gate",
+      "config": {
+        "seed": 404,
+        "target_sensor_index": 0,
+        "candidate_sensors": [
+          145,
+          142,
+          54,
+          111,
+          37,
+          19,
+          186,
+          24,
+          89,
+          57,
+          182,
+          161,
+          169,
+          204,
+          8,
+          105
+        ],
+        "candidate_construction_seed": 20260920,
+        "candidate_sensor_correlations": [
+          0.8253288475977513,
+          0.8064218436974481,
+          0.801715560169334,
+          0.7898626330717134,
+          0.7540783441596745,
+          0.7513468159103422,
+          0.7489218417297628,
+          0.7483331065442443,
+          0.746103984588368,
+          0.7440382988039851,
+          0.7427812104801033,
+          0.7423862251353416,
+          0.7397030998605243,
+          0.6459161640704663,
+          0.5337782059972652,
+          0.3156759538297062
+        ],
+        "candidate_count": 16,
+        "budget": 4,
+        "history_length": 12,
+        "horizon": 12,
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2,
+        "train_episodes": 4000,
+        "validation_episodes": 1000,
+        "test_episodes": 2000,
+        "expert_repeats": 3,
+        "ridge_penalty": 10.0,
+        "sensor_count": 206,
+        "observation_count": 34272
+      },
+      "metrics": {
+        "base_only": {
+          "mean_prediction_gain": 0.0,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 0.0,
+          "mean_selected_contexts": 0.0
+        },
+        "oracle_static": {
+          "mean_prediction_gain": 0.1466088891029358,
+          "negative_transfer_rate": 0.1895,
+          "mean_utility_recovery": 0.33891379833221436,
+          "mean_selected_contexts": 3.9515
+        },
+        "oracle_greedy": {
+          "mean_prediction_gain": 0.16820088028907776,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 1.0,
+          "mean_selected_contexts": 3.6535
+        }
+      },
+      "oracle_quantities": {
+        "gain_base_to_oracle_static": 0.1466088891029358,
+        "gain_base_to_oracle_greedy": 0.16820088028907776,
+        "state_conditioning_headroom": 0.12837026268253163
+      },
+      "wall_seconds": 1.0636863708496094,
+      "provenance": {
+        "data_path": "../data/traffic_metrla/METR-LA.csv",
+        "data_sha256": "27aafa513afdc54091613f4c9f7f0c53299ee33248aa0d9684df85f009dbae1a",
+        "traffic_module_sha256": "569773f0a30d0dbbdf2a87e164bb9f37972110e3a850ac98cd4c617ece72c29d"
+      }
+    },
+    {
+      "run_id": "R074_traffic_oracle_gate",
+      "status": "oracle_gate",
+      "config": {
+        "seed": 505,
+        "target_sensor_index": 0,
+        "candidate_sensors": [
+          145,
+          142,
+          54,
+          111,
+          37,
+          19,
+          186,
+          24,
+          89,
+          57,
+          182,
+          161,
+          169,
+          204,
+          8,
+          105
+        ],
+        "candidate_construction_seed": 20260920,
+        "candidate_sensor_correlations": [
+          0.8253288475977513,
+          0.8064218436974481,
+          0.801715560169334,
+          0.7898626330717134,
+          0.7540783441596745,
+          0.7513468159103422,
+          0.7489218417297628,
+          0.7483331065442443,
+          0.746103984588368,
+          0.7440382988039851,
+          0.7427812104801033,
+          0.7423862251353416,
+          0.7397030998605243,
+          0.6459161640704663,
+          0.5337782059972652,
+          0.3156759538297062
+        ],
+        "candidate_count": 16,
+        "budget": 4,
+        "history_length": 12,
+        "horizon": 12,
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2,
+        "train_episodes": 4000,
+        "validation_episodes": 1000,
+        "test_episodes": 2000,
+        "expert_repeats": 3,
+        "ridge_penalty": 10.0,
+        "sensor_count": 206,
+        "observation_count": 34272
+      },
+      "metrics": {
+        "base_only": {
+          "mean_prediction_gain": 0.0,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 0.0,
+          "mean_selected_contexts": 0.0
+        },
+        "oracle_static": {
+          "mean_prediction_gain": 0.15240046381950378,
+          "negative_transfer_rate": 0.1615,
+          "mean_utility_recovery": 0.4508087635040283,
+          "mean_selected_contexts": 3.951
+        },
+        "oracle_greedy": {
+          "mean_prediction_gain": 0.1750854104757309,
+          "negative_transfer_rate": 0.0,
+          "mean_utility_recovery": 1.0,
+          "mean_selected_contexts": 3.7885
+        }
+      },
+      "oracle_quantities": {
+        "gain_base_to_oracle_static": 0.15240046381950378,
+        "gain_base_to_oracle_greedy": 0.1750854104757309,
+        "state_conditioning_headroom": 0.1295650311158938
+      },
+      "wall_seconds": 1.0644299983978271,
+      "provenance": {
+        "data_path": "../data/traffic_metrla/METR-LA.csv",
+        "data_sha256": "27aafa513afdc54091613f4c9f7f0c53299ee33248aa0d9684df85f009dbae1a",
+        "traffic_module_sha256": "569773f0a30d0dbbdf2a87e164bb9f37972110e3a850ac98cd4c617ece72c29d"
+      }
+    }
+  ]
+}

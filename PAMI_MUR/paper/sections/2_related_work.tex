@@ -1,0 +1,66 @@
+\section{Related Work}
+
+Auxiliary contexts and demonstrations adapt a frozen predictor to a query
+\citep{brown2020language,min2022rethinking}. Their quality and ordering matter,
+and many methods retrieve or select examples before prediction
+\citep{liu2022what,rubin2022learning,zhang2022active,su2023selective}. Other
+work studies prompt-order sensitivity and calibration
+\citep{lu2022fantastically,zhao2021calibrate}. Retrieval-augmented systems
+condition predictions on external passages and records
+\citep{guu2020realm,lewis2020retrieval,karpukhin2020dense}, and
+retrieval scale and adaptation are studied in
+\citep{borgeaud2022improving,izacard2023atlas,shi2024replug,asai2024selfrag}.
+Recent work combines retrieval with adaptive chains and causal reasoning
+\citep{acra2025retrieval,crgs2026causal}. Diversity-aware selection penalizes
+repeated content or maximizes coverage \citep{carbonell1998use,gupta-etal-2023-coverage,levy2023diverse},
+and listwise rerankers compare candidate sets directly
+\citep{nogueira2019passage,ma2023zero,qin2024large,sun2023chatgpt,sachan2022improving}.
+Long-context studies show that position and context composition change how a
+model uses retrieved information \citep{liu2024lost}. These approaches
+determine which information is relevant or diverse; they do not directly
+estimate the change in end-task loss produced by adding a candidate to the
+context already selected.
+
+Outcome-aware selection moves closer to the final prediction objective by
+valuing examples through their effect on model output. Hashimoto et al.\
+estimate the incremental utility of a demonstration relative to an empty
+prompt \citep{hashimoto-etal-2024-take}. Data valuation and influence
+estimation assign credit to training examples through their effect on
+predictions \citep{ghorbani2019data,koh2017understanding,pruthi2020estimating,ilyas2022datamodels}.
+These methods characterize a candidate's standalone contribution. Our object
+conditions on a nonempty, evolving selected set, so the value of the same
+candidate can change after every routing decision.
+
+Set-selection methods provide the structural counterpart to this decision
+problem. Submodular objectives formalize coverage, diversity, and diminishing
+returns \citep{lin2011class,nemhauser1978analysis,krause2014submodular}, while
+determinantal point processes model diverse subsets probabilistically
+\citep{kulesza2012determinantal}. Adaptive submodularity and influence
+maximization extend these tools to sequential decisions
+\citep{golovin2011adaptive,leskovec2007cost}, and streaming or contextual
+variants address budgeted settings
+\citep{badanidiyuru2014streaming,ross2013contextual}. Classical monotone
+formulations reward additional elements; context utility in our setting can
+also be negative because a candidate can increase prediction loss. Negative
+transfer has been characterized in general transfer learning
+\citep{pan2010survey,torrey2010transfer,wang2019characterizing} and mitigated
+in sequential recommendation through multi-modal re-learning
+\citep{ant2025negative}.
+
+Routing and decision-focused learning treat selection as a learned decision
+problem. Mixture-of-experts systems route inputs to expert subsets
+\citep{jacobs1991adaptive,shazeer2017outrageously,zhou2022mixture}, and sparse
+or soft routing architectures reduce computation while increasing capacity
+\citep{fedus2022switch,lewis2021base,roller2021hash,puigcerver2024sparse}.
+Routing networks select computation paths for multi-task learning
+\citep{rosenbaum2018routing,ma2018modeling}, and recent systems apply dynamic
+routing across language, vision-language-action, and collaborative-perception
+tasks \citep{failuremode2026routing,dream2026routing,cogmoe2026sparse}.
+Decision-focused learning connects prediction quality to downstream decision
+quality \citep{bertsimas2020predictive,elmachtoub2022smart,wilder2019melding,mandi2024decision},
+and task-based end-to-end learning follows the same principle
+\citep{donti2017task}. Sequential selection is related to bandit exploration
+and off-policy value estimation \citep{auer2002finite,dudik2011doubly}. R-MUR
+applies this perspective to auxiliary contexts for a fixed predictor, where the
+routing target is the marginal change in end-task loss and the predictor's
+response becomes part of the available decision information.

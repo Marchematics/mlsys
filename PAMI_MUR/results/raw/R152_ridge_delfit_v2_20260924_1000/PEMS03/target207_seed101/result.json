@@ -1,0 +1,52 @@
+{
+  "dataset": "PEMS03",
+  "target_sensor": 207,
+  "seed": 101,
+  "metrics": {
+    "random": {
+      "mean_prediction_gain": 0.008336925879120827,
+      "negative_transfer_rate": 0.446
+    },
+    "relevance": {
+      "mean_prediction_gain": -0.003127626609057188,
+      "negative_transfer_rate": 0.631
+    },
+    "mmr": {
+      "mean_prediction_gain": -0.0009484455222263932,
+      "negative_transfer_rate": 0.583
+    },
+    "dpp": {
+      "mean_prediction_gain": 0.0005721953930333257,
+      "negative_transfer_rate": 0.5865
+    },
+    "facility_location": {
+      "mean_prediction_gain": 0.00576794845983386,
+      "negative_transfer_rate": 0.4875
+    },
+    "mutual_information": {
+      "mean_prediction_gain": 0.01520510483533144,
+      "negative_transfer_rate": 0.3515
+    },
+    "kcenter": {
+      "mean_prediction_gain": 0.015032052993774414,
+      "negative_transfer_rate": 0.3785
+    },
+    "kmeans_representatives": {
+      "mean_prediction_gain": 0.007532709743827581,
+      "negative_transfer_rate": 0.518
+    },
+    "delfit_style": {
+      "mean_prediction_gain": 0.00867330003529787,
+      "negative_transfer_rate": 0.4885
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.024721341207623482,
+      "negative_transfer_rate": 0.4025
+    },
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0
+    }
+  },
+  "wall_seconds": 8.424630165100098
+}

@@ -1,0 +1,53 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{
+  "run_id": "R076_traffic_utility_observability",
+  "status": "diagnostic_probe",
+  "config": {
+    "seed": 101,
+    "states_per_episode": 4,
+    "candidate_count": 16,
+    "budget": 4,
+    "feature_definition": {
+      "x1": "raw query/selected/candidate history interactions",
+      "x2": "x1 plus scalar expert response summaries",
+      "x3": "x2 plus full expert forecast trajectories and delta"
+    }
+  },
+  "results": {
+    "x1": {
+      "feature_dim": 61,
+      "metrics": {
+        "mae": 0.03392845447110608,
+        "spearman": 0.16948181426549982,
+        "positive_auc": 0.6507706605072063,
+        "top1_accuracy": 0.172625,
+        "one_step_regret": 0.06352371123110061,
+        "positive_rate": 0.49925391800860797
+      }
+    },
+    "x2": {
+      "feature_dim": 65,
+      "metrics": {
+        "mae": 0.03075827004751792,
+        "spearman": 0.37698456361853494,
+        "positive_auc": 0.8289126175315983,
+        "top1_accuracy": 0.260125,
+        "one_step_regret": 0.05027320434676949,
+        "positive_rate": 0.49925391800860797
+      }
+    },
+    "x3": {
+      "feature_dim": 101,
+      "metrics": {
+        "mae": 0.030725518859117555,
+        "spearman": 0.33307056357925857,
+        "positive_auc": 0.8387800825264802,
+        "top1_accuracy": 0.2425,
+        "one_step_regret": 0.05046248457535694,
+        "positive_rate": 0.49925391800860797
+      }
+    }
+  },
+  "wall_seconds": 63.94656276702881
+}

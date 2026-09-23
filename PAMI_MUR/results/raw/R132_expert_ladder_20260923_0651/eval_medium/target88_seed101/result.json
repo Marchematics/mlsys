@@ -1,0 +1,144 @@
+{
+  "run_id": "PAMI_strong_backbone_rmur",
+  "dataset": "METRLA",
+  "target_sensor": 88,
+  "seed": 101,
+  "config": {
+    "seed": 101,
+    "candidate_count": 16,
+    "budget": 4,
+    "response_dim": 7,
+    "response_components": 0,
+    "pool_mode": "correlated",
+    "curvature_corrected": false,
+    "router_kind": "mlp",
+    "q_values": [
+      4
+    ],
+    "router_epochs": 20,
+    "ranking_beta": 1.0,
+    "device": "cuda:0"
+  },
+  "metrics": {
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.0,
+      "mean_selected_contexts": 0.0
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.031663261353969574,
+      "negative_transfer_rate": 0.407,
+      "mean_utility_recovery": -246039.546875,
+      "mean_selected_contexts": 16.0
+    },
+    "random": {
+      "mean_prediction_gain": 0.02615366131067276,
+      "negative_transfer_rate": 0.4475,
+      "mean_utility_recovery": -233037.03125,
+      "mean_selected_contexts": 4.0
+    },
+    "relevance": {
+      "mean_prediction_gain": 0.032902222126722336,
+      "negative_transfer_rate": 0.475,
+      "mean_utility_recovery": -335749.59375,
+      "mean_selected_contexts": 4.0
+    },
+    "mmr": {
+      "mean_prediction_gain": 0.03415960073471069,
+      "negative_transfer_rate": 0.461,
+      "mean_utility_recovery": -459223.125,
+      "mean_selected_contexts": 4.0
+    },
+    "facility_location": {
+      "mean_prediction_gain": 0.020033152773976326,
+      "negative_transfer_rate": 0.441,
+      "mean_utility_recovery": -220786.484375,
+      "mean_selected_contexts": 4.0
+    },
+    "dpp": {
+      "mean_prediction_gain": 0.03314598649740219,
+      "negative_transfer_rate": 0.4755,
+      "mean_utility_recovery": -492599.75,
+      "mean_selected_contexts": 4.0
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.03063090890645981,
+      "negative_transfer_rate": 0.4135,
+      "mean_utility_recovery": -245134.0,
+      "mean_selected_contexts": 4.0
+    },
+    "cached_mur": {
+      "mean_prediction_gain": 0.015509629622101784,
+      "negative_transfer_rate": 0.4555,
+      "mean_utility_recovery": -416730.28125,
+      "mean_selected_contexts": 3.0275
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.08479966968297958,
+      "negative_transfer_rate": 0.0945,
+      "mean_utility_recovery": 0.7577532529830933,
+      "mean_selected_contexts": 2.991
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.10130047053098679,
+      "negative_transfer_rate": 0.0655,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 2.354
+    },
+    "ranked_response_q4": {
+      "mean_prediction_gain": 0.017550384625792503,
+      "negative_transfer_rate": 0.407,
+      "mean_utility_recovery": -204558.328125,
+      "mean_selected_contexts": 3.3295
+    }
+  },
+  "expert_rows": {
+    "base_only": 0,
+    "pool_all": 0,
+    "random": 0,
+    "relevance": 0,
+    "mmr": 0,
+    "facility_location": 0,
+    "dpp": 0,
+    "static_utility": 0,
+    "cached_mur": 0,
+    "oracle_static": 34000,
+    "oracle_greedy": 127348,
+    "ranked_response_q4": 40000
+  },
+  "evaluation_rows": 26000,
+  "gate": {
+    "ranked_response_q4": {
+      "gain_over_zero": {
+        "mean": 0.01755038523636176,
+        "low": 0.008501393089249902,
+        "high": 0.02659937738347362
+      },
+      "gain_over_static": {
+        "mean": -0.013080524467397481,
+        "low": -0.021944112025747423,
+        "high": -0.00421693690904754
+      },
+      "gain_over_cached": {
+        "mean": 0.0020407567852234933,
+        "low": -0.005322305021470298,
+        "high": 0.009403818591917284
+      },
+      "headroom_recovery": -4.075516435634623
+    }
+  },
+  "finetune": {
+    "epochs": 10,
+    "final_train_mse": 0.1721807678937912,
+    "validation_selected": true,
+    "best_epoch": 9,
+    "best_validation_mse": 0.24925029277801514
+  },
+  "expert_profile": {
+    "expert_calls": 271,
+    "expert_rows": 541383,
+    "expert_seconds": 7.123309765011072
+  },
+  "wall_seconds": 71.97692465782166
+}

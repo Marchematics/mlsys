@@ -1,0 +1,125 @@
+\section{Response-Aware Marginal-Utility Routing}
+
+R-MUR estimates the marginal utility of a candidate with a fixed predictor. It
+screens candidates with cached representations, evaluates the predictor only on
+a shortlist, and estimates the marginal from the cached context together with
+the predictor's response.
+
+\subsection{Marginal-utility estimation}
+
+Every candidate is represented by a cached feature vector $h_j$ computed from
+its context, and the query and the current selected set are represented by
+$h_Q$ and $h_A$. The selected-set encoder is permutation invariant, so the
+representation depends on the set and not on the order in which its elements
+were added. A cached model maps these representations to a utility score
+\begin{equation}
+ \widehat m_C(j\mid A)=g_C(h_Q,h_A,h_j),
+ \label{eq:cached}
+\end{equation}
+which is inexpensive because it never evaluates the predictor. It is also
+incomplete: cached features describe the content of a candidate, not how the
+predictor reacts to it.
+
+\subsection{Response-aware routing}
+
+The cached score forms a shortlist
+\begin{equation}
+ \mathcal Q_A=\operatorname*{TopQ}_{j\notin A}\widehat m_C(j\mid A),
+ \qquad |\mathcal Q_A|=q\ll K,
+ \label{eq:shortlist}
+\end{equation}
+which bounds the number of predictor evaluations per decision to $q$ out of
+$K$ candidates. For each retained candidate the predictor is evaluated with and
+without that candidate, and a compact response summary is formed,
+\begin{equation}
+ r_{A,j}=\psi\!\left(f_A(x),f_{A\cup\{j\}}(x)\right).
+ \label{eq:response}
+\end{equation}
+The summary contains the level of the current prediction, the level after
+adding the candidate, and the mean, standard deviation, mean absolute value,
+normalized Euclidean norm, and maximum absolute value of the change. These
+statistics describe how the candidate changes the prediction, which is the
+quantity that enters the marginal utility through
+Eq.~\eqref{eq:squared-marginal}. The cached representations are the anchor history, the candidate history, and
+the selected candidate histories with a validity mask. The response-aware model
+combines them with the cached representations,
+\begin{equation}
+ \widehat m_R(j\mid A)=g_R(h_Q,h_A,h_j,r_{A,j}),
+ \qquad j\in\mathcal Q_A .
+ \label{eq:rmur}
+\end{equation}
+
+\subsection{Training and sequential inference}
+
+The model is trained on states sampled from the training episodes. A state is
+a uniformly random subset of the candidate pool whose size is drawn uniformly
+from $0$ to $B-1$, so training covers empty, partial and nearly complete
+selected sets; deployment states follow the router's own greedy trajectory
+instead, and this difference between the training and deployment state
+distributions is the main approximation in the design. At each state the
+counterfactual loss difference of Eq.~\eqref{eq:target} provides the observed
+marginal for every candidate, so the labels are state-conditioned rather than
+standalone, and one state supplies $K-|A|$ regression targets together with all
+candidate pairs for the ranking term.
+
+The encoder is a permutation-invariant set encoder of depth two with hidden and
+set width 64, and the utility head is a two-layer network of width 64. Training
+uses AdamW with learning rate $10^{-3}$ and weight decay $10^{-4}$ for 20
+epochs with batches of 128 states; each target-run contributes 16{,}000
+training states, four per episode, with 16 counterfactual labels each. The objective combines regression with a pairwise ranking term,
+\begin{equation}
+ \mathcal L
+ =
+ \mathcal L_{\mathrm{Huber}}
+ +
+ \beta
+ \sum_{i,j:\,\widetilde m_i>\widetilde m_j}
+ |\widetilde m_i-\widetilde m_j|
+ \log\!\left(
+ 1+\exp\!\left[-(\widehat m_i-\widehat m_j)\right]
+ \right),
+ \label{eq:loss}
+\end{equation}
+where the sum is taken over pairs within the same selection state and the
+weight is the utility gap of the pair. The gap weight assigns greater
+importance to ranking errors with larger utility consequences, while giving
+little weight to nearly tied candidates, and the regression term keeps the
+utility scale calibrated on states without a dominant alternative. The
+response-aware scorer is trained over candidate states sampled from the full
+training distribution, where every candidate of a state carries a label and
+enters the pairwise term. At inference the scorer is evaluated only on the
+shortlist produced by the cached scorer.
+
+At deployment the router starts from the empty set and repeats the following
+steps: score all remaining candidates with the cached model, form the
+shortlist, evaluate the predictor on the shortlist, rerank it with the
+response-aware model, and add the highest-scoring candidate when its estimated
+marginal utility is positive. The procedure stops when no shortlisted candidate
+has a positive estimated utility or when the context budget is reached, and it
+is greedy: each decision maximizes the estimated one-step marginal utility
+within the shortlist. Section~\ref{sec:analysis} analyzes the regret that
+screening and reranking introduce into this two-stage decision.
+Algorithm~\ref{alg:rmur} states the procedure.
+
+\begin{algorithm}[t]
+\caption{Response-Aware Marginal-Utility Routing}
+\label{alg:rmur}
+\begin{algorithmic}[1]
+\Require anchor $S_0$, query $x$, candidate pool $\candidates$, budget $B$, shortlist size $q$, fixed predictor $f$
+\State $A \gets \emptyset$
+\While{$|A| < B$}
+  \State $\widehat m_C(j\mid A) \gets g_C(h_Q,h_A,h_j)$ for all $j\notin A$ \Comment{cached screening}
+  \State $\mathcal Q_A \gets \operatorname*{TopQ}_{j\notin A}\widehat m_C(j\mid A)$
+  \ForAll{$j \in \mathcal Q_A$}
+    \State $r_{A,j} \gets \psi(f_A(x), f_{A\cup\{j\}}(x))$ \Comment{predictor response}
+    \State $\widehat m_R(j\mid A) \gets g_R(h_Q,h_A,h_j,r_{A,j})$
+  \EndFor
+  \State $j^\star \gets \argmax_{j\in\mathcal Q_A}\widehat m_R(j\mid A)$
+  \If{$\widehat m_R(j^\star\mid A) \le 0$}
+    \State \textbf{break} \Comment{stop: no shortlisted candidate is estimated useful}
+  \EndIf
+  \State $A \gets A\cup\{j^\star\}$
+\EndWhile
+\State \Return $A$
+\end{algorithmic}
+\end{algorithm}

@@ -1,0 +1,27 @@
+{
+  "dataset": "PEMSBAY",
+  "target": 260,
+  "seed": 101,
+  "test_episodes": 800,
+  "oracle_static_gain": 0.31700553132221104,
+  "random_gain": -0.0278470248616577,
+  "marginal_std": 0.5942909085615403,
+  "probes": {
+    "state_only_ridge": {
+      "r2": 0.007512964051681892,
+      "within_episode_spearman": -0.006687500000000002,
+      "policy_gain": 0.0009939117452631764,
+      "policy_over_oracle": 0.0031353135736074704,
+      "permutation_r2": -0.000921958230517772,
+      "in_sample_r2": 0.0348167068090216
+    },
+    "state_plus_response_ridge": {
+      "r2": 0.0041515594530658895,
+      "within_episode_spearman": 0.021474264705882352,
+      "policy_gain": -0.03973463186513982,
+      "policy_over_oracle": -0.1253436547287016,
+      "permutation_r2": 0.010188200388910218,
+      "in_sample_r2": 0.10545724448168148
+    }
+  }
+}

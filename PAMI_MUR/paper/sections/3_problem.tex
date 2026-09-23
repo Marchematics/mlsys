@@ -1,0 +1,95 @@
+\section{State-Conditioned Context Selection}
+
+Let $S_0$ be an anchor context, $x$ a query, $y$ its target, and
+$\candidates=\{C_1,\ldots,C_K\}$ a candidate pool. A selected set is
+$A\subseteq\{1,\ldots,K\}$. A predictor produces $f_A(x)$ from $S_0$ and the
+contexts indexed by $A$; the predictor is trained before routing and kept
+fixed during context selection and router training.
+
+We define the net set utility as
+\begin{equation}
+ F(A)=\E\left[\loss(f_{\emptyset}(x),y)-\loss(f_A(x),y)\right]
+       -\lambda c(A),
+\end{equation}
+where $c(A)$ is a context cost. The marginal utility of a candidate is
+\begin{equation}
+ \marginal(j\mid A)=F(A\cup\{j\})-F(A).
+ \label{eq:marginal}
+\end{equation}
+For one observed episode, the training target is the counterfactual loss
+difference
+\begin{equation}
+ \widetilde{\marginal}(j\mid A)=\loss(f_A(x),y)-\loss(\fj(x),y)-\lambda c_j.
+ \label{eq:target}
+\end{equation}
+This is a realized observation of the marginal. Its interpretation as an
+expectation requires a fixed predictor and a specified state-sampling rule.
+
+For squared loss, let $\mu=\E[y\mid S_0,x,\candidates]$ and let
+$\dAj=\fj(x)-f_A(x)$. The marginal separates into
+\begin{equation}
+ \marginal(j\mid A)=2\dAj(\mu-f_A(x))-\dAj^2-\lambda c_j.
+ \label{eq:squared-marginal}
+\end{equation}
+The first term is the interaction between the current residual and the
+direction of the candidate-induced correction, the second term penalizes
+overcorrection, and the third accounts for cost. Relevance and standalone
+candidate scores do not determine these three terms, and the same candidate
+can be useful at one state and harmful at another.
+
+For a smooth loss $\ell(f,y)$ and prediction change
+$\dAj=\fj(x)-f_A(x)$, a second-order expansion gives
+\begin{equation}
+ \ell(f_A,y)-\ell(\fj,y)
+ =
+ -\nabla_f\ell(f_A,y)^\top \dAj
+ -\frac12 \dAj^\top
+ \nabla_f^2\ell(\xi,y)\dAj,
+ \label{eq:smooth-expansion}
+\end{equation}
+for some $\xi$ on the segment between $f_A$ and $\fj$. Taking
+expectations yields
+\begin{equation}
+ \marginal(j\mid A)
+ =
+ -\E\!\left[\nabla_f\ell(f_A,y)^\top \dAj\right]
+ +O\!\left(\E\|\dAj\|^2\right)
+ -\lambda c_j.
+ \label{eq:smooth-marginal}
+\end{equation}
+When the Hessian is bounded, the second-order remainder is controlled by the
+response magnitude. Section~\ref{sec:analysis} turns
+\cref{eq:smooth-expansion} into two-sided bounds with explicit constants, gives
+an exact identity for Bregman losses that contains
+\cref{eq:squared-marginal} as a special case, and shows that response features
+are the correct sufficient statistic for the squared-loss case. Predictor
+response therefore carries information about marginal utility beyond quadratic
+losses.
+
+Two oracle policies expose the structural value of this state dependence. The
+standalone oracle ranks candidates by the true standalone marginal
+$m(j\mid\emptyset)$ and keeps that order fixed. The sequential oracle
+recomputes the true marginal after every addition. Let $G_{\mathrm{stand}}$ and
+$G_{\mathrm{seq}}$ denote their prediction gains over the anchor-only
+predictor. We measure structural headroom as
+\begin{equation}
+ H_{\mathrm{state}}
+ =
+ \frac{G_{\mathrm{seq}}-G_{\mathrm{stand}}}{G_{\mathrm{seq}}}.
+ \label{eq:headroom}
+\end{equation}
+This quantity is an evaluation diagnostic. It isolates the value created by
+conditioning on the selected set, independently of router estimation error.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig1_conceptual.pdf}
+  \caption{State-conditioned context selection. A candidate's standalone value
+  can change after similar information is selected. The gap between a
+  standalone oracle and a sequential oracle measures structural headroom,
+  while the information available at inference time determines how much of
+  that value a router can estimate.}
+  \label{fig:conceptual}
+\end{figure*}
+
+

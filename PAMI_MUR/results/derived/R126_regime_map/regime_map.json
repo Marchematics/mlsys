@@ -1,0 +1,48 @@
+{
+  "traffic": {
+    "METRLA_strong_16targets": {
+      "dataset": "METRLA",
+      "targets": 16,
+      "mean_pairwise_candidate_similarity": 0.7522663165951136,
+      "mean_candidate_to_anchor_similarity": 0.7867467734247294
+    },
+    "METRLA_ridge_32targets": {
+      "dataset": "METRLA",
+      "targets": 32,
+      "mean_pairwise_candidate_similarity": 0.7526156451802675,
+      "mean_candidate_to_anchor_similarity": 0.7623656562809344
+    }
+  },
+  "demos": {
+    "cifar10": {
+      "benchmark": "cifar10",
+      "draws": 20,
+      "mean_pairwise_candidate_similarity": 0.8376911878585815,
+      "mean_candidate_to_anchor_similarity": 0.8692412197589874
+    },
+    "cifar100": {
+      "benchmark": "cifar100",
+      "draws": 20,
+      "mean_pairwise_candidate_similarity": 0.8440717816352844,
+      "mean_candidate_to_anchor_similarity": 0.8764908671379089
+    },
+    "svhn": {
+      "benchmark": "svhn",
+      "draws": 20,
+      "mean_pairwise_candidate_similarity": 0.9108691036701202,
+      "mean_candidate_to_anchor_similarity": 0.9293565630912781
+    },
+    "eurosat": {
+      "benchmark": "eurosat",
+      "draws": 20,
+      "mean_pairwise_candidate_similarity": 0.9000227004289627,
+      "mean_candidate_to_anchor_similarity": 0.9241303652524948
+    },
+    "dtd": {
+      "benchmark": "dtd",
+      "draws": 20,
+      "mean_pairwise_candidate_similarity": 0.7520260721445083,
+      "mean_candidate_to_anchor_similarity": 0.7986184656620026
+    }
+  }
+}

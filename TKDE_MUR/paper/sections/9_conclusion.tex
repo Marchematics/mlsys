@@ -1,0 +1,34 @@
+\section{Conclusion}
+
+We asked what a router can know about the value of a context before the outcome
+is observed. The answer has three parts. Predictor response is the right thing
+to observe: for Bregman losses the response--utility relation is an exact
+identity, for smooth losses it has a two-sided bound, for softmax cross-entropy
+the constants are explicit, and for squared loss the Bayes-optimal score is
+affine in the response conditional on the state. What remains to be learned is
+the fixed predictor's own residual, so improving the predictor removes exactly
+the signal that routing depends on. And the consequence is measurable before
+any method is chosen: a cached view that does not correlate with the true
+marginal, an ordering that no observable feature recovers, and a label-free
+novelty statistic that predicts whether retrieval helps or hurts.
+
+Empirically the three regimes behave as the theory predicts. Where utility is
+estimable, learned marginal-utility routing beats fourteen competitors on both
+datasets examined --- significantly ahead of the best competitor on three of the
+six benchmarks, unresolved on two and below simple pooling on the sixth ---
+roughly doubling the strongest non-selection baseline, while
+relevance ranking, maximum marginal relevance, determinantal diversity,
+k-center, facility location, k-means representatives and random selection are
+significantly worse than using no auxiliary context at all. Where it is not
+estimable, no method separates from including every candidate --- on one
+dataset pooling is significantly better than every alternative, on the other it
+ties the response-aware family --- and the oracle's optimal budget is smaller
+than the protocol's, so the loss comes from the budget constraint rather than
+from bad ranking. Where candidates contribute categorical
+evidence, four scoring heads bracket the same ceiling. In each case the
+measurement protocol identifies the regime in advance, and in the low-novelty
+regime a label-free adaptive rule converts a harmful default into a beneficial
+one. Context selection is worth doing exactly when the predictor leaves
+something identifiable to select on, and the practical question is therefore not
+which ranking heuristic to use but whether the problem in front of us is
+identifiable at all.

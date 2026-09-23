@@ -1,0 +1,151 @@
+\section{Why Response Determines Utility}
+\label{sec:theory}
+
+Throughout, $f_A(x)$ is the prediction of a predictor that consumes the anchor
+context and the selected set $A$, $y$ is the outcome, $\loss$ is the task loss,
+and $\dAj(x)=f_{A\cup\{j\}}(x)-f_A(x)$ is the predictor's response to candidate
+$j$ at state $A$. The marginal utility of that candidate is
+\begin{equation}
+ \marginal(j\mid A)=\E\!\left[\loss(f_A,y)-\loss(f_{A\cup\{j\}},y)\right]-\lambda c_j .
+ \label{eq:marginal-utility}
+\end{equation}
+The predictor is frozen while utilities are generated, so every statement below
+is conditional on the state and on the predictor.
+
+\subsection{A two-sided bound for smooth losses}
+
+\begin{proposition}[Response expansion]
+\label{prop:expansion}
+Assume that for every episode $f\mapsto\loss(f,y)$ is twice continuously
+differentiable on the segment between $f_A(x)$ and $f_{A\cup\{j\}}(x)$, and that
+$\|\grad^2\loss(z,y)\|_2\leq L$ on that segment. Then
+\begin{align}
+ \marginal(j\mid A)
+ &=
+ -\E\!\left[\grad\loss(f_A,y)^\top \dAj\right]
+ -\tfrac12\E\!\left[\dAj^\top\grad^2\loss(\xi,y)\dAj\right]
+ -\lambda c_j,
+ \label{eq:prop-expansion}\\
+ \left|\marginal(j\mid A)
+ +\E\!\left[\grad\loss(f_A,y)^\top \dAj\right]+\lambda c_j\right|
+ &\leq
+ \frac{L}{2}\E\|\dAj\|^2 .
+ \label{eq:prop-bound}
+\end{align}
+\end{proposition}
+
+The leading term is the alignment between the loss gradient at the current
+prediction and the direction in which the candidate moves the predictor. The
+remainder is second order in the response magnitude: the first-order term is
+accurate exactly when the candidate perturbs the predictor little, and a large
+response can cost at most $(L/2)\E\|\dAj\|^2$. The response is observable at
+decision time; only the gradient is not.
+
+\subsection{An exact identity for Bregman losses}
+
+\begin{proposition}[Exact identity]
+\label{prop:bregman}
+Let $\loss(f,y)=D_\phi(y,f)=\phi(y)-\phi(f)-\grad\phi(f)^\top(y-f)$ for convex
+differentiable $\phi$ --- squared loss, deviance losses, and exponential-family
+negative log-likelihoods in their natural parametrisation. Then
+\begin{equation}
+ \marginal(j\mid A)
+ =
+ \E\!\left[\left(\grad\phi(f_{A\cup\{j\}})-\grad\phi(f_A)\right)^\top(y-f_A)\right]
+ -\E D_\phi\!\left(f_A,f_{A\cup\{j\}}\right)
+ -\lambda c_j .
+ \label{eq:prop-bregman}
+\end{equation}
+\end{proposition}
+
+Equation~\eqref{eq:prop-bregman} is exact and requires no smoothness constant.
+The second term is a non-positive movement penalty in the Bregman geometry; the
+first is the inner product between the change in the loss gradient and the
+current residual. With $\phi(z)=\|z\|^2$ it becomes
+$\E[2\dAj(y-f_A)-\|\dAj\|^2]-\lambda c_j$, the squared-loss expression used by
+response-aware routers, which is therefore a special case rather than the
+whole story.
+
+\subsection{Explicit constants for cross-entropy}
+
+\begin{proposition}[Softmax cross-entropy]
+\label{prop:ce}
+For logits $f\in\R^C$, one-hot $y$, and softmax cross-entropy
+$\loss(f,y)=-f_y+\log\sum_k e^{f_k}$ with $p=\softmax(f)$, the Hessian
+$\grad^2\loss=\diag(p)-pp^\top$ is positive semidefinite with spectral norm at
+most $1/2$. Consequently
+\begin{equation}
+ \langle e_y-p_A,\dAj\rangle-\tfrac14\E\|\dAj\|^2-\lambda c_j
+ \;\leq\;
+ \marginal(j\mid A)
+ \;\leq\;
+ \langle e_y-p_A,\dAj\rangle-\lambda c_j .
+ \label{eq:prop-ce}
+\end{equation}
+\end{proposition}
+
+The upper bound holds because the second-order term penalises any positive
+semidefinite curvature; the lower bound says that a large response can lose at
+most a quarter of its squared size in logit space. Both constants are explicit,
+which matters when the response is used as a feature.
+
+\subsection{Response sufficiency}
+
+\begin{proposition}[Response sufficiency]
+\label{prop:suff}
+For squared loss, conditioning on the state gives
+\begin{equation}
+ \E\!\left[\widetilde{\marginal}(j\mid A)\mid x,A\right]
+ =
+ \langle g_A(x),\dAj(x)\rangle-\|\dAj(x)\|^2-\lambda c_j,
+ \qquad
+ g_A(x)=2(\mu(x)-f_A(x)),
+ \label{eq:prop-suff}
+\end{equation}
+where $\mu(x)=\E[y\mid x,A]$.
+\end{proposition}
+
+Conditional on the state, the Bayes-optimal squared-loss utility is affine in
+the response vector plus a known quadratic penalty. State features supply the
+coefficient $g_A(x)$, response features supply $\dAj$, and the penalty is a
+function of the response alone. Any score that is independent of the response
+can only recover the state average and provably omits the interaction
+$\langle g_A,\dAj\rangle$ that state-conditioned selection exists to exploit.
+
+\subsection{The identifiability corollary}
+
+\begin{corollary}[What is left to learn]
+\label{cor:identifiability}
+Under \cref{prop:suff}, the only unknown in the optimal score is
+$g_A(x)=2(\mu(x)-f_A(x))$, the residual of the fixed predictor. In particular,
+if the predictor is calibrated so that $\E[y-f_A(x)\mid x,A]=0$ for every
+observable state, the conditional expected utility of every candidate collapses
+to $-\|\dAj(x)\|^2-\lambda c_j$, which is non-positive and decreasing in the
+response magnitude.
+\end{corollary}
+
+The corollary is the paper's central practical statement. A better predictor is
+one whose residual is closer to unpredictable, so the term the router must
+estimate shrinks towards zero while the curvature penalty remains. The oracle
+opportunity --- what a router could achieve if it knew the outcomes --- does not
+shrink; what shrinks is the part that is identifiable before the outcome is
+observed. This is why strong predictors are not simply a harder version of the
+same problem.
+
+\subsection{From estimation error to routing regret}
+
+\begin{theorem}[One-step routing regret]
+\label{thm:onestep}
+At a fixed state $A$, suppose the utility estimator satisfies
+$|\widehat{\marginal}(j\mid A)-\marginal(j\mid A)|\leq\epsilon$ for every
+remaining candidate. If $\widehat{j}$ maximises the estimate and $j^*$ maximises
+the true utility, then
+$\marginal(j^*\mid A)-\marginal(\widehat{j}\mid A)\leq 2\epsilon$.
+\end{theorem}
+
+Combining \cref{thm:onestep} with \cref{prop:expansion} bounds the regret of a
+response-based router by twice the estimation error of its first-order surrogate
+plus the second-order response term. The bound is per decision; sequential
+composition additionally requires that locally accurate choices do not visit a
+qualitatively different state, which is why \cref{sec:diagnostics} measures
+identifiability directly instead of assuming it.

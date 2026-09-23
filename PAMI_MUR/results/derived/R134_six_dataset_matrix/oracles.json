@@ -1,0 +1,81 @@
+{
+ "provenance": {
+  "raw": "KBS_MUR/results/raw/R080b_multitarget_rmur_s{1,202,303}_*/<dataset>/target*_seed*/result.json",
+  "note": "Oracle levels at the six-dataset ridge protocol (32 targets, 3 seeds, 96 cells/dataset). Not present in the R125/R133 competitor runs, which contain only the training-free policies.",
+  "generated_utc": "2026-09-23T14:09:45.472616+00:00"
+ },
+ "datasets": {
+  "METRLA": {
+   "oracle_static": {
+    "mean": 0.13330306233062097,
+    "n": 96
+   },
+   "oracle_greedy": {
+    "mean": 0.1471371069395294,
+    "n": 96
+   },
+   "cells": 96,
+   "H_state": 0.09402145316472715
+  },
+  "PEMSBAY": {
+   "oracle_static": {
+    "mean": 0.16266128552767137,
+    "n": 96
+   },
+   "oracle_greedy": {
+    "mean": 0.1804631573613733,
+    "n": 96
+   },
+   "cells": 96,
+   "H_state": 0.09864546367242207
+  },
+  "PEMS03": {
+   "oracle_static": {
+    "mean": 0.05317259894218296,
+    "n": 96
+   },
+   "oracle_greedy": {
+    "mean": 0.060247093283881746,
+    "n": 96
+   },
+   "cells": 96,
+   "H_state": 0.11742465828789567
+  },
+  "PEMS04": {
+   "oracle_static": {
+    "mean": 0.061893189675174654,
+    "n": 96
+   },
+   "oracle_greedy": {
+    "mean": 0.06692799019704883,
+    "n": 96
+   },
+   "cells": 96,
+   "H_state": 0.0752271285459306
+  },
+  "PEMS07": {
+   "oracle_static": {
+    "mean": 0.056583624420454726,
+    "n": 96
+   },
+   "oracle_greedy": {
+    "mean": 0.06225402658067954,
+    "n": 96
+   },
+   "cells": 96,
+   "H_state": 0.09108490601609727
+  },
+  "PEMS08": {
+   "oracle_static": {
+    "mean": 0.059637156839016825,
+    "n": 96
+   },
+   "oracle_greedy": {
+    "mean": 0.06459929454528417,
+    "n": 96
+   },
+   "cells": 96,
+   "H_state": 0.07681411602395873
+  }
+ }
+}

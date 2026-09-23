@@ -1,0 +1,31 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+{"dataset": "METRLA", "target": 0, "seed": 101, "rmur_q4": 0.0237905103713274, "static": 0.025955744087696075, "cached": 0.018534041941165924, "oracle_greedy": 0.08907339721918106, "wall": 75.3}
+{"dataset": "METRLA", "target": 29, "seed": 101, "rmur_q4": 0.015527936629951, "static": 0.040639303624629974, "cached": 0.04021836072206497, "oracle_greedy": 0.13860869407653809, "wall": 73.2}
+{"dataset": "METRLA", "target": 58, "seed": 101, "rmur_q4": 0.006824971176683903, "static": 0.008199445903301239, "cached": 0.01038060151040554, "oracle_greedy": 0.06564955413341522, "wall": 65.4}
+{"dataset": "METRLA", "target": 88, "seed": 101, "rmur_q4": 0.017550384625792503, "static": 0.03063090890645981, "cached": 0.015509629622101784, "oracle_greedy": 0.10130047053098679, "wall": 72.0}
+{"dataset": "METRLA", "target": 117, "seed": 101, "rmur_q4": 0.019716262817382812, "static": 0.011091279797255993, "cached": 0.013978478498756886, "oracle_greedy": 0.1017565131187439, "wall": 73.1}
+{"dataset": "METRLA", "target": 147, "seed": 101, "rmur_q4": 0.0026232085656374693, "static": 0.006228925660252571, "cached": 0.0029186150059103966, "oracle_greedy": 0.05172812566161156, "wall": 67.4}
+{"dataset": "METRLA", "target": 176, "seed": 101, "rmur_q4": 0.023579122498631477, "static": 0.02749578095972538, "cached": 0.027872364968061447, "oracle_greedy": 0.10922037065029144, "wall": 73.3}
+{"dataset": "METRLA", "target": 206, "seed": 101, "rmur_q4": 0.024899853393435478, "static": 0.01906362548470497, "cached": 0.02565385214984417, "oracle_greedy": 0.1779807060956955, "wall": 72.9}
+{
+  "G_RMUR_q4_mean": 0.016814031259855255,
+  "delta_static": {
+    "mean": -0.004349095543147996,
+    "low": -0.011467477665428305,
+    "high": 0.0019440651492914165
+  },
+  "delta_cached": {
+    "mean": -0.0025692117924336344,
+    "low": -0.009674671274115098,
+    "high": 0.0024862614060111804
+  },
+  "targets_positive_gain": 8,
+  "targets_above_static": 2,
+  "targets_above_cached": 3,
+  "pass_g1": false
+}

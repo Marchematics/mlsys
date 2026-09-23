@@ -1,0 +1,96 @@
+{
+  "run_id": "R206_fixed_set_baselines_v2",
+  "status": "confirmatory",
+  "dataset": "PEMSBAY",
+  "target_sensor": 313,
+  "seed": 101,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "candidate_sensors": [
+      102,
+      99,
+      73,
+      164,
+      322,
+      183,
+      138,
+      23,
+      80,
+      168,
+      64,
+      257,
+      97,
+      321,
+      13,
+      171
+    ],
+    "selected_indices": {
+      "forward_val": [
+        15
+      ],
+      "forward_backward_val": [
+        15
+      ],
+      "adaptive_k": [
+        0,
+        1
+      ],
+      "ids_cluster": [
+        0,
+        14,
+        5,
+        12
+      ],
+      "lookahead_val": [
+        3,
+        15
+      ],
+      "grad_influence": [
+        15,
+        5,
+        10,
+        3
+      ]
+    }
+  },
+  "metrics": {
+    "forward_val": {
+      "mean_prediction_gain": 0.020525554195046425,
+      "negative_transfer_rate": 0.351,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 1.0
+    },
+    "adaptive_k": {
+      "mean_prediction_gain": 0.005373811814934015,
+      "negative_transfer_rate": 0.4845,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 2.0
+    },
+    "ids_cluster": {
+      "mean_prediction_gain": 0.04938241094350815,
+      "negative_transfer_rate": 0.353,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "lookahead_val": {
+      "mean_prediction_gain": 0.014756778255105019,
+      "negative_transfer_rate": 0.385,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 2.0
+    },
+    "grad_influence": {
+      "mean_prediction_gain": 0.06016931310296059,
+      "negative_transfer_rate": 0.322,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "forward_backward_val": {
+      "mean_prediction_gain": 0.020525554195046425,
+      "negative_transfer_rate": 0.351,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 1.0
+    }
+  },
+  "wall_seconds": 0.4452641010284424
+}

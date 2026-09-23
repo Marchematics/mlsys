@@ -1,0 +1,93 @@
+{
+  "dataset": "METRLA",
+  "target": 0,
+  "seed": 101,
+  "test_episodes": 2000,
+  "candidate_count": 16,
+  "budget": 4,
+  "device": "cuda:0",
+  "policies": {
+    "empty_state": {
+      "wall_seconds": 0.03143802471458912,
+      "seconds_per_episode_ms": 0.01571901235729456,
+      "expert_calls": 1,
+      "expert_rows": 2000,
+      "expert_seconds": 0.030034445226192474,
+      "expert_rows_per_episode": 1.0,
+      "peak_allocated_mb": 89.84423828125,
+      "peak_reserved_mb": 332.0
+    },
+    "oracle_static": {
+      "wall_seconds": 0.5475668478757143,
+      "seconds_per_episode_ms": 0.27378342393785715,
+      "expert_calls": 17,
+      "expert_rows": 34000,
+      "expert_seconds": 0.4689078461378813,
+      "expert_rows_per_episode": 17.0,
+      "peak_allocated_mb": 89.84423828125,
+      "peak_reserved_mb": 332.0
+    },
+    "oracle_greedy": {
+      "wall_seconds": 3.4085220377892256,
+      "seconds_per_episode_ms": 1.7042610188946128,
+      "expert_calls": 64,
+      "expert_rows": 127143,
+      "expert_seconds": 3.147465940564871,
+      "expert_rows_per_episode": 63.5715,
+      "peak_allocated_mb": 172.85986328125,
+      "peak_reserved_mb": 332.0
+    },
+    "response_q2": {
+      "wall_seconds": 1.488931342959404,
+      "seconds_per_episode_ms": 0.744465671479702,
+      "expert_calls": 12,
+      "expert_rows": 24000,
+      "expert_seconds": 0.59045728482306,
+      "expert_rows_per_episode": 12.0,
+      "peak_allocated_mb": 172.85986328125,
+      "peak_reserved_mb": 332.0,
+      "fraction_of_full_pool_rows": 0.17647058823529413
+    },
+    "response_q4": {
+      "wall_seconds": 2.374093597754836,
+      "seconds_per_episode_ms": 1.187046798877418,
+      "expert_calls": 20,
+      "expert_rows": 40000,
+      "expert_seconds": 1.2624243572354317,
+      "expert_rows_per_episode": 20.0,
+      "peak_allocated_mb": 172.85986328125,
+      "peak_reserved_mb": 332.0,
+      "fraction_of_full_pool_rows": 0.29411764705882354
+    },
+    "response_q8": {
+      "wall_seconds": 3.1803235448896885,
+      "seconds_per_episode_ms": 1.5901617724448442,
+      "expert_calls": 36,
+      "expert_rows": 72000,
+      "expert_seconds": 2.081381104886532,
+      "expert_rows_per_episode": 36.0,
+      "peak_allocated_mb": 172.85986328125,
+      "peak_reserved_mb": 332.0,
+      "fraction_of_full_pool_rows": 0.5294117647058824
+    },
+    "response_full": {
+      "wall_seconds": 5.30935980938375,
+      "seconds_per_episode_ms": 2.654679904691875,
+      "expert_calls": 64,
+      "expert_rows": 127055,
+      "expert_seconds": 3.952348904684186,
+      "expert_rows_per_episode": 63.5275,
+      "peak_allocated_mb": 172.85986328125,
+      "peak_reserved_mb": 332.0,
+      "fraction_of_full_pool_rows": 0.9342279411764706
+    },
+    "screening_only_q4": {
+      "wall_seconds": 0.06985201127827168,
+      "seconds_per_episode_ms": 0.03492600563913584,
+      "expert_calls": 0,
+      "expert_rows": 0,
+      "peak_allocated_mb": 40.7880859375,
+      "peak_reserved_mb": 332.0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+{"dataset": "PEMSBAY", "target": 0, "seed": 101, "rmur_q4": 0.01073695719242096, "static": 0.011158488690853119, "cached": 0.00991597305983305, "oracle_greedy": 0.09131543338298798, "wall": 78.7}
+{"dataset": "PEMSBAY", "target": 0, "seed": 202, "rmur_q4": 0.01257470715790987, "static": 0.011873160488903522, "cached": 0.013943636789917946, "oracle_greedy": 0.09565889090299606, "wall": 84.6}
+{"dataset": "PEMSBAY", "target": 0, "seed": 303, "rmur_q4": 0.010514077730476856, "static": 0.013148332946002483, "cached": 0.01265880186110735, "oracle_greedy": 0.09906774759292603, "wall": 85.2}
+{"dataset": "PEMSBAY", "target": 21, "seed": 101, "rmur_q4": 0.02743060328066349, "static": 0.030781298875808716, "cached": 0.03515695780515671, "oracle_greedy": 0.1136137843132019, "wall": 83.4}
+{"dataset": "PEMSBAY", "target": 21, "seed": 202, "rmur_q4": 0.0037075476720929146, "static": 0.011442115530371666, "cached": 0.007778563071042299, "oracle_greedy": 0.08120088279247284, "wall": 84.1}
+{"dataset": "PEMSBAY", "target": 21, "seed": 303, "rmur_q4": 0.04345618933439255, "static": 0.03835655376315117, "cached": 0.03580949082970619, "oracle_greedy": 0.10217919945716858, "wall": 61.8}
+{"dataset": "PEMSBAY", "target": 43, "seed": 101, "rmur_q4": 0.01952008530497551, "static": 0.013232878409326077, "cached": 0.015036792494356632, "oracle_greedy": 0.09742061048746109, "wall": 45.2}
+{"dataset": "PEMSBAY", "target": 43, "seed": 202, "rmur_q4": 0.010817131027579308, "static": 0.008180688135325909, "cached": 0.006317479535937309, "oracle_greedy": 0.0861889123916626, "wall": 47.5}
+{"dataset": "PEMSBAY", "target": 43, "seed": 303, "rmur_q4": 0.0075874002650380135, "static": 0.012108156457543373, "cached": 0.00867976900190115, "oracle_greedy": 0.09087089449167252, "wall": 31.2}
+{"dataset": "PEMSBAY", "target": 64, "seed": 101, "rmur_q4": 0.01486489549279213, "static": 0.012771370820701122, "cached": 0.014816396869719028, "oracle_greedy": 0.08503925055265427, "wall": 35.2}
+{"dataset": "PEMSBAY", "target": 64, "seed": 202, "rmur_q4": 0.019428376108407974, "static": 0.023054052144289017, "cached": 0.01337889488786459, "oracle_greedy": 0.07580827176570892, "wall": 32.2}
+{"dataset": "PEMSBAY", "target": 64, "seed": 303, "rmur_q4": 0.015015114098787308, "static": 0.016523439437150955, "cached": 0.007657230366021395, "oracle_greedy": 0.06446244567632675, "wall": 30.3}
+{"dataset": "PEMSBAY", "target": 86, "seed": 101, "rmur_q4": 0.003666127100586891, "static": 0.001534773618914187, "cached": 0.002650899812579155, "oracle_greedy": 0.03486340120434761, "wall": 31.1}
+{"dataset": "PEMSBAY", "target": 86, "seed": 202, "rmur_q4": 0.0002908819878939539, "static": 0.00050113326869905, "cached": -0.00017454320914112031, "oracle_greedy": 0.030453970655798912, "wall": 31.9}
+{"dataset": "PEMSBAY", "target": 86, "seed": 303, "rmur_q4": 0.0021897898986935616, "static": 0.004881180357187986, "cached": -0.0009517963626421988, "oracle_greedy": 0.03351099416613579, "wall": 36.5}
+{"dataset": "PEMSBAY", "target": 108, "seed": 101, "rmur_q4": 0.02771652676165104, "static": 0.013796092942357063, "cached": 0.025578102096915245, "oracle_greedy": 0.09917374700307846, "wall": 42.2}
+{"dataset": "PEMSBAY", "target": 108, "seed": 202, "rmur_q4": -0.0044651939533650875, "static": 0.01585971936583519, "cached": 0.01518656499683857, "oracle_greedy": 0.11090623587369919, "wall": 47.2}
+{"dataset": "PEMSBAY", "target": 108, "seed": 303, "rmur_q4": 0.024511592462658882, "static": 0.017241260036826134, "cached": 0.01582908071577549, "oracle_greedy": 0.0948605164885521, "wall": 69.6}
+{"dataset": "PEMSBAY", "target": 129, "seed": 101, "rmur_q4": -0.006724548991769552, "static": -0.004321204498410225, "cached": -0.006825587246567011, "oracle_greedy": 0.08691181987524033, "wall": 79.6}
+{"dataset": "PEMSBAY", "target": 129, "seed": 202, "rmur_q4": -0.041864197701215744, "static": -0.03971781209111214, "cached": -0.058651357889175415, "oracle_greedy": 0.10831151902675629, "wall": 73.3}
+{"dataset": "PEMSBAY", "target": 129, "seed": 303, "rmur_q4": 0.006825332064181566, "static": 0.0026754122227430344, "cached": 0.009064926765859127, "oracle_greedy": 0.0861484631896019, "wall": 61.7}
+{"dataset": "PEMSBAY", "target": 151, "seed": 101, "rmur_q4": -0.013775023631751537, "static": 4.254460509400815e-05, "cached": -0.01795143447816372, "oracle_greedy": 0.1481696516275406, "wall": 50.6}
+{"dataset": "PEMSBAY", "target": 151, "seed": 202, "rmur_q4": 0.03108184225857258, "static": 0.045507773756980896, "cached": 0.038652412593364716, "oracle_greedy": 0.1556214690208435, "wall": 53.1}
+{"dataset": "PEMSBAY", "target": 151, "seed": 303, "rmur_q4": 0.026433229446411133, "static": 0.02777733840048313, "cached": 0.034855540841817856, "oracle_greedy": 0.14395709335803986, "wall": 50.3}
+{"dataset": "PEMSBAY", "target": 172, "seed": 101, "rmur_q4": 0.007390598300844431, "static": 0.01306457445025444, "cached": 0.0074170962907373905, "oracle_greedy": 0.0553695410490036, "wall": 54.5}
+{"dataset": "PEMSBAY", "target": 172, "seed": 202, "rmur_q4": 0.006952507887035608, "static": 0.0034337840043008327, "cached": 0.005046387668699026, "oracle_greedy": 0.057973891496658325, "wall": 59.4}
+{"dataset": "PEMSBAY", "target": 172, "seed": 303, "rmur_q4": 0.025900602340698242, "static": 0.030130142346024513, "cached": 0.03240383788943291, "oracle_greedy": 0.08272001147270203, "wall": 47.6}
+{"dataset": "PEMSBAY", "target": 194, "seed": 101, "rmur_q4": 0.0032715697307139635, "static": 0.005931306630373001, "cached": 0.0051879738457500935, "oracle_greedy": 0.054951637983322144, "wall": 54.8}
+{"dataset": "PEMSBAY", "target": 194, "seed": 202, "rmur_q4": 0.012948003597557545, "static": 0.015283433720469475, "cached": 0.014053894206881523, "oracle_greedy": 0.05956779420375824, "wall": 47.5}
+{"dataset": "PEMSBAY", "target": 194, "seed": 303, "rmur_q4": 0.007393333595246077, "static": 0.002330118790268898, "cached": 0.0009181427303701639, "oracle_greedy": 0.04846073314547539, "wall": 47.1}
+{"dataset": "PEMSBAY", "target": 216, "seed": 101, "rmur_q4": 0.020047621801495552, "static": 0.0023961500264704227, "cached": 0.012417708523571491, "oracle_greedy": 0.11274503916501999, "wall": 40.5}
+{"dataset": "PEMSBAY", "target": 216, "seed": 202, "rmur_q4": -0.007502174936234951, "static": -0.001986035378649831, "cached": 0.002292959950864315, "oracle_greedy": 0.14218226075172424, "wall": 39.8}
+{"dataset": "PEMSBAY", "target": 216, "seed": 303, "rmur_q4": 0.02171204797923565, "static": -0.00018769645248539746, "cached": 0.012346995994448662, "oracle_greedy": 0.11048562824726105, "wall": 43.8}
+{"dataset": "PEMSBAY", "target": 237, "seed": 101, "rmur_q4": 0.012961626052856445, "static": 0.007075079716742039, "cached": 0.01142970472574234, "oracle_greedy": 0.09032393246889114, "wall": 47.8}
+{"dataset": "PEMSBAY", "target": 237, "seed": 202, "rmur_q4": 0.0032553456258028746, "static": 0.0077733201906085014, "cached": 0.007500320207327604, "oracle_greedy": 0.07809857279062271, "wall": 43.7}
+{"dataset": "PEMSBAY", "target": 237, "seed": 303, "rmur_q4": 0.012404550798237324, "static": 0.015803063288331032, "cached": 0.009309421293437481, "oracle_greedy": 0.0782826840877533, "wall": 45.7}
+{"dataset": "PEMSBAY", "target": 259, "seed": 101, "rmur_q4": 0.05823931843042374, "static": 0.0665273442864418, "cached": 0.03818611800670624, "oracle_greedy": 0.20316268503665924, "wall": 51.7}
+{"dataset": "PEMSBAY", "target": 259, "seed": 202, "rmur_q4": 0.012003025971353054, "static": -0.008630884811282158, "cached": 0.013291467912495136, "oracle_greedy": 0.14568784832954407, "wall": 56.5}
+{"dataset": "PEMSBAY", "target": 259, "seed": 303, "rmur_q4": -0.009760669432580471, "static": 0.001457301084883511, "cached": 0.03588443621993065, "oracle_greedy": 0.21000562608242035, "wall": 54.4}
+{"dataset": "PEMSBAY", "target": 280, "seed": 101, "rmur_q4": 0.03203042969107628, "static": 0.02997824363410473, "cached": 0.020623771473765373, "oracle_greedy": 0.18444666266441345, "wall": 60.5}
+{"dataset": "PEMSBAY", "target": 280, "seed": 202, "rmur_q4": 0.02090495638549328, "static": 0.03736281767487526, "cached": 0.03926220163702965, "oracle_greedy": 0.19427968561649323, "wall": 55.6}
+{"dataset": "PEMSBAY", "target": 280, "seed": 303, "rmur_q4": 0.015209103934466839, "static": 0.021159391850233078, "cached": 0.014896177686750889, "oracle_greedy": 0.1700136959552765, "wall": 55.5}
+{"dataset": "PEMSBAY", "target": 302, "seed": 101, "rmur_q4": 0.007919625379145145, "static": 0.004403137136250734, "cached": 0.005010879132896662, "oracle_greedy": 0.0631629154086113, "wall": 63.4}
+{"dataset": "PEMSBAY", "target": 302, "seed": 202, "rmur_q4": 0.024654552340507507, "static": 0.025761721655726433, "cached": 0.028938647359609604, "oracle_greedy": 0.07687762379646301, "wall": 55.3}
+{"dataset": "PEMSBAY", "target": 302, "seed": 303, "rmur_q4": 0.01709366962313652, "static": 0.017931655049324036, "cached": 0.014839956536889076, "oracle_greedy": 0.0644637942314148, "wall": 50.3}
+{"dataset": "PEMSBAY", "target": 324, "seed": 101, "rmur_q4": 0.02278139255940914, "static": 0.030570510774850845, "cached": 0.03366086632013321, "oracle_greedy": 0.17299526929855347, "wall": 46.7}
+{"dataset": "PEMSBAY", "target": 324, "seed": 202, "rmur_q4": 0.007969317026436329, "static": 0.0253169983625412, "cached": 0.024176668375730515, "oracle_greedy": 0.14550131559371948, "wall": 37.9}
+{"dataset": "PEMSBAY", "target": 324, "seed": 303, "rmur_q4": 0.010518855415284634, "static": 0.02545165829360485, "cached": 0.018169717863202095, "oracle_greedy": 0.16153009235858917, "wall": 38.5}
+{
+  "G_RMUR_q4_mean": 0.012454971926369277,
+  "delta_static": {
+    "mean": -0.0014355673238242164,
+    "low": -0.004017296785726407,
+    "high": 0.0010934304165857612
+  },
+  "delta_cached": {
+    "mean": -0.0009966561374312735,
+    "low": -0.0033011814637575305,
+    "high": 0.0009741757445529698
+  },
+  "targets_positive_gain": 15,
+  "targets_above_static": 6,
+  "targets_above_cached": 8,
+  "pass_g1": false
+}

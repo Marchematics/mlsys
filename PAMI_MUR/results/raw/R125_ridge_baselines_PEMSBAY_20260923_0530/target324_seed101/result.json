@@ -1,0 +1,48 @@
+{
+  "dataset": "PEMSBAY",
+  "target_sensor": 324,
+  "seed": 101,
+  "metrics": {
+    "random": {
+      "mean_prediction_gain": 0.004068369977176189,
+      "negative_transfer_rate": 0.55
+    },
+    "relevance": {
+      "mean_prediction_gain": -0.025637837126851082,
+      "negative_transfer_rate": 0.7045
+    },
+    "mmr": {
+      "mean_prediction_gain": -0.057510413229465485,
+      "negative_transfer_rate": 0.701
+    },
+    "dpp": {
+      "mean_prediction_gain": -0.03608417883515358,
+      "negative_transfer_rate": 0.6695
+    },
+    "facility_location": {
+      "mean_prediction_gain": 0.0009086742647923529,
+      "negative_transfer_rate": 0.5145
+    },
+    "mutual_information": {
+      "mean_prediction_gain": -0.043567802757024765,
+      "negative_transfer_rate": 0.713
+    },
+    "kcenter": {
+      "mean_prediction_gain": -0.020570117980241776,
+      "negative_transfer_rate": 0.549
+    },
+    "kmeans_representatives": {
+      "mean_prediction_gain": -0.011991458013653755,
+      "negative_transfer_rate": 0.5775
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.01500877644866705,
+      "negative_transfer_rate": 0.595
+    },
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0
+    }
+  },
+  "wall_seconds": 5.744898319244385
+}

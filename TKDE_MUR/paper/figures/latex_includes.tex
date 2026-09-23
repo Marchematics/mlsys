@@ -1,0 +1,45 @@
+% Data-driven figures for the final KBS structure.
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig1_conceptual.pdf}
+  \caption{The two conditions studied in this work. A candidate's value changes
+  after a similar context is selected. Oracle-Static versus Oracle-Greedy
+  measures structural headroom, while cached and response-aware inputs
+  determine utility predictability.}
+  \label{fig:conceptual}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig2_headroom.pdf}
+  \caption{Redundancy creates state-conditioning headroom. The gap between
+  Oracle-Static and Oracle-Greedy grows with duplicate ratio, while MUR
+  recovers part of that gap.}
+  \label{fig:headroom}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig3_scaling.pdf}
+  \caption{Candidate-set growth creates a ranking bottleneck. Pointwise utility
+  MAE remains modest as $K$ increases, while top-1 accuracy falls and
+  one-step regret rises.}
+  \label{fig:scaling}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig4_frontier.pdf}
+  \caption{Calibrated stopping traces a gain--harm frontier at two harmful
+  candidate fractions. The free-threshold control follows a similar frontier.}
+  \label{fig:frontier}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig5_real_observability.pdf}
+  \caption{Real-data headroom and utility predictability. Both tasks contain
+  oracle state-conditioning headroom. On Traffic, adding expert-response
+  summaries improves utility predictability beyond cached context features.}
+  \label{fig:real_observability}
+\end{figure*}

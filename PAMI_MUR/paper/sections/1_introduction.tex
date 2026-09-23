@@ -1,0 +1,79 @@
+\section{Introduction}
+
+Predictive systems increasingly combine multiple auxiliary contexts, including
+retrieved examples, historical observations, and neighboring records. The
+usefulness of each context depends on what the predictor has already received.
+A context that improves a prediction in isolation can become redundant after
+similar information is selected, while another candidate with lower standalone
+value can correct the remaining error. A selection rule that assigns each
+candidate a fixed score cannot represent this change.
+
+We model the value of a candidate directly as its marginal reduction in
+end-task loss,
+\begin{equation}
+ m(j\mid A)=F(A\cup\{j\})-F(A),
+\end{equation}
+where $A$ is the current context set and $F$ measures the expected loss
+reduction relative to an anchor-only predictor. The marginal depends on the
+predictor's current residual and on the direction and magnitude of the
+prediction change induced by the candidate. It therefore differs from a
+standalone score $u(j\mid\emptyset)$: the same candidate can be useful at one
+selection state and redundant or harmful at another.
+
+This distinction is structural rather than terminological. A perfect
+standalone score fixes candidate values before selection. A sequential oracle
+recomputes the true marginal after each addition. Their gap,
+\begin{equation}
+ H_{\mathrm{state}}
+ =
+ \frac{G_{\mathrm{seq}}-G_{\mathrm{stand}}}{G_{\mathrm{seq}}},
+\end{equation}
+measures the value created solely by conditioning on the selected set. We
+call this quantity structural headroom. Controlled experiments show that
+redundancy enlarges it, and that a learned marginal-utility router can surpass
+an exact standalone ranking when redundancy is high.
+
+Learning to estimate marginal utility is harder than predicting a fixed
+candidate score. The router must distinguish candidates whose utilities are
+close, and it must know how each candidate changes the fixed predictor. As the
+candidate pool grows, the utility gap between the best alternatives shrinks.
+Cached context representations, in turn, omit information carried by the
+predictor's response to a candidate. These two properties set the design
+requirements for a practical router.
+
+We introduce Response-Aware Marginal-Utility Routing (R-MUR). A low-cost cached
+score first narrows the candidate pool. The fixed predictor is evaluated only
+on this shortlist, and compact summaries of its response are used to rerank the
+retained candidates. Training combines marginal-utility regression with a
+pairwise objective weighted by the utility gap, which aligns estimation with
+the final selection decision. The design follows directly from the two
+properties above: predictor-response features expose the change that enters
+the marginal, and ranking calibration targets small decision margins.
+
+The resulting evidence chain is deliberately narrow, and it has a boundary
+that we characterize rather than hide. Controlled studies isolate how
+redundancy and candidate-set growth change the selection problem. Across
+standard traffic benchmarks, R-MUR improves learned context selection over
+cached and standalone baselines, while a multi-target study shows that
+state-conditioning headroom persists across sensors. These results establish
+state-conditioned marginal utility as a practical decision object for budgeted
+multi-context prediction and identify predictor response as a key signal for
+learning it. We then test the same framework against a subset-capable
+nonlinear backbone and against a second task family. The nonlinear backbone
+preserves structural headroom but shrinks the share of it that a router can
+realize: response-free learned routers become indistinguishable from random
+selection and R-MUR's advantage over them is no longer statistically resolved.
+The second family, whose candidate demonstrations are not redundant, is already
+solved by nearest-neighbour relevance. Together with the smooth-loss analysis,
+these results locate the regime in which sequential marginal routing pays off:
+candidates must overlap in what they contribute, and the fixed predictor must
+retain a residual that the router can observe.
+
+\paragraph{Scope and companion manuscripts.} This paper reports the method and
+the generalisation evidence: the pipeline, the ten-method baseline matrix, the
+strong-backbone boundary, the second task family, the compute profile and the
+adaptive rule. The identifiability theory --- why the predictor's response
+decides whether utility can be estimated, and why stronger predictors make
+routing harder --- is developed and proved in a companion manuscript. The
+summary propositions reproduced here (\cref{sec:analysis}) are stated so that
+this paper's predictions can be read without it.

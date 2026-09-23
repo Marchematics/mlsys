@@ -1,0 +1,302 @@
+\documentclass[preprint,12pt]{elsarticle}
+\journal{Knowledge-Based Systems}
+\usepackage{graphicx,booktabs,amsmath,amssymb}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\candidates}{\mathcal{C}}
+\newcommand{\loss}{\ell}
+\newcommand{\marginal}{m}
+\usepackage{hyperref}
+\setlength{\emergencystretch}{1em}
+\begin{document}
+\begin{frontmatter}
+\title{Supplementary Material: Response-Aware Marginal-Utility Routing for Multi-Context Prediction}
+\ifdefined\anonymousmode
+\author{}
+\else
+\author[zua]{Xinling Wen}
+\author[zua]{Jiahao Zhang}
+\author[zua]{Yu Chen}
+\affiliation[zua]{organization={School of Electronics and Information,
+                             Zhengzhou University of Aeronautics},
+                 city={Zhengzhou}, country={China}}
+\fi
+\begin{abstract}
+This supplement documents the controlled environment, the implementation and
+training configuration of R-MUR, the multi-target traffic protocol, the
+complete per-seed results, and the additional response-observability analysis
+that supports the mechanism section of the main paper.
+\end{abstract}
+\end{frontmatter}
+
+\section{Controlled Environment}
+
+\subsection{Data generator}
+Each episode contains a target vector $y\in\mathbb{R}^{G}$, an anchor prediction
+$a=y+\sigma_a\varepsilon$ with $\varepsilon\sim\mathcal{N}(0,I)$, and $K$
+candidate contexts. The candidate pool is built from
+$U=\max(1,\operatorname{round}(K(1-r_{\mathrm{dup}})))$ distinct groups, where
+$r_{\mathrm{dup}}$ is the duplicate ratio. Each candidate is assigned to one of
+these groups; duplicates share the same group assignment. For a candidate in
+group $g$, the useful measurement is $m_g=y_g+\rho_{\mathrm{use}}(a_g-y_g)$ with
+$\rho_{\mathrm{use}}=0.1$. A candidate marked harmful receives
+$m_g=y_g+\rho_{\mathrm{harm}}(a_g-y_g)$ with $\rho_{\mathrm{harm}}=1.8$. The
+frozen expert predicts each group by the mean measurement of its selected
+candidates, leaving groups without a selected candidate at their anchor value.
+The episode loss is the mean squared error across groups. Standalone and
+state-conditioned marginals are computed by enumerating every candidate
+addition. Relevance is drawn independently from $[0.7,1.0]$; duplicate groups
+therefore make content redundancy observable to similarity-based selectors.
+Maximum marginal relevance follows the standard greedy rule with relevance
+minus a cosine-similarity penalty to the selected set; the penalty is selected
+on a validation split from $\{0,.25,.5,1\}$.
+
+\subsection{Protocols}
+\begin{table}[t]
+\centering
+\small
+\caption{Controlled protocols. All reported gains are loss reductions relative
+to the anchor-only predictor. Seeds are independent training and evaluation
+runs.}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+Protocol & $K$ & $B$ & $r_{\mathrm{dup}}$ & Seeds / splits\\
+\midrule
+Redundancy ladder & 16 & 4 & $0,.25,.5,.75$ & 5 seeds; 3000 train, 2500 test\\
+Candidate scaling & $4,8,16,32,64$ & 4 & .50 & 5 seeds; 2000 train, 1500 test\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The controlled experiments use 15 training epochs for the candidate-scaling
+protocol and 20 epochs for the redundancy ladder.
+
+\section{R-MUR Implementation and Training}
+\label{sec:supp-rmur}
+
+\subsection{Router}
+The router has three parts: a cached scorer $g_C$, a response-aware scorer
+$g_R$, and one shared set encoder. Every candidate is represented by its
+history, the query by the anchor history, and the selected set by the
+histories of the selected candidates packed into a fixed-size tensor with a
+validity mask. A permutation-invariant DeepSets encoder of depth two with
+hidden and set width 64 summarises the selected set. The cached scorer maps the
+query, set and candidate representations to a scalar. The response-aware
+scorer takes the same inputs plus the seven response features described below
+and is a two-layer network of width 64.
+
+\subsection{Response summary}
+For a candidate $j$ at state $A$ the frozen predictor is evaluated with and
+without the candidate, and the summary concatenates: the mean of the base
+forecast, the mean of the forecast after adding the candidate, the mean of the
+change, its standard deviation, its mean absolute value, its Euclidean norm
+divided by $\sqrt{H}$ with horizon $H$, and its maximum absolute value.
+
+\subsection{Training}
+Training states are sampled from the training episodes. A state is a uniformly
+random subset of the candidate pool whose size is drawn uniformly from $0$ to
+$B-1$, so empty, partial and nearly complete selected sets all occur. Every
+candidate outside the state contributes one labelled example with its true
+marginal utility, computed as the counterfactual loss difference between the
+predictor with and without that candidate. A single state therefore supplies
+$K-|A|$ regression targets and all candidate pairs of the state for the ranking
+term. The objective is a Huber regression term plus a pairwise ranking term
+whose per-pair weight is the absolute utility gap of the pair,
+\begin{equation}
+ \mathcal L
+ =
+ \mathcal L_{\mathrm{Huber}}
+ +
+ \beta
+ \sum_{i,j:\,\widetilde m_i>\widetilde m_j}
+ |\widetilde m_i-\widetilde m_j|
+ \log\!\left(1+\exp\!\left[-(\widehat m_i-\widehat m_j)\right]\right),
+\end{equation}
+with $\beta=1$ in every reported run. Training uses AdamW with learning rate
+$10^{-3}$ and weight decay $10^{-4}$, batches of 128 states, and 20 epochs;
+each target-run contributes 16{,}000 states, four per training episode, with 16
+candidate labels each.
+
+\subsection{Inference}
+At deployment the cached scorer ranks the remaining candidates and the
+response-aware scorer is evaluated only on the top-$q$ shortlist, with $q=4$ in
+every reported run. The router adds the highest-scoring shortlisted candidate
+when its estimated marginal utility is positive and otherwise stops; it also
+stops when the context budget is reached. The predictor is therefore evaluated
+on a fraction $q/K$ of the pool per decision.
+
+\subsection{Baselines}
+\label{sec:supp-baselines}
+Standalone Utility is a model with the same set encoder, trained on states with
+an empty selected set and one sampled candidate per state, so it estimates the
+standalone marginal $u(j\mid\emptyset)$ and its ranking is fixed before
+selection. The cached-only router is the same model trained on random nonempty
+states from cached inputs only, so it is state-conditioned but never observes
+the predictor response. Both use the same optimiser, schedule and state count
+as R-MUR.
+
+\paragraph{Content-based subset rules.}
+Facility location maximises the sum of similarities to the target, greedy DPP
+maximises the determinant of the candidate kernel, facility location with
+relevance weights multiplies the two, and $k$-center minimises the largest
+distance from the target to the selected set. All four use the same candidate
+pool and budget and require no training.
+
+\paragraph{Fixed-set acquisition rules.}
+Five policies from the feature-selection and active-feature-acquisition
+literature are adapted to the protocol. Every policy uses only the training and
+validation splits: the harm rate is the per-episode fraction of episodes whose
+loss exceeds the anchor-only loss, the same definition used for every other
+policy in the paper. Each chooses one set per target from
+the training and validation splits with the frozen predictor, and then applies
+that set to every test episode; none of them observes a test label, and none
+conditions its decision on the state of an individual episode. They answer a
+question the router must answer, namely whether per-episode conditioning buys
+anything over the best set that can be chosen offline.
+
+\begin{itemize}
+\item \emph{Greedy validation set} follows best-subset and optimal-pursuit
+  selection \citep{zhu2025best}: starting from the empty set, it adds the
+  candidate with the largest validation loss reduction, and one elimination
+  pass then removes the weakest element and reconsiders its best replacement.
+  The elimination pass selected the same set as plain forward selection on all
+  576 target-runs of the sweep, so the two are not reported separately.
+\item \emph{Adaptive-$k$ relevance} follows adaptive-$k$ context selection
+  \citep{taguchi2025adaptive}: candidates are ordered by relevance and the
+  number of contexts is chosen on validation rather than fixed in advance, so
+  the policy may select fewer than the budget when additional contexts do not
+  reduce the validation loss.
+\item \emph{Cluster-based selection} follows iterative demonstration
+  selection \citep{qin2023iterative}: the candidate pool is clustered in
+  history space and the most relevant member of each cluster represents it, so
+  the chosen set is diverse by construction and needs no predictor. The cluster
+  structure is estimated on the validation split; no statistic of the test
+  episodes enters the selection, and the fixed set is then applied to them.
+\item \emph{Two-step lookahead set} follows nongreedy active feature
+  acquisition \citep{valancius2023acquisition,norcliffe2025stochastic}: the
+  best pair of candidates is chosen on validation before any single candidate
+  is committed to, and the set is then completed greedily, so jointly
+  informative candidates are not missed by a myopic rule. The policy selects
+  the same set as greedy validation selection on most runs and matches its gain
+  to within .0002 on every dataset, so non-greedy lookahead does not change the
+  outcome in this setting.
+\item \emph{Gradient influence} ranks candidates by the first-order loss
+  reduction, so the sign convention matters: $2\langle d_j, r\rangle+\lVert
+  d_j\rVert^2$ is the increase in loss and the ranking uses its negation. The
+  policy is scored on the validation split and the resulting set is applied to
+  the test episodes.
+\item \emph{Gradient influence} follows gradient-estimated demonstration
+  selection \citep{zhang2025linear}: the first-order term of the squared-loss
+  change, $2\langle f_A-y, d_j\rangle+\lVert d_j\rVert^2$ with
+  $d_j=f_{A\cup\{j\}}-f_A$, scores each candidate on the validation split,
+  averaged over randomly sampled states so that the score does not depend on
+  one state; candidates are scored independently, in linear time in the pool
+  size. Because that expression is a loss increase, the ranking selects the
+  candidates with the smallest value.
+\end{itemize}
+
+The oracle policies use the true marginals and are not deployable.
+
+\section{Extensions of the Regret Decomposition}
+\label{sec:supp-proofs}
+
+The main paper states the shortlist-aware bound
+\begin{equation}
+ \marginal(j^\star\mid A)-\marginal(\widehat{j}\mid A)\le 2\epsilon_C+2\epsilon_R ,
+\end{equation}
+which follows from the exact decomposition into a screening and a reranking
+term. One remark extends it.
+
+\paragraph{Sequential selection.}
+A guarantee for a sequence of $B$ selections requires the induced set utility
+to be monotone and submodular, so that approximate greedy selection inherits
+the standard $(1-1/e)$ factor up to the accumulated estimation error. Context
+utility is not monotone in general, because a context can increase the loss,
+and we do not assume submodularity in the experiments. The sequential case is
+therefore stated as a condition rather than claimed for R-MUR.
+
+\section{Multi-Target Traffic Protocol}
+
+The six benchmarks use the standard files distributed with the traffic
+forecasting benchmark suite. Each file provides a multivariate series and
+fixed train, validation, and test index sets; no observation is reordered
+across the split boundaries. Values are standardized with the mean and standard
+deviation of the training segment.
+
+For a dataset with $N$ sensors, the evaluation fixes 32 evenly spaced target
+sensors. Each target sensor has its own candidate pool, built from the training
+segment: eight sensors with the highest correlation to the target, five sensors
+of intermediate correlation, and three sensors drawn uniformly at random with a
+fixed construction seed. Each episode takes a window from the split under
+evaluation. The anchor is the target sensor's previous 12 observations, each
+candidate contributes its previous 12 observations, and the target is the
+target sensor's next 12 observations.
+
+The frozen predictor is a ridge model with penalty 10, fitted for each target
+sensor on that target's training windows under the full context subset, the
+empty subset, and a randomly masked subset of its own candidate pool, and then
+held fixed for candidate evaluation, oracle computation and router training.
+The predictor is therefore specific to the target and is refitted for every
+target. The loss is the mean squared error over the forecast horizon.
+
+Each target is repeated with three independent runs. The reported prediction
+gain is the reduction in loss relative to the anchor-only predictor, the
+negative-transfer rate is the fraction of episodes whose routed loss exceeds
+the anchor-only loss, and oracle recovery is the pooled ratio of learned gain
+to sequential-oracle gain. Intervals resample the 32 target means with 5000
+bootstrap replicates; the hierarchical variant resamples targets and then runs
+within each target.
+
+\section{Complete Controlled and Multi-Target Results}
+
+\input{supplement_tables}
+
+\section{Additional Response-Observability Analysis}
+
+The probe behind the mechanism panel of the main paper uses the frozen ridge
+predictor of a single target sensor of METR-LA and five independent runs. It
+samples four states per episode. For each state and candidate the feature
+families are:
+\begin{itemize}
+\item $\mathcal{X}_1$: query history, mean selected history, candidate history,
+their difference and product, and selected-set size.
+\item $\mathcal{X}_2$: $\mathcal{X}_1$ plus the mean expert prediction before
+and after adding the candidate, the mean prediction delta, and the mean
+absolute delta.
+\item $\mathcal{X}_3$: $\mathcal{X}_2$ plus the full before and after forecast
+trajectories and their difference.
+\end{itemize}
+A histogram-based gradient boosting regressor and classifier are fitted for
+each family, with hyperparameters selected on a calibration split over depth
+$\{3,6,\infty\}$ and $L_2$ regularization $\{10^{-3},1\}$, 150 boosting
+iterations and learning rate .08. The classifier provides the positive-utility
+AUC; the regressor provides the mean absolute error, Spearman correlation,
+top-1 accuracy and one-step regret reported in the main paper. The probe is a
+diagnostic of the information content of the predictor response, not a routing
+policy.
+
+\section{Decision-Margin Audit}
+
+The candidate-scaling audit uses the saved rollout predictions and true
+marginals of the controlled scaling protocol. For each state and episode, let
+$m_{(1)}$ and $m_{(2)}$ be the largest and second-largest true marginal
+utilities among the unselected candidates. The positive top-two margin is
+$\Delta=m_{(1)}-m_{(2)}$ when $\Delta>0$. We report the normalized pointwise
+error
+\begin{equation}
+ \mathrm{nMAE}=\frac{\mathbb{E}|\widehat m-m|}{\operatorname{SD}(m)},
+\end{equation}
+the fraction of states with zero top-two margin, the median ratio between the
+maximum absolute candidate error and the positive margin, and the decision
+accuracy
+\begin{equation}
+ \mathrm{Acc}_{\mathrm{dec}}=
+ \Pr\!\left[m(\widehat j\mid A)=m(j^*\mid A)\right],
+\end{equation}
+where $\widehat j$ is the predicted argmax and $j^*$ is a true argmax. Strict
+top-1 accuracy compares candidate indices, so it counts an exact tie among
+equally useful candidates as an error. Accuracy and margin statistics use
+states with at least two unselected candidates, where a nontrivial argmax
+decision exists.
+
+\end{document}

@@ -1,0 +1,116 @@
+\section{Response-Aware Marginal-Utility Routing}
+
+R-MUR estimates marginal utility with the fixed predictor. Every candidate is
+first represented by cached context features. At state $A$, let
+$\widehat m_C(j\mid A)$ denote a cached-only utility score. A shortlist is
+\begin{equation}
+ \mathcal Q_A=\operatorname{TopQ}_{j\notin A}\widehat m_C(j\mid A),
+ \qquad |\mathcal Q_A|=q\ll K.
+\end{equation}
+The shortlist reduces the number of predictor evaluations while retaining the
+candidates that are most promising under the cached representation.
+
+For each retained candidate, R-MUR computes a compact response summary from
+the fixed predictor,
+\begin{equation}
+ r_{A,j}
+ =
+ \psi\!\left(f_A(x),f_{A\cup\{j\}}(x)\right).
+ \label{eq:response}
+\end{equation}
+The summary contains the level of the current prediction, the level after
+adding the candidate, the mean and standard deviation of the response change,
+its mean absolute value, its normalized Euclidean norm, and its maximum
+absolute value. These statistics describe how the candidate changes the
+predictor, not merely how similar the candidate is to the query.
+
+The response-aware utility model scores retained candidates with
+\begin{equation}
+ \widehat m_R(j\mid A)
+ =
+ g(h_Q,h_A,h_j,r_{A,j}),
+ \qquad j\in\mathcal Q_A,
+ \label{eq:rmur}
+\end{equation}
+where $h_Q$, $h_A$, and $h_j$ are cached representations of the query, the
+selected set, and the candidate. The set encoder is permutation invariant.
+Training minimizes
+\begin{equation}
+ \mathcal L
+ =
+ \mathcal L_{\mathrm{Huber}}
+ +
+ \beta
+ \sum_{i,j:\,\widetilde m_i>\widetilde m_j}
+ |\widetilde m_i-\widetilde m_j|
+ \log\!\left(
+ 1+\exp\!\left[-(\widehat m_i-\widehat m_j)\right]
+ \right),
+ \label{eq:loss}
+\end{equation}
+where the pairwise term is evaluated within the same selection state. The gap
+weight gives larger influence to pairs that can change the argmax decision.
+The regression term keeps the utility scale calibrated on states without a
+dominant alternative.
+
+At inference, R-MUR starts from $A_0=\emptyset$ and repeats the following
+steps until the budget is reached or a stopping condition is met. It scores
+all remaining candidates with the cached model, forms $\mathcal Q_A$, computes
+response summaries for the shortlist, reranks the shortlisted candidates with
+$\widehat m_R$, and adds the highest-scoring positive candidate. The selected
+set is updated and the process repeats. The procedure is greedy; it targets
+one-step decision quality under a context budget.
+
+A calibration-derived threshold controls when routing stops. On a held-out
+split, let $r_i$ be the absolute residual between predicted and observed
+marginals. For level $\alpha$, the radius
+$q_\alpha=\operatorname{Quantile}_{1-\alpha}(\{r_i\})$ defines a symmetric
+interval
+\begin{equation}
+ [L_{A,j},U_{A,j}]
+ =
+ [\widehat m_R(j\mid A)-q_\alpha,\,
+  \widehat m_R(j\mid A)+q_\alpha].
+\end{equation}
+This threshold changes only the stopping decision; the candidate ranking
+remains the response-aware score.
+
+\subsection{A head shaped by the exact identity}
+\label{sec:bilinear-head}
+
+The experiments in \cref{sec:strong-backbone} show that a generic scalar head
+over concatenated state, candidate and response features does not recover
+marginal utility when the fixed predictor is strong. The analysis in
+\cref{sec:analysis} says why, and prescribes the functional form. Conditional
+on the state, \cref{eq:prop4} gives
+
+\begin{equation}
+ \E\!\left[\widetilde{\marginal}(j\mid A)\mid x,A\right]
+ =
+ \langle g_A(x), \dAj(x)\rangle-\|\dAj(x)\|^2-\lambda c_j ,
+ \qquad g_A(x)=2(\mu(x)-f_A(x)).
+\end{equation}
+
+Only $g_A$ has to be learned: the response $\dAj$ is observed once the
+predictor has been probed, and the curvature penalty is an exact function of
+that same response. We therefore replace the scalar head by a \emph{bilinear
+response head} that emits a vector in prediction space and scores
+
+\begin{equation}
+ \widehat m_B(j\mid A)
+ =
+ \langle g_\theta(\phi_A(x), c_j),\, \dAj(x)\rangle
+ -\|\dAj(x)\|^2 - \lambda c_j ,
+ \label{eq:bilinear-head}
+\end{equation}
+where $\phi_A(x)$ collects the same state and candidate features as before and
+$g_\theta$ is a small network. This is the minimal-capacity model consistent
+with the identity: it cannot represent a score that ignores the response, it
+never has to learn the curvature term, and the only statistical task left is
+estimating the state-dependent coefficient. The training target is unchanged
+(the realised marginal), so the head is trained with the same regression and
+gap-weighted ranking objective as before; the difference is purely inductive
+bias. For a general smooth loss the same construction uses the identity of
+\cref{prop:bregman} in place of the squared-loss form, and the cross-entropy
+bound of \cref{prop:ce} replaces the exact penalty by its upper bound.
+

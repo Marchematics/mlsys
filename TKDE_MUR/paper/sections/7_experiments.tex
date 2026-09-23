@@ -1,0 +1,708 @@
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Protocols and the three regimes}
+
+Every experiment below fixes a budget of four contexts from a pool of sixteen
+candidates unless stated otherwise, and holds the predictor frozen while
+contexts are routed into it. Three regimes differ only in what the predictor
+is, because \cref{cor:identifiability} predicts that this is what determines
+whether selection can work.
+
+\emph{Regime A, utility estimable.} The predictor is a subset-capable ridge
+expert fitted per target, the protocol used by the controlled study and by the
+six-dataset traffic benchmark. Candidate pools are built from training-split
+correlations: half high-correlation neighbours, a third mid-correlation, the
+rest random distractors. History length and horizon are both 12.
+
+\emph{Regime B, utility not estimable.} The expert is replaced by a
+subset-capable spatio-temporal transformer: per-node history embeddings,
+learned node embeddings, time-of-day and day-of-week embeddings, three
+transformer layers over the anchor token and the selected candidate tokens with
+a key-padding mask, and a linear path from the anchor history
+($499{,}722$ parameters). It is trained with subset dropout so that every
+subset size is in distribution and unselected candidates are provably inert.
+It is pretrained on the training split and then adapted per target on exactly
+the episodes the ridge expert sees.
+
+\emph{Regime C, categorical evidence.} Candidate contexts are labelled
+demonstrations for a frozen in-context classifier: embeddings come from a
+frozen CLIP ViT-L/14 encoder, the predictor is a transformer that reads the
+query embedding and the embeddings and labels of the selected demonstrations,
+and utility is the reduction of query-batch cross-entropy. Five public
+benchmarks (CIFAR-10, CIFAR-100, SVHN, EuroSAT, DTD) are used with three seeds
+and 1{,}602 test episodes each.
+
+All comparisons are paired at the target or benchmark level with bootstrap or
+$t$ intervals as noted, and every number is reproduced by the released scripts
+with immutable raw runs.
+
+\subsection{Regime A: utility is estimable}
+
+\paragraph{State conditioning creates value.} In the controlled redundancy
+study, structural headroom grows monotonically with the duplicate ratio
+(\cref{tab:redundancy}). At zero redundancy the standalone and sequential
+oracles coincide; at duplicate ratio $.75$ the gap reaches $.286$, and the
+learned router exceeds the standalone oracle even though that oracle uses the
+true standalone utilities. The gain therefore comes from re-evaluating
+candidate value after the selected state changes, not from a better standalone
+score.
+
+% Controlled-study values: KBS_MUR/results/raw/R070_oracle_ladder_k16_b4_rgrid_s5_20260919_1540/aggregate.json
+\begin{table}[t]
+\centering
+\small
+\caption{Controlled redundancy study at $K=16$ and budget four. Gains are loss
+reductions relative to the anchor-only predictor, averaged over five seeds.}
+\label{tab:redundancy}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Duplicate ratio & Standalone oracle & Learned router & Sequential oracle & Structural headroom\\
+\midrule
+0    & .6880 $\pm$ .0077 & .6636 $\pm$ .0101 & .6880 $\pm$ .0077 & .0000\\
+.25  & .5161 $\pm$ .0054 & .5027 $\pm$ .0105 & .5813 $\pm$ .0064 & .1121\\
+.50  & .3512 $\pm$ .0028 & .3652 $\pm$ .0030 & .4471 $\pm$ .0041 & .2145\\
+.75  & .1771 $\pm$ .0019 & .2085 $\pm$ .0049 & .2481 $\pm$ .0035 & .2859\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The same structural effect appears on real benchmarks. Over six datasets, 32
+fixed targets per dataset and three seeds, every one of the 576 target-seed
+evaluations has positive structural headroom
+(\cref{tab:headroom-real}); the mean ranges from $.076$ to $.119$. State
+conditioning therefore creates measurable decision value across targets rather
+than at a single sensor.
+
+% Real-data headroom: results/derived/R134_six_dataset_matrix/headroom.json
+\begin{table}[t]
+\centering
+\small
+\caption{Real-data structural headroom over 32 fixed targets per dataset and
+three seeds (96 cells per dataset, 576 in total). Every cell is positive; the
+minimum across all datasets is $.0101$.}
+\label{tab:headroom-real}
+\begin{tabular}{lrrr}
+\toprule
+Dataset & Mean headroom & Median headroom & Positive fraction\\
+\midrule
+METR-LA & .0959 & .0844 & 1.000\\
+PEMS-BAY & .1156 & .1204 & 1.000\\
+PEMS03 & .1189 & .1077 & 1.000\\
+PEMS04 & .0834 & .0725 & 1.000\\
+PEMS07 & .0892 & .0835 & 1.000\\
+PEMS08 & .0760 & .0729 & 1.000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Learning the decision beats the standard toolkit.} Under the
+six-dataset protocol the response-aware router has the best average rank and is
+significantly ahead of the best competitor on three of the six datasets, is
+unresolved on two and loses on one (\cref{tab:deployable}); the multi-target
+study shows that the improvement over both response-free baselines
+holds on every dataset with positive-target fractions of $94$--$100\%$ on five
+of them (\cref{tab:consistency}).
+
+% Values in this table are taken from results/derived/R134_six_dataset_matrix/six_dataset_matrix.json
+% (32 targets, three seeds, 96 cells per dataset); average ranks are computed over the six rows below.
+% Paired target-level bootstrap intervals: results/derived/R146_six_dataset_paired/paired.json
+\begin{table}[t]
+\centering
+\small
+\caption{Deployable selection methods, including the trivial pool-everything
+policy that is the strongest competitor everywhere. Values are prediction gains
+averaged over 32 fixed targets per dataset; the final column is the average
+rank across the six datasets.}
+\label{tab:deployable}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Method & METR-LA & PEMS-BAY & PEMS03 & PEMS04 & PEMS07 & PEMS08 & Avg. rank\\
+\midrule
+Relevance (kNN) & -.0165 & -.0199 & -.0191 & +.0071 & -.0155 & +.0074 & 5.67\\
+MMR & -.0180 & -.0249 & -.0102 & +.0098 & -.0085 & +.0075 & 5.33\\
+Standalone Utility & +.0024 & +.0272 & +.0149 & +.0248 & +.0152 & +.0246 & 3.67\\
+Cached-only router & +.0042 & +.0284 & +.0154 & +.0250 & +.0150 & +.0246 & 3.00\\
+Pool all 16 & +.0080 & +.0254 & +.0256 & +.0365 & +.0242 & +.0359 & 2.00\\
+R-MUR (ours) & \textbf{+.0146} & \textbf{+.0557} & \textbf{+.0269} & \textbf{+.0357} & \textbf{+.0284} & \textbf{+.0333} & \textbf{1.33}\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Multi-target consistency of the response-aware router. Differences and
+positive-target fractions are computed over 32 fixed targets per dataset.}
+% Generated values: KBS_MUR/results/derived/R080b_hierarchical_summary/summary.json
+\label{tab:consistency}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Dataset & $\Delta$ vs Static & $\Delta$ vs Cached & Positive targets & $>$ Static & $>$ Cached & Oracle recovery\\
+\midrule
+METR-LA & .0123 & .0104 & .812 & .969 & .969 & .099\\
+PEMS-BAY & .0285 & .0272 & .938 & 1.000 & .969 & .309\\
+PEMS03 & .0121 & .0115 & 1.000 & 1.000 & 1.000 & .447\\
+PEMS04 & .0109 & .0107 & 1.000 & .969 & .969 & .534\\
+PEMS07 & .0132 & .0134 & 1.000 & 1.000 & 1.000 & .456\\
+PEMS08 & .0088 & .0087 & 1.000 & .969 & .969 & .516\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Among the fourteen methods compared across the six benchmarks (the detailed
+two-dataset matrix below reports eleven of them) is a DELIFT-style rule (ICLR 2025) that
+combines submodular coverage with k-means representatives, implemented here as
+greedy facility location over an over-segmented pool of cluster medoids. It is
+significantly below pooling on all six datasets ($-.0196$ $[-.0241,-.0155]$ on
+METR-LA, $-.0212$ $[-.0297,-.0128]$ on PEMS-BAY, and between $-.018$ and
+$-.023$ elsewhere), so adding the most recent member of the submodular family
+does not change the verdict: the strongest competitor is still the trivial
+policy of using every candidate, and on every dataset the best non-trivial rule
+is greedy mutual information.
+
+\paragraph{Against eleven competitors, in detail.} We then ran the detailed competitor set on
+the same cells: METR-LA and PEMS-BAY, 32 targets each, three seeds, 96 cells
+per dataset (\cref{tab:ridge-matrix}). Two results stand out. First, \emph{the
+default heuristics are significantly harmful on both datasets}: relevance
+ranking is $.0165$ below the anchor-only predictor on METR-LA and $.0199$ below
+on PEMS-BAY, maximum marginal relevance is $.0180$ and $.0249$ below, and on
+METR-LA determinantal diversity, k-center, facility location, k-means
+representatives, random subsets and even greedy mutual information are harmful
+as well, each with a target-level interval entirely below zero. Selecting
+correlated or diverse candidates by a proxy score injects noise that the
+predictor propagates; the oracles show that a great deal of value exists
+($+.133$ and $+.163$ standalone), so this is a selection failure rather than an
+absence of signal. Second, learning the decision recovers that value and more:
+the response-aware router reaches $+.0146$ and $+.0557$, roughly twice the
+strongest non-selection baseline (pooling all sixteen candidates, $+.0080$ and
+$+.0254$) and clearly above the response-free learned routers. The pattern generalises across the six benchmarks:
+running the same competitors on all six datasets, with the frozen cells for the
+learned policies and 32 targets and three seeds per dataset (96 cells each),
+on five of the six datasets the strongest competitor is the trivial
+pool-everything policy --- on PEMS-BAY the cached-only router ($.0284$) and the
+static-utility model ($.0272$) edge past it ($.0254$) --- and the paired
+comparison against the leader is what decides the outcome. Under
+target-level paired intervals the
+response-aware router is significantly ahead on three datasets --- METR-LA
+$+.0067$ $[+.0041,+.0094]$, PEMS-BAY $+.0303$ $[+.0203,+.0427]$ and PEMS07
+$+.0041$ $[+.0015,+.0070]$ --- is unresolved on two (PEMS03 $+.0013$
+$[-.0004,+.0030]$ and PEMS04 $-.0008$ $[-.0050,+.0025]$, where the router
+reaches $+.0357$ against pool-all $+.0365$) and is \emph{significantly below}
+pooling on PEMS08 ($-.0026$ $[-.0042,-.0010]$, router $+.0333$ against pool-all
+$+.0359$). We report the
+loss rather than average it away: the method's advantage over the trivial
+baseline is real but not universal, and on the two datasets where it fails the
+competitor it fails to is pooling, not any of the specialised heuristics.
+Relevance ranking is harmful
+on four of the six and maximum marginal relevance on four; on the two dense-flow
+datasets the proxies are weakly positive, so the harmful regime is common but
+not universal.
+
+\begin{table}[t]
+ \centering
+ \tablefont
+ \caption{Eleven-competitor matrix in regime A (32 targets, three seeds, 96
+ cells per dataset). Gains are relative to the anchor-only predictor with
+ target-level 95\% intervals; a negative entry means the policy is worse than
+ using no auxiliary context at all.}
+ \label{tab:ridge-matrix}
+ \begin{tabular}{lcccc}
+  \toprule
+  & \multicolumn{2}{c}{METR-LA} & \multicolumn{2}{c}{PEMS-BAY}\\
+  \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+  Policy & Gain & 95\% CI & Gain & 95\% CI\\
+  \midrule
+  Sequential oracle & .1471 & $[.133,.161]$ & .1805 & $[.160,.201]$\\
+  Standalone oracle & .1333 & $[.120,.146]$ & .1627 & $[.144,.181]$\\
+  \textbf{Response-aware (ours)} & \textbf{.0146} & $[.009,.020]$ & \textbf{.0557} & $[.044,.067]$\\
+  Pool all 16 & .0080 & $[.003,.013]$ & .0254 & $[.007,.044]$\\
+  Cached-only router & .0042 & $[-.000,.009]$ & .0284 & $[.016,.041]$\\
+  Standalone Utility & .0024 & $[-.002,.007]$ & .0272 & $[.013,.042]$\\
+  Mutual information & $-.0055$ & $[-.010,-.001]$ & .0173 & $[.006,.029]$\\
+  Random four & $-.0077$ & $[-.010,-.006]$ & .0095 & $[.003,.016]$\\
+  k-means representatives & $-.0080$ & $[-.012,-.004]$ & .0043 & $[-.003,.011]$\\
+  Facility location & $-.0163$ & $[-.023,-.009]$ & .0090 & $[-.005,.023]$\\
+  Relevance (kNN) & $-.0165$ & $[-.024,-.009]$ & $-.0199$ & $[-.033,-.007]$\\
+  DPP & $-.0166$ & $[-.022,-.011]$ & $-.0074$ & $[-.023,.008]$\\
+  MMR & $-.0180$ & $[-.025,-.011]$ & $-.0249$ & $[-.044,-.006]$\\
+  k-center & $-.0187$ & $[-.025,-.013]$ & .0043 & $[-.003,.011]$\\
+  \bottomrule \end{tabular}
+\end{table}
+
+\paragraph{What limits learned routing here.} Candidate-pool growth compresses
+the decision margin: as $K$ grows from $4$ to $64$, absolute utility error
+improves while the standard deviation of true marginals falls faster, so
+normalised error rises from $.403$ to $.739$ and the positive top-two margin
+falls from $.220$ to $.024$. Response features, by contrast, expand what is
+observable: adding compact response summaries raises the Spearman correlation
+with the true marginal from $.164$ to $.391$ and the positive-utility AUC from
+$.649$ to $.834$, and reduces one-step regret from $.0736$ to $.0569$. Both
+effects are consistent with \cref{sec:theory}: the decision is hard exactly
+when the response is small relative to the utility spread.
+
+\subsection{Applying the diagnostics}
+\label{sec:diagnostics-applied}
+
+\paragraph{Measurement 1: the cheap view is noise in regime B.} On METR-LA with
+the nonlinear expert, the cached score's correlation with the true marginal is
+indistinguishable from zero ($+.005$, $-.049$, $-.019$ at the first three
+greedy steps), and the recall of the shortlist it forms equals chance: $.26$
+and $.29$ at $q=4$ against a chance level of $.25$, and $.49$--$.53$ at $q=8$
+against $.50$. Any router whose first stage is this screen cannot recover the
+value it never received.
+
+\paragraph{Measurement 2: the ordering is not recoverable.} We fitted ridge and
+small multi-layer heads to the true marginals using every observable quantity
+--- anchor history, candidate history, candidate identity, the response vector,
+its magnitude and the base--response interaction --- on six (dataset, target)
+cells with 1{,}500 training and 800 test episodes each. Every probe generalises
+worse than the mean: out-of-sample $R^2$ averages $-.093$ (range $-.63$ to
+$+.03$), the mean within-episode rank correlation with the true marginal is
+$+.001$ and stays below $.12$ in eleven of twelve probes, while the in-sample
+fit is $+.070$ and the label-permutation control is $-.005$. The control
+establishes that the pipeline is sound; the conclusion is that the ordering is
+not recoverable from observable features, not that the model is weak.
+
+The probe is a diagnostic instrument, not a deployment rule, and we
+deliberately stop short of turning it into one. Scaling the same probe up to
+$2{,}000$ training and $1{,}200$ test episodes on three targets does not change
+the verdict: out-of-sample $R^2$ stays within noise of zero for both a weak and
+a strong expert ($-.004 \pm .019$ and $-.015 \pm .028$), and the probe's value
+excess over its own per-cell random baseline is $+.048$ and $+.067$ of the
+oracle against a standard deviation of $.064$ across the six cells. Since every $R^2$ we observe lies
+below any threshold that would be useful, a rule of the form ``probe the
+candidate expert, fall back to the whole pool if the probe is weak'' would fire
+on every deployment; we do not propose it. What the protocol supports is a
+ranking of \emph{geometries} (Measurements 1 and 3), not a per-cell go/no-go
+test, and the executable test of identifiability remains the routing protocol
+itself.
+
+\paragraph{Measurement 3: novelty predicts which policy works.} Building three
+pool geometries per dataset --- head of the pool drawn from the most
+correlated, the middle, or the least correlated sensors --- the relevance gain
+rises monotonically as candidates become less redundant with the anchor
+(\cref{tab:pool-modes}), and the sign flip replicates on the second dataset
+with a larger swing ($-.033 \to +.016$ on PEMS-BAY).
+
+\begin{table}[t]
+ \centering
+ \small
+ \caption{The sign of relevance ranking depends on candidate--anchor
+ redundancy (regime A, 8 targets, three seeds). Novelty is the share of
+ candidate variance the anchor does not explain.}
+ \label{tab:pool-modes}
+ \begin{tabular}{lcccccc}
+  \toprule
+  & \multicolumn{3}{c}{METR-LA} & \multicolumn{3}{c}{PEMS-BAY}\\
+  \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+  Pool head & novelty & relevance & pool all & novelty & relevance & pool all\\
+  \midrule
+  most correlated & .40 & $-.0086$ & $+.0116$ & .46 & $-.0333$ & $+.0112$\\
+  moderate & .60 & $+.0006$ & $+.0070$ & .73 & $+.0117$ & $+.0064$\\
+  least correlated & .79 & $+.0063$ & $+.0012$ & .95 & $+.0156$ & $+.0119$\\
+  \bottomrule \end{tabular}
+\end{table}
+
+Across the six pool geometries novelty correlates $+.80$ with the relevance
+gain, and the two regimes separate without overlap: every harmful cell has
+novelty $\le .46$, every helpful cell $\ge .60$. The statistic does not, however, transfer across
+datasets as a constant: over the six standard pools the correlation with the
+relevance gain is $-.33$. Redundancy with the anchor is the mechanism that
+operates when the pool is manipulated inside one dataset; across datasets other
+factors dominate. That is precisely why the protocol measures the statistic per
+deployment rather than transferring it, and it is a negative result we report
+rather than a caveat we hide. This is also why the
+demonstration family behaves in the opposite way: a demonstration contributes a
+label the anchor lacks, so its novelty is high by construction even though its
+embedding is close to the query.
+
+\paragraph{The prediction tested directly.} \Cref{cor:identifiability} says
+that the identifiable term is the fixed predictor's own residual, so a stronger
+predictor should leave less realizable value while the structural opportunity
+persists. We built a ladder of experts on identical cells --- eight targets,
+seed 101, the same pools and episodes --- using three spatio-temporal
+transformers of increasing capacity, a masked-mean MLP, and the per-target ridge
+expert as an out-of-family contrast. Strength is the anchor-only mean squared
+error on held-out windows; realizable value is the learned router's share of the
+standalone-oracle gain.
+
+\begin{table}[t]
+ \centering
+ \small
+ \caption{Expert ladder on METR-LA (eight targets, seed 101). A stronger expert
+ has a lower anchor-only MSE.}
+ \label{tab:ladder}
+ \begin{tabular}{lccccc}
+  \toprule
+  Expert & Anchor MSE & Standalone oracle & Sequential oracle & Learned gain & Realized share\\
+  \midrule
+  ridge (linear, out of family) & .3782 & $+.1535$ & $+.1687$ & $+.0313$ & $.198$\\
+  transformer, 1 layer $d{=}32$ & .3721 & $+.0835$ & $+.0961$ & $+.0222$ & $.268$\\
+  masked-mean MLP & .3625 & $+.1002$ & $+.1198$ & $+.0273$ & $.243$\\
+  transformer, 2 layers $d{=}64$ & .3578 & $+.0923$ & $+.1044$ & $+.0168$ & $.177$\\
+  transformer, 3 layers $d{=}128$ & .3562 & $+.0902$ & $+.1060$ & $+.0075$ & $.063$\\
+  \bottomrule \end{tabular}
+\end{table}
+
+Within the neural family the prediction holds as a monotone dose--response: the
+structural opportunity is flat ($+.084$ to $+.100$ standalone, $+.096$ to
+$+.120$ sequential) while the realized share falls by a factor of $4.3$ and the
+learned gain by a factor of $3.0$ as anchor-only error falls from $.372$ to
+$.356$. Across the four neural rungs anchor-only error orders realized share
+perfectly (Spearman $+1.0$) and the fitted slope is $10.5$ realized-share points
+per unit anchor MSE, so a $1\%$ anchor improvement ($.0036$ in MSE) corresponds
+to about $+.038$ share. A $4\%$ improvement in the expert removes three quarters
+of the value that routing can realise.
+
+The ridge rung is the informative exception. It has the worst anchor-only error
+($.3782$) yet the largest structural opportunity ($+.1535$, because its residual
+is highly systematic) and the largest absolute learned gain ($+.0313$); its
+realized share is nonetheless below two of the transformers because the
+denominator is larger. Including it, the rank correlation between anchor error
+and realized share drops and the fitted slope halves to $4.9$. The residual
+magnitude is thus a sufficient statistic for realizable value only \emph{within}
+a fixed hypothesis class: across families the inductive bias changes which
+candidates are jointly improvable, so accuracy and residual geometry decouple.
+
+This is also where the diagnostic protocol reaches its limit, and we report the
+limit rather than the hoped-for result. If residual predictability could be read
+off cheaply, it would give a deployment rule --- probe the candidate expert, and
+decline to select when the probe is weak. We tested that rule on the two ladder
+extremes at three targets with $2{,}000$ training and $1{,}200$ test episodes
+each. The probe's out-of-sample $R^2$ for the marginal is indistinguishable from
+zero for both extremes ($-.004 \pm .019$ for the weak rung, $-.015 \pm .028$ for
+the strong one), and its value statistic has to be read against a per-cell
+random baseline that itself ranges from $.115$ to $.294$ of the oracle; excess
+over random is $+.048$ and $+.067$ of the oracle with a per-cell spread of
+$.09$, against a ladder effect of $.205$ on the same two rungs. A statistic
+whose excess is a quarter of the effect it should explain, and whose noise
+exceeds that excess, cannot gate deployment, and at these sample sizes the
+threshold rule degenerates to always falling back to the whole pool. The
+identifiability of a candidate must therefore be measured by running the routing
+protocol itself --- screening, budget, and objective included --- not by an
+auxiliary probe, however cheap. Measurement~2 above reports the same conclusion
+from the opposite direction: the probe is a diagnostic instrument, not a gate.
+
+The same test in the regime where routing \emph{does} work makes the
+negative general. Over the six-dataset ridge protocol, 32 targets each
+(192 targets in total), the within-dataset correlation between a target's
+structural headroom and the router's advantage over pooling is $+.040$
+($p=.58$); per dataset it ranges from $-.235$ to $+.310$ with no consistent
+sign. Across datasets the mean headroom and the mean advantage are more alike
+($r=+.60$, $p=.21$, $n=6$) but the ordering is broken by the most informative
+case: PEMS03 has the \emph{highest} mean headroom of the six ($.119$) and an
+advantage of $+.0013$, while PEMS-BAY has similar headroom ($.115$) and the
+largest advantage ($+.0303$). Structural headroom is therefore a necessary
+condition --- a router cannot capture what the oracle cannot reach --- and not
+a usable predictor of routing benefit in either regime. What does discriminate
+is the \emph{realised} share measured under the deployment's own protocol, and
+that is what the diagnostic protocol of \cref{sec:diagnostics} should be read
+as measuring.
+
+A corollary worth stating, since it bears on how the six-dataset result should
+be read: the datasets differ by effect size rather than by statistical power.
+The per-target standard error of the router-versus-pooling difference is
+comparable across benchmarks ($.0008$ to $.0059$), while the effect itself
+ranges from $t=+5.1$ on PEMS-BAY (94\% of targets favour routing) through
+$t=+1.5$ on PEMS03 (69\%) to $t=-3.1$ on PEMS08 (38\%). PEMS03 is a genuinely
+small effect, not an under-powered one: resolving it at its observed size would
+need roughly three times as many targets.
+
+\subsection{Regime B: utility is not estimable}
+
+\Cref{tab:strong-backbone} reports the strong-backbone protocol on METR-LA and
+PEMS-BAY with 16 fixed targets and three seeds. Structural headroom is
+preserved --- the sequential oracle gains $.105$ and $.104$ over the
+anchor-only predictor, the standalone oracle $.090$ and $.088$ --- so context
+selection still matters in principle. Yet no method separates from pooling
+every candidate. The response-aware routers reach $.0097$ and $.0107$ (frozen and
+theory-shaped heads) against pool-all $.0133$, and on PEMS-BAY every learned
+router, including ours, is below plain random selection ($.0163$). Greedy
+mutual information ties pool-all ($.0134$ against $.0133$).
+
+The ordering inside this regime is not resolved, and we state it as a tie
+rather than a loss. Under target-level pairing the difference between the
+response-aware router and pool-all is $-.0036$ with an interval of
+$[-.0110,+.0067]$ over the $16$ METR-LA targets (three seeds per target), and on
+the $8$-target subsample used for the adaptation sweep below the same difference
+is $+.0045$ $[-.0036,+.0130]$: the point estimate changes sign with the target
+sample and neither interval excludes zero. What regime~B supports is therefore the weaker but sufficient claim that
+\emph{no method separates from full pooling}, while all of them remain far
+below the oracle ($.085$--$.100$). The failure is one of realisability, not of
+ranking.
+
+% Strong-backbone rows: results/raw/R103_strong_backbone_gate_20260921_0350/METRLA (learned, classical, oracles)
+% merged with results/raw/R151_response_geometry_20260924_0910/METRLA (response-geometry rules) on the same 48 cells.
+\begin{table}[t]
+ \centering
+ \small
+ \caption{Regime B. 16 targets, three seeds, $K=16$, budget four. Gains are
+ loss reductions relative to the anchor-only predictor.}
+ \label{tab:strong-backbone}
+ \begin{tabular}{lcc}
+  \toprule
+  Policy & METR-LA & PEMS-BAY\\
+  \midrule
+  Anchor only & .0000 & .0000\\
+  Random four & .0062 & .0163\\
+  Relevance & .0070 & .0108\\
+  MMR & .0077 & .0113\\
+  Diversity (DPP) & .0091 & .0142\\
+  Standalone Utility & .0069 & .0139\\
+  Cached-only router & .0076 & .0135\\
+  Response-aware, frozen head & .0097 & .0130\\
+  Response-aware, theory-shaped head & .0107 & .0125\\
+  Pool all 16 & \textbf{.0133} & \textbf{.0225}\\
+  Mutual information & .0134 & ---\\
+  Policy-gradient selector & $-.0041$ & ---\\
+  Standalone oracle & .0904 & .0880\\
+  Sequential oracle & .1051 & .1037\\
+  \bottomrule \end{tabular}
+\end{table}
+
+The two datasets resolve the comparison differently, and the paired tests say
+which. On PEMS-BAY pooling is significantly above \emph{every} alternative ---
+response-free or response-aware --- and above even random selection: the paired
+difference is $-.0094$ $[-.0135,-.0053]$ for the frozen response-aware head and
+$-.0091$ $[-.0126,-.0057]$ for the cached-only router. On METR-LA, using the
+same target-level pairing throughout, pooling is
+significantly above every response-free rule (relevance $-.0062$
+$[-.0093,-.0029]$, MMR $-.0057$ $[-.0089,-.0022]$, stand-alone utility
+$-.0064$ $[-.0115,-.0009]$) but \emph{not} above the response-aware family
+($-.0036$ $[-.0110,+.0067]$ and $-.0025$ $[-.0093,+.0075]$). So the response
+signal is the only thing that keeps a router in contact with pooling once the
+predictor is strong; whether it closes the gap is dataset-dependent and here
+unresolved. Both sit an order of magnitude below the oracle.
+
+\paragraph{The budget is the wrong lever.} \Cref{fig:budget-gap} (left) shows
+why neither better heuristics nor budget tuning closes the gap. With the true
+marginals the best budget is \emph{three} contexts ($+.105$), and every
+additional context reduces the gain: the oracle is not monotone in the budget.
+Without identifiability the picture inverts --- random $k$-subsets improve
+monotonically with $k$ --- so the best deployable policy in the entire matrix is
+to include all sixteen candidates ($+.026$ on this reduced target set). The two
+curves move in opposite directions through the protocol's budget of four, and
+the vertical distance between them at $k=4$ is the identifiability gap.
+
+\paragraph{Neither is the size of the library.} The most natural escape from
+the tie is that the pool is simply too small: with a realistic library of
+hundreds of candidates, pooling all of them should be infeasible and selection
+should win. \Cref{tab:pool-size} tests this by holding the budget at four and
+growing the pool from $16$ to $128$ candidates on the same $16$ cells.
+
+\begin{table}[t]
+ \centering
+ \small
+ \caption{Pool-size scaling with the strong backbone (METR-LA, 16 matched
+ cells, budget four). Only the candidate count changes between rows.}
+ \label{tab:pool-size}
+ \begin{tabular}{lcccc}
+  \toprule
+  Candidates & Pool all & Router & Random four & Oracle\\
+  \midrule
+  $16$  & $+.0057$ & $+.0076$ & $+.0005$ & $+.0851$\\
+  $32$  & $+.0128$ & $+.0031$ & $+.0049$ & $+.0987$\\
+  $64$  & $+.0081$ & $-.0033$ & $+.0018$ & $+.1180$\\
+  $128$ & $+.0042$ & $-.0025$ & $-.0006$ & $+.1196$\\
+  \bottomrule \end{tabular}
+\end{table}
+
+The premise of the objection holds: the opportunity really does grow, from
+$+.0851$ to $+.1196$, and the paired growth of the identifiability gap is
+resolved at every step ($+.0181$ $[+.0126,+.0239]$, then $+.0257$
+$[+.0197,+.0315]$, then $+.0446$ $[+.0376,+.0514]$ over the full range,
+saturating between $64$ and $128$). The conclusion is the opposite of the
+objection. The router captures \emph{less}, falling from $+.0076$ to $-.0025$;
+at $32$ and $64$ candidates it is significantly \emph{below} pooling
+($-.0097$ $[-.0159,-.0022]$ and $-.0114$ $[-.0192,-.0018]$); and beyond $16$
+candidates it is indistinguishable from picking four at random (paired
+$-.0018$, $-.0052$, $-.0019$). Enlarging the shortlist does not repair it
+($q{=}8$ minus $q{=}4$ is $+.0011$ at $16$ and $-.0014$, $-.0016$ at $64$ and
+$128$), which rules out the simple fix of buying more shortlist slots, though
+it does not by itself separate a noisy screen from an unidentifiable marginal.
+Pooling, meanwhile, is flat in pool size, so the decline is not caused by
+pooling degrading. The binding constraint is identifiability, not the supply of
+candidates, and retrieving from a larger library makes the routing problem
+harder rather than easier.
+
+The theory's own limit case was tested next, and it fails. As the anchor
+absorbs its residual the coefficient $g_A$ of \cref{eq:prop-suff} goes to zero, so
+the score collapses to the observable curvature $-\|\dAj\|^2$ and the optimal
+action should be to select the candidates that perturb the predictor
+\emph{least}. That prediction is sharp and falsifiable, and it is refuted: the
+least-perturbing policy gains $+.0026$ on METR-LA and $+.0037$ on PEMS-BAY
+against pooling's $+.0133$ and $+.0224$, i.e.\ it is significantly \emph{below}
+pooling on both ($-.0106$ $[-.0163,-.0051]$ and $-.0188$ $[-.0227,-.0150]$) and
+ranks thirteenth and sixteenth of the eighteen non-oracle policies. The sign of
+the theory's limit is visible --- it is the best of the six response-geometry
+rules on METR-LA --- but a score that only avoids harm cannot create value: the
+candidates that barely move the predictor are also the ones that contribute
+least. The regime-B boundary therefore lies in the absence of the interaction
+term $\langle g_A,\dAj\rangle$, not in how the score is written.
+
+The remaining alternative --- that the \emph{screen} is at fault, since its
+correlation with the true marginal is chance-level in this regime --- can be
+removed directly. Setting $q=K=16$ so that the response head sees every
+candidate changes the result by $+.0012$ $[-.0023,+.0044]$: $+.0088$ against
+$+.0076$ for $q=4$, still not above pooling and still not above random four.
+The screen is a symptom of the identification failure, not its cause, and the
+two-stage design is justified independently --- at this pool size the shortlist
+is free in value terms while costing $20$ expert rows per episode rather than
+$64$.
+
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{figures/fig7_budget_gap.pdf}
+  \caption{The identifiability gap in regime B. Left: with true marginals the
+  optimal budget is three contexts and the oracle decreases with every
+  additional context, while random subsets improve monotonically, so the best
+  deployable policy is to include every candidate. Right: share of the
+  standalone-oracle gain realised by each deployable policy.}
+  \label{fig:budget-gap}
+\end{figure*}
+
+The direction of the greedy search is not the problem: running selection
+backwards, from the full pool by elimination, matches forward greedy to within
+$+.0002$ ($[-.00003,+.0005]$, backward better on 18 of 24 cells), so the
+utility landscape behaves submodularly for search purposes. Nor is robustness
+to bad candidates the explanation: rebuilding the pools from the least
+correlated sensors leaves pooling everything with the highest point estimate
+($+.0040$) and the learned routers below it ($+.0013$), against oracle gains of
+$+.066$ and $+.082$. An expert trained with subset dropout simply tolerates
+irrelevant contexts, which removes the leverage selection would need. Again the
+ordering is unresolved --- R-MUR against pooling is $-.0027$
+$[-.0072,+.0020]$ --- and it is also unstable in sign: on an independently
+constructed anticorrelated pool, relevance is significantly above pooling
+($+.0051$ $[+.0025,+.0077]$). What is stable is the size of the residual gap to
+the oracle.
+
+\paragraph{Where a method change could still pay.} Every remaining loss in this
+regime has one shape: the router wins on average while losing on a substantial
+minority of episodes, and on PEMS08 it loses on average. The per-episode gains
+all six deployments record put a ceiling on what any episode-level confidence
+gate could recover: taking the better of routing and pooling episode by episode
+would add $+.0148$ to $+.0778$ over pooling, three to seven times the router's
+own advantage, and would convert the PEMS08 loss into a gain. The router loses
+on $39$--$52\%$ of episodes, so the loss is a near-even split rather than a few
+outliers a safety rule could excise. We then tested whether that headroom is reachable, and it is not.
+Four signals available at decision time were recorded for every episode --- the
+cached screen's top-two margin, the utility model's top-two margin, its top
+score, and the prediction-change norm of the candidate it picked --- and each was
+scored for predicting whether the router beats pooling on that episode. All
+twelve dataset-by-signal AUCs lie in $[.481,.521]$: the router's own confidence
+carries no information about when it is wrong, and the best held-out gate adds
+at most $+.0030$ over pooling against a ceiling of $.013$ to $.048$. This is what
+\cref{cor:identifiability} predicts rather than a defect of this router --- the
+identifiable term is the anchor's residual, a strong anchor has absorbed its
+systematic part, and what remains is noise, which no function of the same
+absorbed signal can anticipate. The remaining loss is therefore not a tuning,
+head-design or gating problem: the estimation error is present and
+unobservable.
+
+\subsection{The adaptive rule}
+
+The third measurement converts into the policy of \cref{eq:adaptive-rule}. With
+the threshold chosen on half of the targets and then held fixed, the rule
+reaches $+.0081\;[+.0017,+.0138]$ on METR-LA and $+.0129\;[-.0066,+.0329]$ on
+PEMS-BAY, against $-.0006$ and $-.0020$ for fixed relevance and $+.0066$ and
+$+.0098$ for always pooling everything; it captures $87\%$ and $67\%$ of an
+oracle that picks the better of the two policies per cell. The selected
+threshold is stable across splits on METR-LA ($[.45,.55]$ in $198$ of $200$)
+but not on PEMS-BAY, where it concentrates at the grid minimum ($.40$ in $91$
+of $200$ splits); it should be fitted per deployment rather than transferred. The benefit is resolved on METR-LA and unresolved on PEMS-BAY, and on
+neither dataset does the rule separate from always pooling ($+.0015$ and
+$+.0031$): what it buys is escape from a harmful default, not superiority over
+the trivial policy. A training-free practitioner should therefore adapt the
+retrieval rule
+to pool geometry rather than apply it unconditionally; a practitioner who can
+learn the decision should use marginal-utility routing, which is roughly twice
+as good on the standard pools.
+
+\subsection{Regime C: categorical evidence}
+
+In demonstration selection the predictor consumes labelled examples, so the
+mechanism of \cref{sec:theory} applies with a different information type. The
+predictor is genuinely in-context: mean accuracy rises from $.966$ to $.983$ on
+CIFAR-10, $.812$ to $.997$ on CIFAR-100, $.693$ to $.996$ on SVHN, $.946$ to
+$.986$ on EuroSAT and $.728$ to $.921$ on DTD when four relevant demonstrations
+are added, and the farthest demonstrations are worse than random ones.
+
+\begin{table}[t]
+ \centering
+ \small
+ \caption{Regime C. Mean cross-entropy reduction (nats) at shortlist size
+ four; $\Delta$ columns are paired contrasts against the two response-free
+ learned routers.}
+ \label{tab:second-family}
+ \begin{tabular}{lccccc}
+  \toprule
+  Benchmark & Ours & Static & Cached & $\Delta$Static & $H_{\mathrm{state}}$\\
+  \midrule
+  CIFAR-10 & .0643 & .0482 & .0433 & $+.0160$ & .000\\
+  CIFAR-100 & .5247 & .5769 & .5381 & $-0.0522$ & .000\\
+  SVHN & .8809 & .7530 & .7688 & $+.1279$ & .000\\
+  EuroSAT & .1294 & .1074 & .1125 & $+.0221$ & .000\\
+  DTD & .3322 & .5981 & .6478 & $-0.2658$ & .000\\
+  \bottomrule \end{tabular}
+\end{table}
+
+The frozen head passes the per-benchmark criterion on three of five benchmarks
+and fails on CIFAR-100 and DTD, where a nearest-neighbour relevance rule is
+already within a fraction of a percent of the oracle. The family also exposes
+a boundary condition: the sequential and standalone oracles coincide to four
+decimals ($H_{\mathrm{state}}\le 5\times10^{-4}$), because the candidate pools
+contain no redundant demonstrations, so selecting the best standalone
+demonstrations is already optimal.
+
+\paragraph{Four heads, one ceiling.} We iterated on the scoring head to test
+whether the failure is one of functional form. A redundancy-structured variant
+of the pools was built first (four clusters of three near-duplicate
+demonstrations); measured redundancy was real --- a second member of a cluster
+retains only $6.7$--$42\%$ of the first member's marginal --- yet the
+sequential oracle still does not meaningfully exceed the standalone oracle,
+because utility in this family is label-driven: replacing candidate
+\emph{features} by noise costs only about $18\%$ of the first-member marginal,
+while equalising \emph{labels} flips every marginal negative. For that
+predictor the utility is nearly a function of the label multiset of the
+selected set, so no pool geometry can make it state-conditioned.
+
+Replacing the predictor with a query-comparative one (a learned-metric
+prototype in which a demonstration can only help through its image content)
+closes that shortcut: the second-member marginal falls to $0.12$--$0.78\%$ of
+the first, and pooled state-conditioned headroom becomes genuinely positive
+($+.0126\;[+.0019,+.0239]$). In that setting the theory-shaped bilinear head of
+\cref{eq:bilinear-head} ranks the true marginal better than the scalar head on
+four of five benchmarks (mean within-state Spearman $.375$ against $.156$;
+top-one agreement $.67$ against $.08$ on CIFAR-100) and gives the largest pooled
+forced-budget contrast against Standalone Utility of the three heads
+($+.0605\;[-.0036,+.1343]$, three of five per-benchmark intervals above zero).
+The residual failure has a precise cause: the association between response
+magnitude and marginal utility changes sign across benchmarks ($+.257$ on
+CIFAR-10, $-.590$ on CIFAR-100) while the identity's curvature term has a fixed
+sign. Releasing that constraint with a learned, signed coefficient confirms the
+diagnosis --- the coefficient moves from its $-.25$ initialisation to $+.14$,
+$+.13$, $+.11$ and $+.08$ on four of five benchmarks ($p<10^{-6}$ against both
+$-.25$ and $0$) --- and still does not improve the gate (pooled
+$+.0528\;[-.0081,+.1236]$, two of five per-benchmark passes), because the extra
+unit re-fits the same ordering. Four head variants --- scalar,
+curvature-corrected, bilinear and signed bilinear --- therefore bracket the same
+result, which locates the ceiling in what the router can observe rather than in
+how the score is parameterised.
+
+\subsection{Compute}
+
+Each decision in regime B spends $B(1+q)$ expert evaluations: $20$ per episode
+at $q=4$ and $36$ at $q=8$, against $64$ for reranking the full pool and $17$
+for the standalone oracle. Measured at deployment batch size on the same cell,
+the response-aware stage costs $.74$, $1.19$, $1.59$ and $2.65$ milliseconds
+per episode for $q=2,4,8,16$, against $1.70$ milliseconds for the sequential
+oracle and $.03$ milliseconds for cached screening alone
+($0$ expert evaluations), and it raises peak device memory from $90$ to
+$173$ megabytes. The shortlist therefore retains its intended efficiency; in
+regime B the trend across shortlist sizes ($q=4$: $.0097$, $q=8$: $.0108$) also
+shows that the screen, not the response stage, is the limiting component.

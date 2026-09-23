@@ -1,0 +1,26 @@
+\section{Conclusion}
+
+We formulated context selection through the set-conditioned marginal reduction
+in end-task loss. This decision object exposes structural headroom created by
+state conditioning, and it separates that opportunity from the accuracy with
+which a router can estimate it. R-MUR combines cached screening with compact
+predictor-response summaries and a gap-weighted ranking objective. Across six
+standard traffic benchmarks, R-MUR improves learned context selection over
+standalone and cached baselines, and a multi-target study shows that structural
+headroom persists across sensors.
+
+Two additions sharpen the scope of that claim. First, a general smooth-loss
+analysis shows that marginal utility decomposes into the alignment between the
+predictor's response and its residual plus a curvature penalty, with
+cross-entropy and other Bregman losses covered by exact or two-sided
+statements; predictor response is therefore the theoretically matched
+observation, and the numerical study confirms the bound empirically. Second, a
+subset-capable nonlinear backbone preserves structural headroom but reduces the
+share of it that a router can realize from observable features: the learned
+response-free routers become indistinguishable from random selection and
+R-MUR's advantage over them is no longer statistically resolved, while a second
+task family whose candidates are not redundant is already solved by
+nearest-neighbour relevance. Predictor response and decision margin remain the
+key quantities for turning structural opportunity into learned routing gains,
+and the strength of the fixed predictor determines how much of that opportunity
+is identifiable before the decision is made.

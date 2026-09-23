@@ -1,0 +1,279 @@
+{
+  "run_id": "R110_demo_selection",
+  "benchmark": "cifar10",
+  "seed": 101,
+  "config": {
+    "seed": 101,
+    "candidate_count": 16,
+    "budget": 4,
+    "query_batch_size": 32,
+    "episodes": 20,
+    "classes": 10,
+    "response_dim": 7,
+    "q_values": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "router_epochs": 5,
+    "ranking_beta": 1.0,
+    "states_per_episode": 2,
+    "device": "cuda:0",
+    "pair_dataset_rows": 60
+  },
+  "base_loss": 0.09600458220023587,
+  "predictor_quality": {
+    "demos_0": {
+      "mean_ce": 0.09600458220023587,
+      "mean_accuracy": 1.0,
+      "mean_demos": 0.0
+    },
+    "demos_2_relevance": {
+      "mean_ce": 0.09014729341403259,
+      "mean_accuracy": 1.0,
+      "mean_demos": 2.0
+    },
+    "demos_4_relevance": {
+      "mean_ce": 0.09072351239059785,
+      "mean_accuracy": 1.0,
+      "mean_demos": 4.0
+    },
+    "demos_4_random": {
+      "mean_ce": 0.09108225844655883,
+      "mean_accuracy": 1.0,
+      "mean_demos": 4.0
+    },
+    "demos_4_farthest": {
+      "mean_ce": 0.09947737206117797,
+      "mean_accuracy": 1.0,
+      "mean_demos": 4.0
+    },
+    "demos_16_pool": {
+      "mean_ce": 0.10604851350064301,
+      "mean_accuracy": 1.0,
+      "mean_demos": 16.0
+    }
+  },
+  "metrics": {
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "mean_loss": 0.09600458220023587,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 0.0,
+      "mean_selected_contexts": 0.0
+    },
+    "pool_all": {
+      "mean_prediction_gain": -0.010043931300407132,
+      "mean_loss": 0.10604851350064301,
+      "negative_transfer_rate": 0.65,
+      "mean_utility_recovery": -4.417015359911456,
+      "mean_selected_contexts": 16.0
+    },
+    "random": {
+      "mean_prediction_gain": 0.004922323753677047,
+      "mean_loss": 0.09108225844655883,
+      "negative_transfer_rate": 0.3,
+      "mean_utility_recovery": -0.05104633417664866,
+      "mean_selected_contexts": 4.0
+    },
+    "relevance": {
+      "mean_prediction_gain": 0.005281069809638029,
+      "mean_loss": 0.09072351239059785,
+      "negative_transfer_rate": 0.45,
+      "mean_utility_recovery": -0.13794969137142382,
+      "mean_selected_contexts": 4.0
+    },
+    "mmr": {
+      "mean_prediction_gain": 0.005273468287436177,
+      "mean_loss": 0.09073111391279971,
+      "negative_transfer_rate": 0.45,
+      "mean_utility_recovery": -0.1379614394485956,
+      "mean_selected_contexts": 4.0
+    },
+    "facility_location": {
+      "mean_prediction_gain": 0.005272629058906532,
+      "mean_loss": 0.09073195314132934,
+      "negative_transfer_rate": 0.45,
+      "mean_utility_recovery": -0.1377946719519663,
+      "mean_selected_contexts": 4.0
+    },
+    "dpp": {
+      "mean_prediction_gain": 0.005209607514122875,
+      "mean_loss": 0.090794974686113,
+      "negative_transfer_rate": 0.35,
+      "mean_utility_recovery": -0.0684233827297231,
+      "mean_selected_contexts": 4.0
+    },
+    "static_utility": {
+      "mean_prediction_gain": 0.0024193132624187245,
+      "mean_loss": 0.09358526893781713,
+      "negative_transfer_rate": 0.45,
+      "mean_utility_recovery": -0.24170351811625426,
+      "mean_selected_contexts": 4.0
+    },
+    "cached_mur": {
+      "mean_prediction_gain": 0.001279534091906806,
+      "mean_loss": 0.09472504810832907,
+      "negative_transfer_rate": 0.35,
+      "mean_utility_recovery": -0.023878464594429296,
+      "mean_selected_contexts": 1.15
+    },
+    "oracle_static": {
+      "mean_prediction_gain": 0.007549050468738672,
+      "mean_loss": 0.08845553173149721,
+      "negative_transfer_rate": 0.1,
+      "mean_utility_recovery": 0.7237296481175914,
+      "mean_selected_contexts": 3.5
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.00947927774824025,
+      "mean_loss": 0.08652530445199563,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": 1.0,
+      "mean_selected_contexts": 3.15
+    },
+    "ranked_response_q2": {
+      "mean_prediction_gain": 0.002898495215087734,
+      "mean_loss": 0.09310608698514813,
+      "negative_transfer_rate": 0.45,
+      "mean_utility_recovery": -0.26634137108098266,
+      "mean_selected_contexts": 4.0
+    },
+    "ranked_response_q4": {
+      "mean_prediction_gain": 0.004138949313355773,
+      "mean_loss": 0.09186563288688011,
+      "negative_transfer_rate": 0.4,
+      "mean_utility_recovery": -0.16462630363188038,
+      "mean_selected_contexts": 4.0
+    },
+    "ranked_response_q8": {
+      "mean_prediction_gain": 0.004277139996771322,
+      "mean_loss": 0.09172744220346454,
+      "negative_transfer_rate": 0.3,
+      "mean_utility_recovery": -0.24402844084225891,
+      "mean_selected_contexts": 4.0
+    },
+    "ranked_response_full": {
+      "mean_prediction_gain": 0.0012560851312709113,
+      "mean_loss": 0.09474849706896496,
+      "negative_transfer_rate": 0.35,
+      "mean_utility_recovery": -0.5366728833806158,
+      "mean_selected_contexts": 4.0
+    }
+  },
+  "expert_rows": {
+    "static_utility": 0,
+    "cached_mur": 0,
+    "oracle_static": 340,
+    "oracle_greedy": 1256,
+    "ranked_response_q2": 240,
+    "ranked_response_q4": 400,
+    "ranked_response_q8": 720,
+    "ranked_response_full": 1240
+  },
+  "evaluation_rows": 300,
+  "gate": {
+    "ranked_response_q2": {
+      "gain_over_zero": {
+        "mean": 0.002898495215087734,
+        "low": -0.0010560014333069,
+        "high": 0.006852991863482368
+      },
+      "gain_over_static": {
+        "mean": 0.0004791819526690097,
+        "low": -0.0014515178259499046,
+        "high": 0.002409881731287924
+      },
+      "gain_over_cached": {
+        "mean": 0.0016189611231809283,
+        "low": -0.0013246808231872226,
+        "high": 0.004562603069549079
+      },
+      "headroom_recovery": -2.409330394942817
+    },
+    "ranked_response_q4": {
+      "gain_over_zero": {
+        "mean": 0.004138949313355773,
+        "low": 6.403370744628538e-05,
+        "high": 0.00821386491926526
+      },
+      "gain_over_static": {
+        "mean": 0.001719636050937048,
+        "low": -2.442337504656453e-06,
+        "high": 0.0034417144393787524
+      },
+      "gain_over_cached": {
+        "mean": 0.0028594152214489665,
+        "low": -0.00026472300053208145,
+        "high": 0.005983553443430014
+      },
+      "headroom_recovery": -1.7666837432032625
+    },
+    "ranked_response_q8": {
+      "gain_over_zero": {
+        "mean": 0.004277139996771322,
+        "low": -0.0002760627534787131,
+        "high": 0.008830342747021356
+      },
+      "gain_over_static": {
+        "mean": 0.001857826734352597,
+        "low": -0.0007819178450149363,
+        "high": 0.00449757131372013
+      },
+      "gain_over_cached": {
+        "mean": 0.0029976059048645158,
+        "low": -0.0011169090732160952,
+        "high": 0.007112120882945126
+      },
+      "headroom_recovery": -1.6950907837196352
+    },
+    "ranked_response_full": {
+      "gain_over_zero": {
+        "mean": 0.0012560851312709113,
+        "low": -0.004519032439406938,
+        "high": 0.007031202701948761
+      },
+      "gain_over_static": {
+        "mean": -0.0011632281311478132,
+        "low": -0.006581610626159142,
+        "high": 0.004255154363863516
+      },
+      "gain_over_cached": {
+        "mean": -2.344896063589466e-05,
+        "low": -0.006523037653776958,
+        "high": 0.006476139732505169
+      },
+      "headroom_recovery": -3.2602198737408394
+    }
+  },
+  "headroom": {
+    "oracle_greedy_gain": 0.00947927774824025,
+    "oracle_static_gain": 0.007549050468738672,
+    "h_state": 0.20362598615278568,
+    "base_mean_ce": 0.09600458220023587,
+    "pool_all_gain": -0.010043931300407132
+  },
+  "wall_seconds": 1.9783072471618652,
+  "predictor_training": {
+    "epochs": 20,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "weight_decay": 1e-05,
+    "budget": 4,
+    "final_train_ce": 0.1295453906059265,
+    "first_train_ce": 2.5926270484924316,
+    "episodes": 30,
+    "subset_dropout": {
+      "full_probability": 0.05,
+      "empty_probability": 0.05,
+      "long_probability": 0.15
+    }
+  },
+  "expert_profile": {
+    "rows": 7524,
+    "calls": 125,
+    "seconds": 0.31564527563750744
+  },
+  "wall_seconds_total": 4.125050067901611
+}

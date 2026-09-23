@@ -1,0 +1,91 @@
+{
+  "run_id": "R206_fixed_set_baselines_v2",
+  "status": "confirmatory",
+  "dataset": "METRLA",
+  "target_sensor": 46,
+  "seed": 202,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "candidate_sensors": [
+      55,
+      92,
+      66,
+      7,
+      85,
+      107,
+      11,
+      108,
+      177,
+      27,
+      184,
+      123,
+      1,
+      205,
+      10,
+      110
+    ],
+    "selected_indices": {
+      "forward_val": [],
+      "forward_backward_val": [],
+      "adaptive_k": [
+        0
+      ],
+      "ids_cluster": [
+        0,
+        14,
+        8,
+        10
+      ],
+      "lookahead_val": [
+        0,
+        2
+      ],
+      "grad_influence": [
+        6,
+        2,
+        0,
+        13
+      ]
+    }
+  },
+  "metrics": {
+    "forward_val": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 0.0
+    },
+    "adaptive_k": {
+      "mean_prediction_gain": -0.006866004783660173,
+      "negative_transfer_rate": 0.465,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 1.0
+    },
+    "ids_cluster": {
+      "mean_prediction_gain": -0.02328467182815075,
+      "negative_transfer_rate": 0.5395,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "lookahead_val": {
+      "mean_prediction_gain": -0.003678132314234972,
+      "negative_transfer_rate": 0.6435,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 2.0
+    },
+    "grad_influence": {
+      "mean_prediction_gain": -0.005746905691921711,
+      "negative_transfer_rate": 0.671,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 4.0
+    },
+    "forward_backward_val": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0,
+      "mean_utility_recovery": NaN,
+      "mean_selected_contexts": 0.0
+    }
+  },
+  "wall_seconds": 0.39497923851013184
+}

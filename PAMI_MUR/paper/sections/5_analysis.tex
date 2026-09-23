@@ -1,0 +1,143 @@
+\section{Analysis}
+\label{sec:analysis}
+
+\subsection{Predictor response and marginal utility}
+
+The router observes how a candidate changes the frozen predictor's output.
+The following results quantify how much that response tells us about the
+candidate's marginal utility. Proofs are in \cref{app:proofs}.
+
+\begin{proposition}[Response expansion]
+\label{prop:expansion}
+Assume that, for every episode, $f\mapsto\loss(f,y)$ is twice continuously
+differentiable on the segment between $f_A(x)$ and $\fj(x)$, and
+that $\|\nabla^2\loss(z,y)\|_2\leq L$ on that segment. With
+$\dAj(x)=\fj(x)-f_A(x)$,
+\begin{align}
+ \marginal(j\mid A)
+ &=
+ -\E\!\left[\nabla\loss(f_A,y)^\top \dAj\right]
+ -\tfrac12\E\!\left[\dAj^\top\nabla^2\loss(\xi,y)\dAj\right]
+ -\lambda c_j,
+ \label{eq:prop1-exact}\\
+ \left|\marginal(j\mid A)
+ +\E\!\left[\nabla\loss(f_A,y)^\top \dAj\right]+\lambda c_j\right|
+ &\leq
+ \frac{L}{2}\E\|\dAj\|^2 .
+ \label{eq:prop1-bound}
+\end{align}
+\end{proposition}
+
+The leading term is the alignment between the loss gradient at the current
+prediction and the direction in which the candidate moves the predictor. The
+remainder is second order in the response magnitude, so the first-order term is
+accurate exactly when the candidate perturbs the predictor little, and a large
+response can cost at most $(L/2)\E\|\dAj\|^2$.
+
+\begin{proposition}[Exact identity for Bregman losses]
+\label{prop:bregman}
+Let $\loss(f,y)=D_\phi(y,f)=\phi(y)-\phi(f)-\nabla\phi(f)^\top(y-f)$ for convex
+differentiable $\phi$. Then
+\begin{equation}
+ \marginal(j\mid A)
+ =
+ \E\!\left[\left(\nabla\phi(\fj)-\nabla\phi(f_A)\right)^\top(y-f_A)\right]
+ -\E D_\phi\!\left(f_A,\fj\right)
+ -\lambda c_j .
+ \label{eq:prop2}
+\end{equation}
+\end{proposition}
+
+Equation~\eqref{eq:prop2} is exact and requires no smoothness constant. The
+second term is a non-positive movement penalty in the Bregman geometry. With
+$\phi(z)=\|z\|^2$ it reduces to the squared-loss identity of
+\cref{eq:squared-marginal}. If $\phi$ is $\mu$-strongly convex and $L$-smooth,
+the penalty is bounded by $(\mu/2)\|d\|^2$ and $(L/2)\|d\|^2$ from below and
+above.
+
+\begin{proposition}[Cross-entropy, explicit constants]
+\label{prop:ce}
+For logits $f\in\R^C$, one-hot $y$, and softmax cross-entropy
+$\loss(f,y)=-f_y+\log\sum_k e^{f_k}$ with $p=\softmax(f)$, the Hessian
+$\nabla^2\loss=\diag(p)-pp^\top$ is positive semidefinite with spectral norm at
+most $1/2$. Consequently
+\begin{equation}
+ \langle e_y-p_A,\dAj\rangle-\tfrac14\E\|\dAj\|^2-\lambda c_j
+ \;\leq\;
+ \marginal(j\mid A)
+ \;\leq\;
+ \langle e_y-p_A,\dAj\rangle-\lambda c_j .
+ \label{eq:prop3}
+\end{equation}
+\end{proposition}
+
+The upper bound holds because the second-order term penalises any positive
+semidefinite curvature; the lower bound says that a large response can lose at
+most a quarter of its squared size in logit space.
+
+\begin{proposition}[Response sufficiency for squared loss]
+\label{prop:suff}
+For squared loss, conditioning on the state gives
+\begin{equation}
+ \E\!\left[\widetilde{\marginal}(j\mid A)\mid x,A\right]
+ =
+ \langle g_A(x),\dAj(x)\rangle-\|\dAj(x)\|^2-\lambda c_j,
+ \quad
+ g_A(x)=2(\mu(x)-f_A(x)),
+ \label{eq:prop4}
+\end{equation}
+where $\mu(x)=\E[y\mid x,A]$.
+\end{proposition}
+
+Thus, conditional on the state, the Bayes-optimal marginal-utility predictor is
+affine in the response vector plus a known quadratic penalty. This is the
+parameterisation used by the response-aware router: state features supply the
+coefficient $g_A(x)$, response features supply $\dAj$, and the quadratic
+term is a function of the response alone. Any score that is independent of the
+response can only recover the state average and provably omits the
+$\langle g_A,\dAj\rangle$ interaction that the headroom diagnostic of
+\cref{eq:headroom} measures. For a general differentiable loss the same
+argument replaces $2(f_A-y)$ by $\nabla\loss(f_A,y)$, which is not a function
+of the residual alone, so both state and response must be observed; this is
+why the router head receives both. The bounds are conditional on the state and
+require the loss gradient at the current prediction; at routing time the label
+is unobserved and the router estimates the expectation of the first-order term
+from training episodes. The theory therefore explains the feature design and
+the second-order error of a response-based surrogate rather than providing a
+label-free guarantee.
+
+\subsection{From estimation error to routing regret}
+
+\begin{theorem}[One-step routing regret]
+\label{thm:onestep}
+Suppose that, at a fixed state $A$, the utility estimator satisfies
+$|\widehat{\marginal}(j\mid A)-\marginal(j\mid A)|\leq\epsilon$ for every
+remaining candidate. If $\widehat{j}$ maximizes the estimated utility and
+$j^*$ maximizes the true utility, then
+\begin{equation}
+ \marginal(j^*\mid A)-\marginal(\widehat{j}\mid A)\leq 2\epsilon.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By the error bound,
+$\marginal(j^*\mid A)\leq\widehat{\marginal}(j^*\mid A)+\epsilon$.
+The maximization rule gives
+$\widehat{\marginal}(j^*\mid A)\leq
+\widehat{\marginal}(\widehat{j}\mid A)$, and the error bound applies once more.
+\end{proof}
+
+Combining \cref{thm:onestep} with \cref{prop:expansion} bounds the regret of a
+response-based router by twice the estimation error of its first-order
+surrogate plus the second-order response term. The theorem controls one
+routing step. A sequence of locally accurate choices can still visit a
+different state from exact greedy selection. When the induced set utility is
+normalized, monotone, and submodular, the standard approximate-greedy argument
+extends the local bound to
+\begin{equation}
+ F(A_{\mathrm{R-MUR}})
+ \geq
+ \left(1-\left(1-\frac{1}{B}\right)^B\right)F(A^*)-2B\epsilon,
+\end{equation}
+where $B$ is the context budget. The one-step result itself does not require
+monotonicity or submodularity.

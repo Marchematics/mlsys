@@ -1,0 +1,84 @@
+{
+ "provenance": {
+  "learned_runs": [
+   "R080b_multitarget_rmur_s1_20260920_2340",
+   "R080b_multitarget_rmur_s202_diag_20260921",
+   "R080b_multitarget_rmur_s303_diag_20260921"
+  ],
+  "primary_policy": "ranked_response_q4"
+ },
+ "datasets": {
+  "METRLA": {
+   "targets": 32,
+   "mean_advantage": 0.006678530376423926,
+   "full_verdict": "AHEAD"
+  },
+  "PEMSBAY": {
+   "targets": 32,
+   "mean_advantage": 0.03030629446978613,
+   "full_verdict": "AHEAD"
+  },
+  "PEMS03": {
+   "targets": 32,
+   "mean_advantage": 0.0013227282640097355,
+   "full_verdict": "UNRESOLVED"
+  },
+  "PEMS04": {
+   "targets": 32,
+   "mean_advantage": -0.0007775873188317447,
+   "full_verdict": "UNRESOLVED"
+  },
+  "PEMS07": {
+   "targets": 32,
+   "mean_advantage": 0.004124103534801785,
+   "full_verdict": "AHEAD"
+  },
+  "PEMS08": {
+   "targets": 32,
+   "mean_advantage": -0.0025576970603348554,
+   "full_verdict": "BELOW"
+  }
+ },
+ "by_size": {
+  "4": {
+   "pilots": 2400,
+   "sign_agreement": 0.9945833333333334,
+   "decision_agreement": 0.6429166666666667,
+   "sensitivity_for_AHEAD": 0.6641666666666667,
+   "specificity_for_AHEAD": 0.8816666666666667,
+   "pilot_AHEAD_rate": 0.39125
+  },
+  "8": {
+   "pilots": 2400,
+   "sign_agreement": 1.0,
+   "decision_agreement": 0.7691666666666667,
+   "sensitivity_for_AHEAD": 0.8158333333333333,
+   "specificity_for_AHEAD": 0.94,
+   "pilot_AHEAD_rate": 0.4379166666666667
+  },
+  "12": {
+   "pilots": 2400,
+   "sign_agreement": 1.0,
+   "decision_agreement": 0.8170833333333334,
+   "sensitivity_for_AHEAD": 0.8641666666666666,
+   "specificity_for_AHEAD": 0.9408333333333333,
+   "pilot_AHEAD_rate": 0.46166666666666667
+  },
+  "16": {
+   "pilots": 2400,
+   "sign_agreement": 1.0,
+   "decision_agreement": 0.8408333333333333,
+   "sensitivity_for_AHEAD": 0.8591666666666666,
+   "specificity_for_AHEAD": 0.9275,
+   "pilot_AHEAD_rate": 0.4658333333333333
+  },
+  "24": {
+   "pilots": 2400,
+   "sign_agreement": 1.0,
+   "decision_agreement": 0.9591666666666666,
+   "sensitivity_for_AHEAD": 0.9758333333333333,
+   "specificity_for_AHEAD": 0.9566666666666667,
+   "pilot_AHEAD_rate": 0.5095833333333334
+  }
+ }
+}

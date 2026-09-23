@@ -1,0 +1,1382 @@
+{
+  "METRLA": {
+    "seek_count": 5,
+    "quantities": {
+      "oracle_static_gain": 0.15973708033561707,
+      "oracle_greedy_gain": 0.17981607913970948,
+      "state_conditioning_headroom": 0.11166408977526357,
+      "R_oracle_q4": 0.20147216315879285,
+      "R_deploy_q4": 0.20350219498831854,
+      "ranked_q4_seed_ci_low": 0.023566913216387812,
+      "ranked_q4_seed_ci_high": 0.0488889556536321
+    },
+    "metrics": {
+      "base_only": {
+        "mean_prediction_gain": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "pool_all": {
+        "mean_prediction_gain": {
+          "mean": 0.032444654032588005,
+          "std": 0.0065160912759126555
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4937,
+          "std": 0.027992409685484377
+        },
+        "mean_utility_recovery": {
+          "mean": -2.520551824569702,
+          "std": 0.3231775534108345
+        },
+        "mean_selected_contexts": {
+          "mean": 16.0,
+          "std": 0.0
+        }
+      },
+      "relevance": {
+        "mean_prediction_gain": {
+          "mean": -0.014304431644268334,
+          "std": 0.014336918288612393
+        },
+        "negative_transfer_rate": {
+          "mean": 0.7053,
+          "std": 0.04490072382490067
+        },
+        "mean_utility_recovery": {
+          "mean": -0.9360863924026489,
+          "std": 0.0991375565058781
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "mmr": {
+        "mean_prediction_gain": {
+          "mean": -0.012471788201946766,
+          "std": 0.014161019073437725
+        },
+        "negative_transfer_rate": {
+          "mean": 0.6840999999999999,
+          "std": 0.03653662545994089
+        },
+        "mean_utility_recovery": {
+          "mean": -2.304434394836426,
+          "std": 0.16024968181205274
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_utility": {
+        "mean_prediction_gain": {
+          "mean": -0.0004582967609167099,
+          "std": 0.024241125072636593
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5113,
+          "std": 0.029609120216581943
+        },
+        "mean_utility_recovery": {
+          "mean": -1.356957983970642,
+          "std": 0.31531170482101784
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "cached_mur": {
+        "mean_prediction_gain": {
+          "mean": 0.017746097687631846,
+          "std": 0.00914284379410267
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4366,
+          "std": 0.05996082054141687
+        },
+        "mean_utility_recovery": {
+          "mean": -1.3739115715026855,
+          "std": 0.47196182589496866
+        },
+        "mean_selected_contexts": {
+          "mean": 2.8665999999999996,
+          "std": 0.6349804524550343
+        }
+      },
+      "oracle_static": {
+        "mean_prediction_gain": {
+          "mean": 0.15973708033561707,
+          "std": 0.013525079774127943
+        },
+        "negative_transfer_rate": {
+          "mean": 0.14889999999999998,
+          "std": 0.019581241022979107
+        },
+        "mean_utility_recovery": {
+          "mean": 0.4929752290248871,
+          "std": 0.05392499249574878
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9614000000000003,
+          "std": 0.004735504197020631
+        }
+      },
+      "oracle_greedy": {
+        "mean_prediction_gain": {
+          "mean": 0.17981607913970948,
+          "std": 0.011049331466585039
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 3.825,
+          "std": 0.017370952766040164
+        }
+      },
+      "ranked_response_q2": {
+        "mean_prediction_gain": {
+          "mean": 0.03217019364237785,
+          "std": 0.004529359854528992
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3107,
+          "std": 0.06325800344620433
+        },
+        "mean_utility_recovery": {
+          "mean": -0.9487303376197815,
+          "std": 0.37867004811940685
+        },
+        "mean_selected_contexts": {
+          "mean": 2.1066,
+          "std": 0.38530659869771244
+        }
+      },
+      "ranked_response_q4": {
+        "mean_prediction_gain": {
+          "mean": 0.036227934435009955,
+          "std": 0.010196817526269612
+        },
+        "negative_transfer_rate": {
+          "mean": 0.34330000000000005,
+          "std": 0.0489969386798808
+        },
+        "mean_utility_recovery": {
+          "mean": -1.065626311302185,
+          "std": 0.37323501788739255
+        },
+        "mean_selected_contexts": {
+          "mean": 3.0757000000000003,
+          "std": 0.35102592496851287
+        }
+      },
+      "ranked_response_q8": {
+        "mean_prediction_gain": {
+          "mean": 0.03384018689393997,
+          "std": 0.008788444414799704
+        },
+        "negative_transfer_rate": {
+          "mean": 0.36119999999999997,
+          "std": 0.03142570603821019
+        },
+        "mean_utility_recovery": {
+          "mean": -1.2391058921813964,
+          "std": 0.3930343848224475
+        },
+        "mean_selected_contexts": {
+          "mean": 3.5753999999999997,
+          "std": 0.21507423137140347
+        }
+      },
+      "ranked_response_full": {
+        "mean_prediction_gain": {
+          "mean": 0.03178886063396931,
+          "std": 0.006281276727130374
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4044,
+          "std": 0.02809670799221859
+        },
+        "mean_utility_recovery": {
+          "mean": -1.704993724822998,
+          "std": 0.4986827840258943
+        },
+        "mean_selected_contexts": {
+          "mean": 3.7642,
+          "std": 0.11991486563391549
+        }
+      }
+    }
+  },
+  "PEMSBAY": {
+    "seek_count": 5,
+    "quantities": {
+      "oracle_static_gain": 0.1391673356294632,
+      "oracle_greedy_gain": 0.16446771323680878,
+      "state_conditioning_headroom": 0.15383188049144234,
+      "R_oracle_q4": 0.33415120829014394,
+      "R_deploy_q4": 0.1729409494841414,
+      "ranked_q4_seed_ci_low": 0.03876386633646402,
+      "ranked_q4_seed_ci_high": 0.07115030386912909
+    },
+    "metrics": {
+      "base_only": {
+        "mean_prediction_gain": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "pool_all": {
+        "mean_prediction_gain": {
+          "mean": 0.03856825474649668,
+          "std": 0.01919716833313225
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5820000000000001,
+          "std": 0.03650856063993761
+        },
+        "mean_utility_recovery": {
+          "mean": -4.189786386489868,
+          "std": 1.444966540136338
+        },
+        "mean_selected_contexts": {
+          "mean": 16.0,
+          "std": 0.0
+        }
+      },
+      "relevance": {
+        "mean_prediction_gain": {
+          "mean": -0.05137153565883636,
+          "std": 0.01967934518354725
+        },
+        "negative_transfer_rate": {
+          "mean": 0.7357,
+          "std": 0.01695435047414084
+        },
+        "mean_utility_recovery": {
+          "mean": -1.9186717748641968,
+          "std": 0.33387607017208343
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "mmr": {
+        "mean_prediction_gain": {
+          "mean": -0.02360313553363085,
+          "std": 0.009181763502096062
+        },
+        "negative_transfer_rate": {
+          "mean": 0.6857,
+          "std": 0.009358151526877507
+        },
+        "mean_utility_recovery": {
+          "mean": -2.2167923927307127,
+          "std": 0.4209397578989398
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_utility": {
+        "mean_prediction_gain": {
+          "mean": 0.032058028504252434,
+          "std": 0.011708122038624006
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5639000000000001,
+          "std": 0.06853411559216328
+        },
+        "mean_utility_recovery": {
+          "mean": -1.9499350786209106,
+          "std": 0.6461284187171703
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "cached_mur": {
+        "mean_prediction_gain": {
+          "mean": 0.03199507258832455,
+          "std": 0.012401700512812523
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5448999999999999,
+          "std": 0.047660780522354014
+        },
+        "mean_utility_recovery": {
+          "mean": -1.9359929800033568,
+          "std": 0.5069599144478317
+        },
+        "mean_selected_contexts": {
+          "mean": 3.2703,
+          "std": 0.421293336049836
+        }
+      },
+      "oracle_static": {
+        "mean_prediction_gain": {
+          "mean": 0.1391673356294632,
+          "std": 0.012717191772838893
+        },
+        "negative_transfer_rate": {
+          "mean": 0.2165,
+          "std": 0.02236067977499789
+        },
+        "mean_utility_recovery": {
+          "mean": 0.2607700049877167,
+          "std": 0.10043625723394509
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9230000000000005,
+          "std": 0.009334077351297253
+        }
+      },
+      "oracle_greedy": {
+        "mean_prediction_gain": {
+          "mean": 0.16446771323680878,
+          "std": 0.014758178295700954
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 3.775,
+          "std": 0.025966324345197668
+        }
+      },
+      "ranked_response_q2": {
+        "mean_prediction_gain": {
+          "mean": 0.048082342371344566,
+          "std": 0.014394910352096288
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4407,
+          "std": 0.06677536971069496
+        },
+        "mean_utility_recovery": {
+          "mean": -1.0370996356010438,
+          "std": 0.49370635649875866
+        },
+        "mean_selected_contexts": {
+          "mean": 2.3571,
+          "std": 0.2478440537918955
+        }
+      },
+      "ranked_response_q4": {
+        "mean_prediction_gain": {
+          "mean": 0.05495708510279655,
+          "std": 0.01304154649708635
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4889,
+          "std": 0.07170721720998521
+        },
+        "mean_utility_recovery": {
+          "mean": -1.68075692653656,
+          "std": 0.5509234403216341
+        },
+        "mean_selected_contexts": {
+          "mean": 3.2641999999999998,
+          "std": 0.2505011477019616
+        }
+      },
+      "ranked_response_q8": {
+        "mean_prediction_gain": {
+          "mean": 0.05172494649887085,
+          "std": 0.01386921074177792
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5133,
+          "std": 0.07394305241197444
+        },
+        "mean_utility_recovery": {
+          "mean": -2.2413735389709473,
+          "std": 0.6800851124254493
+        },
+        "mean_selected_contexts": {
+          "mean": 3.7079999999999997,
+          "std": 0.1589571483136257
+        }
+      },
+      "ranked_response_full": {
+        "mean_prediction_gain": {
+          "mean": 0.046138420701026917,
+          "std": 0.01210158748960399
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5835,
+          "std": 0.09986240533854572
+        },
+        "mean_utility_recovery": {
+          "mean": -3.0701949119567873,
+          "std": 1.1451292371915196
+        },
+        "mean_selected_contexts": {
+          "mean": 3.8598,
+          "std": 0.06696136946030887
+        }
+      }
+    }
+  },
+  "PEMS03": {
+    "seek_count": 5,
+    "quantities": {
+      "oracle_static_gain": 0.04722700417041779,
+      "oracle_greedy_gain": 0.06421567425131798,
+      "state_conditioning_headroom": 0.2645564385793475,
+      "R_oracle_q4": 0.49143406872763856,
+      "R_deploy_q4": 0.25564938688803734,
+      "ranked_q4_seed_ci_low": 0.02609719486808909,
+      "ranked_q4_seed_ci_high": 0.03701834527873861
+    },
+    "metrics": {
+      "base_only": {
+        "mean_prediction_gain": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "pool_all": {
+        "mean_prediction_gain": {
+          "mean": 0.024920234829187392,
+          "std": 0.0027900559835539267
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3901,
+          "std": 0.005042320894191488
+        },
+        "mean_utility_recovery": {
+          "mean": -1.9597974300384522,
+          "std": 0.5475593703491413
+        },
+        "mean_selected_contexts": {
+          "mean": 16.0,
+          "std": 0.0
+        }
+      },
+      "relevance": {
+        "mean_prediction_gain": {
+          "mean": -0.04107055962085724,
+          "std": 0.009389544239031196
+        },
+        "negative_transfer_rate": {
+          "mean": 0.7499,
+          "std": 0.022114474897677306
+        },
+        "mean_utility_recovery": {
+          "mean": -3.413213777542114,
+          "std": 0.5147006364480418
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "mmr": {
+        "mean_prediction_gain": {
+          "mean": -0.024798585474491118,
+          "std": 0.004439552053844353
+        },
+        "negative_transfer_rate": {
+          "mean": 0.6832,
+          "std": 0.018893120441049443
+        },
+        "mean_utility_recovery": {
+          "mean": -2.875468111038208,
+          "std": 0.3609058038733201
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_utility": {
+        "mean_prediction_gain": {
+          "mean": 0.020341317728161813,
+          "std": 0.002598043646801482
+        },
+        "negative_transfer_rate": {
+          "mean": 0.41109999999999997,
+          "std": 0.013092937027267786
+        },
+        "mean_utility_recovery": {
+          "mean": -1.2718674421310425,
+          "std": 0.3371792549043008
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "cached_mur": {
+        "mean_prediction_gain": {
+          "mean": 0.019123056158423423,
+          "std": 0.003910347511118111
+        },
+        "negative_transfer_rate": {
+          "mean": 0.41059999999999997,
+          "std": 0.03657936576814859
+        },
+        "mean_utility_recovery": {
+          "mean": -1.2516873359680176,
+          "std": 0.3355410043812358
+        },
+        "mean_selected_contexts": {
+          "mean": 3.3867000000000003,
+          "std": 0.3853713468850532
+        }
+      },
+      "oracle_static": {
+        "mean_prediction_gain": {
+          "mean": 0.04722700417041779,
+          "std": 0.001740235104652635
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3231,
+          "std": 0.017151530543948548
+        },
+        "mean_utility_recovery": {
+          "mean": -0.09426304148510098,
+          "std": 0.09070652685526917
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9307000000000003,
+          "std": 0.011405042744330194
+        }
+      },
+      "oracle_greedy": {
+        "mean_prediction_gain": {
+          "mean": 0.06421567425131798,
+          "std": 0.0035109952313773715
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 3.6499,
+          "std": 0.03700912049752069
+        }
+      },
+      "ranked_response_q2": {
+        "mean_prediction_gain": {
+          "mean": 0.0254501111805439,
+          "std": 0.00434711206228879
+        },
+        "negative_transfer_rate": {
+          "mean": 0.30479999999999996,
+          "std": 0.02986553197249298
+        },
+        "mean_utility_recovery": {
+          "mean": -1.1328848123550415,
+          "std": 0.5236862499031832
+        },
+        "mean_selected_contexts": {
+          "mean": 2.4730999999999996,
+          "std": 0.2313815571734273
+        }
+      },
+      "ranked_response_q4": {
+        "mean_prediction_gain": {
+          "mean": 0.03155777007341385,
+          "std": 0.004397788140128268
+        },
+        "negative_transfer_rate": {
+          "mean": 0.37639999999999996,
+          "std": 0.03828740001619332
+        },
+        "mean_utility_recovery": {
+          "mean": -1.8120741248130798,
+          "std": 0.769769432761904
+        },
+        "mean_selected_contexts": {
+          "mean": 3.3247999999999998,
+          "std": 0.1903912419204203
+        }
+      },
+      "ranked_response_q8": {
+        "mean_prediction_gain": {
+          "mean": 0.032617798820137975,
+          "std": 0.0052249708114858245
+        },
+        "negative_transfer_rate": {
+          "mean": 0.418,
+          "std": 0.05098406613835346
+        },
+        "mean_utility_recovery": {
+          "mean": -2.6312339067459107,
+          "std": 1.0754336945661145
+        },
+        "mean_selected_contexts": {
+          "mean": 3.7708,
+          "std": 0.06750703667026128
+        }
+      },
+      "ranked_response_full": {
+        "mean_prediction_gain": {
+          "mean": 0.03244263231754303,
+          "std": 0.006451754161252837
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4349,
+          "std": 0.0590290182876185
+        },
+        "mean_utility_recovery": {
+          "mean": -3.2677643299102783,
+          "std": 1.3751143140524298
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9171,
+          "std": 0.023804936462843256
+        }
+      }
+    }
+  },
+  "PEMS04": {
+    "seek_count": 5,
+    "quantities": {
+      "oracle_static_gain": 0.08368460088968277,
+      "oracle_greedy_gain": 0.08726204782724381,
+      "state_conditioning_headroom": 0.04099659619086016,
+      "R_oracle_q4": 0.6070523153557472,
+      "R_deploy_q4": 0.2788260057939023,
+      "ranked_q4_seed_ci_low": 0.05014686092537651,
+      "ranked_q4_seed_ci_high": 0.055798395427048106
+    },
+    "metrics": {
+      "base_only": {
+        "mean_prediction_gain": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "pool_all": {
+        "mean_prediction_gain": {
+          "mean": 0.05907291769981384,
+          "std": 0.0022308094819923673
+        },
+        "negative_transfer_rate": {
+          "mean": 0.31850000000000006,
+          "std": 0.010799305533227598
+        },
+        "mean_utility_recovery": {
+          "mean": -0.3156787097454071,
+          "std": 0.07900721331654396
+        },
+        "mean_selected_contexts": {
+          "mean": 16.0,
+          "std": 0.0
+        }
+      },
+      "relevance": {
+        "mean_prediction_gain": {
+          "mean": 0.025805599987506866,
+          "std": 0.004798404664079659
+        },
+        "negative_transfer_rate": {
+          "mean": 0.2992,
+          "std": 0.0347861322943497
+        },
+        "mean_utility_recovery": {
+          "mean": 0.08437884785234928,
+          "std": 0.0404955597118097
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "mmr": {
+        "mean_prediction_gain": {
+          "mean": 0.025420279428362846,
+          "std": 0.002603400761494598
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3197,
+          "std": 0.024445347205552224
+        },
+        "mean_utility_recovery": {
+          "mean": 0.032238004729151726,
+          "std": 0.04444671416262306
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_utility": {
+        "mean_prediction_gain": {
+          "mean": 0.03971538096666336,
+          "std": 0.0007814945541967077
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3175,
+          "std": 0.010588909292273694
+        },
+        "mean_utility_recovery": {
+          "mean": 0.03125777337700129,
+          "std": 0.027304725363805953
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "cached_mur": {
+        "mean_prediction_gain": {
+          "mean": 0.038371454924345016,
+          "std": 0.001765038275043479
+        },
+        "negative_transfer_rate": {
+          "mean": 0.305,
+          "std": 0.024804233509624924
+        },
+        "mean_utility_recovery": {
+          "mean": 0.04701259359717369,
+          "std": 0.03809822937233804
+        },
+        "mean_selected_contexts": {
+          "mean": 3.3502,
+          "std": 0.3955768888598018
+        }
+      },
+      "oracle_static": {
+        "mean_prediction_gain": {
+          "mean": 0.08368460088968277,
+          "std": 0.001590649446369412
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0395,
+          "std": 0.009427353817482402
+        },
+        "mean_utility_recovery": {
+          "mean": 0.8320565938949585,
+          "std": 0.024798906685895593
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9842,
+          "std": 0.004177319714841103
+        }
+      },
+      "oracle_greedy": {
+        "mean_prediction_gain": {
+          "mean": 0.08726204782724381,
+          "std": 0.001548932639563701
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9698,
+          "std": 0.006027022482121727
+        }
+      },
+      "ranked_response_q2": {
+        "mean_prediction_gain": {
+          "mean": 0.039464446157217024,
+          "std": 0.0019197990889556877
+        },
+        "negative_transfer_rate": {
+          "mean": 0.1923,
+          "std": 0.010889214847728923
+        },
+        "mean_utility_recovery": {
+          "mean": 0.06390873193740845,
+          "std": 0.030270622341359913
+        },
+        "mean_selected_contexts": {
+          "mean": 1.7604,
+          "std": 0.14075617215596622
+        }
+      },
+      "ranked_response_q4": {
+        "mean_prediction_gain": {
+          "mean": 0.05297262817621231,
+          "std": 0.0022757905962673096
+        },
+        "negative_transfer_rate": {
+          "mean": 0.23500000000000001,
+          "std": 0.012262748468430722
+        },
+        "mean_utility_recovery": {
+          "mean": 0.09958989769220353,
+          "std": 0.05351795587004072
+        },
+        "mean_selected_contexts": {
+          "mean": 2.8814,
+          "std": 0.18206605943997362
+        }
+      },
+      "ranked_response_q8": {
+        "mean_prediction_gain": {
+          "mean": 0.06124013066291809,
+          "std": 0.0010813027826133154
+        },
+        "negative_transfer_rate": {
+          "mean": 0.2552,
+          "std": 0.01565886330485072
+        },
+        "mean_utility_recovery": {
+          "mean": 0.017222566530108452,
+          "std": 0.104342858719768
+        },
+        "mean_selected_contexts": {
+          "mean": 3.6548000000000003,
+          "std": 0.16914512999196873
+        }
+      },
+      "ranked_response_full": {
+        "mean_prediction_gain": {
+          "mean": 0.06295254454016685,
+          "std": 0.0013136297616972226
+        },
+        "negative_transfer_rate": {
+          "mean": 0.2741,
+          "std": 0.012315640462436358
+        },
+        "mean_utility_recovery": {
+          "mean": -0.035680560022592546,
+          "std": 0.12968153640691849
+        },
+        "mean_selected_contexts": {
+          "mean": 3.874,
+          "std": 0.09844224194927705
+        }
+      }
+    }
+  },
+  "PEMS07": {
+    "seek_count": 5,
+    "quantities": {
+      "oracle_static_gain": 0.09121792018413544,
+      "oracle_greedy_gain": 0.10268499255180359,
+      "state_conditioning_headroom": 0.11167232993548816,
+      "R_oracle_q4": 0.3941618629156341,
+      "R_deploy_q4": 0.29272810789909204,
+      "ranked_q4_seed_ci_low": 0.03436405778661912,
+      "ranked_q4_seed_ci_high": 0.04658495812877471
+    },
+    "metrics": {
+      "base_only": {
+        "mean_prediction_gain": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "pool_all": {
+        "mean_prediction_gain": {
+          "mean": 0.028845417127013207,
+          "std": 0.004736844698523129
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3989,
+          "std": 0.006397265040624772
+        },
+        "mean_utility_recovery": {
+          "mean": -1.2308656215667724,
+          "std": 0.12106481434508357
+        },
+        "mean_selected_contexts": {
+          "mean": 16.0,
+          "std": 0.0
+        }
+      },
+      "relevance": {
+        "mean_prediction_gain": {
+          "mean": -0.04760775789618492,
+          "std": 0.0058845652019997976
+        },
+        "negative_transfer_rate": {
+          "mean": 0.6588,
+          "std": 0.009941076400470948
+        },
+        "mean_utility_recovery": {
+          "mean": -2.006840205192566,
+          "std": 0.3325349855840364
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "mmr": {
+        "mean_prediction_gain": {
+          "mean": -0.03822350315749645,
+          "std": 0.0061532221018486336
+        },
+        "negative_transfer_rate": {
+          "mean": 0.6234,
+          "std": 0.011282730166054652
+        },
+        "mean_utility_recovery": {
+          "mean": -2.091543674468994,
+          "std": 0.30647944707006464
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_utility": {
+        "mean_prediction_gain": {
+          "mean": 0.014726619981229306,
+          "std": 0.002306325818672746
+        },
+        "negative_transfer_rate": {
+          "mean": 0.4309,
+          "std": 0.014570518178843207
+        },
+        "mean_utility_recovery": {
+          "mean": -0.7232548475265503,
+          "std": 0.13808741286060672
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "cached_mur": {
+        "mean_prediction_gain": {
+          "mean": 0.01753172613680363,
+          "std": 0.0036474577057872366
+        },
+        "negative_transfer_rate": {
+          "mean": 0.38170000000000004,
+          "std": 0.05295351735248565
+        },
+        "mean_utility_recovery": {
+          "mean": -0.5986243665218354,
+          "std": 0.19920074735936144
+        },
+        "mean_selected_contexts": {
+          "mean": 3.2111999999999994,
+          "std": 0.5095692543707872
+        }
+      },
+      "oracle_static": {
+        "mean_prediction_gain": {
+          "mean": 0.09121792018413544,
+          "std": 0.003964605209379401
+        },
+        "negative_transfer_rate": {
+          "mean": 0.16460000000000002,
+          "std": 0.021637351963676152
+        },
+        "mean_utility_recovery": {
+          "mean": 0.45198187232017517,
+          "std": 0.049182125609508257
+        },
+        "mean_selected_contexts": {
+          "mean": 3.9549999999999996,
+          "std": 0.004107919181288672
+        }
+      },
+      "oracle_greedy": {
+        "mean_prediction_gain": {
+          "mean": 0.10268499255180359,
+          "std": 0.0038574952256686694
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 3.8632999999999997,
+          "std": 0.013645512082732663
+        }
+      },
+      "ranked_response_q2": {
+        "mean_prediction_gain": {
+          "mean": 0.031023224443197252,
+          "std": 0.004045317174595753
+        },
+        "negative_transfer_rate": {
+          "mean": 0.2657,
+          "std": 0.02434799786430086
+        },
+        "mean_utility_recovery": {
+          "mean": -0.33272789418697357,
+          "std": 0.09382134338469317
+        },
+        "mean_selected_contexts": {
+          "mean": 2.3313999999999995,
+          "std": 0.2835704057196377
+        }
+      },
+      "ranked_response_q4": {
+        "mean_prediction_gain": {
+          "mean": 0.040474507957696915,
+          "std": 0.004921178499108768
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3118,
+          "std": 0.020520112085463855
+        },
+        "mean_utility_recovery": {
+          "mean": -0.6305026829242706,
+          "std": 0.14236254563484804
+        },
+        "mean_selected_contexts": {
+          "mean": 3.1852000000000005,
+          "std": 0.3059586573378829
+        }
+      },
+      "ranked_response_q8": {
+        "mean_prediction_gain": {
+          "mean": 0.04697574228048325,
+          "std": 0.0036294592630696076
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3498,
+          "std": 0.01973132028020426
+        },
+        "mean_utility_recovery": {
+          "mean": -1.1259019732475282,
+          "std": 0.2051358818357188
+        },
+        "mean_selected_contexts": {
+          "mean": 3.6559,
+          "std": 0.24779966706999415
+        }
+      },
+      "ranked_response_full": {
+        "mean_prediction_gain": {
+          "mean": 0.048067741096019745,
+          "std": 0.004447846245100451
+        },
+        "negative_transfer_rate": {
+          "mean": 0.37479999999999997,
+          "std": 0.01939587585029353
+        },
+        "mean_utility_recovery": {
+          "mean": -1.7638662576675415,
+          "std": 0.41831211535474466
+        },
+        "mean_selected_contexts": {
+          "mean": 3.8146,
+          "std": 0.18089375334709606
+        }
+      }
+    }
+  },
+  "PEMS08": {
+    "seek_count": 5,
+    "quantities": {
+      "oracle_static_gain": 0.05603599101305008,
+      "oracle_greedy_gain": 0.06321691423654556,
+      "state_conditioning_headroom": 0.11359180229243461,
+      "R_oracle_q4": 0.587354083415643,
+      "R_deploy_q4": 0.2508448863352917,
+      "ranked_q4_seed_ci_low": 0.03490448401818157,
+      "ranked_q4_seed_ci_high": 0.0393569414173615
+    },
+    "metrics": {
+      "base_only": {
+        "mean_prediction_gain": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "pool_all": {
+        "mean_prediction_gain": {
+          "mean": 0.03222384490072727,
+          "std": 0.0018893609343769212
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3715,
+          "std": 0.008881159834165814
+        },
+        "mean_utility_recovery": {
+          "mean": -1.4252408266067504,
+          "std": 0.19138369475552047
+        },
+        "mean_selected_contexts": {
+          "mean": 16.0,
+          "std": 0.0
+        }
+      },
+      "relevance": {
+        "mean_prediction_gain": {
+          "mean": -0.011488689854741097,
+          "std": 0.0016123027527485457
+        },
+        "negative_transfer_rate": {
+          "mean": 0.6595000000000001,
+          "std": 0.017737671775066757
+        },
+        "mean_utility_recovery": {
+          "mean": -0.8333467006683349,
+          "std": 0.19018524271634832
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "mmr": {
+        "mean_prediction_gain": {
+          "mean": 0.005891525698825717,
+          "std": 0.001942259652194271
+        },
+        "negative_transfer_rate": {
+          "mean": 0.5941,
+          "std": 0.012817956155331486
+        },
+        "mean_utility_recovery": {
+          "mean": -0.8675374984741211,
+          "std": 0.0927977393158232
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_utility": {
+        "mean_prediction_gain": {
+          "mean": 0.028396086022257804,
+          "std": 0.002146211168045188
+        },
+        "negative_transfer_rate": {
+          "mean": 0.39089999999999997,
+          "std": 0.011453165501292632
+        },
+        "mean_utility_recovery": {
+          "mean": -0.5465609073638916,
+          "std": 0.11303062788010287
+        },
+        "mean_selected_contexts": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "cached_mur": {
+        "mean_prediction_gain": {
+          "mean": 0.02729143910109997,
+          "std": 0.0026648693828581565
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3683,
+          "std": 0.02611177895127025
+        },
+        "mean_utility_recovery": {
+          "mean": -0.5319872617721557,
+          "std": 0.10448280419597805
+        },
+        "mean_selected_contexts": {
+          "mean": 3.6006,
+          "std": 0.2934204321447299
+        }
+      },
+      "oracle_static": {
+        "mean_prediction_gain": {
+          "mean": 0.05603599101305008,
+          "std": 0.0008999681596742993
+        },
+        "negative_transfer_rate": {
+          "mean": 0.1669,
+          "std": 0.009509206065702857
+        },
+        "mean_utility_recovery": {
+          "mean": 0.4484552264213562,
+          "std": 0.050576950712657595
+        },
+        "mean_selected_contexts": {
+          "mean": 3.963,
+          "std": 0.002371708245126257
+        }
+      },
+      "oracle_greedy": {
+        "mean_prediction_gain": {
+          "mean": 0.06321691423654556,
+          "std": 0.0012047172657017656
+        },
+        "negative_transfer_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "mean_utility_recovery": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "mean_selected_contexts": {
+          "mean": 3.8918,
+          "std": 0.01937975748042284
+        }
+      },
+      "ranked_response_q2": {
+        "mean_prediction_gain": {
+          "mean": 0.03149223327636719,
+          "std": 0.002368029190936777
+        },
+        "negative_transfer_rate": {
+          "mean": 0.25550000000000006,
+          "std": 0.022335509844192056
+        },
+        "mean_utility_recovery": {
+          "mean": -0.35209467113018034,
+          "std": 0.11722445896997656
+        },
+        "mean_selected_contexts": {
+          "mean": 2.1078,
+          "std": 0.13027835583856587
+        }
+      },
+      "ranked_response_q4": {
+        "mean_prediction_gain": {
+          "mean": 0.03713071271777153,
+          "std": 0.0017929397186441012
+        },
+        "negative_transfer_rate": {
+          "mean": 0.3191,
+          "std": 0.02216528817768901
+        },
+        "mean_utility_recovery": {
+          "mean": -0.6570604801177978,
+          "std": 0.16373271139352896
+        },
+        "mean_selected_contexts": {
+          "mean": 3.104,
+          "std": 0.12710182925512925
+        }
+      },
+      "ranked_response_q8": {
+        "mean_prediction_gain": {
+          "mean": 0.03955230340361595,
+          "std": 0.0009250138087278691
+        },
+        "negative_transfer_rate": {
+          "mean": 0.36049999999999993,
+          "std": 0.009886859966642604
+        },
+        "mean_utility_recovery": {
+          "mean": -1.105331015586853,
+          "std": 0.28738907420407667
+        },
+        "mean_selected_contexts": {
+          "mean": 3.7,
+          "std": 0.11501793338432045
+        }
+      },
+      "ranked_response_full": {
+        "mean_prediction_gain": {
+          "mean": 0.03948620185256004,
+          "std": 0.000608618949555391
+        },
+        "negative_transfer_rate": {
+          "mean": 0.38670000000000004,
+          "std": 0.010053606318132822
+        },
+        "mean_utility_recovery": {
+          "mean": -1.5759398460388183,
+          "std": 0.34948292820077365
+        },
+        "mean_selected_contexts": {
+          "mean": 3.8983999999999996,
+          "std": 0.07196387982870286
+        }
+      }
+    }
+  }
+}

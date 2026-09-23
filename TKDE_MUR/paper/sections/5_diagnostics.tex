@@ -1,0 +1,73 @@
+\section{When Is Utility Identifiable?}
+\label{sec:diagnostics}
+
+\Cref{cor:identifiability} says that the identifiable part of a candidate's
+value is the predictor's residual. That statement is useful only if it can be
+measured before a selection method is chosen. This section gives three
+measurements, in increasing order of cost, and states what each one rules out.
+They are used throughout \cref{sec:experiments}.
+
+\subsection{Measurement 1: does the cheap view know anything?}
+
+The first question is whether the representations a router would use to screen
+candidates carry any signal about the true marginal at all. Given a batch of
+episodes, compute the true marginals of the frozen predictor at a fixed state
+and correlate them with the score a cached or response-free model would assign.
+Two numbers matter: the correlation itself, and the recall of the shortlist a
+screening stage would form. If the screen's correlation is indistinguishable
+from zero, then the recall of a top-$q$ shortlist is at chance level $q/K$, and
+no reranking stage downstream can recover the value it never received.
+
+\subsection{Measurement 2: is the ordering recoverable within an episode?}
+
+Selection needs an ordering within an episode, not a level across episodes. We
+therefore fit the strongest available model --- gradient boosting or a small
+network --- to the true marginal using every quantity a router can observe:
+anchor features, candidate features, candidate identity, the response vector,
+its magnitude, and the observable base--response interaction. We report the
+out-of-sample $R^2$, the mean within-episode rank correlation between predicted
+and true marginals, an in-sample fit as an alignment control, and a
+label-permutation control. A negative out-of-sample $R^2$ together with a
+within-episode rank correlation near zero is evidence of an identifiability
+limit rather than of a weak model, because the control establishes that the
+pipeline itself is sound.
+
+\subsection{Measurement 3: one label-free pool statistic}
+
+The third measurement explains when a \emph{simple} policy will work, and it
+costs nothing: candidate novelty, the share of a candidate's variance that the
+anchor does not already explain. Regress each candidate series on the anchor
+series using the training split and keep the residual variance share,
+\begin{equation}
+ \nu_j = \frac{\mathrm{Var}\!\left(c_j - \mathrm{proj}_{\mathrm{anchor}}(c_j)\right)}
+ {\mathrm{Var}(c_j)} .
+ \label{eq:novelty}
+\end{equation}
+A pool whose candidates have low novelty is redundant with the anchor:
+retrieval-style ranking then selects candidates that add nothing and can be
+actively harmful, whereas a pool with high novelty rewards retrieval. The
+statistic is label-free, needs only the training split, and transfers across
+datasets because it is a variance share rather than a correlation level.
+
+\subsection{How the three measurements fit together}
+
+The measurements are ordered by cost and by what they can rule out.
+Measurement 1 is a screening sanity check: if it fails, the cached stage is
+noise and any method that depends on it must be redesigned. Measurement 2 is
+the identifiability test proper: if it fails, the ordering is not recoverable
+from observable features and no scoring head will fix it. Measurement 3 is the
+policy selector: it distinguishes the regime in which retrieval is the right
+default from the regime in which including everything is. \Cref{sec:experiments}
+applies all three and \cref{sec:adaptive} turns the third into a deployable
+rule.
+
+Structural headroom, the quantity the protocol measures as the oracle's
+advantage over a fixed set, is a necessary condition and not a usable predictor.
+Within the six-dataset ridge protocol the per-target correlation between
+headroom and the router's advantage over pooling is $+.040$ over $192$ targets
+($p=.58$), and across datasets the ordering is broken by PEMS03, which has the
+highest mean headroom ($.119$) and an advantage of $+.0013$, against PEMS-BAY's
+similar headroom ($.115$) and $+.0303$. The measurement that does discriminate
+is the \emph{realised} share, computed under the deployment's own screening,
+budget and objective: it separates the expert ladder ($.164$ to $.024$), the
+pool geometries and the two regimes, while the opportunity does not.

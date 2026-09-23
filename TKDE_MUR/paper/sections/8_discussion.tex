@@ -1,0 +1,84 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Structural opportunity is not realizable opportunity}
+
+The three regimes separate two quantities that are easy to conflate.
+\emph{Structural} headroom is a property of the predictor and the candidate
+pool: it is the gap between the sequential and the standalone oracle, and it is
+positive in every dataset and target we measured, including the strong-backbone
+regime. \emph{Realizable} headroom is a property of what the router can observe.
+Regime A has both: the ridge expert leaves a systematic residual, the learned
+router converts a double-digit share of the structural opportunity into gain,
+and it beats every competitor. Regime B has the first and not the second: the
+stronger expert has already absorbed the systematic part of its own residual,
+so the term that \cref{cor:identifiability} leaves to learn is close to noise.
+Nothing in the matrix recovers the oracle value, and the practical consequence
+is counter-intuitive --- with a strong predictor the best deployable policy is
+to use every context, and the optimal budget shrinks rather than grows. Two
+controlled sweeps sharpen that statement into a mechanism rather than a
+boundary. Adapting the predictor is the operation that destroys realizable
+value: two epochs of fine-tuning remove about five sixths of the share of the
+oracle the router can realise while the structural opportunity is unchanged,
+and twenty-eight further epochs add $1.2\%$ of accuracy and no identifiable
+value. Enlarging the candidate library does the same from the other side: the
+oracle opportunity rises by forty percent from sixteen to one hundred and
+twenty-eight candidates while the router falls to the level of random
+selection. Realizable headroom is therefore not a fixed property of a
+deployment that one can measure once; it is consumed by adaptation and diluted
+by scale, and both are choices.
+
+\subsection{What the measurements are for}
+
+The three diagnostics of \cref{sec:diagnostics} are the paper's most transferable
+artefact, because they answer a question that precedes method choice.
+Measurement 1 is cheap and decisive: if the cached view does not correlate with
+the true marginal, no reranking stage can help. Measurement 2 settles whether
+the ordering is recoverable at all, and it includes its own controls so that a
+negative result is informative rather than a symptom of a weak model.
+Measurement 3 turns the answer into a policy: candidate novelty separates the
+regime in which retrieval helps from the regime in which it hurts, with no
+label cost. In regime B all three fail together, and they fail in the direction
+the theory predicts.
+
+\subsection{Why the default toolkit is harmful rather than merely weak}
+
+In regime A every training-free heuristic we tested is worse than using no
+auxiliary context. The mechanism is visible in the pool sweep: when the head of
+the pool is the most correlated with the anchor, a candidate adds little that
+the anchor does not already contain, while the predictor's linear combination
+of redundant inputs amplifies noise. Retrieval and diversity proxies are
+therefore not merely uninformative in this regime; they are systematically
+misleading, and the same proxies become helpful as soon as candidates carry
+independent information. The adaptive rule of \cref{eq:adaptive-rule} is the
+practical response, and it is deliberately conservative: it does not try to beat
+learned routing, only to stop a default from doing harm.
+
+\subsection{Why four scoring heads hit the same ceiling}
+
+Regime C is the cleanest evidence that the limit is observational rather than
+parametric. The bilinear head, which hard-codes the structure implied by
+\cref{prop:suff}, ranks the marginal substantially better than a generic scalar
+head; the signed variant confirms the diagnosis that the identity's fixed
+curvature sign was binding, with a learned coefficient that is positive on four
+of five benchmarks; and yet neither head changes the verdict. What limits
+performance is the information in the router's observation, not the capacity of
+the function fitted to it. This is the same conclusion the regime-B diagnostics
+reach by a different route, and it is the reason the paper's contribution is a
+diagnosis and a decision rule rather than another ranking heuristic.
+
+\subsection{Limitations}
+
+The bounds are conditional on the state and require the loss gradient at the
+current prediction; at decision time the outcome is unobserved, so the router
+estimates the expectation of the first-order term from training episodes. The
+theory therefore explains the feature design and the second-order error of a
+response-based surrogate; it is not a label-free guarantee. Regime B uses two
+datasets and sixteen targets, and the pooled advantage of our method over the
+response-free routers is no longer statistically resolved there --- a negative
+result we report rather than tune away. Regime C's headroom is small
+($+.0126$ pooled), so all heads compete inside a narrow band. Finally, the
+strong-backbone expert is one architecture; whether the identifiability limit
+softens for predictors with different inductive biases is an open question, and
+the diagnostics of \cref{sec:diagnostics} are the tool with which to answer it
+for any particular pair of predictor and pool.

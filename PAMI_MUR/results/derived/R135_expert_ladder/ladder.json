@@ -1,0 +1,70 @@
+{
+  "variants": [
+    {
+      "variant": "large",
+      "cells": 8,
+      "anchor_only_mse": 0.3562240998726338,
+      "oracle_static_gain": 0.090225032530725,
+      "oracle_greedy_gain": 0.10596300335600972,
+      "learned_gain": 0.007473714738807757,
+      "static_gain": 0.011593404720770195,
+      "cached_gain": 0.006730964669259265,
+      "random_gain": 0.012906416406622157,
+      "realized_share": 0.06255175496148341,
+      "realized_share_ci": {
+        "mean": 0.06255175496148341,
+        "low": -0.04397825790648352,
+        "high": 0.16908176782945034
+      },
+      "learned_minus_random": {
+        "mean": -0.005432701667814399,
+        "low": -0.013952241023896628,
+        "high": 0.00308683768826783
+      }
+    },
+    {
+      "variant": "medium",
+      "cells": 8,
+      "anchor_only_mse": 0.35776025417726487,
+      "oracle_static_gain": 0.09227972896769643,
+      "oracle_greedy_gain": 0.10441472893580794,
+      "learned_gain": 0.016814031259855255,
+      "static_gain": 0.02116312680300325,
+      "cached_gain": 0.01938324305228889,
+      "random_gain": 0.020634463318856433,
+      "realized_share": 0.177354149695432,
+      "realized_share_ci": {
+        "mean": 0.177354149695432,
+        "low": 0.11527558307340297,
+        "high": 0.23943271631746105
+      },
+      "learned_minus_random": {
+        "mean": -0.0038204320590011775,
+        "low": -0.00999736096435019,
+        "high": 0.0023564968463478343
+      }
+    },
+    {
+      "variant": "small",
+      "cells": 8,
+      "anchor_only_mse": 0.37207918346393853,
+      "oracle_static_gain": 0.08351576514542103,
+      "oracle_greedy_gain": 0.09606531076133251,
+      "learned_gain": 0.02224073838442564,
+      "static_gain": 0.02228221227414906,
+      "cached_gain": 0.018564360216259956,
+      "random_gain": 0.021204544114880264,
+      "realized_share": 0.26768336510481794,
+      "realized_share_ci": {
+        "mean": 0.26768336510481794,
+        "low": 0.20329346044841823,
+        "high": 0.33207326976121765
+      },
+      "learned_minus_random": {
+        "mean": 0.0010361942695453763,
+        "low": -0.004275895952018902,
+        "high": 0.006348284491109655
+      }
+    }
+  ]
+}

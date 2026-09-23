@@ -1,0 +1,95 @@
+{
+  "rungs": [
+    {
+      "rung": "ridge",
+      "architecture": "per-target subset ridge (linear)",
+      "anchor_only_mse": 0.3782,
+      "strength_source": "results/derived/R104_expert_strength_metrla/summary.json (empty mask)",
+      "cells": 8,
+      "oracle_static_gain": 0.15350960288196802,
+      "oracle_greedy_gain": 0.16871237847954035,
+      "learned_gain": 0.03125021842424758,
+      "static_gain": 0.015049441601149738,
+      "random_gain": null,
+      "realized_share": 0.19844877513974413,
+      "realized_share_ci": {
+        "mean": 0.19844877513974413,
+        "low": 0.11451298527050119,
+        "high": 0.28238456500898707
+      }
+    },
+    {
+      "rung": "st_small",
+      "architecture": "spatio-temporal transformer, 1 layer d=32",
+      "anchor_only_mse": 0.3721,
+      "strength_source": "results/raw/R132_expert_ladder_*/pretrain/METRLA/small/summary.json",
+      "cells": 8,
+      "oracle_static_gain": 0.08351576514542103,
+      "oracle_greedy_gain": 0.09606531076133251,
+      "learned_gain": 0.02224073838442564,
+      "static_gain": 0.02228221227414906,
+      "random_gain": 0.021204544114880264,
+      "realized_share": 0.26768336510481794,
+      "realized_share_ci": {
+        "mean": 0.26768336510481794,
+        "low": 0.20329346044841823,
+        "high": 0.33207326976121765
+      }
+    },
+    {
+      "rung": "deepsets",
+      "architecture": "masked-mean MLP (permutation invariant)",
+      "anchor_only_mse": 0.3625,
+      "strength_source": "results/raw/R101_expert_pretrain_20260921_0237/METRLA/deepsets_seed101/summary.json",
+      "cells": 8,
+      "oracle_static_gain": 0.10024439357221127,
+      "oracle_greedy_gain": 0.11984718265011907,
+      "learned_gain": 0.027332274985383265,
+      "static_gain": 0.023476322858186904,
+      "random_gain": 0.023820918213459663,
+      "realized_share": 0.24314404561907876,
+      "realized_share_ci": {
+        "mean": 0.24314404561907876,
+        "low": 0.15508021807600908,
+        "high": 0.33120787316214845
+      }
+    },
+    {
+      "rung": "st_medium",
+      "architecture": "spatio-temporal transformer, 2 layers d=64",
+      "anchor_only_mse": 0.3578,
+      "strength_source": "results/raw/R132_expert_ladder_*/pretrain/METRLA/medium/summary.json",
+      "cells": 8,
+      "oracle_static_gain": 0.09227972896769643,
+      "oracle_greedy_gain": 0.10441472893580794,
+      "learned_gain": 0.016814031259855255,
+      "static_gain": 0.02116312680300325,
+      "random_gain": 0.020634463318856433,
+      "realized_share": 0.177354149695432,
+      "realized_share_ci": {
+        "mean": 0.177354149695432,
+        "low": 0.11527558307340297,
+        "high": 0.23943271631746105
+      }
+    },
+    {
+      "rung": "st_large",
+      "architecture": "spatio-temporal transformer, 3 layers d=128",
+      "anchor_only_mse": 0.3562,
+      "strength_source": "results/raw/R101_expert_pretrain_20260921_0237/METRLA/seed101/summary.json",
+      "cells": 8,
+      "oracle_static_gain": 0.090225032530725,
+      "oracle_greedy_gain": 0.10596300335600972,
+      "learned_gain": 0.007473714738807757,
+      "static_gain": 0.011593404720770195,
+      "random_gain": 0.012906416406622157,
+      "realized_share": 0.06255175496148341,
+      "realized_share_ci": {
+        "mean": 0.06255175496148341,
+        "low": -0.04397825790648352,
+        "high": 0.16908176782945034
+      }
+    }
+  ],
+  "cells": "METR-LA, eight evenly spaced targets, seed 101"
+}

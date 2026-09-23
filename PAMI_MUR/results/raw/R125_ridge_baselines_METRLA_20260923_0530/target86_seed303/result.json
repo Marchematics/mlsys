@@ -1,0 +1,48 @@
+{
+  "dataset": "METRLA",
+  "target_sensor": 86,
+  "seed": 303,
+  "metrics": {
+    "random": {
+      "mean_prediction_gain": -0.0012838569236919284,
+      "negative_transfer_rate": 0.4855
+    },
+    "relevance": {
+      "mean_prediction_gain": -0.0439811572432518,
+      "negative_transfer_rate": 0.648
+    },
+    "mmr": {
+      "mean_prediction_gain": -0.04732464626431465,
+      "negative_transfer_rate": 0.672
+    },
+    "dpp": {
+      "mean_prediction_gain": -0.041309863328933716,
+      "negative_transfer_rate": 0.648
+    },
+    "facility_location": {
+      "mean_prediction_gain": -0.06224464997649193,
+      "negative_transfer_rate": 0.48
+    },
+    "mutual_information": {
+      "mean_prediction_gain": -0.013716306537389755,
+      "negative_transfer_rate": 0.6155
+    },
+    "kcenter": {
+      "mean_prediction_gain": -0.04293593764305115,
+      "negative_transfer_rate": 0.598
+    },
+    "kmeans_representatives": {
+      "mean_prediction_gain": 0.011006446555256844,
+      "negative_transfer_rate": 0.4475
+    },
+    "pool_all": {
+      "mean_prediction_gain": 0.013058687560260296,
+      "negative_transfer_rate": 0.513
+    },
+    "base_only": {
+      "mean_prediction_gain": 0.0,
+      "negative_transfer_rate": 0.0
+    }
+  },
+  "wall_seconds": 4.829091548919678
+}

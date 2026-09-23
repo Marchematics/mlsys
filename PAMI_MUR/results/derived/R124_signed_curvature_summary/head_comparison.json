@@ -1,0 +1,925 @@
+{
+  "source_run": "/root/icl_ess_threshold/PAMI_MUR/results/raw/R124_signed_curvature_20260923_0537",
+  "cells": {
+    "cifar10": {
+      "frozen_spearman_mean": -0.0013632201132201167,
+      "frozen_top1_agreement": 0.25,
+      "frozen_mean_regret": 0.018084412304522356,
+      "frozen_r2_calibrated": -16.69356422188697,
+      "frozen_spearman_with_curvature": 0.257224025974026,
+      "frozen_spearman_with_mean_vector_norm": 0.3307900432900433,
+      "bilinear_spearman_mean": -0.1129662004662005,
+      "bilinear_top1_agreement": 0.0,
+      "bilinear_mean_regret": 0.03632940677779097,
+      "bilinear_r2_calibrated": -16.61686121030472,
+      "bilinear_spearman_with_curvature": -0.09487179487179491,
+      "bilinear_spearman_with_mean_vector_norm": -0.01422952047952053,
+      "signed_spearman_mean": -0.11175074925074925,
+      "signed_top1_agreement": 0.0,
+      "signed_mean_regret": 0.03543693996603137,
+      "signed_r2_calibrated": -10.263340123326076,
+      "signed_spearman_with_curvature": -0.08414918414918415,
+      "signed_spearman_with_mean_vector_norm": -0.008703796203796224,
+      "per_seed": [
+        {
+          "frozen": {
+            "spearman_mean": -0.029470529470529448,
+            "spearman_with_curvature": 0.4467532467532468,
+            "spearman_with_mean_vector_norm": 0.66003996003996,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.024400209014904473,
+            "samples": 4,
+            "r2_calibrated": -0.09149082799356378
+          },
+          "bilinear": {
+            "spearman_mean": -0.0973026973026973,
+            "spearman_with_curvature": 0.29875124875124875,
+            "spearman_with_mean_vector_norm": 0.44490509490509494,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.05357201900709779,
+            "samples": 4,
+            "r2_calibrated": -0.11350072091650687
+          },
+          "signed": {
+            "spearman_mean": -0.1007992007992008,
+            "spearman_with_curvature": 0.31123876123876126,
+            "spearman_with_mean_vector_norm": 0.45344655344655344,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.05357201900709779,
+            "samples": 4,
+            "r2_calibrated": -0.3993746185939444
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.12316695600748062,
+            "within_state_std_curvature": 0.04599500820040703,
+            "ratio_curvature_over_first_order": 0.3734362721443176,
+            "mean_curvature_coefficient": 0.12690606713294983
+          },
+          "signed_curvature": {
+            "mean": 0.13302424162393436,
+            "std": 0.016748961485676825,
+            "min": 0.07139410078525543,
+            "max": 0.19532258808612823,
+            "fraction_positive": 1.0,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.13386878371238708,
+              0.1326325684785843,
+              0.1338953971862793,
+              0.13170020282268524
+            ],
+            "per_state_mean_std": 0.0009190552150065768
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.19683441558441556,
+            "spearman_with_curvature": 0.3202984515484515,
+            "spearman_with_mean_vector_norm": 0.3066058941058941,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.0225491498101911,
+            "samples": 4,
+            "r2_calibrated": 0.8579177833640254
+          },
+          "bilinear": {
+            "spearman_mean": 0.051985514485514445,
+            "spearman_with_curvature": -0.09672827172827174,
+            "spearman_with_mean_vector_norm": -0.08162462537462543,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.024536763832667535,
+            "samples": 4,
+            "r2_calibrated": 0.6440365972179526
+          },
+          "signed": {
+            "spearman_mean": 0.05912837162837159,
+            "spearman_with_curvature": -0.07529970029970032,
+            "spearman_with_mean_vector_norm": -0.07358891108891115,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.021859363397388726,
+            "samples": 4,
+            "r2_calibrated": 0.9326769474016547
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1608898937702179,
+            "within_state_std_curvature": 0.08576728403568268,
+            "ratio_curvature_over_first_order": 0.5330806374549866,
+            "mean_curvature_coefficient": 0.1405685842037201
+          },
+          "signed_curvature": {
+            "mean": 0.1441367846331559,
+            "std": 0.01768330062592943,
+            "min": 0.08224618434906006,
+            "max": 0.2039555013179779,
+            "fraction_positive": 1.0,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.14455382525920868,
+              0.14413055777549744,
+              0.14520397782325745,
+              0.1426587700843811
+            ],
+            "per_state_mean_std": 0.0009350655015705411
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": -0.17145354645354646,
+            "spearman_with_curvature": 0.004620379620379644,
+            "spearman_with_mean_vector_norm": 0.025724275724275714,
+            "top1_agreement": 0.5,
+            "mean_regret": 0.007303878088471494,
+            "samples": 4,
+            "r2_calibrated": -50.847119621031375
+          },
+          "bilinear": {
+            "spearman_mean": -0.2935814185814186,
+            "spearman_with_curvature": -0.4866383616383617,
+            "spearman_with_mean_vector_norm": -0.4059690309690311,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.03087943749360758,
+            "samples": 4,
+            "r2_calibrated": -50.3811195072156
+          },
+          "signed": {
+            "spearman_mean": -0.29358141858141856,
+            "spearman_with_curvature": -0.48838661338661343,
+            "spearman_with_mean_vector_norm": -0.405969030969031,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.03087943749360758,
+            "samples": 4,
+            "r2_calibrated": -31.323322698785937
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.09597216546535492,
+            "within_state_std_curvature": 0.035341061651706696,
+            "ratio_curvature_over_first_order": 0.3682428300380707,
+            "mean_curvature_coefficient": 0.13441714644432068
+          },
+          "signed_curvature": {
+            "mean": 0.14260627777548507,
+            "std": 0.017648416789743573,
+            "min": 0.08082002401351929,
+            "max": 0.19768640398979187,
+            "fraction_positive": 1.0,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.14188618957996368,
+              0.14480085670948029,
+              0.14095821976661682,
+              0.1427798569202423
+            ],
+            "per_state_mean_std": 0.0014213487104612122
+          }
+        }
+      ]
+    },
+    "cifar100": {
+      "frozen_spearman_mean": 0.6204545454545455,
+      "frozen_top1_agreement": 0.08333333333333333,
+      "frozen_mean_regret": 0.000938672567352065,
+      "frozen_r2_calibrated": -5.5102097026859775,
+      "frozen_spearman_with_curvature": -0.5896270396270397,
+      "frozen_spearman_with_mean_vector_norm": -0.5094405594405594,
+      "bilinear_spearman_mean": 0.833050283050283,
+      "bilinear_top1_agreement": 0.6666666666666666,
+      "bilinear_mean_regret": 0.021239349583320855,
+      "bilinear_r2_calibrated": -11.197550963000623,
+      "bilinear_spearman_with_curvature": -0.475008325008325,
+      "bilinear_spearman_with_mean_vector_norm": -0.45392940392940395,
+      "signed_spearman_mean": 0.7902514152514154,
+      "signed_top1_agreement": 0.4166666666666667,
+      "signed_mean_regret": 0.022847826750625577,
+      "signed_r2_calibrated": -11.40884733554823,
+      "signed_spearman_with_curvature": -0.3997918747918749,
+      "signed_spearman_with_mean_vector_norm": -0.38604728604728605,
+      "per_seed": [
+        {
+          "frozen": {
+            "spearman_mean": 0.7290209790209792,
+            "spearman_with_curvature": -0.6101398601398602,
+            "spearman_with_mean_vector_norm": -0.6328671328671329,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.0005639810236552911,
+            "samples": 4,
+            "r2_calibrated": -16.393441670894905
+          },
+          "bilinear": {
+            "spearman_mean": 0.986013986013986,
+            "spearman_with_curvature": -0.6608391608391608,
+            "spearman_with_mean_vector_norm": -0.701048951048951,
+            "top1_agreement": 1.0,
+            "mean_regret": 0.0,
+            "samples": 4,
+            "r2_calibrated": -32.3026679080019
+          },
+          "signed": {
+            "spearman_mean": 0.7290209790209791,
+            "spearman_with_curvature": -0.37587412587412594,
+            "spearman_with_mean_vector_norm": -0.4405594405594405,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.04098772737242773,
+            "samples": 4,
+            "r2_calibrated": -32.39388028569282
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1374192237854004,
+            "within_state_std_curvature": 0.18155011534690857,
+            "ratio_curvature_over_first_order": 1.3211406469345093,
+            "mean_curvature_coefficient": -0.025938143953680992
+          },
+          "signed_curvature": {
+            "mean": 0.08828785709221848,
+            "std": 0.1262464357815442,
+            "min": -0.30498695373535156,
+            "max": 0.4964095950126648,
+            "fraction_positive": 0.74390625,
+            "fraction_above_minus_0_25": 0.99875,
+            "samples": 12800,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.09236559271812439,
+              0.07444745302200317,
+              0.09042249619960785,
+              0.09591589123010635
+            ],
+            "per_state_mean_std": 0.008229949902477957
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.4833666333666334,
+            "spearman_with_curvature": -0.5568431568431569,
+            "spearman_with_mean_vector_norm": -0.4636363636363637,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.0018772610642556753,
+            "samples": 4,
+            "r2_calibrated": 0.01011464409776397
+          },
+          "bilinear": {
+            "spearman_mean": 0.6847152847152848,
+            "spearman_with_curvature": -0.3208791208791209,
+            "spearman_with_mean_vector_norm": -0.3852647352647353,
+            "top1_agreement": 0.5,
+            "mean_regret": 0.04239875672251037,
+            "samples": 4,
+            "r2_calibrated": 0.4547544542265023
+          },
+          "signed": {
+            "spearman_mean": 0.9123376623376624,
+            "spearman_with_curvature": -0.48471528471528474,
+            "spearman_with_mean_vector_norm": -0.5857142857142859,
+            "top1_agreement": 0.75,
+            "mean_regret": 0.014154105472961476,
+            "samples": 4,
+            "r2_calibrated": 0.35192064305084236
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.10367553681135178,
+            "within_state_std_curvature": 0.20307037234306335,
+            "ratio_curvature_over_first_order": 1.9587105512619019,
+            "mean_curvature_coefficient": -0.008510563522577286
+          },
+          "signed_curvature": {
+            "mean": 0.07608013936202042,
+            "std": 0.1458883872851292,
+            "min": -0.3373351991176605,
+            "max": 0.5058538317680359,
+            "fraction_positive": 0.669453125,
+            "fraction_above_minus_0_25": 0.99734375,
+            "samples": 12800,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.07196483761072159,
+              0.07432347536087036,
+              0.0859253779053688,
+              0.07210686802864075
+            ],
+            "per_state_mean_std": 0.005760581220269109
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.648976023976024,
+            "spearman_with_curvature": -0.601898101898102,
+            "spearman_with_mean_vector_norm": -0.4318181818181819,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.00037477561414522853,
+            "samples": 4,
+            "r2_calibrated": -0.14730208126079347
+          },
+          "bilinear": {
+            "spearman_mean": 0.8284215784215784,
+            "spearman_with_curvature": -0.44330669330669337,
+            "spearman_with_mean_vector_norm": -0.27547452547452544,
+            "top1_agreement": 0.5,
+            "mean_regret": 0.021319292027452197,
+            "samples": 4,
+            "r2_calibrated": -1.7447394352264745
+          },
+          "signed": {
+            "spearman_mean": 0.7293956043956044,
+            "spearman_with_curvature": -0.3387862137862138,
+            "spearman_with_mean_vector_norm": -0.13186813186813184,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.013401647406487527,
+            "samples": 4,
+            "r2_calibrated": -2.1845823640027104
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.15890347957611084,
+            "within_state_std_curvature": 0.17668159306049347,
+            "ratio_curvature_over_first_order": 1.1118799448013306,
+            "mean_curvature_coefficient": -0.01043564360588789
+          },
+          "signed_curvature": {
+            "mean": 0.08997470578178764,
+            "std": 0.1285564647513299,
+            "min": -0.38737642765045166,
+            "max": 0.4619431495666504,
+            "fraction_positive": 0.73359375,
+            "fraction_above_minus_0_25": 0.9990625,
+            "samples": 12800,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.086067333817482,
+              0.08665626496076584,
+              0.09211412072181702,
+              0.09506109356880188
+            ],
+            "per_state_mean_std": 0.003765901026167205
+          }
+        }
+      ]
+    },
+    "svhn": {
+      "frozen_spearman_mean": 0.532686063936064,
+      "frozen_top1_agreement": 0.08333333333333333,
+      "frozen_mean_regret": 0.053924317756012495,
+      "frozen_r2_calibrated": -0.30825835015192343,
+      "frozen_spearman_with_curvature": -0.3598089410589411,
+      "frozen_spearman_with_mean_vector_norm": -0.2871565934065935,
+      "bilinear_spearman_mean": 0.7558816183816184,
+      "bilinear_top1_agreement": 0.3333333333333333,
+      "bilinear_mean_regret": 0.07159090912956807,
+      "bilinear_r2_calibrated": -0.4761932853485002,
+      "bilinear_spearman_with_curvature": -0.15102813852813854,
+      "bilinear_spearman_with_mean_vector_norm": -0.12644438894438897,
+      "signed_spearman_mean": 0.8204274891774892,
+      "signed_top1_agreement": 0.4166666666666667,
+      "signed_mean_regret": 0.056306325686340225,
+      "signed_r2_calibrated": -0.5395886421318326,
+      "signed_spearman_with_curvature": -0.18595779220779227,
+      "signed_spearman_with_mean_vector_norm": -0.16745129870129874,
+      "per_seed": [
+        {
+          "frozen": {
+            "spearman_mean": 0.5591908091908093,
+            "spearman_with_curvature": -0.6944555444555445,
+            "spearman_with_mean_vector_norm": -0.6469530469530471,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.0036507081317231904,
+            "samples": 4,
+            "r2_calibrated": 0.18686102043282182
+          },
+          "bilinear": {
+            "spearman_mean": 0.9835664335664337,
+            "spearman_with_curvature": -0.40644355644355645,
+            "spearman_with_mean_vector_norm": -0.4342157842157842,
+            "top1_agreement": 0.75,
+            "mean_regret": 0.00014017301465599208,
+            "samples": 4,
+            "r2_calibrated": 0.31192372028239124
+          },
+          "signed": {
+            "spearman_mean": 0.9824675324675325,
+            "spearman_with_curvature": -0.4003496503496504,
+            "spearman_with_mean_vector_norm": -0.4401098901098901,
+            "top1_agreement": 0.75,
+            "mean_regret": 0.00014017301465599208,
+            "samples": 4,
+            "r2_calibrated": 0.3043198665963647
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1975116729736328,
+            "within_state_std_curvature": 0.1584165245294571,
+            "ratio_curvature_over_first_order": 0.8020615577697754,
+            "mean_curvature_coefficient": -0.04057536646723747
+          },
+          "signed_curvature": {
+            "mean": -0.020561528253892902,
+            "std": 0.08223664555936308,
+            "min": -0.3283202350139618,
+            "max": 0.19967347383499146,
+            "fraction_positive": 0.3951171875,
+            "fraction_above_minus_0_25": 0.9958984375,
+            "samples": 5120,
+            "p_value_vs_zero": 1.8079351128388597e-69,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              -0.01621798798441887,
+              -0.02354399859905243,
+              -0.016805190593004227,
+              -0.025678932666778564
+            ],
+            "per_state_mean_std": 0.00412490521042388
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.5749562937062938,
+            "spearman_with_curvature": -0.09138986013986025,
+            "spearman_with_mean_vector_norm": -0.0022290209790210846,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.008168900465929912,
+            "samples": 4,
+            "r2_calibrated": 0.46331424213828765
+          },
+          "bilinear": {
+            "spearman_mean": 0.6826798201798202,
+            "spearman_with_curvature": -0.039647852147852214,
+            "spearman_with_mean_vector_norm": 0.0058066933066932,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.018471337892240508,
+            "samples": 4,
+            "r2_calibrated": 0.7160815474035542
+          },
+          "signed": {
+            "spearman_mean": 0.7245691808191809,
+            "spearman_with_curvature": 0.002316433566433518,
+            "spearman_with_mean_vector_norm": 0.04427447552447544,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.019809309712935846,
+            "samples": 4,
+            "r2_calibrated": 0.6931707263862328
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.24112121760845184,
+            "within_state_std_curvature": 0.24143652617931366,
+            "ratio_curvature_over_first_order": 1.001307725906372,
+            "mean_curvature_coefficient": -0.07389102876186371
+          },
+          "signed_curvature": {
+            "mean": -0.058727894496405496,
+            "std": 0.0991452719059326,
+            "min": -0.4158078134059906,
+            "max": 0.19673693180084229,
+            "fraction_positive": 0.287890625,
+            "fraction_above_minus_0_25": 0.97421875,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              -0.05916283279657364,
+              -0.05725084990262985,
+              -0.05202209949493408,
+              -0.06647579371929169
+            ],
+            "per_state_mean_std": 0.005180937681219332
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.46391108891108895,
+            "spearman_with_curvature": -0.29358141858141856,
+            "spearman_with_mean_vector_norm": -0.21228771228771226,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.14995334467038438,
+            "samples": 4,
+            "r2_calibrated": -1.5749503130268798
+          },
+          "bilinear": {
+            "spearman_mean": 0.6013986013986015,
+            "spearman_with_curvature": -0.006993006993006996,
+            "spearman_with_mean_vector_norm": 0.04907592407592407,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.19616121648180773,
+            "samples": 4,
+            "r2_calibrated": -2.456585123731446
+          },
+          "signed": {
+            "spearman_mean": 0.7542457542457544,
+            "spearman_with_curvature": -0.15984015984015987,
+            "spearman_with_mean_vector_norm": -0.10651848151848155,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.14896949433142884,
+            "samples": 4,
+            "r2_calibrated": -2.616256519378095
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1719750612974167,
+            "within_state_std_curvature": 0.21353018283843994,
+            "ratio_curvature_over_first_order": 1.2416346073150635,
+            "mean_curvature_coefficient": -0.09240322560071945
+          },
+          "signed_curvature": {
+            "mean": -0.05803817892447114,
+            "std": 0.0926595837773997,
+            "min": -0.3118879497051239,
+            "max": 0.1770172417163849,
+            "fraction_positive": 0.2849609375,
+            "fraction_above_minus_0_25": 0.987890625,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              -0.05731533095240593,
+              -0.05020209029316902,
+              -0.06750181317329407,
+              -0.05713348463177681
+            ],
+            "per_state_mean_std": 0.006170608543471751
+          }
+        }
+      ]
+    },
+    "eurosat": {
+      "frozen_spearman_mean": -0.03964993339993341,
+      "frozen_top1_agreement": 0.08333333333333333,
+      "frozen_mean_regret": 0.13518286199566612,
+      "frozen_r2_calibrated": -6.050824575145186,
+      "frozen_spearman_with_curvature": 0.17374708624708624,
+      "frozen_spearman_with_mean_vector_norm": 0.18307109557109558,
+      "bilinear_spearman_mean": 0.1961642524142524,
+      "bilinear_top1_agreement": 0.0,
+      "bilinear_mean_regret": 0.05046578821739181,
+      "bilinear_r2_calibrated": -3.5043343974981878,
+      "bilinear_spearman_with_curvature": -0.13535631035631038,
+      "bilinear_spearman_with_mean_vector_norm": -0.07985347985347992,
+      "signed_spearman_mean": -0.03656343656343661,
+      "signed_top1_agreement": 0.08333333333333333,
+      "signed_mean_regret": 0.1501300686096034,
+      "signed_r2_calibrated": -3.819835033137562,
+      "signed_spearman_with_curvature": 0.21153846153846154,
+      "signed_spearman_with_mean_vector_norm": 0.2211684149184149,
+      "per_seed": [
+        {
+          "frozen": {
+            "spearman_mean": -0.03706293706293706,
+            "spearman_with_curvature": 0.1774725274725275,
+            "spearman_with_mean_vector_norm": 0.1873626373626374,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.1840003602481203,
+            "samples": 4,
+            "r2_calibrated": -0.20813122965134245
+          },
+          "bilinear": {
+            "spearman_mean": 0.06913086913086915,
+            "spearman_with_curvature": 0.033216783216783244,
+            "spearman_with_mean_vector_norm": 0.17947052947052947,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.06407243022405656,
+            "samples": 4,
+            "r2_calibrated": -0.1147586829806857
+          },
+          "signed": {
+            "spearman_mean": -0.07667332667332669,
+            "spearman_with_curvature": 0.2732267732267733,
+            "spearman_with_mean_vector_norm": 0.32407592407592406,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.2007094379730792,
+            "samples": 4,
+            "r2_calibrated": -0.5833902357568106
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1367083191871643,
+            "within_state_std_curvature": 0.08456940948963165,
+            "ratio_curvature_over_first_order": 0.6186119914054871,
+            "mean_curvature_coefficient": 0.1314786970615387
+          },
+          "signed_curvature": {
+            "mean": 0.14267052894283552,
+            "std": 0.029205103750593202,
+            "min": 0.01626814901828766,
+            "max": 0.2396990805864334,
+            "fraction_positive": 1.0,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.14456796646118164,
+              0.1419510543346405,
+              0.1441601812839508,
+              0.14000292122364044
+            ],
+            "per_state_mean_std": 0.0018339239275901068
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.19283841158841153,
+            "spearman_with_curvature": 0.2953171828171828,
+            "spearman_with_mean_vector_norm": 0.2811813186813186,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.1008302759808237,
+            "samples": 4,
+            "r2_calibrated": 0.8033781672743258
+          },
+          "bilinear": {
+            "spearman_mean": 0.36813811188811185,
+            "spearman_with_curvature": 0.033366633366633314,
+            "spearman_with_mean_vector_norm": 0.04363136863136856,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.017729342565896145,
+            "samples": 4,
+            "r2_calibrated": 0.6508792282656357
+          },
+          "signed": {
+            "spearman_mean": 0.23933566433566428,
+            "spearman_with_curvature": 0.3361638361638361,
+            "spearman_with_mean_vector_norm": 0.32794080919080915,
+            "top1_agreement": 0.25,
+            "mean_regret": 0.10397908586590865,
+            "samples": 4,
+            "r2_calibrated": 0.8609134718854846
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1591339260339737,
+            "within_state_std_curvature": 0.09792705625295639,
+            "ratio_curvature_over_first_order": 0.6153751015663147,
+            "mean_curvature_coefficient": 0.10950040817260742
+          },
+          "signed_curvature": {
+            "mean": 0.121719152040896,
+            "std": 0.04438558186726815,
+            "min": -0.042899057269096375,
+            "max": 0.24567584693431854,
+            "fraction_positive": 0.996484375,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.12316278368234634,
+              0.12215308099985123,
+              0.12437063455581665,
+              0.11719012260437012
+            ],
+            "per_state_mean_std": 0.002730148064731
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": -0.2747252747252747,
+            "spearman_with_curvature": 0.04845154845154845,
+            "spearman_with_mean_vector_norm": 0.0806693306693307,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.12071794975805442,
+            "samples": 4,
+            "r2_calibrated": -18.747720663058544
+          },
+          "bilinear": {
+            "spearman_mean": 0.15122377622377625,
+            "spearman_with_curvature": -0.47265234765234765,
+            "spearman_with_mean_vector_norm": -0.4626623376623378,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.06959559186222272,
+            "samples": 4,
+            "r2_calibrated": -11.049123737779514
+          },
+          "signed": {
+            "spearman_mean": -0.2723526473526474,
+            "spearman_with_curvature": 0.025224775224775224,
+            "spearman_with_mean_vector_norm": 0.011488511488511512,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.14570168198982242,
+            "samples": 4,
+            "r2_calibrated": -11.73702833554136
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.09183546155691147,
+            "within_state_std_curvature": 0.03970136493444443,
+            "ratio_curvature_over_first_order": 0.43230974674224854,
+            "mean_curvature_coefficient": 0.08915051817893982
+          },
+          "signed_curvature": {
+            "mean": 0.1169588071294129,
+            "std": 0.04100284614372571,
+            "min": -0.04201333224773407,
+            "max": 0.2566211223602295,
+            "fraction_positive": 0.99453125,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 5120,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.1155971884727478,
+              0.1236204281449318,
+              0.11145003139972687,
+              0.11716759204864502
+            ],
+            "per_state_mean_std": 0.004376682565112095
+          }
+        }
+      ]
+    },
+    "dtd": {
+      "frozen_spearman_mean": -0.3314286203992087,
+      "frozen_top1_agreement": 0.0,
+      "frozen_mean_regret": 0.28257227879290464,
+      "frozen_r2_calibrated": -8.827093075995545,
+      "frozen_spearman_with_curvature": 0.47837579087579085,
+      "frozen_spearman_with_mean_vector_norm": 0.49773584258878384,
+      "bilinear_spearman_mean": 0.20270538285244166,
+      "bilinear_top1_agreement": 0.0,
+      "bilinear_mean_regret": 0.09182374862398372,
+      "bilinear_r2_calibrated": -19.597337941462587,
+      "bilinear_spearman_with_curvature": 0.21046380090497738,
+      "bilinear_spearman_with_mean_vector_norm": 0.16491327300150832,
+      "signed_spearman_mean": 0.0034991968815498153,
+      "signed_top1_agreement": 0.0,
+      "signed_mean_regret": 0.29093862606444926,
+      "signed_r2_calibrated": -5.841209483118561,
+      "signed_spearman_with_curvature": 0.40229892656363253,
+      "signed_spearman_with_mean_vector_norm": 0.3560728487199076,
+      "per_seed": [
+        {
+          "frozen": {
+            "spearman_mean": -0.4895604395604396,
+            "spearman_with_curvature": 0.4208791208791208,
+            "spearman_with_mean_vector_norm": 0.4153846153846154,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.1144902621843718,
+            "samples": 4,
+            "r2_calibrated": 0.04330594493642892
+          },
+          "bilinear": {
+            "spearman_mean": 0.4714285714285714,
+            "spearman_with_curvature": -0.3057692307692308,
+            "spearman_with_mean_vector_norm": -0.3211538461538461,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.08855020973055444,
+            "samples": 4,
+            "r2_calibrated": 0.003993309573707027
+          },
+          "signed": {
+            "spearman_mean": -0.1195054945054945,
+            "spearman_with_curvature": 0.29890109890109895,
+            "spearman_with_mean_vector_norm": 0.28214285714285714,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.1144902621843718,
+            "samples": 4,
+            "r2_calibrated": 0.12294385902580618
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.07409998774528503,
+            "within_state_std_curvature": 0.09557246416807175,
+            "ratio_curvature_over_first_order": 1.2897770404815674,
+            "mean_curvature_coefficient": 0.05456323176622391
+          },
+          "signed_curvature": {
+            "mean": 0.09953392046488861,
+            "std": 0.1250647530855295,
+            "min": -0.17841166257858276,
+            "max": 0.48316437005996704,
+            "fraction_positive": 0.7820811170212766,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 6016,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.11220266669988632,
+              0.1002250611782074,
+              0.08707030117511749,
+              0.0986376628279686
+            ],
+            "per_state_mean_std": 0.00890393017442919
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": 0.08093891402714931,
+            "spearman_with_curvature": 0.31669580419580423,
+            "spearman_with_mean_vector_norm": 0.33306766762649115,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.6212874851656035,
+            "samples": 4,
+            "r2_calibrated": 0.5400164489614218
+          },
+          "bilinear": {
+            "spearman_mean": 0.22235191279308925,
+            "spearman_with_curvature": 0.409188605512135,
+            "spearman_with_mean_vector_norm": 0.378830728095434,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.09210164718976427,
+            "samples": 4,
+            "r2_calibrated": 0.5553150175608854
+          },
+          "signed": {
+            "spearman_mean": 0.2873457424928013,
+            "spearman_with_curvature": 0.3118418346359523,
+            "spearman_with_mean_vector_norm": 0.28957219251336896,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.6542288131286564,
+            "samples": 4,
+            "r2_calibrated": 0.4308777999959107
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.1839570850133896,
+            "within_state_std_curvature": 0.23589998483657837,
+            "ratio_curvature_over_first_order": 1.2823642492294312,
+            "mean_curvature_coefficient": 0.15062998235225677
+          },
+          "signed_curvature": {
+            "mean": 0.10683735673305915,
+            "std": 0.11397816248592409,
+            "min": -0.22073319554328918,
+            "max": 0.40661489963531494,
+            "fraction_positive": 0.8392619680851063,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 6016,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.10348915308713913,
+              0.10259934514760971,
+              0.11097244173288345,
+              0.11028848588466644
+            ],
+            "per_state_mean_std": 0.003813804866199932
+          }
+        },
+        {
+          "frozen": {
+            "spearman_mean": -0.5856643356643357,
+            "spearman_with_curvature": 0.6975524475524476,
+            "spearman_with_mean_vector_norm": 0.7447552447552449,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.11193908902873856,
+            "samples": 4,
+            "r2_calibrated": -27.06460162188449
+          },
+          "bilinear": {
+            "spearman_mean": -0.08566433566433568,
+            "spearman_with_curvature": 0.5279720279720279,
+            "spearman_with_mean_vector_norm": 0.4370629370629371,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.09481938895163244,
+            "samples": 4,
+            "r2_calibrated": -59.35132215152236
+          },
+          "signed": {
+            "spearman_mean": -0.15734265734265737,
+            "spearman_with_curvature": 0.5961538461538463,
+            "spearman_with_mean_vector_norm": 0.49650349650349657,
+            "top1_agreement": 0.0,
+            "mean_regret": 0.10409680288031953,
+            "samples": 4,
+            "r2_calibrated": -18.077450108377402
+          },
+          "term_scales": {
+            "within_state_std_first_order": 0.08092700690031052,
+            "within_state_std_curvature": 0.08167923986911774,
+            "ratio_curvature_over_first_order": 1.0092952251434326,
+            "mean_curvature_coefficient": 0.0363973043859005
+          },
+          "signed_curvature": {
+            "mean": 0.1315747762019647,
+            "std": 0.11135480056479886,
+            "min": -0.14230480790138245,
+            "max": 0.49180668592453003,
+            "fraction_positive": 0.9163896276595744,
+            "fraction_above_minus_0_25": 1.0,
+            "samples": 6016,
+            "p_value_vs_zero": 0.0,
+            "p_value_vs_minus_0_25": 0.0,
+            "per_state_mean": [
+              0.13256290555000305,
+              0.13105812668800354,
+              0.12336299568414688,
+              0.13931505382061005
+            ],
+            "per_state_mean_std": 0.005669844865935759
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "mean_signed_spearman": 0.29317278309925376,
+    "mean_signed_c": 0.29317278309925376,
+    "benchmarks_signed_spearman_ge_bilinear": 2,
+    "mean_frozen_spearman": 0.15613976709564947,
+    "mean_bilinear_spearman": 0.374967067246479,
+    "mean_frozen_r2": -7.47798998517312,
+    "mean_bilinear_r2": -10.278455559522923,
+    "benchmarks_bilinear_spearman_better": 4,
+    "benchmarks_bilinear_r2_better": 2,
+    "mean_frozen_corr_curvature": -0.00801781551781553,
+    "mean_bilinear_corr_curvature": -0.1291601535719183,
+    "benchmarks": 5
+  },
+  "generated_utc": "2026-09-22T22:34:21Z"
+}

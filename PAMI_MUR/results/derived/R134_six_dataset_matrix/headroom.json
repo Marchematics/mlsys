@@ -1,0 +1,62 @@
+{
+ "provenance": {
+  "raw": "KBS_MUR/results/raw/R080b_multitarget_rmur_s{1,202,303}_*/<dataset>/target*_seed*/result.json",
+  "definition": "H_state = (G_sequential - G_standalone) / G_sequential, computed per target-seed cell (oracle_static / oracle_greedy)",
+  "cells": "32 targets x 3 seeds = 96 per dataset, 576 in total",
+  "generated_utc": "2026-09-23T14:10:34.956450+00:00",
+  "note": "Supersedes the previously published 5-seed/960-cell figures, which had no artifact; the values agree to within rounding except for the medians."
+ },
+ "datasets": {
+  "METRLA": {
+   "cells": 96,
+   "mean": 0.09593325266360692,
+   "median": 0.08436744288701031,
+   "positive_fraction": 1.0,
+   "min": 0.04006497255686446,
+   "max": 0.27181476463560267
+  },
+  "PEMSBAY": {
+   "cells": 96,
+   "mean": 0.1156131894162132,
+   "median": 0.12042552753310712,
+   "positive_fraction": 1.0,
+   "min": 0.010108043231496354,
+   "max": 0.26349879339968013
+  },
+  "PEMS03": {
+   "cells": 96,
+   "mean": 0.11886235376558713,
+   "median": 0.10766946907250638,
+   "positive_fraction": 1.0,
+   "min": 0.033765594062766045,
+   "max": 0.30602501170823554
+  },
+  "PEMS04": {
+   "cells": 96,
+   "mean": 0.08337230728220509,
+   "median": 0.07251780443103269,
+   "positive_fraction": 1.0,
+   "min": 0.011438493501591158,
+   "max": 0.3120455657409232
+  },
+  "PEMS07": {
+   "cells": 96,
+   "mean": 0.08917878162876354,
+   "median": 0.08345134984534808,
+   "positive_fraction": 1.0,
+   "min": 0.034482342152429284,
+   "max": 0.19230713509164316
+  },
+  "PEMS08": {
+   "cells": 96,
+   "mean": 0.07600837933178638,
+   "median": 0.07290864633700139,
+   "positive_fraction": 1.0,
+   "min": 0.010556303021637145,
+   "max": 0.14752149806463127
+  }
+ },
+ "total_cells": 576,
+ "all_positive": true,
+ "min_headroom": 0.010108043231496354
+}

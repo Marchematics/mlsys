@@ -1,0 +1,52 @@
+{
+  "run_id": "R110_smoke_demo_selection",
+  "argv": [
+    "experiments/demo_selection/run_r110_demo_selection.py",
+    "--benchmarks",
+    "cifar10",
+    "--seeds",
+    "101",
+    "--only-seed",
+    "101",
+    "--train-episodes-per-class",
+    "3",
+    "--test-episodes-per-class",
+    "2",
+    "--predictor-epochs",
+    "20",
+    "--router-epochs",
+    "5",
+    "--states-per-episode",
+    "2",
+    "--out-root",
+    "/root/icl_ess_threshold/PAMI_MUR/results/raw/R110_smoke_demo_selection"
+  ],
+  "started_utc": "2026-09-20T19:10:01Z",
+  "benchmarks": [
+    "cifar10"
+  ],
+  "seeds": [
+    101
+  ],
+  "q_values": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "router_epochs": 5,
+  "beta": 1.0,
+  "states_per_episode": 2,
+  "feature_root": "/root/icl_ess_threshold/PAMI_MUR/data/vision_features",
+  "git_head": "6386b44ea57e27a4b6d8c57bffe67c3b3b2de237",
+  "imported_source_hashes": {
+    "PAMI_MUR/experiments/run_strong_backbone.py": "c09ea70385efe316dcff2d626443e7c9",
+    "PAMI_MUR/experiments/neural_expert.py": "242c6e8012117ecabfeaf53761605126",
+    "KBS_MUR/src/mur/synthetic_experiment.py": "15df991203d1116e81c19d651201af7e",
+    "KBS_MUR/src/mur/model.py": "755c10c2201be893c9fb612de62a601c",
+    "KBS_MUR/src/mur/traffic.py": "842cf21894e88a399cdc93ef136ebb61",
+    "KBS_MUR/scripts/run_traffic_ranked_response_router_sweep.py": "5f0f8935e2b2b4c5608d069bce63c1d2",
+    "KBS_MUR/scripts/run_traffic_response_router_sweep.py": "72d2033bade0aa93d7cc98dc1e8e873f",
+    "KBS_MUR/scripts/run_traffic_full_router.py": "eec6657f3af230f431d3916545f14667"
+  }
+}

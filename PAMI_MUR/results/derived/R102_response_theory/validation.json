@@ -1,0 +1,35 @@
+{
+  "started": "2026-09-21 03:50:50",
+  "checks": {
+    "squared": {
+      "family": "squared loss (real forecasting expert)",
+      "samples": 384,
+      "max_identity_error": 3.2782554626464844e-07,
+      "mean_identity_error": 1.885449070944863e-08,
+      "penalty_check_max_error": 0.0,
+      "r2_state_only": -0.8899507965088176,
+      "r2_state_plus_response": -0.21552651809352885,
+      "r2_gain": 0.6744242784152887,
+      "marginal_mean": 0.002257024027130683,
+      "marginal_std": 0.15362532203686788
+    },
+    "cross_entropy": {
+      "family": "cross-entropy (frozen in-context classifier)",
+      "samples": 32,
+      "bound_violations": 0,
+      "min_lower_gap": 0.737147198647578,
+      "min_upper_gap": 0.0020815863904163623,
+      "tightness_mean": 0.206213429836551,
+      "tightness_quantiles": [
+        0.020551720531884914,
+        0.21767383468381163,
+        0.3154949958857917
+      ],
+      "r2_state_only": -0.29273269849991457,
+      "r2_state_plus_response": -2.8758802756151476,
+      "r2_gain": -2.5831475771152332,
+      "marginal_mean": -1.535289975872729,
+      "marginal_std": 1.1044405024410324
+    }
+  }
+}

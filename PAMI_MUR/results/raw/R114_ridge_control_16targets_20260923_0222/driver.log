@@ -1,0 +1,14 @@
++ cd /root/icl_ess_threshold
++ RUN=PAMI_MUR/results/raw/R114_ridge_control_16targets_20260923_0222
++ for ds in METRLA PEMSBAY
++ /root/miniconda3/bin/python KBS_MUR/scripts/run_response_router_multitarget.py --data-root /root/icl_ess_threshold/data/staeformer --dataset METRLA --out-root PAMI_MUR/results/raw/R114_ridge_control_16targets_20260923_0222/METRLA --seeds 101,202,303 --target-count 16 --q-values 4 --epochs 20 --beta 1.0 --device cuda:0
+已终止
++ echo 'METRLA DONE'
+METRLA DONE
++ for ds in METRLA PEMSBAY
++ /root/miniconda3/bin/python KBS_MUR/scripts/run_response_router_multitarget.py --data-root /root/icl_ess_threshold/data/staeformer --dataset PEMSBAY --out-root PAMI_MUR/results/raw/R114_ridge_control_16targets_20260923_0222/PEMSBAY --seeds 101,202,303 --target-count 16 --q-values 4 --epochs 20 --beta 1.0 --device cuda:0
+已终止
++ echo 'PEMSBAY DONE'
+PEMSBAY DONE
++ echo RIDGE_CONTROL_DONE
+RIDGE_CONTROL_DONE

@@ -1,0 +1,83 @@
+\section{Introduction}
+
+Predictive systems increasingly combine a primary input with auxiliary
+contexts, such as retrieved examples, historical observations, or records from
+neighbouring sensors. The usefulness of a context depends on what the
+predictor has already received. A context that improves a prediction on its
+own can become redundant once similar information has been selected, while a
+context with a modest standalone score can supply exactly the information that
+is still missing. The value of a candidate is therefore a property of the
+selected set, not of the candidate alone.
+
+Existing selection rules derive candidate value from different signals.
+Relevance measures compatibility with the query, and diversity or coverage
+methods update a content-based objective as the selected set grows. Standalone
+predictive utility instead measures the effect of a candidate on the predictor
+relative to an empty context set. None of these quantities directly represents
+the change in end-task loss produced by adding a candidate to the contexts
+already selected. We define that quantity, the marginal predictive utility of a
+candidate, as the reduction in end-task loss obtained by adding it to the
+context set selected so far,
+\begin{equation}
+ m(j\mid A)=F(A\cup\{j\})-F(A),
+\end{equation}
+where $A$ is the current set and $F$ measures the expected loss reduction
+relative to a predictor that receives no auxiliary context. A fixed score does
+not determine this quantity, because adding a candidate changes the prediction
+that the next candidate acts on.
+
+A perfect standalone ranking fixes the order of candidates in advance, while a
+sequential rule re-evaluates candidate value after every addition. The two policies can disagree
+even when the standalone scores are exact, and the loss reduction that only
+the sequential rule obtains measures how much decision value the fixed-score
+view leaves unrepresented. We call this quantity structural headroom and treat
+it as a property of the prediction task rather than of a particular router.
+
+Two properties make marginal utility difficult to learn. First, as the
+candidate pool grows, the utility gap between the best alternatives shrinks,
+so a model with stable average error becomes less able to identify the best
+candidate. Second, cached context representations describe the content of a
+candidate, not its effect on the predictor: two candidates with similar
+representations can change the prediction in different directions, and only an
+evaluation of the predictor reveals which one reduces the loss. These
+properties set the design requirements for a practical router.
+
+We introduce Response-Aware Marginal-Utility Routing (R-MUR). A cached score
+first narrows the candidate pool to a small shortlist. The fixed predictor is
+then evaluated on the shortlisted candidates only, and compact summaries of
+its response are combined with cached representations to estimate marginal
+utility. Training combines regression on observed marginals with a pairwise
+ranking term weighted by the utility gap, which aligns estimation with the
+selection decision. The design follows directly from the two properties above:
+the response summaries expose the prediction change that enters the marginal,
+and the pairwise objective aligns utility estimation with the candidate
+ordering that selection actually uses.
+
+The paper contributes a decision formulation of multi-context prediction in
+which candidate value is defined by its marginal effect on a fixed predictor,
+and it derives the loss decomposition and the two oracle policies that make
+state conditioning measurable. It contributes a routing method that learns
+this quantity from a small number of predictor evaluations per decision, and a
+decision analysis that relates estimation error to one-step routing regret.
+Finally, it contributes a controlled study of when state conditioning matters,
+together with a multi-target evaluation on standard traffic benchmarks in
+which the method is compared against similarity-, diversity-, coverage-,
+determinantal, and utility-based selection on the same candidate pools and
+prediction targets, including the trivial policy of using every candidate, and
+in which it achieves the best average rank while being significantly ahead of
+the strongest competitor on three benchmarks, unresolved on two and below on
+one.
+
+\paragraph{Scope and companion manuscripts.} This paper is the method paper:
+it defines the decision object, develops the estimator, and evaluates it
+against competing selection rules under a fixed protocol. Two companion
+manuscripts extend it in orthogonal directions and are cited here only where
+their results bear on the method's scope: one develops the identifiability
+theory of marginal utility --- when the quantity can be estimated from
+observable response, and why stronger fixed predictors reduce the value that
+routing can realise --- and one reports the boundary evidence, namely the
+behaviour under a subset-capable nonlinear backbone, a second task family,
+cross-dataset generalisation and the compute profile. The protocol, the
+predictors and the baselines are shared across the three papers by design, so
+that their claims are directly comparable; no result reported here depends on
+either companion for its support.

@@ -1,0 +1,78 @@
+% PAMI-level manuscript candidate.
+\documentclass[journal,10pt]{IEEEtran}
+\usepackage{graphicx,booktabs,amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[capitalize,noabbrev]{cleveref}
+\input{math_commands}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+\newcommand{\TBD}{\textbf{[to fill]}}
+\setlength{\emergencystretch}{1em}
+\begin{document}
+\title{State-Conditioned Marginal Utility for Multi-Context Prediction}
+\author{Author details to be supplied}
+\maketitle
+\begin{abstract}
+Auxiliary contexts do not have fixed predictive value: their contribution
+changes as other contexts are selected. We formulate multi-context selection
+through set-conditioned marginal utility, the reduction in end-task loss
+produced by adding a candidate to the current context set. The formulation
+separates structural opportunity from estimation error and applies beyond a
+single predictor or task family. We introduce Response-Aware Marginal-Utility
+Routing, which narrows the candidate pool with cached representations and
+reranks retained candidates using compact predictor-response summaries and a
+utility-aware ranking objective. A decision analysis links marginal-utility
+estimation error to routing regret, and a general smooth-loss view relates
+predictor response to marginal value, with exact and two-sided statements for
+Bregman and softmax-cross-entropy losses. The analysis also predicts when the approach pays off:
+because the identifiable term is the residual of the fixed predictor itself,
+stronger predictors leave less realizable headroom even when the oracle
+opportunity persists. Experiments confirm both the gains and the boundary
+across standard forecasting benchmarks, a subset-capable nonlinear backbone and
+a second multi-context task family, and they separate the ranking, which
+transfers, from the stopping rule, which does not. The comparison is not
+flattering to the standard toolkit: in the regime where utility is estimable,
+learned marginal-utility routing is significantly ahead of the best of fourteen
+competitors on three benchmarks, unresolved on two and below simple pooling on
+the sixth, while relevance ranking and maximum marginal relevance are
+significantly worse than using no auxiliary context at all on four of the six
+and the strongest competitor on every benchmark is the trivial policy of
+including every candidate; in the regime where it is not, no
+method separates from simply using every context, and the sign of the retrieval
+heuristic is predicted by a single label-free statistic that also yields a
+label-free adaptive rule. Two controlled sweeps locate the mechanism rather
+than merely reporting the boundary: adapting the fixed predictor for two epochs
+removes about five sixths of the value routing can realize while leaving the
+oracle opportunity untouched, and enlarging the candidate library from sixteen
+to one hundred and twenty-eight raises that opportunity by forty percent while
+driving the router to the level of random selection. Removing the shortlist
+entirely changes the result by an amount indistinguishable from zero, which
+locates the limit in what the predictor's response can reveal rather than in
+the efficiency compromise that observes it. The measurement protocol is then
+validated as a deployment decision: on a labelled pilot of twenty-four targets
+it reproduces the full-deployment verdict ninety-six percent of the time, with
+ninety-eight percent sensitivity for the decision to route at all, and splitting
+the pilot in half yields a self-audit that certifies a verdict with
+ninety-nine percent agreement.
+\end{abstract}
+\begin{IEEEkeywords}
+multi-context prediction, marginal utility, context routing, decision-focused
+learning, negative transfer.
+\end{IEEEkeywords}
+\input{sections/1_introduction}
+\input{sections/2_related_work}
+\input{sections/3_problem}
+\input{sections/4_method}
+\input{sections/5_analysis}
+\input{sections/6_experiments}
+\input{sections/7_discussion}
+\input{sections/8_conclusion}
+\input{sections/9_appendix}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

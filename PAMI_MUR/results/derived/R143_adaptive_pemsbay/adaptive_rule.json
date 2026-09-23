@@ -1,0 +1,70 @@
+{
+  "statistic": "anchor_similarity",
+  "modes": [
+    "anticorrelated",
+    "correlated",
+    "mid"
+  ],
+  "cells": 24,
+  "per_mode": {
+    "anticorrelated": {
+      "mean_statistic": 0.11581479096137014,
+      "policy_means": {
+        "relevance": 0.015575549089893078,
+        "pool_all": 0.011908620479516685,
+        "mutual_information": NaN,
+        "dpp": 0.017935686036556337,
+        "mmr": 0.01590864460740704
+      }
+    },
+    "correlated": {
+      "mean_statistic": 0.6449626002672847,
+      "policy_means": {
+        "relevance": -0.033335281713031385,
+        "pool_all": 0.011190954615206769,
+        "mutual_information": NaN,
+        "dpp": -0.038642641394593134,
+        "mmr": -0.055024331668391824
+      }
+    },
+    "mid": {
+      "mean_statistic": 0.45933485655023637,
+      "policy_means": {
+        "relevance": 0.011664319623378105,
+        "pool_all": 0.006401847786340416,
+        "mutual_information": NaN,
+        "dpp": 0.010637987157679163,
+        "mmr": 0.011439712853947034
+      }
+    }
+  },
+  "adaptive": {
+    "splits": 200,
+    "thresholds": [
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85
+    ],
+    "chosen_threshold_median": 0.55,
+    "chosen_threshold_counts": {
+      "0.4": 91,
+      "0.55": 70,
+      "0.6": 39
+    },
+    "mean_held_out_gain": 0.012893482771372266,
+    "ci": [
+      -0.006599245035613421,
+      0.032925939355562955
+    ],
+    "fixed_relevance": -0.0020318043332534013,
+    "fixed_pool_all": 0.009833807627021289,
+    "oracle_pick": 0.01935883789944152
+  }
+}

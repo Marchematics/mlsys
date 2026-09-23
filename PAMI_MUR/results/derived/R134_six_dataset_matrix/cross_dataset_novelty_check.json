@@ -1,0 +1,23 @@
+{
+  "question": "Does the candidate-novelty statistic predict the sign of the relevance gain across datasets, as it does across pool geometries within a dataset?",
+  "answer": "No.",
+  "within_dataset": {
+    "result": "monotone and separating",
+    "detail": "METR-LA novelty .40/.60/.79 -> relevance -.0086/+.0006/+.0063; PEMS-BAY .46/.73/.95 -> -.0333/+.0117/+.0156; corr(novelty, relevance) = +.80 over six pool geometries",
+    "artifacts": ["results/raw/R127_pool_modes_*", "results/raw/R128_pool_modes_pemsbay_*"]
+  },
+  "across_datasets": {
+    "result": "fails, and inverts",
+    "detail": "corr(novelty, relevance gain) = -.328 over the six standard pools; corr(novelty, MMR gain) = -.655",
+    "table": {
+      "METRLA": {"novelty": 0.404, "relevance": -0.01652, "mmr": -0.01799},
+      "PEMSBAY": {"novelty": 0.506, "relevance": -0.01986, "mmr": -0.02493},
+      "PEMS03": {"novelty": 0.176, "relevance": -0.01912, "mmr": -0.01018},
+      "PEMS04": {"novelty": 0.209, "relevance": 0.00707, "mmr": 0.00984},
+      "PEMS07": {"novelty": 0.120, "relevance": -0.01546, "mmr": -0.00848},
+      "PEMS08": {"novelty": 0.237, "relevance": 0.00738, "mmr": 0.00750}
+    }
+  },
+  "interpretation": "Novelty measures redundancy with the anchor, which is the mechanism that operates when the pool is manipulated inside one dataset. Across datasets other factors dominate (signal quality of the correlation structure, noise level, expert quality), so the statistic must be measured and validated per deployment rather than transferred as a dataset-level constant. The measurement protocol of the paper prescribes exactly this.",
+  "artifacts": ["results/derived/R134_six_dataset_matrix/six_dataset_matrix.json"]
+}

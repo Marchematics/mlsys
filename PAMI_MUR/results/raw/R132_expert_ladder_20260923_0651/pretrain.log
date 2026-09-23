@@ -1,0 +1,54 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+[METRLA seed=101] epoch 001 train 0.45531 val_avg 0.43034 (empty 0.43694 full 0.42125)
+[METRLA seed=101] epoch 002 train 0.35425 val_avg 0.39335 (empty 0.39360 full 0.39130)
+[METRLA seed=101] epoch 003 train 0.33539 val_avg 0.38008 (empty 0.37811 full 0.37829)
+[METRLA seed=101] epoch 004 train 0.32568 val_avg 0.37869 (empty 0.37766 full 0.37627)
+[METRLA seed=101] epoch 005 train 0.31804 val_avg 0.37282 (empty 0.37422 full 0.36841)
+[METRLA seed=101] epoch 006 train 0.31151 val_avg 0.37813 (empty 0.37983 full 0.37155)
+[METRLA seed=101] epoch 007 train 0.30631 val_avg 0.37059 (empty 0.36966 full 0.37047)
+[METRLA seed=101] epoch 008 train 0.30067 val_avg 0.37264 (empty 0.37418 full 0.36979)
+[METRLA seed=101] epoch 009 train 0.29745 val_avg 0.37494 (empty 0.37323 full 0.37357)
+[METRLA seed=101] epoch 010 train 0.29230 val_avg 0.36936 (empty 0.37208 full 0.36603)
+[METRLA seed=101] epoch 011 train 0.28812 val_avg 0.38232 (empty 0.38109 full 0.37781)
+[METRLA seed=101] epoch 012 train 0.28608 val_avg 0.37801 (empty 0.37884 full 0.37425)
+[METRLA seed=101] epoch 013 train 0.28157 val_avg 0.38064 (empty 0.37941 full 0.37634)
+[METRLA seed=101] epoch 014 train 0.27851 val_avg 0.37354 (empty 0.37150 full 0.37353)
+[METRLA seed=101] epoch 015 train 0.27589 val_avg 0.39677 (empty 0.39227 full 0.39476)
+[METRLA seed=101] epoch 016 train 0.27232 val_avg 0.38775 (empty 0.38555 full 0.38696)
+early stop at epoch 16
+{
+  "best_epoch": 9,
+  "best_validation_average_mse": 0.36935797457408626,
+  "wall_seconds": 62.58237290382385
+}
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+[METRLA seed=101] epoch 001 train 0.46608 val_avg 0.40995 (empty 0.41305 full 0.40984)
+[METRLA seed=101] epoch 002 train 0.34767 val_avg 0.38455 (empty 0.38658 full 0.38369)
+[METRLA seed=101] epoch 003 train 0.33022 val_avg 0.38185 (empty 0.38496 full 0.37854)
+[METRLA seed=101] epoch 004 train 0.31889 val_avg 0.37862 (empty 0.37991 full 0.37520)
+[METRLA seed=101] epoch 005 train 0.30904 val_avg 0.38406 (empty 0.38835 full 0.38034)
+[METRLA seed=101] epoch 006 train 0.29856 val_avg 0.38891 (empty 0.39742 full 0.38171)
+[METRLA seed=101] epoch 007 train 0.29210 val_avg 0.37510 (empty 0.37869 full 0.36963)
+[METRLA seed=101] epoch 008 train 0.28287 val_avg 0.36072 (empty 0.35776 full 0.36448)
+[METRLA seed=101] epoch 009 train 0.27554 val_avg 0.39204 (empty 0.38679 full 0.39410)
+[METRLA seed=101] epoch 010 train 0.26921 val_avg 0.38629 (empty 0.37963 full 0.39074)
+[METRLA seed=101] epoch 011 train 0.26210 val_avg 0.38521 (empty 0.37565 full 0.38407)
+[METRLA seed=101] epoch 012 train 0.25672 val_avg 0.37729 (empty 0.37028 full 0.38038)
+[METRLA seed=101] epoch 013 train 0.25374 val_avg 0.38867 (empty 0.38215 full 0.38119)
+[METRLA seed=101] epoch 014 train 0.24874 val_avg 0.39065 (empty 0.39045 full 0.38912)
+early stop at epoch 14
+{
+  "best_epoch": 7,
+  "best_validation_average_mse": 0.3607211114867823,
+  "wall_seconds": 87.42341589927673
+}

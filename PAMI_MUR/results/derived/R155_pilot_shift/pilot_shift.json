@@ -1,0 +1,124 @@
+{
+ "run_root": "/root/icl_ess_threshold/KBS_MUR/results/raw/R155_pilot_shift_20260925_1000",
+ "datasets": {
+  "METRLA": {
+   "targets": 32,
+   "pilot_mean": 0.007895195853052428,
+   "deployment_mean": 0.004176587739493698,
+   "pilot_verdict": "AHEAD",
+   "deployment_verdict": "AHEAD",
+   "sign_agreement": 0.78125,
+   "pearson": {
+    "r": 0.5199969245384498,
+    "p": 0.0022847013598666878
+   },
+   "spearman": {
+    "rho": 0.5689149560117301,
+    "p": 0.0006795187912585995
+   },
+   "verdict_agrees": true
+  },
+  "PEMSBAY": {
+   "targets": 32,
+   "pilot_mean": 0.02032923560909694,
+   "deployment_mean": 0.03542290312907426,
+   "pilot_verdict": "AHEAD",
+   "deployment_verdict": "AHEAD",
+   "sign_agreement": 0.71875,
+   "pearson": {
+    "r": 0.5985582392610832,
+    "p": 0.0002959304702941989
+   },
+   "spearman": {
+    "rho": 0.3984604105571847,
+    "p": 0.023894679940252853
+   },
+   "verdict_agrees": true
+  },
+  "PEMS03": {
+   "targets": 32,
+   "pilot_mean": 0.002883151435526088,
+   "deployment_mean": 0.0013856979203410447,
+   "pilot_verdict": "AHEAD",
+   "deployment_verdict": "UNRESOLVED",
+   "sign_agreement": 0.9375,
+   "pearson": {
+    "r": 0.8478240375509354,
+    "p": 9.149333440501688e-10
+   },
+   "spearman": {
+    "rho": 0.8772798130511981,
+    "p": 4.4598519595468916e-11
+   },
+   "verdict_agrees": false
+  },
+  "PEMS04": {
+   "targets": 32,
+   "pilot_mean": 0.0006506007630378008,
+   "deployment_mean": -0.0008674589480506256,
+   "pilot_verdict": "UNRESOLVED",
+   "deployment_verdict": "UNRESOLVED",
+   "sign_agreement": 0.8125,
+   "pearson": {
+    "r": 0.6477632266034692,
+    "p": 6.125149146941088e-05
+   },
+   "spearman": {
+    "rho": 0.8207478005865102,
+    "p": 8.808611449260682e-09
+   },
+   "verdict_agrees": true
+  },
+  "PEMS07": {
+   "targets": 32,
+   "pilot_mean": 0.004143288984778337,
+   "deployment_mean": 0.0048300670241587795,
+   "pilot_verdict": "AHEAD",
+   "deployment_verdict": "AHEAD",
+   "sign_agreement": 0.78125,
+   "pearson": {
+    "r": 0.7001772482679752,
+    "p": 8.161355302068235e-06
+   },
+   "spearman": {
+    "rho": 0.5781364636830519,
+    "p": 0.0005291452308692331
+   },
+   "verdict_agrees": true
+  },
+  "PEMS08": {
+   "targets": 32,
+   "pilot_mean": -0.0016236096053034998,
+   "deployment_mean": -0.002824673556460766,
+   "pilot_verdict": "UNRESOLVED",
+   "deployment_verdict": "BELOW",
+   "sign_agreement": 0.8125,
+   "pearson": {
+    "r": 0.7798457340672502,
+    "p": 1.4322773827119586e-07
+   },
+   "spearman": {
+    "rho": 0.7129239230064163,
+    "p": 4.682017228862515e-06
+   },
+   "verdict_agrees": false
+  }
+ },
+ "pooled": {
+  "targets": 192,
+  "pearson": {
+   "r": 0.648022359165767,
+   "p": 3.004399502824863e-24
+  },
+  "pearson_within_dataset": {
+   "r": 0.595918435344642,
+   "p": 7.644752540058226e-20
+  },
+  "spearman_within_dataset": {
+   "rho": 0.5909476051629436,
+   "p": 1.8307616664297978e-19
+  },
+  "sign_agreement": 0.8072916666666666
+ },
+ "dataset_verdict_agreement": "4/6"
+}

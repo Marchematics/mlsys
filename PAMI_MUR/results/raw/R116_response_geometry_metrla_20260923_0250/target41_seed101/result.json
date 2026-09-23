@@ -1,0 +1,28 @@
+{
+  "dataset": "METRLA",
+  "target_sensor": 41,
+  "seed": 101,
+  "policies": {
+    "min_disturbance_static": {
+      "mean_prediction_gain": -0.0012177753960713744,
+      "negative_transfer_rate": 0.4505,
+      "mean_selected_contexts": 4.0
+    },
+    "max_disturbance_static": {
+      "mean_prediction_gain": -0.008227813988924026,
+      "negative_transfer_rate": 0.5775,
+      "mean_selected_contexts": 4.0
+    },
+    "last_k": {
+      "mean_prediction_gain": 0.0049766963347792625,
+      "negative_transfer_rate": 0.4785,
+      "mean_selected_contexts": 4.0
+    },
+    "min_disturbance_greedy": {
+      "mean_prediction_gain": 0.0005759429768659174,
+      "negative_transfer_rate": 0.4525,
+      "mean_selected_contexts": 4.0
+    }
+  },
+  "wall_seconds": 10.910362720489502
+}

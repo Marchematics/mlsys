@@ -1,0 +1,46 @@
+{
+  "run_id": "R207_oneshot_response_ablation",
+  "status": "confirmatory",
+  "dataset": "METRLA",
+  "target_sensor": 99,
+  "seed": 101,
+  "config": {
+    "candidate_count": 16,
+    "budget": 4,
+    "q": 4,
+    "states_per_episode": 4,
+    "epochs": 20,
+    "candidate_sensors": [
+      1,
+      123,
+      156,
+      200,
+      184,
+      179,
+      178,
+      203,
+      177,
+      27,
+      135,
+      35,
+      167,
+      205,
+      9,
+      103
+    ],
+    "note": "one-shot policy scored with the response-aware model trained here"
+  },
+  "metrics": {
+    "oneshot_response": {
+      "mean_prediction_gain": -0.01524476520717144,
+      "negative_transfer_rate": 0.5785,
+      "mean_selected_contexts": 3.801
+    },
+    "oracle_greedy": {
+      "mean_prediction_gain": 0.13085009157657623,
+      "negative_transfer_rate": NaN,
+      "mean_selected_contexts": 3.8045
+    }
+  },
+  "wall_seconds": 93.97499513626099
+}

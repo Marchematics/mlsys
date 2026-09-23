@@ -1,0 +1,237 @@
+{
+ "source": "/root/icl_ess_threshold/PAMI_MUR/results/raw/R110_demo_selection_20260921_0408",
+ "contrasts": {
+  "router_minus_pool": {
+   "left": "ranked_response_q4",
+   "right": "pool_all",
+   "benchmarks": {
+    "cifar10": {
+     "classes": 10,
+     "mean_difference": -0.039934392739087346,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "cifar100": {
+     "classes": 100,
+     "mean_difference": -0.1416546031048832,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "svhn": {
+     "classes": 10,
+     "mean_difference": -0.06015307207902273,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "eurosat": {
+     "classes": 10,
+     "mean_difference": -0.062080408089483785,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "dtd": {
+     "classes": 47,
+     "mean_difference": -0.7961796606731509,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    }
+   },
+   "pooled": {
+    "classes": 177,
+    "mean_difference": -0.3006078140745896,
+    "verdict": "BELOW",
+    "benchmark_verdict_agreement": "5/5"
+   }
+  },
+  "relevance_minus_pool": {
+   "left": "relevance",
+   "right": "pool_all",
+   "benchmarks": {
+    "cifar10": {
+     "classes": 10,
+     "mean_difference": -0.006702107598054377,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 0.3075,
+     "sign_agreement": 1.0
+    },
+    "cifar100": {
+     "classes": 100,
+     "mean_difference": -0.006193713842270274,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "svhn": {
+     "classes": 10,
+     "mean_difference": -0.008172574328879514,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "eurosat": {
+     "classes": 10,
+     "mean_difference": -0.01223247558470272,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 0.985,
+     "sign_agreement": 1.0
+    },
+    "dtd": {
+     "classes": 47,
+     "mean_difference": -0.11757989916402445,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    }
+   },
+   "pooled": {
+    "classes": 177,
+    "mean_difference": -0.03625253231668104,
+    "verdict": "BELOW",
+    "benchmark_verdict_agreement": "5/5"
+   }
+  },
+  "router_minus_relevance": {
+   "left": "ranked_response_q4",
+   "right": "relevance",
+   "benchmarks": {
+    "cifar10": {
+     "classes": 10,
+     "mean_difference": -0.03323228477747762,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "cifar100": {
+     "classes": 100,
+     "mean_difference": -0.13546088981131713,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "svhn": {
+     "classes": 10,
+     "mean_difference": -0.05198049793640772,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "eurosat": {
+     "classes": 10,
+     "mean_difference": -0.04984793279630443,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "dtd": {
+     "classes": 47,
+     "mean_difference": -0.6785997595160816,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    }
+   },
+   "pooled": {
+    "classes": 177,
+    "mean_difference": -0.2643552815451381,
+    "verdict": "BELOW",
+    "benchmark_verdict_agreement": "5/5"
+   }
+  },
+  "mmr_minus_pool": {
+   "left": "mmr",
+   "right": "pool_all",
+   "benchmarks": {
+    "cifar10": {
+     "classes": 10,
+     "mean_difference": -0.006834979324291149,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 0.3375,
+     "sign_agreement": 1.0
+    },
+    "cifar100": {
+     "classes": 100,
+     "mean_difference": -0.006369627934570115,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "svhn": {
+     "classes": 10,
+     "mean_difference": -0.008709687491257986,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    },
+    "eurosat": {
+     "classes": 10,
+     "mean_difference": -0.012444729254396708,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 0.9775,
+     "sign_agreement": 1.0
+    },
+    "dtd": {
+     "classes": 47,
+     "mean_difference": -0.12268742489299685,
+     "full_verdict": "BELOW",
+     "pilot_verdict_mode": "BELOW",
+     "deployment_verdict_mode": "BELOW",
+     "verdict_agreement": 1.0,
+     "sign_agreement": 1.0
+    }
+   },
+   "pooled": {
+    "classes": 177,
+    "mean_difference": -0.037757998441397295,
+    "verdict": "BELOW",
+    "benchmark_verdict_agreement": "5/5"
+   }
+  }
+ },
+ "marginal_contrasts": [
+  "relevance_minus_pool",
+  "mmr_minus_pool"
+ ]
+}

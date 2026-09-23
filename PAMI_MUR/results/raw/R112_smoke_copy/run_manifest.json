@@ -1,0 +1,86 @@
+{
+  "run_id": "R112_smoke_copy",
+  "argv": [
+    "experiments/demo_selection/run_r112_redundant_demo.py",
+    "--benchmarks",
+    "cifar10,dtd",
+    "--seeds",
+    "101",
+    "--train-episodes-per-class",
+    "3",
+    "--test-episodes-per-class",
+    "2",
+    "--predictor-epochs",
+    "60",
+    "--router-epochs",
+    "10",
+    "--states-per-episode",
+    "2",
+    "--copy-jitter",
+    "0.002",
+    "--out-root",
+    "results/raw/R112_smoke_copy"
+  ],
+  "started_utc": "2026-09-20T21:23:26Z",
+  "benchmarks": [
+    "cifar10",
+    "dtd"
+  ],
+  "seeds": [
+    101
+  ],
+  "q_values": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "router_epochs": 10,
+  "beta": 1.0,
+  "states_per_episode": 2,
+  "feature_root": "/root/icl_ess_threshold/PAMI_MUR/data/vision_features",
+  "pool_rule": "3 clusters x 4 near-duplicate in-class demos + 4 distractors (K=16, B=4)",
+  "git_head": "6386b44ea57e27a4b6d8c57bffe67c3b3b2de237",
+  "imported_source_hashes": {
+    "PAMI_MUR/experiments/demo_selection/frozen_helpers.py": "3817f9628a84021c8c763507c086f651",
+    "PAMI_MUR/experiments/run_strong_backbone.py": "026488fb196e067961a7bdb4f4a26ccc",
+    "PAMI_MUR/experiments/neural_expert.py": "e3082113d49fe1259eb45c1cef927324",
+    "KBS_MUR/src/mur/synthetic_experiment.py": "15df991203d1116e81c19d651201af7e",
+    "KBS_MUR/src/mur/model.py": "755c10c2201be893c9fb612de62a601c",
+    "KBS_MUR/src/mur/traffic.py": "9f83fc53899313f3a1b6961dadbb71c5",
+    "KBS_MUR/scripts/run_traffic_ranked_response_router_sweep.py": "5f0f8935e2b2b4c5608d069bce63c1d2",
+    "KBS_MUR/scripts/run_traffic_response_router_sweep.py": "72d2033bade0aa93d7cc98dc1e8e873f",
+    "KBS_MUR/scripts/run_traffic_full_router.py": "eec6657f3af230f431d3916545f14667",
+    "PAMI_MUR/experiments/demo_selection/redundant_pool.py": "2385267ee3085afffb490e837474f76b",
+    "PAMI_MUR/experiments/demo_selection/forced_budget.py": "180320ac90e0b3f8db817e0e68f5d257",
+    "PAMI_MUR/experiments/demo_selection/run_r112_redundant_demo.py": "cb9646e29118fa7f344fb6ceeb0c39b4",
+    "PAMI_MUR/experiments/demo_selection/incontext_predictor.py": "70c55e226b5ebdf9a91a9089811c9944",
+    "PAMI_MUR/experiments/demo_selection/demo_protocol.py": "26493390c26c71ec3f3863f1b3de1a84",
+    "PAMI_MUR/experiments/demo_selection/train_predictor.py": "1ce676a1e6a00026e1678cc7d8c9652d"
+  },
+  "invocations": [
+    [
+      "experiments/demo_selection/run_r112_redundant_demo.py",
+      "--benchmarks",
+      "cifar10,dtd",
+      "--seeds",
+      "101",
+      "--train-episodes-per-class",
+      "3",
+      "--test-episodes-per-class",
+      "2",
+      "--predictor-epochs",
+      "60",
+      "--router-epochs",
+      "10",
+      "--states-per-episode",
+      "2",
+      "--copy-jitter",
+      "0.002",
+      "--out-root",
+      "results/raw/R112_smoke_copy"
+    ]
+  ],
+  "failures": {},
+  "finished_utc": "2026-09-20T21:25:29Z"
+}

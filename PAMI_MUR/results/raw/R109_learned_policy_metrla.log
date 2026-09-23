@@ -1,0 +1,54 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/icl_ess_threshold/PAMI_MUR/experiments/neural_expert.py:265: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  time_features = torch.from_numpy(
+/root/miniconda3/lib/python3.12/site-packages/torch/nn/modules/transformer.py:515: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /pytorch/aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(
+{"target": 0, "seed": 101, "mean_gain": 0.010263227857649326}
+{"target": 0, "seed": 202, "mean_gain": 0.016689542680978775}
+{"target": 0, "seed": 303, "mean_gain": 0.011594713665544987}
+{"target": 13, "seed": 101, "mean_gain": -0.004199907649308443}
+{"target": 13, "seed": 202, "mean_gain": 0.015034900046885014}
+{"target": 13, "seed": 303, "mean_gain": 0.004822316113859415}
+{"target": 27, "seed": 101, "mean_gain": 0.0015375823713839054}
+{"target": 27, "seed": 202, "mean_gain": 0.007644185330718756}
+{"target": 27, "seed": 303, "mean_gain": -0.005579505115747452}
+{"target": 41, "seed": 101, "mean_gain": 0.000594547251239419}
+{"target": 41, "seed": 202, "mean_gain": 0.002485500415787101}
+{"target": 41, "seed": 303, "mean_gain": -0.020095208659768105}
+{"target": 54, "seed": 101, "mean_gain": -0.010908530093729496}
+{"target": 54, "seed": 202, "mean_gain": -0.0026436964981257915}
+{"target": 54, "seed": 303, "mean_gain": -0.011584495194256306}
+{"target": 68, "seed": 101, "mean_gain": -0.01048783864825964}
+{"target": 68, "seed": 202, "mean_gain": 4.225206430419348e-05}
+{"target": 68, "seed": 303, "mean_gain": 0.00967685878276825}
+{"target": 82, "seed": 101, "mean_gain": -0.08924759179353714}
+{"target": 82, "seed": 202, "mean_gain": -0.09261272102594376}
+{"target": 82, "seed": 303, "mean_gain": -0.06604660302400589}
+{"target": 96, "seed": 101, "mean_gain": 0.041611481457948685}
+{"target": 96, "seed": 202, "mean_gain": 0.02809763513505459}
+{"target": 96, "seed": 303, "mean_gain": 0.03621679171919823}
+{"target": 109, "seed": 101, "mean_gain": -0.008178571239113808}
+{"target": 109, "seed": 202, "mean_gain": 0.009694402106106281}
+{"target": 109, "seed": 303, "mean_gain": -0.02240096591413021}
+{"target": 123, "seed": 101, "mean_gain": -0.004507501609623432}
+{"target": 123, "seed": 202, "mean_gain": 0.0059542665258049965}
+{"target": 123, "seed": 303, "mean_gain": 0.0018780179088935256}
+{"target": 137, "seed": 101, "mean_gain": -0.02250390499830246}
+{"target": 137, "seed": 202, "mean_gain": 0.005612389650195837}
+{"target": 137, "seed": 303, "mean_gain": -0.0017560466658324003}
+{"target": 151, "seed": 101, "mean_gain": 0.009788314811885357}
+{"target": 151, "seed": 202, "mean_gain": 0.009241660125553608}
+{"target": 151, "seed": 303, "mean_gain": -0.015026798471808434}
+{"target": 164, "seed": 101, "mean_gain": -0.014350532554090023}
+{"target": 164, "seed": 202, "mean_gain": -0.007122788578271866}
+{"target": 164, "seed": 303, "mean_gain": 0.008094661869108677}
+{"target": 178, "seed": 101, "mean_gain": 0.0032479739747941494}
+{"target": 178, "seed": 202, "mean_gain": 0.01779642142355442}
+{"target": 178, "seed": 303, "mean_gain": 0.009225036017596722}
+{"target": 192, "seed": 101, "mean_gain": -0.01100381650030613}
+{"target": 192, "seed": 202, "mean_gain": -0.01224504318088293}
+{"target": 192, "seed": 303, "mean_gain": 0.012065883725881577}
+{"target": 206, "seed": 101, "mean_gain": -0.015963591635227203}
+{"target": 206, "seed": 202, "mean_gain": -0.033079128712415695}
+{"target": 206, "seed": 303, "mean_gain": 0.006849966011941433}

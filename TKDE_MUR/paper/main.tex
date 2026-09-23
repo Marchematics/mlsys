@@ -1,0 +1,69 @@
+% TKDE manuscript source.
+\documentclass[journal,10pt]{IEEEtran}
+\usepackage{graphicx,booktabs,amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[capitalize,noabbrev]{cleveref}
+\input{math_commands}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+\newcommand{\tablefont}{\fontsize{8}{9.5}\selectfont}
+\setlength{\emergencystretch}{1em}
+\begin{document}
+\title{Identifiable Marginal Utility: Why Predictor Response Decides When Context Selection Works}
+\author{Author details to be supplied}
+\maketitle
+\begin{abstract}
+Context selection assumes that a candidate's value can be estimated before the
+outcome is observed. We study the missing premise: identifiability. We ask what
+a router can know about the marginal reduction in loss produced by adding a
+context to the current set, and how that knowledge changes with the fixed
+predictor it routes into. The analysis gives an exact identity for Bregman
+losses and two-sided bounds for general smooth losses, with explicit constants
+for softmax cross-entropy, and shows that conditional on the state the
+Bayes-optimal squared-loss utility is affine in the predictor's response. The
+same identity yields a corollary with practical force: the identifiable part of
+a candidate's value is the residual of the fixed predictor itself, so a better
+predictor leaves less realizable opportunity even when the oracle opportunity
+is unchanged. We turn this into a measurement protocol --- screen--truth
+correlation, within-episode rank predictability, and a single label-free
+redundancy statistic --- and into a mechanism-based selection rule that adapts
+to it. Experiments span three regimes. Where utility is estimable (linear
+subset expert, six traffic benchmarks) learned marginal-utility routing beats
+fourteen competitors --- significantly ahead of the best of them on three
+benchmarks, unresolved on two and below simple pooling on one --- while relevance
+ranking and maximum marginal relevance are significantly worse than using no
+context at all on four of the six, and the strongest competitor on every
+benchmark is the trivial policy of including every candidate. Where it is not
+estimable (a
+subset-capable nonlinear expert) no method separates from simply including every
+candidate, the optimal oracle budget is smaller than the protocol's, and
+enlarging the library from sixteen to one hundred and twenty-eight candidates
+raises the oracle opportunity by forty percent while driving the router to the
+level of random selection. Where
+candidates
+contribute categorical evidence (demonstration selection on five image
+benchmarks) four different scoring heads bracket the same ceiling. The
+contribution is a diagnosis and a decision rule, not another ranking heuristic.
+\end{abstract}
+\begin{IEEEkeywords}
+marginal utility, identifiability, context selection, negative transfer,
+predictor response.
+\end{IEEEkeywords}
+\input{sections/1_introduction}
+\input{sections/2_related_work}
+\input{sections/3_problem}
+\input{sections/4_theory}
+\input{sections/5_diagnostics}
+\input{sections/6_adaptive}
+\input{sections/7_experiments}
+\input{sections/8_discussion}
+\input{sections/9_conclusion}
+\input{sections/10_appendix}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,129 @@
+\section{Discussion}
+
+The experiments support a two-stage design test for context-routing systems.
+The first stage measures structural headroom: whether state conditioning
+creates value that a perfect standalone ranking cannot reach. The second stage
+measures how accurately marginal utility can be estimated from information
+available to the router. Tasks with little headroom need no sequential
+marginal routing. Tasks with substantial headroom require predictor-response
+information and enough decision margin for the router to distinguish
+candidates.
+
+The multi-target study shows why both stages matter. Structural headroom is
+positive on every evaluated target, but learned routing is more reliable on
+some targets than others. METR-LA has the widest target-level variation. This
+pattern matches the mechanism analysis: structural opportunity alone does not
+determine how much value a router can realize. Predictor-response features and
+the utility gap between the best candidates are the operating quantities.
+
+The main limitations are computational and structural. R-MUR is greedy and can
+miss pure complementarity, where every individual candidate has nonpositive
+utility but a bundle is useful. Its labels require counterfactual evaluations
+of the fixed predictor, so offline label cost is part of the system cost. The
+calibration-derived stopping threshold controls the gain--harm trade-off, and
+its guarantee is per-decision.
+
+\subsection{Structural headroom is not the same as realizable headroom}
+
+The strong-backbone study separates two quantities that the earlier results
+could not distinguish. Structural headroom is a property of the predictor and
+the candidate pool: with the subset-capable transformer, the sequential oracle
+still beats the standalone oracle by $.0148$ absolute on METR-LA, so state
+conditioning continues to create value. Realizable headroom is a property of
+the information available to the router. With the ridge expert the learned
+router converted a substantial share of the structural opportunity into gain;
+with the nonlinear expert the response-free routers are statistically
+indistinguishable from random selection even though the same structural
+opportunity is present.
+
+The general-loss analysis of \cref{sec:analysis} explains the mechanism. The
+expectation of the exact identity conditions on the state as
+$\E[m(j\mid A)\mid x,A]=\langle g_A(x),d_{A,j}\rangle-\|d_{A,j}\|^2-\lambda
+c_j$ with $g_A(x)=2(\mu(x)-f_A(x))$. The second term is known as soon as the
+predictor has been probed, but the first requires predicting the residual of
+the \emph{better} predictor. A stronger predictor has already absorbed the
+systematic part of that residual, so what remains is closer to noise, and the
+expected ranking is increasingly governed by the response penalty alone. This
+is a boundary condition of utility routing rather than a defect of a particular
+router: as fixed predictors improve, context selection has less ex-ante
+identifiable value, even while its oracle value persists. Practically, the
+diagnostic to run before deploying a router is the one used here: compare the
+oracle ladder against the best response-free ranking and check whether the
+cached view correlates with the true marginal at all. Both comparisons are
+computed from the deployment's own protocol and cost one sweep each. Fitting a
+predictability probe is deliberately \emph{not} on this list: as
+\cref{sec:strong-backbone} shows, even at $2{,}000$ training episodes the probe
+cannot separate a weak expert from a strong one, so it can rank geometries but
+not cells.
+
+\subsection{Where sequential routing pays off}
+
+\Cref{tab:boundary} collects the settings evaluated in this paper. Two
+conditions must hold together. The predictor must leave a systematic residual
+for contexts to correct: the ridge expert does, and the learned router converts
+a double-digit share of the standalone oracle into gain with intervals well
+above zero. The candidate set must make a candidate's value depend on what is
+already selected: constructed redundant traffic pools do, whereas
+demonstration pools without redundancy have a flat state-conditioned ceiling
+($H_{\mathrm{state}}\le 5\times10^{-4}$). When the predictor is strong and
+well calibrated, the first condition weakens even though the oracle gap
+remains, and no evaluated method --- utility-based or policy-gradient ---
+recovers it. When the pools are not redundant, the second condition fails and
+nearest-neighbour relevance is within a fraction of a percent of the oracle.
+The stopping rule is a separate design axis: forcing the budget to be spent
+turns a 3-of-5 result into 5-of-5 in the second family without changing the
+ranking.
+
+\begin{table}[t]
+ \centering
+ \footnotesize
+ \caption{Where the framework pays off. $\Delta$Static is R-MUR at $q=4$
+ against Standalone Utility with a target-level interval.}
+ \label{tab:boundary}
+ \begin{tabular}{lcc}
+  \toprule
+  Setting & Headroom & $\Delta$Static\\
+  \midrule
+  Traffic, ridge (32 targets) & .09--.11 & $+.0122\,[+.010,+.015]$\\
+  Traffic, ridge (PEMS-BAY) & .11 & $+.0288\,[+.021,+.040]$\\
+  Traffic, nonlinear & .15 & $+.0028\,[-.001,+.008]$\\
+  Traffic, nonlinear, unadapted & .16 & $+.0122\,[+.006,+.020]$\\
+  PEMS-BAY, nonlinear & .15 & $-.0008\,[-.004,+.002]$\\
+  Demos, in-context & $\le 5\cdot10^{-4}$ & 3/5 benchmarks\\
+  Demos, forced budget & $\le 5\cdot10^{-4}$ & 5/5 benchmarks\\
+  Demos, redundant pools & $\le 9\cdot10^{-4}$ & 1/5; 5/5 forced\\
+  \bottomrule
+ \end{tabular}
+\end{table}
+
+Two further axes decide whether routing is worth attempting, and both are
+counter-intuitive. The first is adaptation. Fine-tuning the fixed predictor on
+the deployment is normally free accuracy, and it is exactly the operation that
+destroys routing value: in a controlled sweep of adaptation epochs, two epochs
+improve anchor error by $7.1\%$ while removing about five sixths of the share
+of the oracle the router could realise, and the structural opportunity is
+unchanged throughout ($+.0831$ to $+.0858$). Twenty-eight further epochs buy a
+further $1.2\%$ of accuracy and no identifiable value at all. The practical
+reading is that routing and heavy test-time adaptation are substitutes: the
+residual a router exploits is the same residual adaptation absorbs, so a
+practitioner should decide which of the two is to capture it rather than
+expecting both. The second axis is the size of the candidate library. Enlarging
+the pool from sixteen to one hundred and twenty-eight candidates raises the
+standalone-oracle opportunity by forty percent and drives the router to the
+level of random selection, because the value that appears is value nothing can
+identify in advance. Retrieving from a bigger library therefore makes this
+problem harder, not easier --- the opposite of the usual scaling intuition ---
+and the useful move at large pool sizes is to make the pool more redundant or
+the predictor less adapted, not larger.
+
+\subsection{When a simple baseline is hard to beat}
+
+The second task family shows the same boundary from the other side. Because
+the demonstration pools are not redundant, the sequential and standalone
+oracles coincide and a nearest-neighbour relevance rule reaches
+$99.4$--$99.9\%$ of the oracle gain. In that regime the ranking problem is
+essentially solved by similarity, and no learned router, including R-MUR,
+improves on it uniformly. The framework is therefore best applied where
+candidates overlap in what they contribute: redundancy is what makes the value
+of a candidate depend on what has already been selected, and that dependence is
+what a sequential router can exploit.

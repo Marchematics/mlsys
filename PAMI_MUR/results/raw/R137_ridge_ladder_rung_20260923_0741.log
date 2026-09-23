@@ -1,0 +1,121 @@
+/root/miniconda3/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+completed target 0 for METRLA
+completed target 29 for METRLA
+completed target 58 for METRLA
+completed target 88 for METRLA
+completed target 117 for METRLA
+completed target 147 for METRLA
+completed target 176 for METRLA
+completed target 206 for METRLA
+{
+  "dataset": "METRLA",
+  "targets": 8,
+  "seeds_per_target": 1,
+  "targets_positive_gain": 8,
+  "targets_gain_over_static": 8,
+  "target_fraction_positive_gain": 1.0,
+  "target_fraction_gain_over_static": 1.0,
+  "H_state_mean": 0.08998869930007167,
+  "H_state_median": 0.07823603442308223,
+  "R_oracle_mean": 0.17806016900212396,
+  "R_deploy_mean": 0.10174854921917645,
+  "target_records": [
+    {
+      "target_sensor": 0,
+      "runs": 1,
+      "oracle_static_gain": 0.166277214884758,
+      "oracle_greedy_gain": 0.18609146773815155,
+      "H_state": 0.10647588035188212,
+      "static_utility_gain": 0.018565548583865166,
+      "cached_mur_gain": 0.027533264830708504,
+      "ranked_rmur_q4_gain": 0.03601829707622528,
+      "R_oracle_q4": 0.19355157715724217,
+      "R_deploy_q4": 0.10417939254096349
+    },
+    {
+      "target_sensor": 29,
+      "runs": 1,
+      "oracle_static_gain": 0.16397710144519806,
+      "oracle_greedy_gain": 0.1986614316701889,
+      "H_state": 0.17459015538845313,
+      "static_utility_gain": 0.034536782652139664,
+      "cached_mur_gain": 0.04956221953034401,
+      "ranked_rmur_q4_gain": 0.04708385095000267,
+      "R_oracle_q4": 0.23700549499799092,
+      "R_deploy_q4": 0.07644840901675391
+    },
+    {
+      "target_sensor": 58,
+      "runs": 1,
+      "oracle_static_gain": 0.17408804595470428,
+      "oracle_greedy_gain": 0.18235763907432556,
+      "H_state": 0.045348213332871375,
+      "static_utility_gain": -0.007058486808091402,
+      "cached_mur_gain": 0.015095123089849949,
+      "ranked_rmur_q4_gain": 0.02784435823559761,
+      "R_oracle_q4": 0.15269093401811795,
+      "R_deploy_q4": 0.18426543611896856
+    },
+    {
+      "target_sensor": 88,
+      "runs": 1,
+      "oracle_static_gain": 0.10572247207164764,
+      "oracle_greedy_gain": 0.12278568744659424,
+      "H_state": 0.13896746216751246,
+      "static_utility_gain": 0.004053391516208649,
+      "cached_mur_gain": 0.011804569512605667,
+      "ranked_rmur_q4_gain": 0.017550265416502953,
+      "R_oracle_q4": 0.14293413003967959,
+      "R_deploy_q4": 0.11367483290483754
+    },
+    {
+      "target_sensor": 117,
+      "runs": 1,
+      "oracle_static_gain": 0.17841874063014984,
+      "oracle_greedy_gain": 0.18643350899219513,
+      "H_state": 0.0429899560726544,
+      "static_utility_gain": 0.007616584189236164,
+      "cached_mur_gain": 0.0033746366389095783,
+      "ranked_rmur_q4_gain": 0.02186012640595436,
+      "R_oracle_q4": 0.11725427753907434,
+      "R_deploy_q4": 0.07965432932264867
+    },
+    {
+      "target_sensor": 147,
+      "runs": 1,
+      "oracle_static_gain": 0.11591621488332748,
+      "oracle_greedy_gain": 0.12160856276750565,
+      "H_state": 0.04680877525919731,
+      "static_utility_gain": -0.006674551870673895,
+      "cached_mur_gain": -0.000758236856199801,
+      "ranked_rmur_q4_gain": 0.0036109446082264185,
+      "R_oracle_q4": 0.029693177240569107,
+      "R_deploy_q4": 0.08017810066360168
+    },
+    {
+      "target_sensor": 176,
+      "runs": 1,
+      "oracle_static_gain": 0.14354513585567474,
+      "oracle_greedy_gain": 0.16214896738529205,
+      "H_state": 0.11473296333372023,
+      "static_utility_gain": 0.044600870460271835,
+      "cached_mur_gain": 0.0492100827395916,
+      "ranked_rmur_q4_gain": 0.050239067524671555,
+      "R_oracle_q4": 0.3098327934786994,
+      "R_deploy_q4": 0.04796502207939722
+    },
+    {
+      "target_sensor": 206,
+      "runs": 1,
+      "oracle_static_gain": 0.18013189733028412,
+      "oracle_greedy_gain": 0.1896117627620697,
+      "H_state": 0.04999618849428235,
+      "static_utility_gain": 0.024755394086241722,
+      "cached_mur_gain": 0.022556550800800323,
+      "ranked_rmur_q4_gain": 0.045794837176799774,
+      "R_oracle_q4": 0.24151896754561822,
+      "R_deploy_q4": 0.12762287110624046
+    }
+  ]
+}

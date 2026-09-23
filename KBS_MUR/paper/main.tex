@@ -1,0 +1,144 @@
+% KBS manuscript source.
+%
+% The manuscript is built in the layout Elsevier expects for review: 1.5 line
+% spacing with line numbers. There is a single source; no separate preprint or
+% review copy is maintained.
+%
+% `\anonymousmode` removes every author-identifying field (author block,
+% affiliations, e-mails, corresponding-author markers and the CRediT names).
+% It is off here. A double-anonymized copy, if ever needed, is one line:
+%   \def\anonymousmode{1}\input{main.tex}
+\providecommand{\classoption}{review}
+\documentclass[\classoption,12pt]{elsarticle}
+\journal{Knowledge-Based Systems}
+\biboptions{numbers,sort&compress}
+\makeatletter
+% Review copies carry line numbers, as Elsevier asks for at submission.
+\@ifclasswith{elsarticle}{review}{\usepackage{lineno}}{}
+\makeatother
+\usepackage{graphicx,booktabs,amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[capitalize,noabbrev]{cleveref}
+\input{math_commands}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+\setlength{\emergencystretch}{1em}
+% Keep floats close to their references in the single-column preprint layout.
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\makeatletter
+\@ifclasswith{elsarticle}{review}{\linenumbers}{}
+\makeatother
+\begin{document}
+\begin{frontmatter}
+\title{Response-Aware Marginal-Utility Routing for Multi-Context Prediction}
+% Author block. `main_anon.tex` defines \anonymousmode, which removes every
+% author-identifying field for double-anonymized review; the named copy keeps
+% them for single-anonymized review.
+% TODO(authors): replace the placeholders in the named branch with the real
+% author list (names, affiliations, corresponding author e-mail, ORCID).
+\ifdefined\anonymousmode
+\author{}
+\else
+% Knowledge-Based Systems operates single anonymized review: the authors are
+% visible to reviewers, so this branch carries the complete author block.
+\author[zua]{Xinling Wen}
+\ead{wenxinling@zua.edu.cn}
+\author[zua]{Jiahao Zhang\corref{cor1}}
+\ead{marchematics@gmail.com}
+\author[zua]{Yu Chen\corref{cor2}}
+\ead{chenyu@zua.edu.cn}
+\affiliation[zua]{organization={School of Electronics and Information,
+                             Zhengzhou University of Aeronautics},
+                 city={Zhengzhou}, country={China}}
+\cortext[cor1]{Corresponding author}
+\cortext[cor2]{Corresponding author}
+\fi
+\begin{abstract}
+Auxiliary contexts can improve predictive models, yet the value of a context
+changes as other contexts are selected. We formulate multi-context selection
+through state-conditioned marginal predictive utility, defined by the change in
+end-task loss produced by adding a candidate to the current context set. This
+formulation exposes decision value that cannot be represented by a fixed
+standalone score. We introduce Response-Aware Marginal-Utility Routing
+(R-MUR), which first screens candidates from cached representations and then
+evaluates predictor responses only for a small retained set. Compact response
+summaries are used to estimate marginal utility, while a regression and ranking
+objective aligns utility estimation with sequential selection. A decision
+analysis connects estimation error to routing regret. Controlled studies show
+how redundancy and candidate-set growth change the selection problem, and
+evaluations on standard traffic benchmarks show the method significantly ahead
+of the strongest of fourteen competitors on three of six benchmarks,
+unresolved on two and below simple pooling on one, and ahead of every similarity-, diversity-,
+coverage- and utility-based selection policy on all six. The results show
+that state-conditioned marginal utility provides a useful decision principle
+for budgeted multi-context prediction.
+\end{abstract}
+\begin{keyword}
+context selection \sep marginal utility \sep context routing \sep
+negative transfer \sep predictive decision support
+\end{keyword}
+\end{frontmatter}
+
+\input{sections/1_introduction}
+\input{sections/2_related_work}
+\input{sections/3_problem}
+\input{sections/4_method}
+\input{sections/5_analysis}
+\input{sections/6_experiments}
+\input{sections/7_discussion}
+\input{sections/8_conclusion}
+
+\section*{CRediT authorship contribution statement}
+\ifdefined\anonymousmode
+\textbf{Author one:} [roles]. \textbf{Author two:} [roles].
+\textbf{Author three:} [roles]. All authors have read and approved the final
+manuscript.
+\else
+\textbf{Xinling Wen:} [roles]. \textbf{Jiahao Zhang:} [roles].
+\textbf{Yu Chen:} [roles]. All authors have read and approved the final
+manuscript.
+\fi
+% TODO(authors): replace each [roles] with the confirmed CRediT roles, e.g.
+% conceptualization, methodology, software, validation, formal analysis,
+% investigation, resources, data curation, writing - original draft,
+% writing - review and editing, visualization, supervision, project
+% administration, funding acquisition.
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or
+personal relationships that could have appeared to influence the work
+reported in this paper.
+
+\section*{Data availability}
+The traffic benchmarks used in this study are publicly available. The
+candidate-pool construction, routing protocol, model configuration, and
+evaluation procedure required to reproduce the reported numbers are described
+in the manuscript and supplementary material.
+% TODO(authors): add a repository URL here only if one is actually public
+% before submission; otherwise leave this statement as it stands.
+
+\section*{Funding}
+This research did not receive any specific grant from funding agencies in the
+public, commercial, or not-for-profit sectors.
+% TODO(authors): replace if the work was funded.
+
+% Author biographies are collected by Editorial Manager; uncomment the next
+% line if the journal asks for them in the manuscript PDF.
+% \input{author_bios}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+\end{document}

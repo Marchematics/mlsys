@@ -1,0 +1,150 @@
+{
+ "provenance": {
+  "learned_runs": [
+   "R080b_multitarget_rmur_s1_20260920_2340",
+   "R080b_multitarget_rmur_s202_diag_20260921",
+   "R080b_multitarget_rmur_s303_diag_20260921"
+  ],
+  "primary_policy": "ranked_response_q4"
+ },
+ "datasets": {
+  "METRLA": {
+   "targets": 32,
+   "mean_advantage": 0.006678530376423926,
+   "sd_advantage": 0.007790594586344338,
+   "se_advantage": 0.0013771955653698218,
+   "t_statistic": 4.849369649713128,
+   "fraction_targets_router_wins": 0.78125,
+   "mean_headroom": 0.09588935966251036,
+   "sd_headroom": 0.03941100189591381,
+   "pearson_headroom_vs_advantage": {
+    "r": -0.23514679513950104,
+    "p": 0.1951397656095122
+   },
+   "spearman_headroom_vs_advantage": {
+    "rho": -0.20417888563049855,
+    "p": 0.2623236585178761
+   }
+  },
+  "PEMSBAY": {
+   "targets": 32,
+   "mean_advantage": 0.03030629446978613,
+   "sd_advantage": 0.033380737718681705,
+   "se_advantage": 0.005900936500472349,
+   "t_statistic": 5.135844872650336,
+   "fraction_targets_router_wins": 0.9375,
+   "mean_headroom": 0.115319557918831,
+   "sd_headroom": 0.04328827249114554,
+   "pearson_headroom_vs_advantage": {
+    "r": -0.04301757756849445,
+    "p": 0.8151631274308302
+   },
+   "spearman_headroom_vs_advantage": {
+    "rho": 0.08357771260997067,
+    "p": 0.6492719826984914
+   }
+  },
+  "PEMS03": {
+   "targets": 32,
+   "mean_advantage": 0.0013227282640097355,
+   "sd_advantage": 0.004899375061893329,
+   "se_advantage": 0.0008660953324602584,
+   "t_statistic": 1.5272317196911231,
+   "fraction_targets_router_wins": 0.6875,
+   "mean_headroom": 0.11897459086069562,
+   "sd_headroom": 0.05358575449987396,
+   "pearson_headroom_vs_advantage": {
+    "r": 0.20261101911227133,
+    "p": 0.2660847061575199
+   },
+   "spearman_headroom_vs_advantage": {
+    "rho": 0.1473607038123167,
+    "p": 0.4209116420104126
+   }
+  },
+  "PEMS04": {
+   "targets": 32,
+   "mean_advantage": -0.0007775873188317447,
+   "sd_advantage": 0.011043390512140316,
+   "se_advantage": 0.0019522140796063992,
+   "t_statistic": -0.39831047575915446,
+   "fraction_targets_router_wins": 0.5,
+   "mean_headroom": 0.08337086961282215,
+   "sd_headroom": 0.04959311010135946,
+   "pearson_headroom_vs_advantage": {
+    "r": 0.26603437320337703,
+    "p": 0.14109817215417989
+   },
+   "spearman_headroom_vs_advantage": {
+    "rho": 0.28702346041055715,
+    "p": 0.11121134529372431
+   }
+  },
+  "PEMS07": {
+   "targets": 32,
+   "mean_advantage": 0.004124103534801785,
+   "sd_advantage": 0.008126247839053361,
+   "se_advantage": 0.0014365312381492898,
+   "t_statistic": 2.8708763341025185,
+   "fraction_targets_router_wins": 0.75,
+   "mean_headroom": 0.08914539991329042,
+   "sd_headroom": 0.03618101378663697,
+   "pearson_headroom_vs_advantage": {
+    "r": 0.3095619774425894,
+    "p": 0.08468713735623133
+   },
+   "spearman_headroom_vs_advantage": {
+    "rho": 0.24578136463683045,
+    "p": 0.1751184084528974
+   }
+  },
+  "PEMS08": {
+   "targets": 32,
+   "mean_advantage": -0.0025576970603348554,
+   "sd_advantage": 0.004730290379201904,
+   "se_advantage": 0.0008362051010287879,
+   "t_statistic": -3.0586958357322938,
+   "fraction_targets_router_wins": 0.375,
+   "mean_headroom": 0.07606189934143165,
+   "sd_headroom": 0.032819114233385106,
+   "pearson_headroom_vs_advantage": {
+    "r": 0.02251490987478663,
+    "p": 0.9026522573706809
+   },
+   "spearman_headroom_vs_advantage": {
+    "rho": 0.049679193400549965,
+    "p": 0.787149758160388
+   }
+  }
+ },
+ "pooled": {
+  "targets": 192,
+  "pearson_raw": {
+   "r": 0.15423653416653157,
+   "p": 0.032678875566960364
+  },
+  "spearman_raw": {
+   "rho": 0.26566978436111566,
+   "p": 0.00019582503115380694
+  },
+  "pearson_within_dataset": {
+   "r": 0.04013214336415649,
+   "p": 0.5804833953406076
+  },
+  "spearman_within_dataset": {
+   "rho": 0.10363670735522135,
+   "p": 0.152570714855069
+  }
+ },
+ "across_datasets": {
+  "pearson_mean_headroom_vs_mean_advantage": {
+   "r": 0.5992728416337912,
+   "p": 0.20869854772267524,
+   "n": 6
+  },
+  "spearman_mean_headroom_vs_mean_advantage": {
+   "rho": 0.6571428571428573,
+   "p": 0.1561749271137024
+  }
+ }
+}

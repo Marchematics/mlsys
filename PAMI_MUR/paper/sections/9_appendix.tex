@@ -1,0 +1,123 @@
+\appendix
+\section{Proofs and Numerical Validation}
+\label{app:proofs}
+
+\subsection{Proof of \cref{prop:expansion}}
+Apply Taylor's theorem with Lagrange remainder to
+$t\mapsto\loss(f_A(x)+t\,\dAj(x),y)$ on $[0,1]$. There exists
+$\xi=\xi(x,y)$ on the segment with
+\begin{equation}
+ \loss(\fj,y)
+ =
+ \loss(f_A,y)+\grad\loss(f_A,y)^\top \dAj
+ +\tfrac12 \dAj^\top\grad^2\loss(\xi,y)\dAj.
+\end{equation}
+Rearranging, subtracting $\lambda c_j$, and taking expectations gives
+\cref{eq:prop1-exact}. Under the $L$-smoothness assumption,
+$|d^\top\grad^2\loss(\xi,y)d|\leq L\|d\|^2$ for every realisation, which
+yields \cref{eq:prop1-bound} after taking expectations.
+
+\subsection{Proof of \cref{prop:bregman}}
+The Bregman three-point identity states that for any $u,v,w$ in the domain of
+$\phi$,
+\begin{equation}
+ D_\phi(u,v)-D_\phi(u,w)
+ =
+ \left(\grad\phi(w)-\grad\phi(v)\right)^\top(u-v)-D_\phi(v,w).
+\end{equation}
+Both sides expand to
+$\phi(u)-\phi(v)-\langle\grad\phi(v),u-v\rangle$ minus
+$\phi(u)-\phi(w)-\langle\grad\phi(w),u-w\rangle$; all $\phi$ terms cancel.
+Set $u=y$, $v=f_A$, $w=\fj=f_A+\dAj$, take expectations, and
+subtract $\lambda c_j$ to obtain \cref{eq:prop2}. The final claim follows from
+the standard strong-convexity and smoothness bounds on Bregman divergences.
+
+\subsection{Proof of \cref{prop:ce}}
+For $\loss(f,y)=-f_y+\log\sum_k e^{f_k}$ we have
+$\grad\loss(f,y)=p-e_y$ and
+$\grad^2\loss(f,y)=\diag(p)-pp^\top\succeq0$. Since
+$(\diag(p)-pp^\top)\mathbf{1}=0$, the quadratic form is invariant to adding a
+constant to $v$, so
+$v^\top(\diag(p)-pp^\top)v=\Var_p(v)$ for the random variable taking value
+$v_k$ with probability $p_k$. Let $M=\max_k v_k$, $m=\min_k v_k$, and
+$\mu_p=\sum_k p_k v_k$. The Bhatia--Davis inequality gives
+$\Var_p(v)\leq(M-\mu_p)(\mu_p-m)\leq(M-m)^2/4$. Replacing $v$ by
+$v-\bar v\mathbf{1}$ (which leaves both the quadratic form and the range bound
+valid) makes the vector zero-sum, so $M\geq0\geq m$ and
+$\|v\|^2\geq M^2+m^2$. Hence
+$(M-m)^2=(M+|m|)^2\leq2(M^2+m^2)\leq2\|v\|^2$ and therefore
+$v^\top(\diag(p)-pp^\top)v\leq\tfrac12\|v\|^2$. The bound is attained at
+$p=(\tfrac12,\tfrac12,0,\dots)$ and $v=(1,-1,0,\dots)/\sqrt2$, so the constant
+$\tfrac12$ is tight. Applying \cref{prop:expansion} with $L=\tfrac12$ and using
+$-\grad\loss(f_A,y)=e_y-p_A$ gives \cref{eq:prop3}; the upper bound holds
+because the remainder $-\tfrac12 d^\top H d$ is non-positive for $H\succeq0$.
+
+\subsection{Proof of \cref{prop:suff}}
+For squared loss the exact identity of \cref{prop:bregman} reads
+$\widetilde{\marginal}(j\mid A)
+=\loss(f_A,y)-\loss(\fj,y)-\lambda c_j
+=2\dAj^\top(y-f_A)-\|\dAj\|^2-\lambda c_j$.
+The response $\dAj=\dAj(x)$ is a function of the episode input, so it is
+measurable with respect to $(x,A)$ and can be taken outside the conditional
+expectation; the tower property gives \cref{eq:prop4} with
+$\mu(x)=\E[y\mid x,A]$. Linearity in $\dAj$ and the response-only quadratic
+penalty follow immediately. For a general differentiable loss the same
+argument leaves $\grad\loss(f_A,y)$ inside the expectation, and this gradient
+depends on $y$ beyond the residual, which is why state features are also
+required.
+
+\subsection{Numerical validation}
+\label{app:validation}
+We validate the identities numerically rather than relying on the derivations
+alone.
+
+\paragraph{Squared loss (exactness).}
+Using the subset-capable nonlinear forecasting expert of
+\cref{sec:strong-backbone} on held-out episodes, we compared the exact
+marginal $\loss(f_A,y)-\loss(\fj,y)$ with the right-hand side of the
+squared-loss identity, and separately verified that the seven response
+features of the router reproduce the response statistics. Over 384 held-out
+(state, candidate) pairs the maximum absolute deviation is $3.3\times10^{-7}$
+in normalised units, i.e.\ floating-point exactness. Unit tests enforce the
+same identity and the inertness of unselected candidates.
+
+\paragraph{Cross-entropy (two-sided bound).}
+For the frozen in-context classifier of the second task family we collected
+92{,}995 (state, candidate) samples together with 2{,}975{,}840 per-query rows
+and evaluated the sandwich of \cref{prop:ce}. The bound held in
+\emph{every} sample at both aggregation levels (smallest upper slack
+$3.0\times10^{-8}$, smallest lower slack $1.0\times10^{-3}$). The first-order
+term tracks the true marginal closely: Spearman correlation .971 and
+$R^2=.853$ pooled, with per-benchmark Spearman between .970 and .993. The
+bound is therefore not merely valid but informative, and the empirical
+tightness $\rho=(\marginal-\text{first})/(-\tfrac14\|d\|^2)\in[0,1]$ is
+reported in the released artifact.
+
+\paragraph{Response sufficiency.}
+For the squared-loss expert we fitted the same ridge head twice on identical
+held-out state samples: once with state features only and once with state plus
+response features. The response features raise the out-of-sample $R^2$ from
+$-0.89$ to $-0.22$ on a held-out episode split (a gain of $0.67$), and the
+cross-entropy family shows the same direction with a Spearman correlation of
+$.97$ between the first-order term and the realised marginal. Both are the
+practical content of \cref{prop:suff}: the response supplies the interaction
+term that a state-only score cannot represent.
+
+\begin{table}[t]
+ \centering
+ \caption{Numerical validation of the response--utility relations. All numbers
+ are produced by the released scripts; the cross-entropy check uses the frozen
+ in-context classifier of \cref{sec:second-family}.}
+ \label{tab:theory-validation}
+ \begin{tabular}{lll}
+  \toprule
+  Check & Object & Result \\
+  \midrule
+  Squared-loss identity & forecast expert & max.\ deviation $3.3\times10^{-7}$\\
+  CE sandwich (\cref{eq:prop3}) & in-context classifier & 0 violations / 92{,}995\\
+  First-order vs.\ marginal & in-context classifier & Spearman .971, $R^2$ .853\\
+  Response vs.\ state only & forecast expert & $R^2$ gain $+0.67$\\
+  Hessian spectral bound & softmax, all $C\le 50$ & maximum $=0.5$\\
+  \bottomrule
+ \end{tabular}
+\end{table}
