@@ -1,34 +1,22 @@
 \section{Conclusion}
 
-We asked what a router can know about the value of a context before the outcome
-is observed. The answer has three parts. Predictor response is the right thing
-to observe: for Bregman losses the response--utility relation is an exact
-identity, for smooth losses it has a two-sided bound, for softmax cross-entropy
-the constants are explicit, and for squared loss the Bayes-optimal score is
-affine in the response conditional on the state. What remains to be learned is
-the fixed predictor's own residual, so improving the predictor removes exactly
-the signal that routing depends on. And the consequence is measurable before
-any method is chosen: a cached view that does not correlate with the true
-marginal, an ordering that no observable feature recovers, and a label-free
-novelty statistic that predicts whether retrieval helps or hurts.
+We study context selection through state-conditioned marginal utility and show
+that predictor response provides the key observable for estimating that value.
+The response--utility relation admits a controlled expansion for general smooth
+losses, an exact Bregman identity, explicit softmax-cross-entropy constants and
+a response-sufficiency result under squared loss. These results motivate
+response-aware and theory-shaped selectors instead of treating context ranking
+as a content-only problem.
 
-Empirically the three regimes behave as the theory predicts. Where utility is
-estimable, learned marginal-utility routing beats fourteen competitors on both
-datasets examined --- significantly ahead of the best competitor on three of the
-six benchmarks, unresolved on two and below simple pooling on the sixth ---
-roughly doubling the strongest non-selection baseline, while
-relevance ranking, maximum marginal relevance, determinantal diversity,
-k-center, facility location, k-means representatives and random selection are
-significantly worse than using no auxiliary context at all. Where it is not
-estimable, no method separates from including every candidate --- on one
-dataset pooling is significantly better than every alternative, on the other it
-ties the response-aware family --- and the oracle's optimal budget is smaller
-than the protocol's, so the loss comes from the budget constraint rather than
-from bad ranking. Where candidates contribute categorical
-evidence, four scoring heads bracket the same ceiling. In each case the
-measurement protocol identifies the regime in advance, and in the low-novelty
-regime a label-free adaptive rule converts a harmful default into a beneficial
-one. Context selection is worth doing exactly when the predictor leaves
-something identifiable to select on, and the practical question is therefore not
-which ranking heuristic to use but whether the problem in front of us is
-identifiable at all.
+The experiments connect that theory to both strong gains and clear regime
+changes. When marginal utility is identifiable, response-aware routing
+substantially outperforms a broad selector toolbox. Stronger predictors can
+retain large oracle opportunity while removing the systematic residual
+structure required to rank candidates, and larger candidate libraries can
+increase that oracle opportunity while reducing the fraction that routing can
+realise. Pool geometry explains when relevance changes sign and yields a
+label-free adaptive rule, while a second task family separates the value of
+dynamic ranking from the calibration of stopping. The resulting principle is
+practical: context selection should be conditioned not only on what information
+is available, but also on whether its incremental value is identifiable from
+the predictor and deployment state.
