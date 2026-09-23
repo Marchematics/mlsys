@@ -1,0 +1,107 @@
+\section{Analysis}
+\label{sec:analysis}
+
+The guarantee of Eq.~\eqref{eq:crc} is the risk-control result of
+\citet{angelopoulos2023conformal}; we state it in our notation because the rest
+of the section builds on it, and we then derive the two consequences that
+decide how the gate should be used in practice.
+
+\begin{proposition}[Harm budget]
+\label{prop:budget}
+Let $z_1,\ldots,z_n$ be exchangeable decision states and let
+$\ell_\lambda$ be the loss of Eq.~\eqref{eq:gate-loss}, bounded in $[0,1]$ and
+monotone non-increasing in $\lambda$. For the threshold $\hat\lambda$ of
+Eq.~\eqref{eq:crc}, $\E[R(\hat\lambda)]\le\alpha$, where the expectation is
+over the calibration draw.
+\end{proposition}
+
+\begin{proof}
+The corrected empirical risk
+$\frac{n}{n+1}\widehat R_n(\lambda)+\frac1{n+1}$ upper-bounds
+$\E[\widehat R_n(\lambda)]$ for every fixed $\lambda$ by
+$\E[\widehat R_n(\lambda)]=\frac{n}{n+1}R(\lambda)$. Because the loss is
+monotone, the feasible set $\{\lambda:\frac{n}{n+1}\widehat R_n(\lambda)+
+\frac1{n+1}\le\alpha\}$ is an upper set, its infimum is attained, and the
+standard monotone-loss argument gives $\E[R(\hat\lambda)]\le\alpha$.
+\end{proof}
+
+\begin{corollary}[Selective risk]
+\label{cor:selective}
+Under the conditions of Proposition~\ref{prop:budget}, the harmful share among
+accepted decisions satisfies $\mathrm{SR}\le\alpha/C$ for any realised
+coverage $C>0$.
+\end{corollary}
+
+\begin{proof}
+$\mathrm{SR}=R/C$ by Eq.~\eqref{eq:selective-risk} and $R\le\alpha$ in
+expectation.
+\end{proof}
+
+Corollary~\ref{cor:selective} says that a budget on harmful selections does not
+by itself bound the harmful share of what remains: a rule that accepts few
+decisions can have a high harmful share while keeping the mass small. Both
+quantities therefore belong in a report, which is why the experiments below
+report coverage and harmful share together.
+
+\subsection{Why interval certification collapses}
+
+The alternative to a budget is certification: build an interval around each
+score and act only if the interval excludes harm. With a split-conformal
+symmetric interval and nominal level $\alpha$, the radius is the
+$(1-\alpha)$ quantile of the absolute calibration residual,
+\begin{equation}
+ q_\alpha=\operatorname{Quantile}_{1-\alpha}\{|s(z,j)-\marginal(j\mid A)|\},
+ \label{eq:radius}
+\end{equation}
+and the gate accepts when $\max_j s(z,j)-q_\alpha>0$.
+
+\begin{proposition}[Coverage ceiling of interval certification]
+\label{prop:interval}
+Let $M=\max_j s(z,j)$ and let $Q$ be the calibration radius. The accepted
+fraction of the interval gate is $\Pr[M>q_\alpha]$, so if $q_\alpha\ge
+\operatorname{ess\,sup}M$ the gate abstains everywhere.
+\end{proposition}
+
+\begin{proof}
+The gate accepts exactly when $M>q_\alpha$.
+\end{proof}
+
+The proposition is trivial as stated, but it identifies the failure mode
+precisely. The radius is a quantile of the estimation error, while the
+decision compares it with the value being estimated. When the score is
+inflated relative to the utility, the error is large in the same units and the
+radius grows with it. In the deployment states we study, the standard
+deviation of the score is about twice that of the true marginal utility and
+the residual median is larger than the utility of a typical candidate, so the
+radius at small $\alpha$ exceeds nearly every score and the gate abstains on
+almost all decisions. Budget control does not have this failure mode, because
+the threshold adapts to where the accepted mass is rather than to the width of
+the error distribution.
+
+\subsection{Transfer of a calibrated threshold}
+
+A threshold calibrated on one distribution is used on another whenever the
+deployment setting differs from the calibration setting. The loss of the gate
+is a bounded function of the state, so a discrepancy between the two residual
+distributions translates directly into a discrepancy in risk.
+
+\begin{proposition}[Shift margin]
+\label{prop:shift}
+Suppose the deployment distribution $P$ and the calibration distribution $Q$
+satisfy $\sup_\lambda|R_P(\lambda)-R_Q(\lambda)|\le\delta$. Then a threshold
+$\hat\lambda$ calibrated on $Q$ with budget $\alpha$ satisfies
+$R_P(\hat\lambda)\le\alpha+\delta$ whenever the calibration guarantee holds on
+$Q$.
+\end{proposition}
+
+\begin{proof}
+$R_P(\hat\lambda)\le R_Q(\hat\lambda)+\delta$ and
+$R_Q(\hat\lambda)\le\alpha$ by Proposition~\ref{prop:budget}.
+\end{proof}
+
+The proposition makes the transfer question empirical: how large is $\delta$
+when calibration and deployment differ by dataset or by training run? Section
+\ref{sec:experiments} estimates it directly by calibrating on some datasets or
+runs and evaluating on others. A method that controls risk but not the shift
+margin would be of little practical use, so this is the quantity we report
+alongside the budget.

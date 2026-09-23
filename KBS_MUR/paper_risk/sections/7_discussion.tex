@@ -1,0 +1,42 @@
+\section{Discussion}
+
+The experiments support a simple operational reading. A utility model for
+auxiliary contexts is a ranking device, and its scores should not be treated
+as measurements. Once that is accepted, the useful question is not how
+accurate the scores are but how much of the routing decision can be certified.
+Budget calibration answers that question with a number the operator chooses:
+at two harmful selections per hundred decisions, the router acts on roughly
+one decision in twelve; at five per hundred, roughly one in six. The remaining
+decisions fall back to the anchor, which is a valid prediction rather than a
+failure.
+
+The comparison with interval certification is the sharpest result. Coverage
+guarantees are the standard tool for distribution-free reliability, and they
+are the wrong tool here, not because they are invalid but because they answer
+a question about the error distribution rather than about the accepted set. In
+a regime where the estimation error dominates the estimated quantity, the
+lower bound is negative almost everywhere and the router abstains on almost
+everything. The two rules share the same calibration data and the same
+guarantee type; only the object being controlled differs, and the coverage
+differs by a factor of four to nine.
+
+Transfer is the practical caveat. A threshold calibrated on five benchmarks
+transferred to the sixth with a shift margin below the nominal budget, and
+across independent training runs the same held. The margin grows when the
+budget is loosened, because a larger accepted set reaches further into the
+score distribution where calibration states are sparse. Proposition
+\ref{prop:shift} makes this quantitative, and the recommendation that follows
+is to calibrate at the strictest budget the application can tolerate and to
+re-estimate the threshold whenever the deployment distribution changes
+materially.
+
+Two limitations bound the claims. First, we control the mass of harmful
+selections per decision, not the loss of the final prediction: a sequence of
+acceptable selections can still produce a worse forecast than the anchor, and
+the end-to-end study is the setting in which that residual risk is measured.
+Second, the harmful event is defined against the true marginal utility, which
+the router never observes; the analysis is therefore an evaluation-time
+statement about a deployment-time rule, and its validity rests on the
+exchangeability of calibration and deployment states. When that assumption
+fails, the shift margin of Proposition~\ref{prop:shift} degrades with the
+discrepancy, and the guarantee is only as good as the calibration sample.

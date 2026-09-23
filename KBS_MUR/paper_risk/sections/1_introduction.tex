@@ -1,0 +1,58 @@
+\section{Introduction}
+
+Knowledge-augmented predictors are usually built around a selection rule:
+given a query and a pool of auxiliary contexts, the system decides which
+contexts to pass to a fixed predictor. The rule is trained to rank candidates,
+and deployment inherits the ranking as if it were a measurement. It is not. A
+ranking model is optimised to order candidates correctly, not to report how
+much a candidate will actually change the prediction. When the two disagree,
+the router still selects the top-ranked candidate, and the prediction can end
+up worse than if no context had been used at all.
+
+The gap between ranking and measurement is not a small calibration detail. In
+the deployment states we study, the standard deviation of the predicted
+utility is roughly twice that of the true utility, and the absolute prediction
+error is several times larger than the utility values it orders. Under those
+conditions the top-ranked candidate is harmful in close to two of every five
+decisions. A system that always routes therefore pays a hidden cost: it cannot
+report how often it makes a prediction worse, and it has no mechanism for
+declining to act.
+
+We treat the decision to use a context as a decision that can be refused. The
+router maintains a candidate score, converts it into a certified lower bound
+through calibration on states it has already observed, and selects only when
+the bound is positive. Every other decision becomes an abstention, including
+the decision to stop adding contexts to a set that is already usable. This
+reframes context selection from a ranking problem into a risk-controlled
+decision problem, and it makes two quantities first class: the number of
+harmful selections the router is willing to tolerate, and the fraction of
+decisions on which it is still willing to act.
+
+We formalise the resulting problem with an explicit harm budget. A harmful
+selection is one whose true marginal utility is negative. The router
+calibrates a threshold on a set of deployment states so that the expected
+number of harmful selections per decision is at most a chosen level, and it
+abstains whenever no candidate passes. Because the loss is monotone in the
+threshold, conformal risk control supplies a finite-sample bound without
+assumptions on the utility model or the data distribution, and the same
+calibration yields the selective risk of the decisions that remain.
+
+The natural alternative is interval certification: build a confidence interval
+around each predicted utility and select only if the lower end is positive.
+This is the rule that a distribution-free coverage guarantee suggests, and we
+show that it collapses in exactly the regime that motivates the problem. When
+the estimation error is larger than the utility itself, the interval radius
+exceeds every candidate score, and the router abstains on almost every
+decision; at the same harm budget, budget-controlled calibration retains
+several times more decisions. Certification and control are therefore not
+interchangeable, and the difference is measurable.
+
+We call the resulting method Risk-Controlled Marginal-Utility Routing. It
+reuses a response-aware utility model to score candidates, then adds the part
+that decides whether to act: a conformal risk control threshold on deployment
+states, an abstention rule, and a stopping rule for sequential selection. The
+paper contributes the risk-controlled formulation of context selection, the
+analysis of when interval certification fails and when a calibrated threshold
+survives a change of dataset or of router training run, and an empirical study
+that covers controlled harmful fractions, deployment states from six standard
+traffic benchmarks, threshold transfer, and end-to-end selective routing.

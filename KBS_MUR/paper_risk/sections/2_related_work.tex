@@ -1,0 +1,53 @@
+\section{Related Work}
+
+Selective prediction lets a model decline to answer. The classical formulation
+weighs the error rate on accepted inputs against the rejection rate
+\citep{chow1970optimum}, and the statistical foundations of the trade-off are
+well studied \citep{elyaniv2010foundations,bartlett2008classification,cortes2016learning}.
+Modern instantiations attach a confidence score and threshold it
+\citep{geifman2017selective,hendrycks2017baseline,gangrade2021selective}, and
+selective answering is now standard for question answering and vision-language
+models under domain shift \citep{kamath2020selective,whitehead2022reliable}.
+This literature decides whether to answer a query. Our decision is different in
+two ways: the system chooses a subset of auxiliary inputs rather than answering
+directly, and the quantity that can be harmed is the prediction of a fixed
+downstream model, not the label of the classifier that produces the score.
+
+Distribution-free calibration provides the machinery we use. Conformal
+prediction turns a score into a set or interval with finite-sample coverage
+\citep{vovk2005algorithmic,lei2018distribution,angelopoulos2023gentle}, and its
+risk-controlling variants bound the expectation of a monotone loss instead of
+interval coverage \citep{bates2021distribution,angelopoulos2023conformal}.
+Quantile and false-positive variants extend the same idea to other objectives
+\citep{snell2023quantile,fisch2022conformal}. We adopt the risk-control view
+because the operational requirement in context selection is a budget on
+harmful selections, not coverage of a utility interval. The paper contributes
+the instantiation of that view to context routing, the comparison against
+interval certification in the regime where it collapses, and an empirical
+account of when a calibrated threshold transfers.
+
+Calibration of predictive scores is a separate line of work. Modern networks
+are often miscalibrated \citep{guo2017calibration}, and a ranking score is not
+a calibrated estimate of the quantity it orders. Context selection inherits
+this problem: the utility model is trained to rank candidates
+\citep{hashimoto-etal-2024-take,liu2022what,rubin2022learning}, so its output
+needs an explicit calibration step before it can support a decision about
+whether to route at all.
+
+Negative transfer is the phenomenon that motivates the harm budget. Transfer
+can degrade performance when source and target disagree
+\citep{pan2010survey,torrey2010transfer,wang2019characterizing}, and recent
+work mitigates it in sequential recommendation \citep{ant2025negative}. In our
+setting the harmful event is local: adding one context increases the loss of
+one prediction. The router cannot observe that event at deployment time, which
+is what makes an abstention rule necessary.
+
+Context selection itself is a large literature: retrieval and demonstration
+selection \citep{brown2020language,min2022rethinking}, diversity and coverage
+objectives \citep{carbonell1998use,gupta-etal-2023-coverage}, outcome-aware
+valuations of individual candidates \citep{hashimoto-etal-2024-take}, and
+learned routing over auxiliary inputs
+\citep{jacobs1991adaptive,shazeer2017outrageously,rosenbaum2018routing}. These
+methods rank candidates. Our question begins where the ranking ends: given a
+ranked shortlist, should the system act, and how much of it can it act on
+while keeping harmful selections within a budget?

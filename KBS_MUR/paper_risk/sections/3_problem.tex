@@ -1,0 +1,62 @@
+\section{Risk-Controlled Context Selection}
+
+\subsection{Setting}
+
+Let $S_0$ be an anchor, $x$ a query, $y$ its target, and
+$\candidates=\{C_1,\ldots,C_K\}$ a candidate pool of auxiliary contexts. A
+predictor $f_A$ is trained on the anchor and the contexts indexed by
+$A\subseteq\{1,\ldots,K\}$ and is kept fixed during selection. With $\loss$ the
+end-task loss, the utility of a set and the marginal utility of one candidate
+are
+\begin{equation}
+ F(A)=\E\!\left[\loss(f_{\emptyset}(x),y)-\loss(f_A(x),y)\right],
+ \qquad
+ \marginal(j\mid A)=F(A\cup\{j\})-F(A).
+ \label{eq:marginal}
+\end{equation}
+A routing policy observes a state $A$ and a candidate score
+$\widehat m(j\mid A)$ produced by a utility model, and returns either a
+candidate to add or a decision to abstain. We write $z$ for a decision state,
+which collects the current set, the candidate pool, the scores, and the
+response features the model uses.
+
+\subsection{Harm and its budget}
+
+Routing is harmful when the added context increases the loss. Since the loss
+is only observed after the fact, the harmful event is defined through the true
+marginal,
+\begin{equation}
+ \harm(z,j)=\mathbf{1}\!\left\{\marginal(j\mid A)<0\right\}.
+ \label{eq:harm}
+\end{equation}
+A decision rule that maps a state to a candidate $j(z)$ and a binary action
+$a(z)\in\{0,1\}$ induces the harmful-selection mass
+\begin{equation}
+ R=\E\!\left[a(z)\,\harm\!\left(z,j(z)\right)\right],
+ \label{eq:mass}
+\end{equation}
+that is, the expected number of harmful selections per decision. The rule's
+coverage is $C=\Pr[a(z)=1]$, and among the decisions it accepts the harmful
+share is
+\begin{equation}
+ \mathrm{SR}=\Pr\!\left[\harm(z,j(z))=1 \mid a(z)=1\right]=\frac{R}{C}.
+ \label{eq:selective-risk}
+\end{equation}
+The router's objective is the constrained problem
+\begin{equation}
+ \max_{a,j}\ C
+ \quad\text{subject to}\quad
+ R\le\alpha ,
+ \label{eq:objective}
+\end{equation}
+for a harm budget $\alpha$ chosen by the operator. Equation~\eqref{eq:objective}
+separates two questions that a ranking model conflates: which candidate is
+best, and whether any candidate should be used. A rule that always acts
+maximises $C$ and says nothing about $R$; a rule that never acts has $R=0$ and
+$C=0$. The interesting decisions lie between them.
+
+A sequential router applies such a rule repeatedly. At each step it either
+adds the selected candidate, abstains at that step but continues, or stops and
+returns the current set. Stopping is the special case in which no remaining
+candidate can be certified, and abstention at the first step corresponds to
+using the anchor alone.

@@ -1,0 +1,75 @@
+\section{Risk-Controlled Marginal-Utility Routing}
+
+Risk-Controlled Marginal-Utility Routing (RC-MUR) separates scoring from
+acting. A utility model ranks candidates; a calibrated gate decides whether the
+best-ranked candidate may be used.
+
+\subsection{Scoring}
+
+The scoring stage is inherited from response-aware marginal-utility routing and
+is not the contribution of this paper, so we describe it in one paragraph. A
+cached model first scores every candidate from context features and keeps a
+shortlist of $q$ candidates, which bounds the number of predictor evaluations
+to a fraction $q/K$ of the pool. For each shortlisted candidate the fixed
+predictor is evaluated with and without that candidate, and a compact response
+summary
+\begin{equation}
+ r_{A,j}=\psi\!\left(f_A(x),f_{A\cup\{j\}}(x)\right)
+\end{equation}
+records the level, the change, and the magnitude of the change in the
+prediction. A response-aware model $g$ then scores the shortlist,
+$\widehat m(j\mid A)=g(h_Q,h_A,h_j,r_{A,j})$, and is trained with a regression
+term and a utility-gap-weighted pairwise term so that the ranking is accurate
+where the decision margin is small. The output of this stage is the score
+$s(z,j)=\widehat m(j\mid A)$; nothing downstream assumes that it is a
+calibrated value of the marginal utility.
+
+\subsection{Calibrated gate}
+
+Let $\lambda$ be a threshold on the score. The gate acts on the highest-scoring
+candidate when its score reaches the threshold and abstains otherwise,
+\begin{equation}
+ a_\lambda(z)=\mathbf{1}\!\left\{\max_{j} s(z,j)\ \ge\ \lambda\right\},
+ \qquad
+ j_\lambda(z)=\argmax_{j} s(z,j).
+ \label{eq:gate}
+\end{equation}
+The loss of the gate at a state is the harmful-selection indicator restricted
+to accepted states,
+\begin{equation}
+ \ell_\lambda(z)=a_\lambda(z)\,\harm\!\left(z,j_\lambda(z)\right),
+ \label{eq:gate-loss}
+\end{equation}
+which is monotone non-increasing in $\lambda$: raising the threshold can only
+remove accepted states, never add them. The risk is
+$R(\lambda)=\E[\ell_\lambda(z)]$.
+
+Given $n$ exchangeable calibration states $z_1,\ldots,z_n$ with observed
+marginals, the empirical risk is
+$\widehat R_n(\lambda)=\frac1n\sum_i \ell_\lambda(z_i)$, and conformal risk
+control selects the smallest threshold whose finite-sample corrected risk
+fits the budget,
+\begin{equation}
+ \hat\lambda=\inf\left\{\lambda:\
+ \frac{n}{n+1}\widehat R_n(\lambda)+\frac{1}{n+1}\le\alpha\right\}.
+ \label{eq:crc}
+\end{equation}
+The correction is the one required for a bounded monotone loss, so
+$\E[R(\hat\lambda)]\le\alpha$ for exchangeable states, without assumptions on
+the utility model or on the data distribution. The router inherits the
+guarantee directly because its loss~\eqref{eq:gate-loss} is exactly of this
+form. The gate abstains whenever no candidate passes, and in a sequential
+router the same rule decides when to stop adding contexts.
+
+\subsection{State-conditional thresholds}
+
+A single threshold treats every state alike. A natural refinement partitions
+states by a feature $b(z)$, for example a quantile bin of the top score or of
+the response magnitude, and calibrates a threshold $\hat\lambda_b$ inside each
+bin. Each bin then carries its own guarantee, and the router uses the
+threshold of the bin that contains the state. Section~\ref{sec:experiments}
+reports the outcome: conditional thresholds reduce coverage at a fixed budget
+in our deployment states, because the per-bin calibration samples are smaller
+and the additional variance outweighs the local adaptivity. We therefore keep
+the global threshold as the default and report the conditional variant as an
+ablation.

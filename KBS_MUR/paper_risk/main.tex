@@ -1,0 +1,68 @@
+% KBS manuscript: risk-controlled selective context routing.
+\documentclass[preprint,12pt]{elsarticle}
+\journal{Knowledge-Based Systems}
+\biboptions{numbers,sort&compress}
+\usepackage{graphicx,booktabs,amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[capitalize,noabbrev]{cleveref}
+\input{math_commands}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{corollary}[proposition]{Corollary}
+\newtheorem{remark}[proposition]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+\setlength{\emergencystretch}{1em}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\begin{document}
+\begin{frontmatter}
+\title{Risk-Controlled Context Selection: Deciding When Auxiliary Knowledge Is Safe to Use}
+\author{Author details to be supplied}
+\begin{abstract}
+A system that predicts from auxiliary knowledge must decide not only which
+context to use but whether any context is worth using at all. Utility models
+are trained to rank candidates, so their scores are not calibrated values: the
+absolute error of a utility estimate can exceed the utility it ranks. Acting on
+an uncalibrated score therefore selects harmful contexts in a substantial
+fraction of decisions. We formulate context selection as a risk-controlled
+decision problem with an explicit budget on harmful selections, and we study
+the coverage that a router can retain while respecting that budget. The
+proposed controller calibrates a selection threshold on deployment states by
+conformal risk control, so the expected number of harmful selections per
+decision is bounded without distributional assumptions, and it abstains or
+stops whenever no candidate can be certified. We show that interval-based
+certification, the natural alternative, is far more conservative than the
+budget-controlled rule in the regime where utility error dominates utility,
+and we characterise when a calibrated threshold remains valid under shift.
+Controlled environments with increasing harmful fractions, deployment states
+from six standard traffic benchmarks, cross-dataset and cross-run threshold
+transfer, and an end-to-end selective routing study support the analysis. The
+results turn abstention into a measurable and controllable part of
+knowledge-augmented prediction.
+\end{abstract}
+\begin{keyword}
+selective prediction \sep conformal risk control \sep abstention \sep
+negative transfer \sep context selection
+\end{keyword}
+\end{frontmatter}
+
+\input{sections/1_introduction}
+\input{sections/2_related_work}
+\input{sections/3_problem}
+\input{sections/4_method}
+\input{sections/5_analysis}
+\input{sections/6_experiments}
+\input{sections/7_discussion}
+\input{sections/8_conclusion}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+\end{document}

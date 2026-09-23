@@ -1,0 +1,134 @@
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Protocols and Quantities}
+
+Two sources of decision states are used. The controlled environment generates
+episodes with a specified fraction of harmful candidates, so the harmful
+fraction can be raised until routing is hazardous. The deployment states are
+the saved decision traces of a response-aware router on six standard traffic
+benchmarks: for each dataset, 32 fixed target sensors, four sequential
+decision steps per episode, a 16-candidate pool, a context budget of four, and
+a shortlist of four candidates. Each state carries the candidate scores, the
+compact response summaries, and the true marginal utility of every
+shortlisted candidate, which makes the harmful event observable for
+evaluation while remaining invisible to the router.
+
+Calibration and evaluation are separated by target sensors: the threshold is
+calibrated on half of the targets and evaluated on the other half. We report
+the harmful-selection mass (expected harmful selections per decision), the
+coverage (fraction of decisions on which the router acts), the harmful share
+among accepted decisions, and the mean true utility of accepted selections.
+Intervals are target-level bootstrap intervals with 1000 replicates.
+
+\subsection{Controlled harm ladder}
+
+The controlled environment raises the fraction of harmful candidates while
+keeping everything else fixed, so the effect of hazard on both gates is
+visible without any change of protocol. Table~\ref{tab:harm-ladder} reports the
+result over five runs per level. Two effects stand out. First, the
+uncalibrated gate becomes steadily more damaging: its negative-transfer rate
+grows from .032 at a harmful fraction of .25 to .227 at .75, while the
+calibrated gate stays between .0001 and .0012. Second, the price of that safety
+is coverage: the calibrated gate accepts between .14 and .31 contexts per
+episode, against roughly four for the uncalibrated router, so the budget is
+paid in abstentions rather than in harm.
+
+The ladder also shows where structural headroom comes from. At a harmful
+fraction of .25 the sequential oracle improves on the standalone oracle by
+$H_{\mathrm{state}}=.151$; at .50 the advantage halves to .075, and at .75 it
+disappears entirely. When nearly every candidate is harmful, no ordering of
+the candidates helps, and the value of state conditioning vanishes with it.
+Structural headroom is therefore a property of a task that still contains
+useful contexts, not of state conditioning as such.
+
+\input{tables/tab_harm_ladder}
+
+\subsection{A budget on harmful selections}
+
+Table~\ref{tab:budget} reports the risk-controlled gate on deployment states.
+At a budget of two harmful selections per hundred decisions, the gate retains
+5.3\% to 10.7\% of decisions, and the realised mass tracks the nominal budget
+within the bootstrap intervals on every dataset. Raising the budget to five
+per hundred roughly doubles the retained coverage. The gate therefore converts
+a safety requirement into a coverage number, which is the quantity an operator
+can plan with.
+
+\input{tables/tab_budget}
+
+The uncalibrated gates, by contrast, accept far more and pay for it. Acting
+whenever the score is positive accepts 45.0\% of decisions, of which 39.6\% are
+harmful, for a harmful-selection mass of .179. Always selecting the top
+candidate raises the mass to .495 and lowers the mean utility of accepted
+selections to .0012, because most candidate states have a negative marginal.
+The calibrated gate at $\alpha=.02$ keeps 86\% of the mean accepted utility of
+the sign gate while removing 87\% of its harmful selections.
+
+\subsection{Certification is not control}
+
+Table~\ref{tab:certification} compares the two ways of using the same score.
+The interval gate abstains unless the conformal lower bound of a candidate is
+positive; the budget gate abstains unless the calibrated threshold is reached.
+At the same nominal level, the interval gate accepts 1.0\% to 2.2\% of
+decisions, while budget control accepts 5.3\% to 10.7\%, a factor of 4.3 to
+9.1 more coverage, at a realised harmful mass at or below the budget. The
+reason is the one identified in Section~\ref{sec:analysis}: the conformal
+radius is a quantile of the estimation error, and in these states the error is
+several times larger than the utility it estimates, so the lower bound is
+negative almost everywhere.
+
+\input{tables/tab_certification}
+
+\subsection{Transfer of a calibrated threshold}
+
+Table~\ref{tab:transfer} calibrates the threshold on five datasets and applies
+it to the sixth. Realised harm stays within .0155--.0237 against a nominal
+budget of .02, so the shift margin of Proposition~\ref{prop:shift} is small
+across these benchmarks. The margin is not free: at a looser budget of .05 the
+same protocol overshoots on one dataset (.070 against .050), which shows that
+transfer quality degrades as the accepted set grows. Calibrating across
+independent router training runs behaves the same way.
+
+\input{tables/tab_transfer}
+
+\subsection{What the score can and cannot certify}
+
+A mass budget bounds how many harmful selections the router makes. A share
+budget, which bounds how often an accepted decision is harmful, is a different
+requirement, and the same score does not support both. Table~\ref{tab:frontier}
+reports the risk--coverage frontier: the smallest harmful share that any
+threshold on the response-aware score can achieve at a given coverage. The
+frontier is high and flat. At a coverage of 2\% the best achievable harmful
+share is .202 on average and exceeds .24 on three datasets; at full coverage it
+reaches .495. Consequently a share budget of 10\% is infeasible on five of the
+six datasets at any coverage above 2\%, and a calibration procedure that
+targets it returns no threshold at all.
+
+\input{tables/tab_frontier}
+
+The frontier also explains why mass control works. Reducing the accepted set
+removes harmful selections in proportion to their mass, but it does not
+concentrate the remaining decisions on candidates that are reliably useful:
+the score orders candidates well enough to lower the count of harmful
+selections, not well enough to certify a low harmful rate among the decisions
+it keeps. Improving the precision of the top of the ranking, rather than the
+average ranking quality, is therefore the concrete target for a utility model
+that is meant to support a share guarantee.
+
+\input{tables/tab_objectives}
+
+\subsection{End-to-end selective routing}
+
+% TODO(R201): the end-to-end run applies the calibrated gate inside the
+% sequential router and reports episode-level gain, negative-transfer rate and
+% the number of contexts used at each budget.
+
+\subsection{State-conditional thresholds}
+
+Partitioning the states into score quintiles and calibrating a threshold per
+bin reduces coverage at a fixed budget: at $\alpha=.02$ the conditional gate
+retains 5.8\% of decisions against 8.4\% for the global threshold, at the same
+realised mass. With four thousand calibration states per bin, the additional
+variance of the local estimates outweighs their adaptivity. We therefore keep
+the global threshold and report conditional calibration as an ablation rather
+than as a component of the method.
