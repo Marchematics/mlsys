@@ -14,9 +14,12 @@ candidates carry any signal about the true marginal at all. Given a batch of
 episodes, compute the true marginals of the frozen predictor at a fixed state
 and correlate them with the score a cached or response-free model would assign.
 Two numbers matter: the correlation itself, and the recall of the shortlist a
-screening stage would form. If the screen's correlation is indistinguishable
-from zero, then the recall of a top-$q$ shortlist is at chance level $q/K$, and
-no reranking stage downstream can recover the value it never received.
+screening stage would form. If the screen is uninformative, a random ranking provides the natural
+reference: the probability that a top-$q$ shortlist retains the best candidate
+is $q/K$. We therefore compare the observed screening recall with this chance
+reference instead of treating zero correlation as a mathematical implication of
+chance recall. A downstream reranker cannot recover a candidate that the screen
+has excluded.
 
 \subsection{Measurement 2: is the ordering recoverable within an episode?}
 
