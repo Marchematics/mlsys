@@ -1,41 +1,85 @@
-# TKDE-MUR (repositioned 2026-09-23)
+# TKDE-MUR — active consolidated manuscript
 
-Primary submission target. The manuscript's identity is now the **identifiability
-mechanism**, not the routing method: *why predictor response determines marginal
-utility, when that utility can be estimated at all, why a stronger predictor
-makes routing fail, and how to select once identifiability is measured.*
+This is the **primary active submission**. The earlier PAMI candidate has been
+retired: every advantageous result developed there that is not part of the
+submitted IPM companion is now material for this TKDE manuscript.
 
-## Live files
+The manuscript is intentionally not a diagnosis-only paper. Its identity is:
+
+> **response-aware context selection + general marginal-utility theory +
+> identifiability mechanism + mechanism-derived adaptation.**
+
+The paper should open with the strong positive regime, use theory to explain why
+predictor response is the right signal, then show the regime transition under
+stronger predictors and convert that mechanism into an adaptive deployment
+procedure.
+
+## Live structure
 
 | file | role |
 |---|---|
 | `paper/main.tex` | title, abstract, inputs |
-| `paper/sections/1_introduction.tex` | identifiability framing and contributions |
-| `paper/sections/2_related_work.tex` | selection, retrieval, data selection, observability |
-| `paper/sections/3_problem.tex` | `m(j|A)`, structural headroom (unchanged problem definition) |
-| `paper/sections/4_theory.tex` | Propositions 1-4 + identifiability corollary + regret bound |
-| `paper/sections/5_diagnostics.tex` | the three measurements (screen, predictability probes, novelty) |
-| `paper/sections/6_adaptive.tex` | adaptive rule, response-aware routing, head design, stopping |
-| `paper/sections/7_experiments.tex` | regimes A/B/C, competitor matrix, budget geometry, compute |
-| `paper/sections/8_discussion.tex`, `9_conclusion.tex`, `10_appendix.tex` | boundary, proofs, validation |
+| `paper/sections/1_introduction.tex` | strong-method framing, theory/mechanism contributions, companion disclosure |
+| `paper/sections/2_related_work.tex` | adaptive information/data selection, acquisition, routing, observability |
+| `paper/sections/3_problem.tex` | state-conditioned marginal utility and structural opportunity |
+| `paper/sections/4_theory.tex` | smooth-loss expansion, exact Bregman identity, CE bound, response sufficiency, regret |
+| `paper/sections/5_diagnostics.tex` | identifiability diagnostics and measurable decision signals |
+| `paper/sections/6_adaptive.tex` | R-MUR/theory-shaped head, novelty adaptation, stopping and deployment procedure |
+| `paper/sections/7_experiments.tex` | theory validation, identifiable regime, strong-backbone transition, pool geometry, second task family, compute |
+| `paper/sections/8_discussion.tex`, `9_conclusion.tex`, `10_appendix.tex` | interpretation, scope, proofs and detailed validation |
 
-## Frozen files (kept for provenance, no longer `\input`)
+## Evidence to use
 
-`sections/4_method.tex`, `sections/5_analysis.tex`, `sections/6_experiments.tex`,
-`sections/7_discussion.tex`, `sections/8_conclusion.tex` are the previous
-method-first draft. A full copy is in `paper_frozen_20260923/`.
+Use **all non-submitted advantages** from `../PAMI_MUR`:
 
-## Evidence base
+- P1--P4 general response--utility theory;
+- numerical validation of the Bregman identity and CE sandwich;
+- theory-shaped bilinear and signed response heads;
+- recent-selector matrices beyond the submitted companion;
+- strong nonlinear subset-capable backbone and DeepSets confirmation;
+- expert-strength/adaptation ladder;
+- candidate-variance, response-predictability and chance-AUC diagnostics;
+- pool-size 16→128 scaling and shortlist-removal test;
+- pool-geometry/novelty mechanism and label-free adaptive rule;
+- harmful-pool and budget-direction experiments;
+- policy-gradient and response-geometry alternatives;
+- CLIP demonstration-selection family and forced-budget analysis;
+- latency, expert-row and memory measurements;
+- pilot-power, time-shift and split-half deployment validation.
 
-All numbers come from `PAMI_MUR/results/{raw,derived}` (regimes A/B/C, competitor
-matrices, pool geometry, budget curve, diagnostics, head ablations) plus the
-frozen six-dataset ridge evidence described in `paper_frozen_20260923/`.
+The old `PAMI_MUR/paper/` is not an independent paper anymore. It is a source
+of evidence/prose to be folded into TKDE and then left frozen for provenance.
 
-## Separation from the companion manuscripts
+## What not to reuse as TKDE's main evidence
 
-* IPM submission (`Response-Aware Marginal-Utility Routing for Multi-Context
-  Prediction`): method + ridge-traffic main line. Unchanged.
-* PAMI candidate: method-centric with the PAMI-level generality additions.
-* This manuscript: diagnosis-centric --- theory, measurement protocol, adaptive
-  rule. Its claims are about *when* selection works, not about being the best
-  ranker.
+The submitted IPM companion is frozen. Do not make its submitted six-dataset
+multi-target tables, shortlist/stopping figures or basic method narrative the
+headline evidence of TKDE. Shared notation and the basic R-MUR primitive may be
+summarised and disclosed, but TKDE's substantive claims must be supported by the
+new theory, new regimes, new baselines, new mechanisms and new deployment
+experiments above.
+
+## Target narrative
+
+```text
+state-conditioned utility
+        ↓
+response–utility theory
+        ↓
+response-aware / theory-shaped selection
+        ↓
+strong identifiable-regime result
+        ↓
+predictor-strength identifiability collapse
+        ↓
+pool-geometry mechanism
+        ↓
+adaptive rule + deployment protocol
+```
+
+The intended headline is not “routing sometimes fails”. It is:
+
+> **Response-aware selection is powerful when marginal utility is identifiable;
+> the theory predicts what signal makes it identifiable, the experiments show
+> how predictor strength and pool geometry change that signal, and the same
+> mechanism yields an actionable selection rule.**
