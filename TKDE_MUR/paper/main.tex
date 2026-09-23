@@ -18,37 +18,7 @@
 \author{Author details to be supplied}
 \maketitle
 \begin{abstract}
-The value of auxiliary information changes with the information already
-available to a predictor. We study this problem through state-conditioned
-marginal utility, the reduction in task loss produced by adding a candidate to
-the current context set, and develop a response-aware selection framework around
-that quantity. For general smooth losses we derive a response expansion with a
-two-sided remainder bound; for Bregman losses the relation is exact; for
-softmax cross-entropy the constants are explicit; and for squared loss the
-Bayes-optimal utility is affine in the predictor response conditional on the
-state. These results motivate a two-stage selector that screens candidates from
-cached features and reranks a shortlist with predictor responses, together with
-a theory-shaped bilinear head that exposes the response--residual interaction
-directly.
-
-The experiments combine a strong positive regime with mechanism tests. With a
-linear subset expert on traffic data, response-aware marginal routing
-outperforms a broad set of content, fixed-set, utility and learned selectors on
-the two datasets examined in detail. Replacing the expert with a stronger
-subset-capable nonlinear predictor preserves substantial oracle opportunity but
-collapses candidate-level rankability: cached recall falls to chance, observable
-probes have near-zero within-episode rank correlation, and no learned selector
-separates from pooling. Increasing the candidate library from 16 to 128 raises
-the oracle opportunity by about 40\% while driving the router toward random
-selection, confirming that more opportunity need not mean more realizable
-value. A second task family with CLIP demonstrations separates ranking from
-stopping, and a pool-geometry study shows that candidate novelty predicts when
-relevance changes from harmful to useful. This mechanism yields a label-free
-adaptive rule and a pilot procedure whose deployment verdict is stable on
-held-out targets. The resulting picture is constructive: response-aware routing
-is effective when marginal utility is identifiable, and the same theory and
-measurements indicate when to route, when to pool, and how much of the oracle
-opportunity can realistically be recovered.
+Auxiliary information is useful only through the change it produces in a prediction that already depends on previously selected contexts. We formulate this decision through state-conditioned marginal utility and develop response-aware context selection around it. The theory shows how predictor response determines marginal utility under general smooth losses, becomes exact for Bregman losses, yields explicit control for softmax cross-entropy, and reduces to an affine response model under squared loss. This structure motivates a selector that screens candidates from cached features, probes a small shortlist with the fixed predictor, and reranks the retained candidates with response-aware utility estimates. Across traffic forecasting and demonstration selection, the method is strongest when candidate utility is identifiable from the available response signal. Stronger predictors can absorb the systematic residual that makes candidates distinguishable, leaving substantial oracle opportunity while learned selectors lose the ability to rank it. Pool geometry provides a complementary explanation: candidate novelty determines when relevance helps or hurts, which leads to a label-free adaptive fallback. The resulting framework connects a practical routing method to a general account of when context selection can realize its available value and how a deployment should respond when that value becomes difficult to identify.
 \end{abstract}
 \begin{IEEEkeywords}
 context selection, marginal utility, predictor response, identifiability,
