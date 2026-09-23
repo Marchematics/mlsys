@@ -1,4 +1,4 @@
-\section{Selecting Once Identifiability Is Known}
+\section{Response-Aware and Identifiability-Adaptive Selection}
 \label{sec:adaptive}
 
 \subsection{The adaptive rule}
@@ -32,8 +32,10 @@ details follow from \cref{sec:theory} rather than from tuning.
 features and \emph{response} features: the predictor's prediction before and
 after adding the candidate, the mean, standard deviation, mean absolute value,
 root-mean-square and maximum absolute value of the prediction change. By
-\cref{prop:suff} these are the sufficient statistics of the squared-loss
-problem conditional on the state.
+\cref{prop:suff}, the full response vector is part of a sufficient
+representation of the squared-loss utility conditional on the state. The
+compact statistics used here are a low-dimensional approximation motivated by
+that structure, not sufficient statistics in the formal sense.
 
 \paragraph{Head.} A generic scalar head over concatenated features has to
 discover the bilinear structure of \eqref{eq:prop-suff} from data. We therefore
