@@ -1,22 +1,19 @@
 \section{Conclusion}
 
-We study context selection through state-conditioned marginal utility and show
-that predictor response provides the key observable for estimating that value.
-The response--utility relation admits a controlled expansion for general smooth
-losses, an exact Bregman identity, explicit softmax-cross-entropy constants and
-a response-sufficiency result under squared loss. These results motivate
-response-aware and theory-shaped selectors instead of treating context ranking
-as a content-only problem.
+Context value changes with the prediction that has already been formed from the
+selected set. We capture that change with state-conditioned marginal utility
+and show that predictor response is the key observable for estimating it. The
+same response--utility structure appears across smooth losses, becomes exact for
+Bregman losses, and leads naturally to response-aware and theory-shaped
+selectors.
 
-The experiments connect that theory to both strong gains and clear regime
-changes. When marginal utility is identifiable, response-aware routing
-substantially outperforms a broad selector toolbox. Stronger predictors can
-retain large oracle opportunity while removing the systematic residual
-structure required to rank candidates, and larger candidate libraries can
-increase that oracle opportunity while reducing the fraction that routing can
-realise. Pool geometry explains when relevance changes sign and yields a
-label-free adaptive rule, while a second task family separates the value of
-dynamic ranking from the calibration of stopping. The resulting principle is
-practical: context selection should be conditioned not only on what information
-is available, but also on whether its incremental value is identifiable from
-the predictor and deployment state.
+The experiments show when this design pays off and why. Response-aware routing
+is strongest when candidate utility is identifiable from the available
+response. Stronger predictors can preserve large oracle opportunity while
+removing the residual structure needed to rank candidates, and larger candidate
+libraries can widen the same gap. Pool geometry explains when relevance helps
+or hurts, which supports a simple label-free fallback, while demonstration
+selection separates ranking quality from stopping. The practical lesson is
+straightforward: choose a context policy together with the predictor and the
+candidate pool, because those components jointly determine how much marginal
+utility can be seen and realized.
