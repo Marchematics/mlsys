@@ -1,113 +1,84 @@
 \section{Introduction}
 
-Prediction systems increasingly have more auxiliary information available than
-they can afford to use: neighbouring sensors in a sensor network, retrieved
-documents for a language model, labelled examples for an in-context classifier,
-candidate feature blocks in a tabular pipeline. Choosing which of them to feed
-a fixed predictor is usually framed as a ranking problem. Candidates are scored
---- by relevance, by diversity, by a learned utility model --- and the top few
-are selected.
+Predictive systems increasingly operate with more auxiliary information than
+they should use indiscriminately: neighbouring sensors in a network, retrieved
+documents for a language model, demonstrations for an in-context classifier, or
+feature blocks for a tabular predictor. The central decision is not simply
+which candidate is relevant in isolation, but which candidate will improve the
+prediction that has already been formed from the contexts selected so far.
 
-Ranking presumes that a candidate's value can be estimated \emph{before} the
-outcome is observed. This paper studies that premise. We call a candidate's
-value \emph{identifiable} at a decision point when it can be recovered, up to
-useful accuracy, from information the router actually has: the candidate
-descriptors, the current state, and the frozen predictor's behaviour. Our
-starting point is a decomposition that makes identifiability concrete. For a
-smooth loss, the marginal value of adding candidate $j$ to the selected set $A$
-satisfies
-\begin{equation}
- \marginal(j\mid A)
- =
- -\E\!\left[\grad\loss(f_A,y)^\top \dAj\right]
- +O\!\left(\E\|\dAj\|^2\right)
- -\lambda c_j ,
- \label{eq:teaser}
-\end{equation}
-where $\dAj=f_{A\cup\{j\}}-f_A$ is the predictor's \emph{response} to the
-candidate. The leading term is an inner product between the response and the
-loss gradient at the current prediction. The response is observable as soon as
-the predictor is probed; the gradient is not, because it depends on the
-outcome.
+We study that decision through \emph{state-conditioned marginal utility}. For
+a selected set $A$ and a remaining candidate $j$, the marginal is the expected
+reduction in task loss produced by adding $j$ to $A$. This definition separates
+three questions that are often conflated. The first is structural: does
+re-evaluating candidates after each addition create value over a fixed ranking?
+The second is statistical: is the resulting candidate ordering recoverable from
+quantities available before the target outcome is known? The third is
+algorithmic: if it is recoverable, how should the selector spend predictor
+evaluations to identify the next useful context?
 
-Two consequences organise the paper. First, the response is the right thing to
-observe: for Bregman losses the decomposition is an exact identity rather than
-an expansion, for softmax cross-entropy the remainder has a known constant, and
-for squared loss the conditional expectation is affine in the response --- so
-response features are not a heuristic but the sufficient statistic implied by
-the loss. Second, the part that must be learned is the predictor's own
-\emph{residual}, which means that improving the predictor removes exactly the
-signal the router needs. A strong predictor is therefore not merely a harder
-setting for context selection; it is a setting in which the selection problem
-loses its identifiable content, even though the oracle value is unchanged.
+The key observable is the predictor's \emph{response},
+$d_{A,j}=f_{A\cup\{j\}}-f_A$. We show that this is not merely a convenient
+feature. For general smooth losses, marginal utility admits a response
+expansion with a controlled second-order remainder. For Bregman losses the
+relation becomes an exact identity, and for softmax cross-entropy the curvature
+constant is explicit. Under squared loss, conditioning on the state makes the
+Bayes-optimal utility affine in the response plus a known quadratic penalty.
+The only unknown coefficient is the residual of the fixed predictor itself.
+This yields a concrete prediction: when model adaptation removes systematic
+residual structure, structural oracle opportunity may remain while the part of
+that opportunity that can be identified before observing the outcome shrinks.
 
-We make this measurable and actionable.
+The theory motivates a response-aware selector. A cached model first screens
+the candidate pool, after which only a shortlist is probed through the fixed
+predictor. A response-aware head reranks the retained candidates by estimated
+marginal utility. We evaluate both a generic head and a theory-shaped bilinear
+head that represents the response--residual interaction explicitly. The same
+analysis also motivates diagnostics for whether routing is worth attempting at
+all: shortlist signal, within-episode rank predictability from observable
+features, and candidate novelty as a label-free description of pool geometry.
 
-\paragraph{Theory.} We give four results. A second-order expansion with a
-two-sided bound for losses with Lipschitz gradients; an exact identity for
-Bregman losses that contains the familiar squared-loss expression as a special
-case; explicit constants for softmax cross-entropy, where the Hessian is
-positive semidefinite with spectral norm at most $1/2$; and a
-response-sufficiency statement showing that conditional on the state the
-Bayes-optimal utility is affine in the response. Together they say that
-predictor response carries information about marginal utility for any smooth
-loss, and they say precisely where that information lives.
+The resulting experiments are deliberately organised around regimes rather
+than around one benchmark table. In an identifiable traffic regime with a
+linear subset expert, response-aware marginal routing is the strongest
+deployable selector in the detailed comparisons against content, fixed-set,
+utility and learned alternatives. With stronger subset-capable predictors, the
+oracle opportunity remains substantial but candidate-level utility becomes
+statistically indistinguishable from noise under the available observations;
+enlarging the candidate library increases the oracle opportunity while reducing
+the fraction that routing can realise. A controlled pool-geometry sweep then
+shows that the sign of relevance depends on novelty, which yields a label-free
+adaptive rule. Finally, demonstration selection on five image benchmarks
+provides a second task family in which ranking and stopping can be separated
+experimentally.
 
-\paragraph{Measurement.} We turn the theory into a protocol that can be run
-before committing to a selection method: measure how well the cheap cached view
-correlates with the true marginal, measure within-episode rank predictability
-from every observable feature, and measure one label-free pool statistic ---
-candidate novelty, the share of a candidate's variance the anchor does not
-already explain. Across three regimes these measurements predict, in advance,
-whether selection will help at all.
+These results support four contributions. We formulate state-conditioned
+marginal utility as the common decision object for budgeted context selection.
+We derive a general response--utility theory, including an exact Bregman
+identity, a softmax-cross-entropy bound and a response-sufficiency result. We
+develop response-aware and theory-shaped selectors together with measurable
+identifiability diagnostics. We then use a broad experimental programme ---
+recent selector baselines, nonlinear backbones, candidate-library scaling,
+alternative scoring heads, a second task family, compute measurements and
+deployment pilots --- to connect strong positive results to the mechanism that
+determines when those results are attainable.
 
-\paragraph{Decision rule.} The mechanism yields a rule rather than a new
-heuristic. When candidate novelty is high, retrieval-style ranking is the right
-policy; when it is low, the best deployable policy is to include everything,
-because a redundant pool makes proxy scores actively harmful. We give a
-label-free adaptive rule with a threshold selected on held-out targets, and we
-show it converts a harmful default into a beneficial one on two datasets. For
-settings where the decision can be learned, we describe the response-aware
-router used throughout, and we show that its head should be shaped by the
-identity rather than discovered from data.
+A practical consequence is that stronger prediction and easier selection are
+not the same objective. An adapted predictor can absorb the systematic residual
+that gives a router its signal; a larger candidate library can increase the
+oracle opportunity while making the ordering harder to identify; and a
+retrieval heuristic can change sign as the candidate pool becomes more or less
+novel relative to the anchor. Context selection should therefore be evaluated
+as a joint property of the predictor, the candidate pool and the information
+available to the selector, not as a fixed ranking problem.
 
-\paragraph{Evidence.} The empirical study has three regimes, chosen so that
-identifiability differs while everything else is held fixed.
-\begin{itemize}
- \item \emph{Utility is estimable.} With a linear subset expert on six traffic
- benchmarks, learned marginal-utility routing beats fourteen competitors on both
- datasets examined in detail --- significantly ahead of the best competitor on
- three of six benchmarks, unresolved on two and below simple pooling on one ---
- roughly
- doubling the strongest non-selection
- baseline, while relevance ranking, maximum marginal relevance, determinantal
- diversity, k-center, facility location, k-means representatives and random
- selection are \emph{significantly worse than using no auxiliary context at
- all}.
- \item \emph{Utility is not estimable.} Replacing the expert with a
- subset-capable nonlinear predictor, with the protocol otherwise unchanged,
- removes the advantage: no method beats including every candidate, and the
- oracle's optimal budget is \emph{smaller} than the protocol's, so the loss
- comes from the budget constraint rather than from bad ranking.
- \item \emph{Candidates contribute categorical evidence.} In demonstration
- selection for a frozen in-context classifier, four different scoring heads ---
- scalar, curvature-corrected, bilinear and signed bilinear --- bracket the same
- ceiling, which locates the limit in what can be observed rather than in how the
- score is parameterised.
-\end{itemize}
-
-The remainder of the paper follows those three questions: why response
-determines utility (\cref{sec:theory}), when utility is identifiable
-(\cref{sec:diagnostics}), and how to select once identifiability is known
-(\cref{sec:adaptive}). \Cref{sec:experiments} reports the three regimes and
-\cref{sec:discussion} states the boundary and its practical consequences.
-
-\paragraph{Scope and companion manuscripts.} This paper studies
-identifiability: what determines whether marginal utility can be estimated at
-all, and what follows for practice when it cannot. The method itself, its
-implementation and its engineering evaluation are reported in a companion
-manuscript, which also carries the multi-benchmark and second-task-family
-evidence; the present paper reuses that protocol only as an instrument and does
-not restate it. Neither paper depends on the other for its claims: the
-identifiability results here are stated and proved from the utility definition,
-and the experiments are self-contained.
+\paragraph{Relation to the submitted companion.}
+A submitted companion manuscript introduces the basic R-MUR routing primitive
+under a multi-target traffic protocol. The present submission does not restate
+that paper's main numerical tables as its evidence. It develops the
+general-loss theory, theory-shaped scoring heads, nonlinear-predictor and
+candidate-library regimes, identifiability diagnostics, pool-geometry
+mechanism, label-free adaptation, second task family, alternative-policy audits,
+compute measurements and deployment-pilot validation reported here. The shared
+notation and routing primitive are included only to make this manuscript
+self-contained.
