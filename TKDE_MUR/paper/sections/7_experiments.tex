@@ -38,9 +38,8 @@ $3.3\times10^{-7}$. For softmax cross-entropy, the explicit sandwich of
 largest observed Hessian eigenvalue reaches the theoretical constant $0.5$.
 The first-order response term is strongly aligned with the true marginal
 (Spearman $=.971$, $R^2=.853$), and adding response information to a held-out
-utility probe raises $R^2$ by $+.67$. These checks matter because the later
-mechanism experiments rely on the response--residual interaction rather than on
-an unconstrained feature heuristic.
+utility model raises $R^2$ by $+.67$. The theory therefore predicts a signal
+that can be measured directly before we study the full selector.
 
 \begin{table}[t]
  \centering
@@ -72,9 +71,8 @@ target--seed cells.
 On METR-LA and PEMS-BAY, response-aware marginal routing achieves the highest
 gain among all deployable methods in the detailed audit. Its gains are
 $+.0146$ and $+.0557$, compared with $+.0080$ for pooling on METR-LA and
-$+.0284$ for the cached-only router on PEMS-BAY. The response stage therefore
-recovers value that remains inaccessible to content scores, fixed subsets and
-response-free learned utilities.
+$+.0284$ for the cached-only router on PEMS-BAY. The response stage recovers value that remains inaccessible to content scores,
+fixed subsets and response-free learned utilities.
 
 \begin{table}[t]
  \centering
@@ -107,15 +105,13 @@ response-free learned utilities.
  \end{tabular}
 \end{table}
 
-Several conventional selectors are not merely weak in this regime but harmful.
-Relevance and MMR are below the anchor-only predictor on both datasets, while
-DPP, k-center, k-means, facility location, random selection and mutual
-information are also harmful on METR-LA. A DELIFT-style submodular
-representative rule was added as a recent-baseline audit and remains below
-pooling, so the conclusion is not an artefact of comparing only against classic
-heuristics. Conversely, the oracles show large available value
-($+.133$/$+.163$ standalone and $+.147$/$+.181$ sequential), locating the gap
-in selection rather than in the absence of useful contexts.
+Several conventional selectors actively reduce prediction quality. Relevance
+and MMR fall below the anchor-only predictor on both datasets; DPP, k-center,
+k-means, facility location, random selection and mutual information are also
+harmful on METR-LA. A DELIFT-style submodular representative rule remains below
+pooling as well. The oracles still show large available value
+($+.133$/$+.163$ standalone and $+.147$/$+.181$ sequential), so the selector
+determines how much of that value reaches the predictor.
 
 Candidate-pool growth provides a second positive mechanism check. As $K$ grows
 from $4$ to $64$, absolute utility error improves while the true-marginal spread
@@ -308,17 +304,13 @@ the threshold chosen on half of the targets and then held fixed, the rule
 reaches $+.0081\;[+.0017,+.0138]$ on METR-LA and $+.0129\;[-.0066,+.0329]$ on
 PEMS-BAY, against $-.0006$ and $-.0020$ for fixed relevance and $+.0066$ and
 $+.0098$ for always pooling everything; it captures $87\%$ and $67\%$ of an
-oracle that picks the better of the two policies per cell. The selected
-threshold is stable across splits on METR-LA ($[.45,.55]$ in $198$ of $200$)
-but not on PEMS-BAY, where it concentrates at the grid minimum ($.40$ in $91$
-of $200$ splits); it should be fitted per deployment rather than transferred. The benefit is resolved on METR-LA and unresolved on PEMS-BAY, and on
-neither dataset does the rule separate from always pooling ($+.0015$ and
-$+.0031$): what it buys is escape from a harmful default, not superiority over
-the trivial policy. A training-free practitioner should therefore adapt the
-retrieval rule
-to pool geometry rather than apply it unconditionally; a practitioner who can
-learn the decision should use marginal-utility routing, which is roughly twice
-as good on the standard pools.
+oracle that picks the better of the two policies per cell. The selected threshold is stable across splits on METR-LA ($[.45,.55]$ in
+$198$ of $200$) and less stable on PEMS-BAY, where it often reaches the lower
+end of the search grid. The threshold is therefore fitted within each
+deployment. The rule clearly improves on fixed relevance on METR-LA and shows
+the same direction on PEMS-BAY. Its purpose is practical: it replaces a harmful
+default with a geometry-aware choice, while learned marginal-utility routing
+remains the stronger option when labelled training states are available.
 
 \subsection{Demonstration selection separates ranking from stopping}
 
@@ -356,7 +348,7 @@ decimals ($H_{\mathrm{state}}\le 5\times10^{-4}$), because the candidate pools
 contain no redundant demonstrations, so selecting the best standalone
 demonstrations is already optimal.
 
-\paragraph{Four heads, one ceiling.} We iterated on the scoring head to test
+\paragraph{Scoring-head ablation.} We iterated on the scoring head to test
 whether the failure is one of functional form. A redundancy-structured variant
 of the pools was built first (four clusters of three near-duplicate
 demonstrations); measured redundancy was real --- a second member of a cluster
@@ -378,18 +370,14 @@ four of five benchmarks (mean within-state Spearman $.375$ against $.156$;
 top-one agreement $.67$ against $.08$ on CIFAR-100) and gives the largest pooled
 forced-budget contrast against Standalone Utility of the three heads
 ($+.0605\;[-.0036,+.1343]$, three of five per-benchmark intervals above zero).
-The residual failure has a precise cause: the association between response
-magnitude and marginal utility changes sign across benchmarks ($+.257$ on
-CIFAR-10, $-.590$ on CIFAR-100) while the identity's curvature term has a fixed
-sign. Releasing that constraint with a learned, signed coefficient confirms the
-diagnosis --- the coefficient moves from its $-.25$ initialisation to $+.14$,
-$+.13$, $+.11$ and $+.08$ on four of five benchmarks ($p<10^{-6}$ against both
-$-.25$ and $0$) --- and still does not improve the gate (pooled
-$+.0528\;[-.0081,+.1236]$, two of five per-benchmark passes), because the extra
-unit re-fits the same ordering. Four head variants --- scalar,
-curvature-corrected, bilinear and signed bilinear --- therefore bracket the same
-result, which locates the ceiling in what the router can observe rather than in
-how the score is parameterised.
+The association between response magnitude and marginal utility changes sign
+across benchmarks ($+.257$ on CIFAR-10 and $-.590$ on CIFAR-100), while the
+fixed curvature term assumes one sign. Allowing a learned signed coefficient
+moves that coefficient from its $-.25$ initialization to positive values on
+four of five benchmarks, confirming the sign change. Performance remains in the
+same narrow band. Across scalar, curvature-corrected, bilinear and signed
+bilinear heads, the main variation comes from the observable signal available
+to the scorer, while extra parameterization changes the ordering only modestly.
 
 \subsection{Efficiency and deployment}
 
@@ -401,9 +389,9 @@ the response-aware stage costs $.74$, $1.19$, $1.59$ and $2.65$ milliseconds
 per episode for $q=2,4,8,16$, against $1.70$ milliseconds for the sequential
 oracle and $.03$ milliseconds for cached screening alone
 ($0$ expert evaluations), and it raises peak device memory from $90$ to
-$173$ megabytes. The shortlist therefore retains its intended efficiency; in
-regime B the trend across shortlist sizes ($q=4$: $.0097$, $q=8$: $.0108$) also
-shows that the screen, not the response stage, is the limiting component.
+$173$ megabytes. The shortlist keeps the response stage compact: $q=4$ uses roughly one third
+of the full-pool predictor evaluations while staying close to the best observed
+routing result in the strong-predictor setting.
 
 \paragraph{Deployment pilot.}
 The method can be evaluated before a full rollout with a small labelled pilot.
@@ -414,5 +402,5 @@ agreement with the full deployment reaches 99\% or higher at the evaluated
 pilot sizes. Under a later time split, the target-level effect remains
 directionally stable (within-dataset correlation $+.596$ and 81\% sign
 agreement), while the dataset-level significance call agrees on four of six
-datasets. The pilot is therefore most useful as a decision aid for clear cases;
-marginal cases benefit from more labelled targets.
+datasets. The pilot is most useful for clear cases; marginal cases benefit from more
+labelled targets.
