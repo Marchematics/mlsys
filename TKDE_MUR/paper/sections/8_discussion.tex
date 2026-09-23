@@ -1,98 +1,80 @@
 \section{Discussion}
 \label{sec:discussion}
 
-The combined evidence supports a positive but conditional view of adaptive
-context selection. State-conditioned marginal utility is a useful decision
-object, predictor response is the observable that exposes its candidate-specific
-variation, and response-aware selection can substantially outperform content,
-fixed-set and response-free alternatives when that variation is identifiable.
-The same theory also explains why this advantage is not monotone in predictor
-quality or candidate-library size.
+The results connect three parts of the same decision. Structural headroom
+measures how much value can be created by updating candidate scores. Predictor
+response determines how much of that value is visible before the outcome is
+known. Pool geometry shapes which simple policy is sensible when a learned
+ordering is weak.
 
-\subsection{Structural opportunity and realizable opportunity}
+\subsection{Structural opportunity and realizable value}
 
-Structural headroom measures what an oracle could gain by revising candidate
-values after each addition. Realizable opportunity measures how much of that
-gain can be predicted from information available before the outcome is known.
-The two quantities need not track one another. In the linear identifiable
-regime, large oracle opportunity coincides with measurable candidate-specific
-signal and response-aware routing converts part of it into gain. With the
-strong nonlinear expert, the oracle opportunity remains large while candidate
-rankability collapses: cached recall approaches its random reference, observable
-probes have near-zero out-of-sample predictive value, and episode-level
-confidence signals have AUCs in $[.481,.521]$. The loss is therefore not
-explained by a missing scoring head alone.
+A large oracle gap can coexist with a weak learned selector. The strong
+nonlinear predictors make this clear. Oracle gains remain substantial, yet
+cached recall approaches its random reference, held-out utility prediction
+loses explanatory power, and episode-level confidence signals carry almost no
+information about whether routing will beat pooling. The opportunity survives;
+the observable ordering signal does not.
 
-This distinction also clarifies the expert-strength and library-size sweeps.
-Adapting the predictor removes systematic residual structure and sharply reduces
-the value a router can realise even when the oracle opportunity persists.
-Increasing the library from 16 to 128 candidates raises the oracle opportunity
-by about 40\% while the router approaches random selection. More candidate
-choice can therefore increase the value of perfect information and
-simultaneously reduce the fraction of that value recoverable from observable
-signals.
+The expert-strength and library-size sweeps reinforce the same mechanism.
+Adapting the predictor removes systematic residual structure and sharply
+reduces the value that routing can realize. Expanding the candidate library
+raises the oracle opportunity while making the candidate ordering harder to
+recover. Better prediction and richer candidate pools can therefore move the
+selection problem in opposite directions.
 
-\subsection{Why response matters}
+\subsection{Why response is the right observation}
 
-The theory and the empirical probes point to the same interaction. Under squared
-loss, the state-dependent part of utility is the alignment between the
-candidate-induced response and the residual of the current predictor. A
-content-only score omits that interaction. The exact Bregman identity and the
-cross-entropy bound show that the same geometric structure is not peculiar to
-squared error. The theory-shaped head improves ranking where the signal exists,
-while four alternative parameterisations hit the same ceiling in the
-low-identifiability regimes. This is why we treat response as a principled
-observation rather than as another feature engineering choice.
+Under squared loss, the state-dependent part of utility is the alignment
+between the candidate-induced response and the residual of the current
+prediction. The Bregman identity and the cross-entropy bound extend this
+geometry beyond squared error. The theory-shaped head improves ranking when the
+signal is present, while alternative heads converge to the same ceiling when
+the signal collapses. This agreement between theory and experiments gives the
+response a clear role: it exposes the part of candidate value that content
+features alone cannot represent.
 
-\subsection{Pool geometry is actionable}
+\subsection{Pool geometry changes the value of relevance}
 
-The pool-geometry sweep reveals a complementary mechanism. Relevance is harmful
-when highly correlated candidates contribute little information not already
-present in the anchor, and becomes useful as candidate novelty increases. The
-relationship is strong within the controlled deployment geometries but does not
-support a universal cross-dataset threshold. The resulting adaptive rule is
-therefore deliberately local: estimate novelty on the deployment's training
-split, choose the threshold on held-out targets, and use it to decide whether a
-retrieval-style rule is appropriate or whether pooling is the safer default.
+Relevance behaves differently as the candidate pool becomes more novel relative
+to the anchor. Highly redundant candidates can amplify information the predictor
+already has and reduce performance. Less redundant candidates add independent
+signal, and relevance becomes useful. The novelty statistic captures this
+transition within a deployment and supports a simple adaptive fallback between
+retrieval and pooling.
 
-This mechanism is useful even when it does not beat a learned router. It turns a
-selection failure into a deployment choice and provides a label-free fallback
-for settings where learning state-conditioned utility is not justified.
+The threshold is fitted within the deployment because the same novelty level
+does not imply the same effect across datasets. What transfers is the mechanism:
+candidate value depends on how much new information the pool can contribute to
+the current predictor.
 
-\subsection{Ranking, stopping and task family}
+\subsection{Ranking and stopping solve different problems}
 
-The demonstration-selection family exposes a different limit. There the
-standalone and sequential oracles are nearly identical under the natural
-stopping rule, so dynamic ranking has little structural value to recover.
-Forcing the budget restores a consistent advantage from state-conditioned
-ranking, separating the ranking problem from calibration of the stopping rule.
-This matters because a selector can fail either because candidate ordering is
-unidentifiable or because the deployment rule removes the opportunity before
-ranking matters. These are different regimes and require different remedies.
+The demonstration-selection experiments separate candidate ordering from score
+calibration. When standalone and sequential oracles are nearly identical,
+dynamic ranking has little extra value under the natural stopping rule. Forcing
+the budget exposes a clear ranking advantage. A selector can therefore lose
+value because the candidate order is hard to identify or because the stopping
+rule ends the sequence before ranking matters. These cases call for different
+interventions.
 
-\subsection{Practical deployment}
+\subsection{Deployment implications}
 
-The final output of the study is a procedure rather than a single unconditional
-policy. A deployment should first establish that the candidate pool offers
-structural opportunity, then test whether candidate-level utility is
-predictable from the available state and response, and finally choose between
-response-aware routing, a simple geometry-adaptive rule and pooling. The pilot
-experiments show that this decision can be made with far fewer labelled targets
-than a full deployment audit, while the time-shift analysis warns that
-confidence transfers less reliably than direction. Split-half consistency is
-therefore a certification device for strong pilot decisions, not a substitute
-for additional labels on marginal cases.
+The practical workflow follows directly from the experiments. Measure the
+available structural opportunity, check whether candidate utility is recoverable
+from the state and predictor response, and then choose among response-aware
+routing, a geometry-adaptive fallback and pooling. The pilot study shows that a
+small labelled sample can make this decision reliably in clear cases. Temporal
+shift preserves the direction of the effect better than its significance, so
+marginal deployments should collect more pilot targets before committing to a
+policy.
 
-\subsection{Limitations}
+\subsection{Scope}
 
-The general-loss analysis characterises the information carried by predictor
-response, but it does not make utility label-free: the state-dependent
-coefficient still has to be learned from outcomes. The strong-backbone study
-uses a finite set of architectures and the second task family uses frozen CLIP
-representations, so other inductive biases may expose different observable
-signals. The novelty rule is deployment-specific and its threshold should not
-be transferred blindly across datasets. Finally, the one-step regret statement
-does not provide a global guarantee for arbitrary non-monotone set utilities.
-These limitations define what must be re-measured when the predictor, candidate
-pool or task changes; they do not alter the central distinction between
-structural and identifiable opportunity.
+The general-loss theory describes the information carried by predictor response
+while the state-dependent coefficient is still learned from outcomes. The
+strong-predictor experiments cover a finite set of architectures, and the
+second task family uses frozen CLIP representations. Other predictors may expose
+different residual structure and should be evaluated with the same diagnostics.
+The novelty threshold is deployment-specific. The regret result is local to one
+selection step, matching the greedy decision analyzed in the paper.
