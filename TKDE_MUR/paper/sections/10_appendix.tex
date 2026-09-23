@@ -65,7 +65,7 @@ batched pair evaluation and explicit augmented-set evaluation, and the
 inertness of unselected candidates.
 
 \paragraph{Cross-entropy (two-sided bound).} For the frozen in-context
-classifier of regime C we collected 92{,}995 (state, candidate) samples together
+classifier used in the demonstration-selection experiments we collected 92{,}995 (state, candidate) samples together
 with 2{,}975{,}840 per-query rows and evaluated the sandwich of
 \cref{prop:ce}. The bound held in every sample at both aggregation levels
 (smallest upper slack $3.0\times10^{-8}$, smallest lower slack
@@ -89,7 +89,7 @@ correlation of $.97$ between the first-order term and the realised marginal.
  \centering
  \small
  \caption{Numerical validation of the response--utility relations.}
- \label{tab:theory-validation}
+ \label{tab:theory-validation-app}
  \begin{tabular}{lll}
   \toprule
   Check & Object & Result \\
@@ -102,3 +102,49 @@ correlation of $.97$ between the first-order term and the realised marginal.
   \bottomrule
  \end{tabular}
 \end{table}
+
+
+\section{Additional Stress Tests}
+\label{app:stress-tests}
+
+The main text keeps the predictor-strength story compact. This section records
+the additional tests used to eliminate alternative explanations.
+
+\paragraph{Search direction.}
+Backward elimination from the full pool and forward greedy selection differ by
+only $+.0002$ on the matched cells, with the interval spanning zero. The search
+direction has little effect once the utility signal itself is fixed.
+
+\paragraph{Harmful candidate pools.}
+Rebuilding the candidate pools from weakly or negatively correlated sensors does
+not restore a reliable routing advantage under the strong predictor. Pooling
+remains competitive, and the response-aware selector stays far below the oracle.
+The result shows that robustness to obviously poor candidates does not explain
+the missing realizable value.
+
+\paragraph{Response-geometry limit case.}
+When the predictable residual shrinks, \cref{prop:suff} leaves the quadratic
+response term as the observable part of the score. Selecting the least
+perturbing candidates follows that limit directly. Its gain is $+.0026$ on
+METR-LA and $+.0037$ on PEMS-BAY, both below pooling. Response magnitude alone
+preserves the sign of the curvature effect but does not identify which candidate
+adds useful information.
+
+\paragraph{Full-pool reranking.}
+Setting $q=K$ gives the response head access to every candidate. The gain changes
+by $+.0012$ with a confidence interval that includes zero relative to the
+shortlist version. The shortlist is therefore an efficiency device, while the
+ranking ceiling is set by the observable signal.
+
+\paragraph{Episode-level confidence.}
+We record the cached top-two margin, response-aware top-two margin, best utility
+score and prediction-change norm for every episode. Across datasets and signals,
+AUCs for predicting whether routing beats pooling lie in $[.481,.521]$. A
+held-out confidence rule recovers only a small fraction of the oracle
+episode-level switching gain. The selector's own confidence does not reveal its
+mistakes once the predictor has absorbed the systematic residual.
+
+\paragraph{Policy-gradient alternative.}
+A REINFORCE selector trained directly on subset reward performs below random
+selection in the same strong-predictor setting. This rules out the possibility
+that the observed ceiling comes only from marginal-utility regression.
