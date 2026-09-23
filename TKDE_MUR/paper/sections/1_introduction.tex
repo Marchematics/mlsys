@@ -1,84 +1,58 @@
 \section{Introduction}
 
-Predictive systems increasingly operate with more auxiliary information than
-they should use indiscriminately: neighbouring sensors in a network, retrieved
-documents for a language model, demonstrations for an in-context classifier, or
-feature blocks for a tabular predictor. The central decision is not simply
-which candidate is relevant in isolation, but which candidate will improve the
-prediction that has already been formed from the contexts selected so far.
+Predictive systems often have more auxiliary information available than they
+should use at once. A traffic forecaster can consult neighbouring sensors, a
+language model can retrieve passages, an in-context classifier can choose
+demonstrations, and a tabular model can acquire additional feature groups. In
+each case, selecting a useful candidate becomes harder after other candidates
+have already been chosen, because the predictor has changed.
 
-We study that decision through \emph{state-conditioned marginal utility}. For
-a selected set $A$ and a remaining candidate $j$, the marginal is the expected
-reduction in task loss produced by adding $j$ to $A$. This definition separates
-three questions that are often conflated. The first is structural: does
-re-evaluating candidates after each addition create value over a fixed ranking?
-The second is statistical: is the resulting candidate ordering recoverable from
-quantities available before the target outcome is known? The third is
-algorithmic: if it is recoverable, how should the selector spend predictor
-evaluations to identify the next useful context?
+We model this changing value through \emph{state-conditioned marginal
+utility}: the expected reduction in task loss produced by adding one candidate
+to the current context set. The definition shifts the focus from candidate
+content to the prediction that already exists. A highly relevant candidate can
+be redundant after similar information has been selected. A less obvious
+candidate can become valuable when it corrects what the current prediction is
+still missing.
 
-The key observable is the predictor's \emph{response},
-$d_{A,j}=f_{A\cup\{j\}}-f_A$. We show that this is not merely a convenient
-feature. For general smooth losses, marginal utility admits a response
-expansion with a controlled second-order remainder. For Bregman losses the
-relation becomes an exact identity, and for softmax cross-entropy the curvature
-constant is explicit. Under squared loss, conditioning on the state makes the
-Bayes-optimal utility affine in the response plus a known quadratic penalty.
-The only unknown coefficient is the residual of the fixed predictor itself.
-This yields a concrete prediction: when model adaptation removes systematic
-residual structure, structural oracle opportunity may remain while the part of
-that opportunity that can be identified before observing the outcome shrinks.
+The predictor itself exposes a clue about this value. Let
+$d_{A,j}=f_{A\cup\{j\}}-f_A$ denote the change in prediction caused by
+candidate $j$ at selected set $A$. We call this change the predictor response.
+Our theory shows that marginal utility is governed by this response across a
+broad class of losses. Smooth losses admit a response expansion with a
+controlled remainder, Bregman losses give an exact identity, softmax
+cross-entropy has an explicit curvature bound, and squared loss yields an affine
+response model once the current state is fixed. These results also reveal the
+quantity a selector must learn: the systematic residual left by the fixed
+predictor.
 
-The theory motivates a response-aware selector. A cached model first screens
-the candidate pool, after which only a shortlist is probed through the fixed
-predictor. A response-aware head reranks the retained candidates by estimated
-marginal utility. We evaluate both a generic head and a theory-shaped bilinear
-head that represents the response--residual interaction explicitly. The same
-analysis also motivates diagnostics for whether routing is worth attempting at
-all: shortlist signal, within-episode rank predictability from observable
-features, and candidate novelty as a label-free description of pool geometry.
+This structure leads to a simple routing design. A cached model screens the
+candidate pool, the fixed predictor is evaluated only on a small shortlist, and
+a response-aware scorer estimates which retained candidate will reduce the
+current loss most. We also study a theory-shaped bilinear head that represents
+the response--residual interaction directly. The same analysis suggests
+measurements for deciding whether routing is worth learning: how much signal is
+present in the cached screen, whether candidate order can be recovered from
+decision-time observations, and how much information the candidate pool adds
+beyond the anchor.
 
-The resulting experiments are deliberately organised around regimes rather
-than around one benchmark table. In an identifiable traffic regime with a
-linear subset expert, response-aware marginal routing is the strongest
-deployable selector in the detailed comparisons against content, fixed-set,
-utility and learned alternatives. With stronger subset-capable predictors, the
-oracle opportunity remains substantial but candidate-level utility becomes
-statistically indistinguishable from noise under the available observations;
-enlarging the candidate library increases the oracle opportunity while reducing
-the fraction that routing can realise. A controlled pool-geometry sweep then
-shows that the sign of relevance depends on novelty, which yields a label-free
-adaptive rule. Finally, demonstration selection on five image benchmarks
-provides a second task family in which ranking and stopping can be separated
-experimentally.
+The experiments tell a consistent story across prediction regimes. With a
+linear subset predictor, response-aware routing is the strongest deployable
+selector in detailed comparisons with content, fixed-set, utility-based and
+learned alternatives. With stronger subset-capable predictors, the oracle still
+finds useful context combinations, yet the candidate ordering becomes difficult
+to recover from the available observations. Increasing the candidate library
+widens this gap: the oracle opportunity grows while the learned router loses
+rankability. A separate pool-geometry study shows why relevance can switch from
+harmful to useful as candidate novelty rises, and the resulting mechanism gives
+a label-free adaptive fallback. Demonstration selection on image benchmarks
+provides a second task family and separates the value of ranking from the
+calibration of stopping.
 
-These results support four contributions. We formulate state-conditioned
-marginal utility as the common decision object for budgeted context selection.
-We derive a general response--utility theory, including an exact Bregman
-identity, a softmax-cross-entropy bound and a response-sufficiency result. We
-develop response-aware and theory-shaped selectors together with measurable
-identifiability diagnostics. We then use a broad experimental programme ---
-recent selector baselines, nonlinear backbones, candidate-library scaling,
-alternative scoring heads, a second task family, compute measurements and
-deployment pilots --- to connect strong positive results to the mechanism that
-determines when those results are attainable.
-
-A practical consequence is that stronger prediction and easier selection are
-not the same objective. An adapted predictor can absorb the systematic residual
-that gives a router its signal; a larger candidate library can increase the
-oracle opportunity while making the ordering harder to identify; and a
-retrieval heuristic can change sign as the candidate pool becomes more or less
-novel relative to the anchor. Context selection should therefore be evaluated
-as a joint property of the predictor, the candidate pool and the information
-available to the selector, not as a fixed ranking problem.
-
-\paragraph{Relation to the submitted companion.}
-A submitted companion manuscript introduces the basic R-MUR routing primitive
-under a multi-target traffic protocol. The present submission does not restate
-that paper's main numerical tables as its evidence. It develops the
-general-loss theory, theory-shaped scoring heads, nonlinear-predictor and
-candidate-library regimes, identifiability diagnostics, pool-geometry
-mechanism, label-free adaptation, second task family, alternative-policy audits,
-compute measurements and deployment-pilot validation reported here. The shared
-notation and routing primitive are included only to make this manuscript
-self-contained.
+The paper contributes a unified decision object, a general response--utility
+theory, response-aware and theory-shaped selectors, and an empirical account of
+what makes their gains attainable. The central message is practical. Context
+selection works best when the predictor leaves a systematic, observable
+residual that candidates can correct. Predictor strength, pool geometry and
+selection rules all change that signal, so a deployment should choose its
+selection strategy with those three factors in view.
